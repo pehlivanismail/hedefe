@@ -28,6 +28,8 @@ import {
   subjectStats,
   topicStats,
   useDemoData,
+  examsForStudent,
+  TRACK_LABELS,
   type Topic,
 } from "@/lib/demo-data";
 import { cn } from "@/lib/utils";
