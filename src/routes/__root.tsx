@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { AppHeader } from "@/components/app-header";
 import { DemoDataProvider } from "@/lib/demo-data";
+import { AuthProvider } from "@/lib/auth";
 import { Toaster } from "@/components/ui/sonner";
 
 
@@ -134,7 +135,8 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <DemoDataProvider>
+      <AuthProvider>
+        <DemoDataProvider>
         <div className="min-h-screen bg-background font-sans antialiased">
           <AppHeader />
           <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
@@ -143,7 +145,8 @@ function RootComponent() {
           </main>
         </div>
         <Toaster />
-      </DemoDataProvider>
+        </DemoDataProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 }

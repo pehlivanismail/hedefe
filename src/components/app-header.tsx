@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { LogOut, UserRound, GraduationCap } from "lucide-react";
-import { useDemoData } from "@/lib/demo-data";
+import { useAuth } from "@/lib/auth";
 import { cn } from "@/lib/utils";
 
 const links = [
@@ -11,16 +11,18 @@ const links = [
 ] as const;
 
 export function AppHeader() {
-  const { session, currentStudent, currentCoach, signOut } = useDemoData();
+  const { user, role, student, coach, signOut } = useAuth();
   const navigate = useNavigate();
-  const isStudent = session?.role === "student";
-  const isCoach = session?.role === "coach";
-  const email = currentStudent?.email ?? currentCoach?.email;
+  const isStudent = role === "student";
+  const isCoach = role === "coach";
+  const email = student?.email ?? coach?.email ?? user?.email;
+  const session = user;
 
-  const handleSignOut = () => {
-    signOut();
+  const handleSignOut = async () => {
+    await signOut();
     void navigate({ to: "/", replace: true });
   };
+
 
   return (
     <header className="sticky top-0 z-50 glass-bar border-b border-border/70">
@@ -75,7 +77,7 @@ export function AppHeader() {
                 </span>
               </div>
               <button
-                onClick={handleSignOut}
+                onClick={() => void handleSignOut()}
                 className="flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
               >
                 <LogOut className="size-4" />
@@ -83,12 +85,20 @@ export function AppHeader() {
               </button>
             </>
           ) : (
-            <Link
-              to="/"
-              className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft"
-            >
-              Giriş Yap
-            </Link>
+            <>
+              <Link
+                to="/koc-giris"
+                className="rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+              >
+                Koç Girişi
+              </Link>
+              <Link
+                to="/giris"
+                className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft"
+              >
+                Giriş Yap
+              </Link>
+            </>
           )}
         </div>
       </div>
