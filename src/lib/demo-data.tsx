@@ -5,6 +5,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { useAuth } from "@/lib/auth";
 
 export const YKS_DATE = new Date("2027-06-19T10:00:00Z");
 
@@ -514,7 +515,16 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
           })),
         ),
     }),
-    [tasks, examData, session, studentList, currentStudent, currentCoach],
+    [
+      tasks,
+      examData,
+      session,
+      studentList,
+      currentStudent,
+      currentCoach,
+      coachList,
+      auth,
+    ],
   );
 
   return (
