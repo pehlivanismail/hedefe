@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { LogOut, UserRound, GraduationCap } from "lucide-react";
-import { useDemoData } from "@/lib/demo-data";
+import { useAuth } from "@/lib/auth";
 import { cn } from "@/lib/utils";
 
 const links = [
@@ -11,16 +11,18 @@ const links = [
 ] as const;
 
 export function AppHeader() {
-  const { session, currentStudent, currentCoach, signOut } = useDemoData();
+  const { user, role, student, coach, signOut } = useAuth();
   const navigate = useNavigate();
-  const isStudent = session?.role === "student";
-  const isCoach = session?.role === "coach";
-  const email = currentStudent?.email ?? currentCoach?.email;
+  const isStudent = role === "student";
+  const isCoach = role === "coach";
+  const email = student?.email ?? coach?.email ?? user?.email;
+  const session = user;
 
-  const handleSignOut = () => {
-    signOut();
+  const handleSignOut = async () => {
+    await signOut();
     void navigate({ to: "/", replace: true });
   };
+
 
   return (
     <header className="sticky top-0 z-50 glass-bar border-b border-border/70">
