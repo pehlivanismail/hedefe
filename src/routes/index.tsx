@@ -106,7 +106,7 @@ function Landing() {
           <p className="mt-2 text-sm text-muted-foreground">
             Örnek bir öğrenci hesabıyla panele gir.
           </p>
-          <div className="mt-5 space-y-3">
+          <div className="mt-5 max-h-80 space-y-3 overflow-y-auto pr-1">
             {studentList.map((s) => (
               <button
                 key={s.id}
