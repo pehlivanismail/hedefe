@@ -240,8 +240,10 @@ function Ozet({ student }: { student: Student }) {
         <div className="absolute -right-20 -top-20 size-72 rounded-full bg-primary/25 blur-3xl" />
         <div className="relative">
           <span className="inline-flex items-center gap-2 rounded-full bg-primary/20 px-3 py-1 text-xs font-semibold uppercase tracking-widest">
-            <Target className="size-3.5" /> {student.name}
+            <Target className="size-3.5" /> {student.name} · TYT +{" "}
+            {TRACK_LABELS[student.track]}
           </span>
+
           <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight sm:text-6xl">
             🎯 YKS 2027 HEDEF
           </h1>
