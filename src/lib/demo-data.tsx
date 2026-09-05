@@ -559,3 +559,97 @@ export function subjectStats(subject: Subject) {
     debt,
   };
 }
+
+/* ---------- Analiz yardımcıları ---------- */
+
+function hash(s: string) {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) % 100000;
+  return h;
+}
+
+const clamp = (n: number, min: number, max: number) =>
+  Math.max(min, Math.min(max, n));
+
+/** Öğrencinin alanına göre TYT + ilgili AYT sınavlarını, kişiye özel varyasyonla döner. */
+export function examsForStudent(all: Exam[], student: Student): Exam[] {
+  return all
+    .filter((e) => e.track === null || e.track === student.track)
+    .map((e) => ({
+      ...e,
+      subjects: e.subjects.map((s) => ({
+        ...s,
+        areas: s.areas.map((a) => ({
+          ...a,
+          topics: a.topics.map((t) => {
+            const seed = hash(student.id + t.id);
+            return {
+              ...t,
+              mastery: clamp(t.mastery - 1 + (seed % 3), 0, 5),
+              debt: clamp(t.debt + (seed % 5) - 2, 0, 20),
+            };
+          }),
+        })),
+      })),
+    }));
+}
+
+export function subjectScoresOf(list: Exam[]) {
+  const map = new Map<string, { mastery: number; count: number }>();
+  for (const e of list)
+    for (const s of e.subjects) {
+      const key = `${e.id === "tyt" ? "TYT" : "AYT"} ${s.name}`;
+      const cur = map.get(key) ?? { mastery: 0, count: 0 };
+      for (const a of s.areas)
+        for (const t of a.topics) {
+          cur.mastery += t.mastery;
+          cur.count++;
+        }
+      map.set(key, cur);
+    }
+  return [...map.entries()].map(([name, v]) => ({
+    name,
+    score: v.count ? Math.round((v.mastery / (v.count * 5)) * 1000) / 10 : 0,
+  }));
+}
+
+export type WeakTopic = {
+  topic: Topic;
+  exam: string;
+  subject: string;
+  area: string;
+};
+
+export function weakestTopics(list: Exam[], limit = 5): WeakTopic[] {
+  const rows: WeakTopic[] = [];
+  for (const e of list)
+    for (const s of e.subjects)
+      for (const a of s.areas)
+        for (const t of a.topics)
+          rows.push({ topic: t, exam: e.name, subject: s.name, area: a.name });
+  return rows
+    .sort(
+      (x, y) =>
+        y.topic.debt - x.topic.debt || x.topic.mastery - y.topic.mastery,
+    )
+    .slice(0, limit);
+}
+
+export function overallStats(list: Exam[]) {
+  let mastery = 0;
+  let count = 0;
+  let debt = 0;
+  for (const e of list)
+    for (const s of e.subjects)
+      for (const a of s.areas)
+        for (const t of a.topics) {
+          mastery += t.mastery;
+          debt += t.debt;
+          count++;
+        }
+  return {
+    success: count ? Math.round((mastery / (count * 5)) * 100) : 0,
+    debt,
+    topics: count,
+  };
+}
