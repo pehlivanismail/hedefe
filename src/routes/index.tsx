@@ -17,12 +17,12 @@ import {
 } from "@/components/ui/select";
 import {
   daysUntilYks,
-  subjectScores,
   useDemoData,
-  exams,
-  topicStats,
+  examsForStudent,
+  subjectScoresOf,
+  overallStats,
   coaches,
-  students,
+  TRACK_LABELS,
   type Student,
 } from "@/lib/demo-data";
 
@@ -106,7 +106,7 @@ function Landing() {
           <p className="mt-2 text-sm text-muted-foreground">
             Örnek bir öğrenci hesabıyla panele gir.
           </p>
-          <div className="mt-5 space-y-3">
+          <div className="mt-5 max-h-80 space-y-3 overflow-y-auto pr-1">
             {studentList.map((s) => (
               <button
                 key={s.id}
@@ -229,7 +229,10 @@ function CoachPicker({ student }: { student: Student }) {
 function Ozet({ student }: { student: Student }) {
   const { examData } = useDemoData();
   const days = daysUntilYks();
-  const debt = examData.reduce((sum, e) => sum + topicStats(e).debt, 0) + 30;
+  const mine = examsForStudent(examData, student);
+  const scores = subjectScoresOf(mine);
+  const debt = overallStats(mine).debt;
+
 
   return (
     <div className="space-y-8">
@@ -237,8 +240,10 @@ function Ozet({ student }: { student: Student }) {
         <div className="absolute -right-20 -top-20 size-72 rounded-full bg-primary/25 blur-3xl" />
         <div className="relative">
           <span className="inline-flex items-center gap-2 rounded-full bg-primary/20 px-3 py-1 text-xs font-semibold uppercase tracking-widest">
-            <Target className="size-3.5" /> {student.name}
+            <Target className="size-3.5" /> {student.name} · TYT +{" "}
+            {TRACK_LABELS[student.track]}
           </span>
+
           <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight sm:text-6xl">
             🎯 YKS 2027 HEDEF
           </h1>
@@ -283,19 +288,20 @@ function Ozet({ student }: { student: Student }) {
           Konu Hakimiyeti (Başarı Oranı)
         </h2>
         <p className="mt-1 text-sm text-muted-foreground">
-          Ders bazında güncel başarı yüzden.
+          TYT ve {TRACK_LABELS[student.track]} derslerindeki güncel başarı
+          yüzden.
         </p>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {subjectScores.map((s) => (
+          {scores.map((s) => (
             <ScoreBar key={s.name} {...s} />
           ))}
         </div>
       </section>
 
       <p className="text-xs text-muted-foreground">
-        Bu ekrandaki veriler örnek verilerdir ({exams.length} sınav grubu,{" "}
-        {students.length} örnek öğrenci).
+        Bu ekrandaki veriler örnek verilerdir.
       </p>
+
     </div>
   );
 }

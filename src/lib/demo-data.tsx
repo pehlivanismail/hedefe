@@ -34,7 +34,19 @@ export type Topic = {
 
 export type Area = { id: string; name: string; topics: Topic[] };
 export type Subject = { id: string; name: string; areas: Area[] };
-export type Exam = { id: string; name: string; subjects: Subject[] };
+export type Track = "sayisal" | "sozel" | "esit";
+export type Exam = {
+  id: string;
+  name: string;
+  track: Track | null; // null = TYT, herkes için ortak
+  subjects: Subject[];
+};
+
+export const TRACK_LABELS: Record<Track, string> = {
+  sayisal: "AYT Sayısal",
+  sozel: "AYT Sözel",
+  esit: "AYT Eşit Ağırlık",
+};
 
 export type Task = {
   id: string;
@@ -62,6 +74,7 @@ export type Student = {
   email: string;
   target: string;
   pending: number;
+  track: Track;
   coachId: string | null;
 };
 
@@ -90,19 +103,95 @@ const baseLogs: StudyLog[] = [
   { id: "l2", date: "18.09.2026", source: "Endemik Deneme", solved: 25, wrong: 3, blank: 1 },
 ];
 
-export const subjectScores = [
-  { name: "Türkçe", score: 80 },
-  { name: "Matematik", score: 62.5 },
-  { name: "Fizik", score: 47 },
-  { name: "Kimya", score: 71 },
-  { name: "Biyoloji", score: 88.5 },
-  { name: "Tarih", score: 54 },
-];
-
 export const exams: Exam[] = [
   {
-    id: "ayt",
-    name: "AYT",
+    id: "tyt",
+    name: "TYT",
+    track: null,
+    subjects: [
+      {
+        id: "tyt-turkce",
+        name: "Türkçe",
+        areas: [
+          {
+            id: "paragraf",
+            name: "Paragraf",
+            topics: [
+              topic("paragraf-1", "Anlatım Teknikleri", 5, 0, baseLogs),
+              topic("paragraf-2", "Anlam Bütünlüğü", 4, 1),
+            ],
+          },
+          {
+            id: "dil-bilgisi",
+            name: "Dil Bilgisi",
+            topics: [
+              topic("dilbilgisi-1", "Sözcük Türleri", 3, 2),
+              topic("dilbilgisi-2", "Cümlenin Ögeleri", 2, 4),
+            ],
+          },
+        ],
+      },
+      {
+        id: "tyt-mat",
+        name: "Matematik",
+        areas: [
+          {
+            id: "tyt-temel",
+            name: "Temel Kavramlar",
+            topics: [
+              topic("tyt-temel-1", "Sayı Basamakları", 4, 1, baseLogs),
+              topic("tyt-temel-2", "Bölme ve Bölünebilme", 2, 5),
+            ],
+          },
+          {
+            id: "tyt-problem",
+            name: "Problemler",
+            topics: [
+              topic("tyt-problem-1", "Yaş Problemleri", 3, 2),
+              topic("tyt-problem-2", "Hız Problemleri", 1, 6),
+            ],
+          },
+        ],
+      },
+      {
+        id: "tyt-fen",
+        name: "Fen Bilimleri",
+        areas: [
+          {
+            id: "hareket",
+            name: "Fizik · Hareket",
+            topics: [
+              topic("hareket-1", "Newton Hareket Yasaları", 3, 2, baseLogs),
+              topic("hareket-2", "Bağıl Hareket", 2, 4),
+            ],
+          },
+          {
+            id: "tyt-kimya",
+            name: "Kimya · Maddenin Halleri",
+            topics: [topic("tyt-kimya-1", "Mol Kavramı", 2, 3)],
+          },
+        ],
+      },
+      {
+        id: "tyt-sosyal",
+        name: "Sosyal Bilimler",
+        areas: [
+          {
+            id: "tyt-tarih",
+            name: "Tarih",
+            topics: [
+              topic("tyt-tarih-1", "İlk Türk Devletleri", 3, 2),
+              topic("tyt-tarih-2", "İnkılap Tarihi", 2, 4),
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "ayt-sayisal",
+    name: "AYT Sayısal",
+    track: "sayisal",
     subjects: [
       {
         id: "ayt-bio",
@@ -128,7 +217,7 @@ export const exams: Exam[] = [
         ],
       },
       {
-        id: "ayt-mat",
+        id: "ayt-mat-say",
         name: "Matematik",
         areas: [
           {
@@ -149,36 +238,127 @@ export const exams: Exam[] = [
           },
         ],
       },
+      {
+        id: "ayt-fizik",
+        name: "Fizik",
+        areas: [
+          {
+            id: "ayt-elektrik",
+            name: "Elektrik ve Manyetizma",
+            topics: [
+              topic("ayt-elektrik-1", "Elektriksel Kuvvet", 2, 4),
+              topic("ayt-elektrik-2", "Manyetik Alan", 1, 6),
+            ],
+          },
+        ],
+      },
     ],
   },
   {
-    id: "tyt",
-    name: "TYT",
+    id: "ayt-sozel",
+    name: "AYT Sözel",
+    track: "sozel",
     subjects: [
       {
-        id: "tyt-turkce",
-        name: "Türkçe",
+        id: "ayt-edebiyat",
+        name: "Edebiyat",
         areas: [
           {
-            id: "paragraf",
-            name: "Paragraf",
+            id: "siir-bilgisi",
+            name: "Şiir Bilgisi",
             topics: [
-              topic("paragraf-1", "Anlatım Teknikleri", 5, 0, baseLogs),
-              topic("paragraf-2", "Anlam Bütünlüğü", 4, 1),
+              topic("siir-1", "Ölçü ve Uyak", 4, 1, baseLogs),
+              topic("siir-2", "Söz Sanatları", 3, 3),
+            ],
+          },
+          {
+            id: "edebi-donemler",
+            name: "Edebi Dönemler",
+            topics: [
+              topic("donem-1", "Divan Edebiyatı", 2, 5),
+              topic("donem-2", "Tanzimat Edebiyatı", 2, 4),
             ],
           },
         ],
       },
       {
-        id: "tyt-fizik",
-        name: "Fizik",
+        id: "ayt-tarih-sozel",
+        name: "Tarih",
         areas: [
           {
-            id: "hareket",
-            name: "Hareket",
+            id: "osmanli",
+            name: "Osmanlı Tarihi",
             topics: [
-              topic("hareket-1", "Newton Hareket Yasaları", 3, 2, baseLogs),
-              topic("hareket-2", "Bağıl Hareket", 2, 4),
+              topic("osmanli-1", "Kuruluş Dönemi", 3, 2, baseLogs),
+              topic("osmanli-2", "Dağılma Dönemi", 1, 6),
+            ],
+          },
+        ],
+      },
+      {
+        id: "ayt-cografya-sozel",
+        name: "Coğrafya",
+        areas: [
+          {
+            id: "beseri",
+            name: "Beşeri Coğrafya",
+            topics: [
+              topic("beseri-1", "Nüfus Politikaları", 3, 2),
+              topic("beseri-2", "Göçler", 2, 3),
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "ayt-esit",
+    name: "AYT Eşit Ağırlık",
+    track: "esit",
+    subjects: [
+      {
+        id: "ayt-mat-ea",
+        name: "Matematik",
+        areas: [
+          {
+            id: "ea-turev",
+            name: "Türev",
+            topics: [
+              topic("ea-turev-1", "Limit ve Süreklilik", 3, 2, baseLogs),
+              topic("ea-turev-2", "Türev Uygulamaları", 2, 5),
+            ],
+          },
+          {
+            id: "ea-diziler",
+            name: "Diziler",
+            topics: [topic("ea-diziler-1", "Aritmetik Diziler", 2, 4)],
+          },
+        ],
+      },
+      {
+        id: "ayt-edebiyat-ea",
+        name: "Edebiyat",
+        areas: [
+          {
+            id: "ea-siir",
+            name: "Şiir Bilgisi",
+            topics: [
+              topic("ea-siir-1", "Ölçü ve Uyak", 3, 2),
+              topic("ea-siir-2", "Söz Sanatları", 2, 4),
+            ],
+          },
+        ],
+      },
+      {
+        id: "ayt-tarih-ea",
+        name: "Tarih",
+        areas: [
+          {
+            id: "ea-inkilap",
+            name: "İnkılap Tarihi",
+            topics: [
+              topic("ea-inkilap-1", "Kurtuluş Savaşı", 3, 3),
+              topic("ea-inkilap-2", "Atatürk İlkeleri", 2, 4),
             ],
           },
         ],
@@ -202,10 +382,22 @@ export const coaches: Coach[] = [
 ];
 
 export const students: Student[] = [
-  { id: "s1", name: "Ismail Pehlivan", email: "ismail@hedefe.net", target: "Çapa Tıp Fakültesi", pending: 3, coachId: "c1" },
-  { id: "s2", name: "Elif Yıldız", email: "elif@hedefe.net", target: "Boğaziçi Bilgisayar Müh.", pending: 1, coachId: "c1" },
-  { id: "s3", name: "Mert Aydın", email: "mert@hedefe.net", target: "Hacettepe Diş Hekimliği", pending: 5, coachId: null },
+  { id: "s1", name: "Ismail Pehlivan", email: "ismail@hedefe.net", target: "Çapa Tıp Fakültesi", pending: 3, track: "sayisal", coachId: "c1" },
+  { id: "s2", name: "Elif Yıldız", email: "elif@hedefe.net", target: "Boğaziçi Bilgisayar Müh.", pending: 1, track: "sayisal", coachId: "c1" },
+  { id: "s3", name: "Mert Aydın", email: "mert@hedefe.net", target: "Hacettepe Diş Hekimliği", pending: 5, track: "sayisal", coachId: null },
+  { id: "s4", name: "Zehra Kaya", email: "zehra@hedefe.net", target: "İstanbul Hukuk", pending: 2, track: "esit", coachId: "c1" },
+  { id: "s5", name: "Burak Şahin", email: "burak@hedefe.net", target: "ODTÜ İşletme", pending: 4, track: "esit", coachId: "c1" },
+  { id: "s6", name: "Ayşe Demirtaş", email: "ayse@hedefe.net", target: "Ankara Psikoloji", pending: 0, track: "esit", coachId: "c1" },
+  { id: "s7", name: "Kerem Doğan", email: "kerem@hedefe.net", target: "Gazi Tarih Öğretmenliği", pending: 6, track: "sozel", coachId: "c1" },
+  { id: "s8", name: "Selin Arslan", email: "selin@hedefe.net", target: "İstanbul Türk Dili ve Ed.", pending: 3, track: "sozel", coachId: "c1" },
+  { id: "s9", name: "Emre Çelik", email: "emre@hedefe.net", target: "İTÜ Elektrik Müh.", pending: 2, track: "sayisal", coachId: "c1" },
+  { id: "s10", name: "Nisa Öztürk", email: "nisa@hedefe.net", target: "Ege Eczacılık", pending: 7, track: "sayisal", coachId: "c1" },
+  { id: "s11", name: "Yusuf Kılıç", email: "yusuf@hedefe.net", target: "Marmara İktisat", pending: 1, track: "esit", coachId: "c2" },
+  { id: "s12", name: "Deniz Acar", email: "deniz@hedefe.net", target: "Dokuz Eylül Hukuk", pending: 4, track: "esit", coachId: "c2" },
+  { id: "s13", name: "Ece Korkmaz", email: "ece@hedefe.net", target: "Hacettepe Sosyoloji", pending: 2, track: "sozel", coachId: "c2" },
+  { id: "s14", name: "Efe Yalçın", email: "efe@hedefe.net", target: "Koç Üniversitesi Tıp", pending: 5, track: "sayisal", coachId: "c2" },
 ];
+
 
 export const CURRENT_STUDENT: Student = students[0]!;
 
@@ -365,5 +557,99 @@ export function subjectStats(subject: Subject) {
   return {
     success: count ? Math.round((mastery / (count * 5)) * 100) : 0,
     debt,
+  };
+}
+
+/* ---------- Analiz yardımcıları ---------- */
+
+function hash(s: string) {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) % 100000;
+  return h;
+}
+
+const clamp = (n: number, min: number, max: number) =>
+  Math.max(min, Math.min(max, n));
+
+/** Öğrencinin alanına göre TYT + ilgili AYT sınavlarını, kişiye özel varyasyonla döner. */
+export function examsForStudent(all: Exam[], student: Student): Exam[] {
+  return all
+    .filter((e) => e.track === null || e.track === student.track)
+    .map((e) => ({
+      ...e,
+      subjects: e.subjects.map((s) => ({
+        ...s,
+        areas: s.areas.map((a) => ({
+          ...a,
+          topics: a.topics.map((t) => {
+            const seed = hash(student.id + t.id);
+            return {
+              ...t,
+              mastery: clamp(t.mastery - 1 + (seed % 3), 0, 5),
+              debt: clamp(t.debt + (seed % 5) - 2, 0, 20),
+            };
+          }),
+        })),
+      })),
+    }));
+}
+
+export function subjectScoresOf(list: Exam[]) {
+  const map = new Map<string, { mastery: number; count: number }>();
+  for (const e of list)
+    for (const s of e.subjects) {
+      const key = `${e.id === "tyt" ? "TYT" : "AYT"} ${s.name}`;
+      const cur = map.get(key) ?? { mastery: 0, count: 0 };
+      for (const a of s.areas)
+        for (const t of a.topics) {
+          cur.mastery += t.mastery;
+          cur.count++;
+        }
+      map.set(key, cur);
+    }
+  return [...map.entries()].map(([name, v]) => ({
+    name,
+    score: v.count ? Math.round((v.mastery / (v.count * 5)) * 1000) / 10 : 0,
+  }));
+}
+
+export type WeakTopic = {
+  topic: Topic;
+  exam: string;
+  subject: string;
+  area: string;
+};
+
+export function weakestTopics(list: Exam[], limit = 5): WeakTopic[] {
+  const rows: WeakTopic[] = [];
+  for (const e of list)
+    for (const s of e.subjects)
+      for (const a of s.areas)
+        for (const t of a.topics)
+          rows.push({ topic: t, exam: e.name, subject: s.name, area: a.name });
+  return rows
+    .sort(
+      (x, y) =>
+        y.topic.debt - x.topic.debt || x.topic.mastery - y.topic.mastery,
+    )
+    .slice(0, limit);
+}
+
+export function overallStats(list: Exam[]) {
+  let mastery = 0;
+  let count = 0;
+  let debt = 0;
+  for (const e of list)
+    for (const s of e.subjects)
+      for (const a of s.areas)
+        for (const t of a.topics) {
+          mastery += t.mastery;
+          debt += t.debt;
+          count++;
+        }
+  return {
+    success: count ? Math.round((mastery / (count * 5)) * 100) : 0,
+    debt,
+    topics: count,
   };
 }
