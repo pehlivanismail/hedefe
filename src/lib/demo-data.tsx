@@ -74,6 +74,7 @@ export type Student = {
   email: string;
   target: string;
   pending: number;
+  track: Track;
   coachId: string | null;
 };
 
