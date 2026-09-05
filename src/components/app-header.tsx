@@ -77,7 +77,7 @@ export function AppHeader() {
                 </span>
               </div>
               <button
-                onClick={handleSignOut}
+                onClick={() => void handleSignOut()}
                 className="flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
               >
                 <LogOut className="size-4" />
@@ -85,12 +85,20 @@ export function AppHeader() {
               </button>
             </>
           ) : (
-            <Link
-              to="/"
-              className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft"
-            >
-              Giriş Yap
-            </Link>
+            <>
+              <Link
+                to="/koc-giris"
+                className="rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+              >
+                Koç Girişi
+              </Link>
+              <Link
+                to="/giris"
+                className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft"
+              >
+                Giriş Yap
+              </Link>
+            </>
           )}
         </div>
       </div>
