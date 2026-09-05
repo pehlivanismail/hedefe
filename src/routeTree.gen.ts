@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as KonuAgaciRouteImport } from './routes/konu-agaci'
+import { Route as OdevlerRouteImport } from './routes/odevler'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +23,40 @@ const KonuAgaciRoute = KonuAgaciRouteImport.update({
   path: '/konu-agaci',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OdevlerRoute = OdevlerRouteImport.update({
+  id: '/odevler',
+  path: '/odevler',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/konu-agaci': typeof KonuAgaciRoute
+  '/odevler': typeof OdevlerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/konu-agaci': typeof KonuAgaciRoute
+  '/odevler': typeof OdevlerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/konu-agaci': typeof KonuAgaciRoute
+  '/odevler': typeof OdevlerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/konu-agaci'
+  fullPaths: '/' | '/konu-agaci' | '/odevler'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/konu-agaci'
-  id: '__root__' | '/' | '/konu-agaci'
+  to: '/' | '/konu-agaci' | '/odevler'
+  id: '__root__' | '/' | '/konu-agaci' | '/odevler'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   KonuAgaciRoute: typeof KonuAgaciRoute
+  OdevlerRoute: typeof OdevlerRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KonuAgaciRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/odevler': {
+      id: '/odevler'
+      path: '/odevler'
+      fullPath: '/odevler'
+      preLoaderRoute: typeof OdevlerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   KonuAgaciRoute: KonuAgaciRoute,
+  OdevlerRoute: OdevlerRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
