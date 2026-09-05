@@ -1,13 +1,29 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Flame, TriangleAlert, Target } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import {
+  Flame,
+  TriangleAlert,
+  Target,
+  UserRound,
+  GraduationCap,
+  ArrowRight,
+} from "lucide-react";
 import { Card } from "@/components/ui/card";
 import {
-  CURRENT_STUDENT,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
   daysUntilYks,
   subjectScores,
   useDemoData,
   exams,
   topicStats,
+  coaches,
+  students,
+  type Student,
 } from "@/lib/demo-data";
 
 export const Route = createFileRoute("/")({
@@ -54,6 +70,163 @@ function ScoreBar({ name, score }: { name: string; score: number }) {
 }
 
 function Index() {
+  const { session, currentStudent } = useDemoData();
+  if (!session) return <Landing />;
+  if (session.role === "coach") return <CoachWelcome />;
+  if (!currentStudent) return <Landing />;
+  return <Ozet student={currentStudent} />;
+}
+
+function Landing() {
+  const { signIn, studentList } = useDemoData();
+
+  return (
+    <div className="space-y-10">
+      <section className="relative overflow-hidden rounded-3xl bg-brand-deep px-6 py-14 text-primary-foreground sm:px-12 sm:py-20">
+        <div className="absolute -right-24 -top-24 size-80 rounded-full bg-primary/25 blur-3xl" />
+        <div className="relative max-w-2xl">
+          <span className="inline-flex items-center gap-2 rounded-full bg-primary/20 px-3 py-1 text-xs font-semibold uppercase tracking-widest">
+            <Target className="size-3.5" /> YKS 2027
+          </span>
+          <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight sm:text-6xl">
+            Hedefine giden yolu <span className="text-primary">planla</span>
+          </h1>
+          <p className="mt-4 text-base opacity-80 sm:text-lg">
+            Konu takibi, haftalık ödevler, deneme analizleri ve koçunla ortak
+            çalışma paneli — hepsi tek yerde.
+          </p>
+        </div>
+      </section>
+
+      <section className="grid gap-6 lg:grid-cols-2">
+        <Card className="rounded-3xl border-border p-8 shadow-soft">
+          <div className="flex items-center gap-2 font-display text-xl font-bold text-brand-deep">
+            <UserRound className="size-5 text-primary" /> Öğrenci Girişi
+          </div>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Örnek bir öğrenci hesabıyla panele gir.
+          </p>
+          <div className="mt-5 space-y-3">
+            {studentList.map((s) => (
+              <button
+                key={s.id}
+                onClick={() => signIn({ role: "student", id: s.id })}
+                className="flex w-full items-center gap-3 rounded-2xl border border-border bg-card p-4 text-left transition-all hover:-translate-y-0.5 hover:border-primary hover:shadow-soft"
+              >
+                <span className="flex size-10 items-center justify-center rounded-full bg-brand-soft text-brand-deep">
+                  <UserRound className="size-4" />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate text-sm font-semibold text-brand-deep">
+                    {s.name}
+                  </span>
+                  <span className="block truncate text-xs text-muted-foreground">
+                    {s.email}
+                  </span>
+                </span>
+                <ArrowRight className="size-4 text-muted-foreground" />
+              </button>
+            ))}
+          </div>
+        </Card>
+
+        <Card className="rounded-3xl border-border p-8 shadow-soft">
+          <div className="flex items-center gap-2 font-display text-xl font-bold text-brand-deep">
+            <GraduationCap className="size-5 text-primary" /> Koç Girişi
+          </div>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Koçlar kendi hesaplarıyla girer ve yalnızca kendi öğrencilerini
+            görür.
+          </p>
+          <div className="mt-5 space-y-3">
+            {coaches.map((c) => (
+              <button
+                key={c.id}
+                onClick={() => signIn({ role: "coach", id: c.id })}
+                className="flex w-full items-center gap-3 rounded-2xl border border-border bg-card p-4 text-left transition-all hover:-translate-y-0.5 hover:border-primary hover:shadow-soft"
+              >
+                <span className="flex size-10 items-center justify-center rounded-full bg-brand-deep text-primary-foreground">
+                  <GraduationCap className="size-4" />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate text-sm font-semibold text-brand-deep">
+                    {c.name}
+                  </span>
+                  <span className="block truncate text-xs text-muted-foreground">
+                    {c.title} · {c.email}
+                  </span>
+                </span>
+                <ArrowRight className="size-4 text-muted-foreground" />
+              </button>
+            ))}
+          </div>
+        </Card>
+      </section>
+    </div>
+  );
+}
+
+function CoachWelcome() {
+  const { currentCoach, studentList } = useDemoData();
+  const mine = studentList.filter((s) => s.coachId === currentCoach?.id);
+
+  return (
+    <Card className="rounded-3xl border-border p-10 text-center shadow-soft">
+      <h1 className="font-display text-3xl font-bold text-brand-deep">
+        Hoş geldin {currentCoach?.name}
+      </h1>
+      <p className="mt-2 text-sm text-muted-foreground">
+        {mine.length} öğrencin seni bekliyor.
+      </p>
+      <Link
+        to="/koc"
+        className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft"
+      >
+        Koç Paneline Git <ArrowRight className="size-4" />
+      </Link>
+    </Card>
+  );
+}
+
+function CoachPicker({ student }: { student: Student }) {
+  const { setCoach } = useDemoData();
+  const coach = coaches.find((c) => c.id === student.coachId);
+
+  return (
+    <Card className="rounded-3xl border-border p-6 shadow-soft">
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <p className="font-display text-lg font-bold text-brand-deep">
+            🤝 Koçum
+          </p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            {coach
+              ? `${coach.name} · ${coach.title}`
+              : "Henüz bir koç seçmedin."}
+          </p>
+        </div>
+        <Select
+          value={student.coachId ?? "none"}
+          onValueChange={(v) => setCoach(student.id, v === "none" ? null : v)}
+        >
+          <SelectTrigger className="w-64">
+            <SelectValue placeholder="Koç seç" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="none">Koçum yok</SelectItem>
+            {coaches.map((c) => (
+              <SelectItem key={c.id} value={c.id}>
+                {c.name} — {c.title}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+    </Card>
+  );
+}
+
+function Ozet({ student }: { student: Student }) {
   const { examData } = useDemoData();
   const days = daysUntilYks();
   const debt = examData.reduce((sum, e) => sum + topicStats(e).debt, 0) + 30;
@@ -64,16 +237,18 @@ function Index() {
         <div className="absolute -right-20 -top-20 size-72 rounded-full bg-primary/25 blur-3xl" />
         <div className="relative">
           <span className="inline-flex items-center gap-2 rounded-full bg-primary/20 px-3 py-1 text-xs font-semibold uppercase tracking-widest">
-            <Target className="size-3.5" /> {CURRENT_STUDENT.name}
+            <Target className="size-3.5" /> {student.name}
           </span>
           <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight sm:text-6xl">
             🎯 YKS 2027 HEDEF
           </h1>
           <p className="mt-3 font-display text-2xl font-semibold text-primary sm:text-3xl">
-            {CURRENT_STUDENT.target}
+            {student.target}
           </p>
         </div>
       </section>
+
+      <CoachPicker student={student} />
 
       <section className="grid gap-6 md:grid-cols-2">
         <Card className="rounded-3xl border-border p-8 shadow-soft">
@@ -118,7 +293,8 @@ function Index() {
       </section>
 
       <p className="text-xs text-muted-foreground">
-        Bu ekrandaki veriler örnek verilerdir ({exams.length} sınav grubu).
+        Bu ekrandaki veriler örnek verilerdir ({exams.length} sınav grubu,{" "}
+        {students.length} örnek öğrenci).
       </p>
     </div>
   );
