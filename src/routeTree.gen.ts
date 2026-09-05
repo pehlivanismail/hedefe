@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DenemelerRouteImport } from './routes/denemeler'
 import { Route as KonuAgaciRouteImport } from './routes/konu-agaci'
 import { Route as OdevlerRouteImport } from './routes/odevler'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DenemelerRoute = DenemelerRouteImport.update({
+  id: '/denemeler',
+  path: '/denemeler',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KonuAgaciRoute = KonuAgaciRouteImport.update({
@@ -31,30 +37,34 @@ const OdevlerRoute = OdevlerRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/denemeler': typeof DenemelerRoute
   '/konu-agaci': typeof KonuAgaciRoute
   '/odevler': typeof OdevlerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/denemeler': typeof DenemelerRoute
   '/konu-agaci': typeof KonuAgaciRoute
   '/odevler': typeof OdevlerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/denemeler': typeof DenemelerRoute
   '/konu-agaci': typeof KonuAgaciRoute
   '/odevler': typeof OdevlerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/konu-agaci' | '/odevler'
+  fullPaths: '/' | '/denemeler' | '/konu-agaci' | '/odevler'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/konu-agaci' | '/odevler'
-  id: '__root__' | '/' | '/konu-agaci' | '/odevler'
+  to: '/' | '/denemeler' | '/konu-agaci' | '/odevler'
+  id: '__root__' | '/' | '/denemeler' | '/konu-agaci' | '/odevler'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DenemelerRoute: typeof DenemelerRoute
   KonuAgaciRoute: typeof KonuAgaciRoute
   OdevlerRoute: typeof OdevlerRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/denemeler': {
+      id: '/denemeler'
+      path: '/denemeler'
+      fullPath: '/denemeler'
+      preLoaderRoute: typeof DenemelerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/konu-agaci': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DenemelerRoute: DenemelerRoute,
   KonuAgaciRoute: KonuAgaciRoute,
   OdevlerRoute: OdevlerRoute,
 }
