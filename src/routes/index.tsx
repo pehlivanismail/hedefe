@@ -229,7 +229,10 @@ function CoachPicker({ student }: { student: Student }) {
 function Ozet({ student }: { student: Student }) {
   const { examData } = useDemoData();
   const days = daysUntilYks();
-  const debt = examData.reduce((sum, e) => sum + topicStats(e).debt, 0) + 30;
+  const mine = examsForStudent(examData, student);
+  const scores = subjectScoresOf(mine);
+  const debt = overallStats(mine).debt;
+
 
   return (
     <div className="space-y-8">
