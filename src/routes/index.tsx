@@ -205,10 +205,7 @@ function CoachPicker({ student }: { student: Student }) {
   );
 }
 
-      </div>
-    </Card>
-  );
-}
+
 
 function Ozet({ student }: { student: Student }) {
   const { examData } = useDemoData();
