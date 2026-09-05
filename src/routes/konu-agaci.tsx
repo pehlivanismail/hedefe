@@ -70,12 +70,16 @@ function MasteryDots({ level }: { level: number }) {
 }
 
 function KonuAgaci() {
-  const { examData, addLog } = useDemoData();
+  const { examData, addLog, currentStudent } = useDemoData();
   const [active, setActive] = useState<Topic | null>(null);
+
+  const myExams = currentStudent
+    ? examsForStudent(examData, currentStudent)
+    : [];
 
   const current =
     active &&
-    examData
+    myExams
       .flatMap((e) => e.subjects)
       .flatMap((s) => s.areas)
       .flatMap((a) => a.topics)
@@ -88,12 +92,15 @@ function KonuAgaci() {
           📚 Konu Ağacı
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          Sınav → Ders → Alan → Konu hiyerarşisinde hakimiyetini takip et.
+          {currentStudent
+            ? `TYT + ${TRACK_LABELS[currentStudent.track]} · Sınav → Ders → Alan → Konu hiyerarşisinde hakimiyetini takip et.`
+            : "Devam etmek için giriş yap."}
         </p>
       </div>
 
-      {examData.map((exam) => {
+      {myExams.map((exam) => {
         const stats = topicStats(exam);
+
         return (
           <section key={exam.id} className="space-y-3">
             <div className="flex flex-wrap items-center gap-3">
