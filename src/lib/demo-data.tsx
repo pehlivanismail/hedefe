@@ -49,13 +49,34 @@ export const TRACK_LABELS: Record<Track, string> = {
   esit: "AYT Eşit Ağırlık",
 };
 
+export type TaskKind = "konu" | "soru" | "deneme";
+
+export const TASK_KIND_LABELS: Record<TaskKind, string> = {
+  konu: "Konu Çalışması",
+  soru: "Soru Çözümü",
+  deneme: "Deneme",
+};
+
+export type TaskResult = {
+  /** Soru çözümü için */
+  solved?: number;
+  wrong?: number;
+  blank?: number;
+  /** Deneme için */
+  mockExamId?: string;
+  note?: string;
+};
+
 export type Task = {
   id: string;
+  kind: TaskKind;
   subject: string;
   title: string;
   day: number; // 0 = Pazartesi
   done: boolean;
   studentId: string;
+  topicId?: string | null;
+  result?: TaskResult;
 };
 
 export type MockExam = {
@@ -436,7 +457,10 @@ export const SUBJECT_OPTIONS = [
 
 type Store = {
   tasks: Task[];
-  addTask: (t: Omit<Task, "id" | "done">) => void;
+  addTask: (t: Omit<Task, "id" | "done" | "kind"> & { kind?: TaskKind }) => void;
+  completeTask: (id: string, result?: TaskResult) => void;
+  mockExamList: MockExam[];
+  addMockExam: (e: Omit<MockExam, "id">) => string;
   toggleTask: (id: string) => void;
   moveTask: (id: string, day: number) => void;
   examData: Exam[];
@@ -454,6 +478,7 @@ const StoreContext = createContext<Store | null>(null);
 export function DemoDataProvider({ children }: { children: ReactNode }) {
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
   const [examData, setExamData] = useState<Exam[]>(exams);
+  const [mockExamList, setMockExamList] = useState<MockExam[]>(mockExams);
   const auth = useAuth();
 
   const currentStudent = auth.student;
@@ -485,8 +510,20 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       addTask: (t) =>
         setTasks((prev) => [
           ...prev,
-          { ...t, id: `t-${Date.now()}`, done: false },
+          { kind: "konu" as TaskKind, ...t, id: `t-${Date.now()}`, done: false },
         ]),
+      completeTask: (id, result) =>
+        setTasks((prev) =>
+          prev.map((t) =>
+            t.id === id ? { ...t, done: true, result: result ?? t.result } : t,
+          ),
+        ),
+      mockExamList,
+      addMockExam: (e) => {
+        const id = `d-${Date.now()}`;
+        setMockExamList((prev) => [...prev, { ...e, id }]);
+        return id;
+      },
       toggleTask: (id) =>
         setTasks((prev) =>
           prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t)),
@@ -518,6 +555,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
     [
       tasks,
       examData,
+      mockExamList,
       session,
       studentList,
       currentStudent,
@@ -663,4 +701,31 @@ export function overallStats(list: Exam[]) {
     debt,
     topics: count,
   };
+}
+
+export type TopicOption = {
+  topicId: string;
+  topicName: string;
+  areaName: string;
+  subjectName: string;
+  examName: string;
+  label: string;
+};
+
+/** Öğrencinin sınavlarındaki tüm konuları Ders > Alan > Konu olarak düzleştirir. */
+export function flatTopics(list: Exam[]): TopicOption[] {
+  const rows: TopicOption[] = [];
+  for (const e of list)
+    for (const s of e.subjects)
+      for (const a of s.areas)
+        for (const t of a.topics)
+          rows.push({
+            topicId: t.id,
+            topicName: t.name,
+            areaName: a.name,
+            subjectName: s.name,
+            examName: e.name,
+            label: `${e.name} · ${s.name} · ${a.name} · ${t.name}`,
+          });
+  return rows;
 }
