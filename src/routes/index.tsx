@@ -70,16 +70,23 @@ function ScoreBar({ name, score }: { name: string; score: number }) {
 }
 
 function Index() {
-  const { session, currentStudent } = useDemoData();
-  if (!session) return <Landing />;
-  if (session.role === "coach") return <CoachWelcome />;
+  const { loading, user, role } = useAuth();
+  const { currentStudent } = useDemoData();
+
+  if (loading) {
+    return (
+      <div className="py-20 text-center text-sm text-muted-foreground">
+        Yükleniyor…
+      </div>
+    );
+  }
+  if (!user) return <Landing />;
+  if (role === "coach") return <CoachWelcome />;
   if (!currentStudent) return <Landing />;
   return <Ozet student={currentStudent} />;
 }
 
 function Landing() {
-  const { signIn, studentList } = useDemoData();
-
   return (
     <div className="space-y-10">
       <section className="relative overflow-hidden rounded-3xl bg-brand-deep px-6 py-14 text-primary-foreground sm:px-12 sm:py-20">
@@ -104,30 +111,15 @@ function Landing() {
             <UserRound className="size-5 text-primary" /> Öğrenci Girişi
           </div>
           <p className="mt-2 text-sm text-muted-foreground">
-            Örnek bir öğrenci hesabıyla panele gir.
+            E-posta ve şifrenle giriş yap; hedefini, alanını ve haftalık
+            planını tek panelde takip et.
           </p>
-          <div className="mt-5 max-h-80 space-y-3 overflow-y-auto pr-1">
-            {studentList.map((s) => (
-              <button
-                key={s.id}
-                onClick={() => signIn({ role: "student", id: s.id })}
-                className="flex w-full items-center gap-3 rounded-2xl border border-border bg-card p-4 text-left transition-all hover:-translate-y-0.5 hover:border-primary hover:shadow-soft"
-              >
-                <span className="flex size-10 items-center justify-center rounded-full bg-brand-soft text-brand-deep">
-                  <UserRound className="size-4" />
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className="block truncate text-sm font-semibold text-brand-deep">
-                    {s.name}
-                  </span>
-                  <span className="block truncate text-xs text-muted-foreground">
-                    {s.email}
-                  </span>
-                </span>
-                <ArrowRight className="size-4 text-muted-foreground" />
-              </button>
-            ))}
-          </div>
+          <Link
+            to="/giris"
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5"
+          >
+            Öğrenci olarak devam et <ArrowRight className="size-4" />
+          </Link>
         </Card>
 
         <Card className="rounded-3xl border-border p-8 shadow-soft">
@@ -135,36 +127,21 @@ function Landing() {
             <GraduationCap className="size-5 text-primary" /> Koç Girişi
           </div>
           <p className="mt-2 text-sm text-muted-foreground">
-            Koçlar kendi hesaplarıyla girer ve yalnızca kendi öğrencilerini
-            görür.
+            Koçlar kendi hesaplarıyla girer ve yalnızca kendilerini koç olarak
+            seçen öğrencileri görür.
           </p>
-          <div className="mt-5 space-y-3">
-            {coaches.map((c) => (
-              <button
-                key={c.id}
-                onClick={() => signIn({ role: "coach", id: c.id })}
-                className="flex w-full items-center gap-3 rounded-2xl border border-border bg-card p-4 text-left transition-all hover:-translate-y-0.5 hover:border-primary hover:shadow-soft"
-              >
-                <span className="flex size-10 items-center justify-center rounded-full bg-brand-deep text-primary-foreground">
-                  <GraduationCap className="size-4" />
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className="block truncate text-sm font-semibold text-brand-deep">
-                    {c.name}
-                  </span>
-                  <span className="block truncate text-xs text-muted-foreground">
-                    {c.title} · {c.email}
-                  </span>
-                </span>
-                <ArrowRight className="size-4 text-muted-foreground" />
-              </button>
-            ))}
-          </div>
+          <Link
+            to="/koc-giris"
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-deep px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5"
+          >
+            Koç olarak devam et <ArrowRight className="size-4" />
+          </Link>
         </Card>
       </section>
     </div>
   );
 }
+
 
 function CoachWelcome() {
   const { currentCoach, studentList } = useDemoData();
