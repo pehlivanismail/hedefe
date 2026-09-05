@@ -424,15 +424,15 @@ export const students: Student[] = [
 export const CURRENT_STUDENT: Student = students[0]!;
 
 const initialTasks: Task[] = [
-  { id: "t1", subject: "Fizik", title: "Newton Hareket Yasaları Test 1", day: 0, done: true, studentId: "s1" },
-  { id: "t2", subject: "Matematik", title: "Türev Uygulamaları 40 soru", day: 0, done: false, studentId: "s1" },
-  { id: "t3", subject: "Biyoloji", title: "Hücre Bölünmeleri konu tekrarı", day: 1, done: false, studentId: "s1" },
-  { id: "t4", subject: "Türkçe", title: "Paragraf 30 soru", day: 2, done: true, studentId: "s1" },
-  { id: "t5", subject: "Kimya", title: "Mol Kavramı Test 3", day: 3, done: false, studentId: "s1" },
-  { id: "t6", subject: "Tarih", title: "İnkılap Tarihi özet çıkar", day: 4, done: false, studentId: "s1" },
-  { id: "t7", subject: "Matematik", title: "TYT Deneme çöz", day: 5, done: false, studentId: "s1" },
-  { id: "t8", subject: "Biyoloji", title: "Haftalık tekrar", day: 6, done: false, studentId: "s1" },
-  { id: "t9", subject: "Fizik", title: "Optik Test 2", day: 2, done: false, studentId: "s2" },
+  { id: "t1", kind: "soru", subject: "Fizik", title: "Newton Hareket Yasaları Test 1", day: 0, done: true, studentId: "s1" },
+  { id: "t2", kind: "soru", subject: "Matematik", title: "Türev Uygulamaları 40 soru", day: 0, done: false, studentId: "s1" },
+  { id: "t3", kind: "konu", subject: "Biyoloji", title: "Hücre Bölünmeleri konu tekrarı", day: 1, done: false, studentId: "s1" },
+  { id: "t4", kind: "soru", subject: "Türkçe", title: "Paragraf 30 soru", day: 2, done: true, studentId: "s1" },
+  { id: "t5", kind: "soru", subject: "Kimya", title: "Mol Kavramı Test 3", day: 3, done: false, studentId: "s1" },
+  { id: "t6", kind: "konu", subject: "Tarih", title: "İnkılap Tarihi özet çıkar", day: 4, done: false, studentId: "s1" },
+  { id: "t7", kind: "deneme", subject: "Matematik", title: "TYT Deneme çöz", day: 5, done: false, studentId: "s1" },
+  { id: "t8", kind: "konu", subject: "Biyoloji", title: "Haftalık tekrar", day: 6, done: false, studentId: "s1" },
+  { id: "t9", kind: "soru", subject: "Fizik", title: "Optik Test 2", day: 2, done: false, studentId: "s2" },
 ];
 
 export const DAYS = [
