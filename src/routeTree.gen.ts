@@ -10,33 +10,43 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as KonuAgaciRouteImport } from './routes/konu-agaci'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const KonuAgaciRoute = KonuAgaciRouteImport.update({
+  id: '/konu-agaci',
+  path: '/konu-agaci',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/konu-agaci': typeof KonuAgaciRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/konu-agaci': typeof KonuAgaciRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/konu-agaci': typeof KonuAgaciRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/konu-agaci'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/konu-agaci'
+  id: '__root__' | '/' | '/konu-agaci'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  KonuAgaciRoute: typeof KonuAgaciRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +58,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/konu-agaci': {
+      id: '/konu-agaci'
+      path: '/konu-agaci'
+      fullPath: '/konu-agaci'
+      preLoaderRoute: typeof KonuAgaciRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  KonuAgaciRoute: KonuAgaciRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
