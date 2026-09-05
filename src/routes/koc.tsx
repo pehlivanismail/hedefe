@@ -26,7 +26,6 @@ import {
   DAYS,
   SUBJECT_OPTIONS,
   daysUntilYks,
-  students,
   subjectScores,
   useDemoData,
 } from "@/lib/demo-data";

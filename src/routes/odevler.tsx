@@ -49,7 +49,8 @@ export const Route = createFileRoute("/odevler")({
 });
 
 function Odevler() {
-  const { tasks, addTask, toggleTask, moveTask } = useDemoData();
+  const { tasks, addTask, toggleTask, moveTask, currentStudent } =
+    useDemoData();
   const [weekOffset, setWeekOffset] = useState(0);
   const [open, setOpen] = useState(false);
   const [dragId, setDragId] = useState<string | null>(null);
