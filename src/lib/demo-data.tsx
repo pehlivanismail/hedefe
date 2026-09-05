@@ -441,12 +441,11 @@ type Store = {
   examData: Exam[];
   addLog: (topicId: string, log: Omit<StudyLog, "id">) => void;
   session: Session;
-  signIn: (session: NonNullable<Session>) => void;
-  signOut: () => void;
   studentList: Student[];
   currentStudent: Student | null;
   currentCoach: Coach | null;
-  setCoach: (studentId: string, coachId: string | null) => void;
+  coachList: Coach[];
+  setCoach: (coachId: string | null) => void;
 };
 
 const StoreContext = createContext<Store | null>(null);
@@ -454,17 +453,20 @@ const StoreContext = createContext<Store | null>(null);
 export function DemoDataProvider({ children }: { children: ReactNode }) {
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
   const [examData, setExamData] = useState<Exam[]>(exams);
-  const [studentList, setStudentList] = useState<Student[]>(students);
-  const [session, setSession] = useState<Session>(null);
+  const auth = useAuth();
 
-  const currentStudent =
-    session?.role === "student"
-      ? (studentList.find((s) => s.id === session.id) ?? null)
-      : null;
-  const currentCoach =
-    session?.role === "coach"
-      ? (coaches.find((c) => c.id === session.id) ?? null)
-      : null;
+  const currentStudent = auth.student;
+  const currentCoach = auth.coach;
+  const studentList = auth.myStudents;
+  const coachList = auth.coachList;
+  const session: Session = auth.user
+    ? auth.role === "coach"
+      ? { role: "coach", id: auth.user.id }
+      : auth.role === "student"
+        ? { role: "student", id: auth.user.id }
+        : null
+    : null;
+
 
   const value = useMemo<Store>(
     () => ({
