@@ -189,7 +189,7 @@ export const students: Student[] = [
   { id: "s3", name: "Mert Aydın", email: "mert@hedefe.net", target: "Hacettepe Diş Hekimliği", pending: 5 },
 ];
 
-export const CURRENT_STUDENT = students[0];
+export const CURRENT_STUDENT: Student = students[0]!;
 
 const initialTasks: Task[] = [
   { id: "t1", subject: "Fizik", title: "Newton Hareket Yasaları Test 1", day: 0, done: true, studentId: "s1" },

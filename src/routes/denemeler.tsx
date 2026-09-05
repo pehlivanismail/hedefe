@@ -117,16 +117,16 @@ function Denemeler() {
           className="rounded-xl"
           onClick={() => {
             const last = rows[rows.length - 1];
-            setRows([
-              ...rows,
-              {
-                ...last,
-                id: `d-${Date.now()}`,
-                date: new Date().toLocaleDateString("tr-TR"),
-                publisher: "Yeni Yayın",
-                matematik: last.matematik + 2,
-              },
-            ]);
+            if (!last) return;
+            const next: MockExam = {
+              ...last,
+              id: `d-${Date.now()}`,
+              date: new Date().toLocaleDateString("tr-TR"),
+              publisher: "Yeni Yayın",
+              matematik: last.matematik + 2,
+            };
+            setRows([...rows, next]);
+
             toast.success("Yeni deneme eklendi");
           }}
         >
