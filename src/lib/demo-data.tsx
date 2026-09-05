@@ -34,7 +34,19 @@ export type Topic = {
 
 export type Area = { id: string; name: string; topics: Topic[] };
 export type Subject = { id: string; name: string; areas: Area[] };
-export type Exam = { id: string; name: string; subjects: Subject[] };
+export type Track = "sayisal" | "sozel" | "esit";
+export type Exam = {
+  id: string;
+  name: string;
+  track: Track | null; // null = TYT, herkes için ortak
+  subjects: Subject[];
+};
+
+export const TRACK_LABELS: Record<Track, string> = {
+  sayisal: "AYT Sayısal",
+  sozel: "AYT Sözel",
+  esit: "AYT Eşit Ağırlık",
+};
 
 export type Task = {
   id: string;
