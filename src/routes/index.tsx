@@ -288,19 +288,20 @@ function Ozet({ student }: { student: Student }) {
           Konu Hakimiyeti (Başarı Oranı)
         </h2>
         <p className="mt-1 text-sm text-muted-foreground">
-          Ders bazında güncel başarı yüzden.
+          TYT ve {TRACK_LABELS[student.track]} derslerindeki güncel başarı
+          yüzden.
         </p>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {subjectScores.map((s) => (
+          {scores.map((s) => (
             <ScoreBar key={s.name} {...s} />
           ))}
         </div>
       </section>
 
       <p className="text-xs text-muted-foreground">
-        Bu ekrandaki veriler örnek verilerdir ({exams.length} sınav grubu,{" "}
-        {students.length} örnek öğrenci).
+        Bu ekrandaki veriler örnek verilerdir.
       </p>
+
     </div>
   );
 }
