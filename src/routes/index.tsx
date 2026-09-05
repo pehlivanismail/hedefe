@@ -21,10 +21,10 @@ import {
   examsForStudent,
   subjectScoresOf,
   overallStats,
-  coaches,
   TRACK_LABELS,
   type Student,
 } from "@/lib/demo-data";
+import { useAuth } from "@/lib/auth";
 
 export const Route = createFileRoute("/")({
   head: () => ({
