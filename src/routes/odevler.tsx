@@ -1,16 +1,24 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { ChevronLeft, ChevronRight, Plus, GripVertical } from "lucide-react";
+import { useMemo, useState } from "react";
+import {
+  BookOpen,
+  ChevronLeft,
+  ChevronRight,
+  ClipboardList,
+  GripVertical,
+  ListChecks,
+  Plus,
+  Search,
+} from "lucide-react";
 import { addWeeks, endOfWeek, format, startOfWeek } from "date-fns";
 import { tr } from "date-fns/locale";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Card } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -24,8 +32,13 @@ import {
 import { toast } from "sonner";
 import {
   DAYS,
-  SUBJECT_OPTIONS,
+  TASK_KIND_LABELS,
+  examsForStudent,
+  flatTopics,
   useDemoData,
+  type Task,
+  type TaskKind,
+  type TopicOption,
 } from "@/lib/demo-data";
 import { cn } from "@/lib/utils";
 
@@ -36,122 +49,189 @@ export const Route = createFileRoute("/odevler")({
       {
         name: "description",
         content:
-          "Haftalık çalışma planını kanban görünümünde yönet: ödev ekle, günler arasında taşı, tamamla.",
+          "Haftalık çalışma planını konu bazında yönet: konu çalışması, soru çözümü ve deneme ödevleri ekle, sonuçlarını kaydet.",
       },
       { property: "og:title", content: "Ödevler ve Hedefler — Hedefe.net" },
       {
         property: "og:description",
-        content: "Haftalık kanban çalışma planı.",
+        content: "Konu bazlı haftalık çalışma planı ve sonuç kaydı.",
       },
     ],
   }),
   component: Odevler,
 });
 
+const KIND_STYLE: Record<TaskKind, string> = {
+  konu: "bg-brand-soft text-brand-deep",
+  soru: "bg-secondary text-foreground",
+  deneme: "bg-warning/15 text-warning",
+};
+
+function TopicPicker({
+  topics,
+  value,
+  onSelect,
+}: {
+  topics: TopicOption[];
+  value: TopicOption | null;
+  onSelect: (t: TopicOption) => void;
+}) {
+  const [q, setQ] = useState("");
+  const filtered = useMemo(() => {
+    const needle = q.toLocaleLowerCase("tr");
+    return topics
+      .filter((t) => t.label.toLocaleLowerCase("tr").includes(needle))
+      .slice(0, 60);
+  }, [topics, q]);
+
+  return (
+    <div className="space-y-2">
+      <Label>Konu</Label>
+      <div className="relative">
+        <Search className="absolute top-2.5 left-3 size-4 text-muted-foreground" />
+        <Input
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+          placeholder="Ders, alan veya konu ara…"
+          className="pl-9"
+        />
+      </div>
+      <div className="max-h-52 space-y-1 overflow-y-auto rounded-xl border border-border p-1">
+        {filtered.map((t) => (
+          <button
+            key={t.topicId}
+            type="button"
+            onClick={() => onSelect(t)}
+            className={cn(
+              "w-full rounded-lg px-3 py-2 text-left text-sm transition-colors hover:bg-secondary",
+              value?.topicId === t.topicId && "bg-brand-soft text-brand-deep",
+            )}
+          >
+            <span className="block font-medium">{t.topicName}</span>
+            <span className="block text-xs text-muted-foreground">
+              {t.examName} · {t.subjectName} · {t.areaName}
+            </span>
+          </button>
+        ))}
+        {filtered.length === 0 && (
+          <p className="px-3 py-6 text-center text-xs text-muted-foreground">
+            Konu bulunamadı
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function Odevler() {
-  const { tasks, addTask, toggleTask, moveTask, currentStudent } =
-    useDemoData();
+  const {
+    tasks,
+    addTask,
+    completeTask,
+    moveTask,
+    currentStudent,
+    examData,
+    addLog,
+    addMockExam,
+  } = useDemoData();
+
   const [weekOffset, setWeekOffset] = useState(0);
-  const [open, setOpen] = useState(false);
   const [dragId, setDragId] = useState<string | null>(null);
-  const [form, setForm] = useState({ subject: "Matematik", title: "", day: "0" });
+  const [addKind, setAddKind] = useState<TaskKind | null>(null);
+  const [active, setActive] = useState<Task | null>(null);
+
+  const topics = useMemo(
+    () =>
+      currentStudent ? flatTopics(examsForStudent(examData, currentStudent)) : [],
+    [examData, currentStudent],
+  );
+
+  const [picked, setPicked] = useState<TopicOption | null>(null);
+  const [day, setDay] = useState("0");
+  const [note, setNote] = useState("");
+
+  const [res, setRes] = useState({ solved: "", wrong: "", blank: "" });
+  const [mock, setMock] = useState({
+    publisher: "",
+    type: "TYT",
+    turkce: "",
+    matematik: "",
+    sosyal: "",
+    fen: "",
+  });
 
   const base = addWeeks(new Date(), weekOffset);
   const start = startOfWeek(base, { weekStartsOn: 1 });
   const end = endOfWeek(base, { weekStartsOn: 1 });
   const weekTasks = tasks.filter((t) => t.studentId === currentStudent?.id);
 
+  const openAdd = (kind: TaskKind) => {
+    setPicked(null);
+    setNote("");
+    setDay("0");
+    setAddKind(kind);
+  };
+
+  const openRecord = (t: Task) => {
+    setRes({ solved: "", wrong: "", blank: "" });
+    setMock({
+      publisher: "",
+      type: "TYT",
+      turkce: "",
+      matematik: "",
+      sosyal: "",
+      fen: "",
+    });
+    setActive(t);
+  };
+
+  const saveTask = () => {
+    if (!picked) {
+      toast.error("Lütfen bir konu seç");
+      return;
+    }
+    addTask({
+      kind: addKind ?? "konu",
+      subject: picked.subjectName,
+      title: note.trim() || picked.topicName,
+      topicId: picked.topicId,
+      day: Number(day),
+      studentId: currentStudent?.id ?? "s1",
+    });
+    setAddKind(null);
+    toast.success(`${TASK_KIND_LABELS[addKind ?? "konu"]} eklendi`);
+  };
+
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-center justify-between gap-4">
+      <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <h1 className="font-display text-3xl font-bold text-brand-deep">
             📝 Ödevler ve Hedefler
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Haftalık planını sürükleyerek düzenle.
+            Konu listenden seç, haftaya yerleştir, tamamlarken sonucunu kaydet.
           </p>
         </div>
-        <Dialog open={open} onOpenChange={setOpen}>
-          <DialogTrigger asChild>
-            <Button className="rounded-xl">
-              <Plus className="size-4" /> Ödev Ekle
-            </Button>
-          </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle className="font-display text-brand-deep">
-                Yeni Ödev
-              </DialogTitle>
-            </DialogHeader>
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <Label>Ders</Label>
-                <Select
-                  value={form.subject}
-                  onValueChange={(v) => setForm({ ...form, subject: v })}
-                >
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {SUBJECT_OPTIONS.map((s) => (
-                      <SelectItem key={s} value={s}>
-                        {s}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="space-y-2">
-                <Label>Başlık</Label>
-                <Input
-                  value={form.title}
-                  placeholder="Ör: Türev Test 2"
-                  onChange={(e) => setForm({ ...form, title: e.target.value })}
-                />
-              </div>
-              <div className="space-y-2">
-                <Label>Gün</Label>
-                <Select
-                  value={form.day}
-                  onValueChange={(v) => setForm({ ...form, day: v })}
-                >
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {DAYS.map((d, i) => (
-                      <SelectItem key={d} value={String(i)}>
-                        {d}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-              <Button
-                className="w-full rounded-xl"
-                onClick={() => {
-                  if (!form.title.trim()) {
-                    toast.error("Başlık gerekli");
-                    return;
-                  }
-                  addTask({
-                    subject: form.subject,
-                    title: form.title,
-                    day: Number(form.day),
-                    studentId: currentStudent?.id ?? "s1",
-                  });
-                  setForm({ ...form, title: "" });
-                  setOpen(false);
-                  toast.success("Ödev eklendi");
-                }}
-              >
-                Kaydet
-              </Button>
-            </div>
-          </DialogContent>
-        </Dialog>
+        <div className="flex flex-wrap gap-2">
+          <Button className="rounded-xl" onClick={() => openAdd("konu")}>
+            <BookOpen className="size-4" /> Konu Çalışması Ekle
+          </Button>
+          <Button
+            variant="secondary"
+            className="rounded-xl"
+            onClick={() => openAdd("soru")}
+          >
+            <ListChecks className="size-4" /> Soru Çözümü Ekle
+          </Button>
+          <Button
+            variant="outline"
+            className="rounded-xl"
+            onClick={() => openAdd("deneme")}
+          >
+            <ClipboardList className="size-4" /> Deneme Ekle
+          </Button>
+        </div>
       </div>
 
       <div className="flex items-center gap-3 rounded-2xl border border-border bg-card p-3 shadow-soft">
@@ -180,11 +260,11 @@ function Odevler() {
       </div>
 
       <div className="flex gap-4 overflow-x-auto pb-4">
-        {DAYS.map((day, i) => {
+        {DAYS.map((d, i) => {
           const dayTasks = weekTasks.filter((t) => t.day === i);
           return (
             <div
-              key={day}
+              key={d}
               onDragOver={(e) => e.preventDefault()}
               onDrop={() => {
                 if (dragId) moveTask(dragId, i);
@@ -194,7 +274,7 @@ function Odevler() {
             >
               <div className="mb-3 flex items-center justify-between px-1">
                 <span className="font-display text-sm font-bold text-brand-deep">
-                  {day}
+                  {d}
                 </span>
                 <span className="rounded-full bg-card px-2 py-0.5 text-[11px] font-semibold text-muted-foreground">
                   {dayTasks.length}
@@ -202,37 +282,43 @@ function Odevler() {
               </div>
               <div className="space-y-2">
                 {dayTasks.map((t) => (
-                  <div
+                  <button
                     key={t.id}
+                    type="button"
                     draggable
                     onDragStart={() => setDragId(t.id)}
+                    onClick={() => openRecord(t)}
                     className={cn(
-                      "group cursor-grab rounded-xl border border-border bg-card p-3 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-soft",
+                      "group w-full cursor-pointer rounded-xl border border-border bg-card p-3 text-left shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-soft",
                       t.done && "opacity-55",
                     )}
                   >
-                    <div className="flex items-center justify-between">
-                      <span className="rounded-full bg-brand-soft px-2 py-0.5 text-[11px] font-semibold text-brand-deep">
-                        {t.subject}
+                    <div className="flex items-center justify-between gap-2">
+                      <span
+                        className={cn(
+                          "rounded-full px-2 py-0.5 text-[11px] font-semibold",
+                          KIND_STYLE[t.kind],
+                        )}
+                      >
+                        {TASK_KIND_LABELS[t.kind]}
                       </span>
                       <GripVertical className="size-3.5 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
                     </div>
-                    <div className="mt-2 flex items-start gap-2">
-                      <Checkbox
-                        checked={t.done}
-                        onCheckedChange={() => toggleTask(t.id)}
-                        className="mt-0.5"
-                      />
-                      <span
-                        className={cn(
-                          "text-sm leading-snug",
-                          t.done && "text-muted-foreground line-through",
-                        )}
-                      >
-                        {t.title}
-                      </span>
-                    </div>
-                  </div>
+                    <p
+                      className={cn(
+                        "mt-2 text-sm leading-snug font-medium",
+                        t.done && "text-muted-foreground line-through",
+                      )}
+                    >
+                      {t.title}
+                    </p>
+                    <p className="mt-1 text-[11px] text-muted-foreground">
+                      {t.subject}
+                      {t.done && t.result?.solved != null
+                        ? ` · ${t.result.solved} soru · ${t.result.wrong ?? 0} yanlış`
+                        : ""}
+                    </p>
+                  </button>
                 ))}
                 {dayTasks.length === 0 && (
                   <p className="rounded-xl border border-dashed border-border px-3 py-6 text-center text-xs text-muted-foreground">
@@ -244,6 +330,203 @@ function Odevler() {
           );
         })}
       </div>
+
+      {/* Ödev ekleme */}
+      <Dialog open={addKind !== null} onOpenChange={(o) => !o && setAddKind(null)}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle className="font-display text-brand-deep">
+              {addKind ? TASK_KIND_LABELS[addKind] : ""} Ekle
+            </DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4">
+            <TopicPicker topics={topics} value={picked} onSelect={setPicked} />
+            <div className="space-y-2">
+              <Label>Açıklama (opsiyonel)</Label>
+              <Input
+                value={note}
+                placeholder="Ör: 40 soruluk test"
+                onChange={(e) => setNote(e.target.value)}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label>Gün</Label>
+              <Select value={day} onValueChange={setDay}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {DAYS.map((d, i) => (
+                    <SelectItem key={d} value={String(i)}>
+                      {d}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <Button className="w-full rounded-xl" onClick={saveTask}>
+              <Plus className="size-4" /> Kaydet
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Sonuç kaydı */}
+      <Dialog open={active !== null} onOpenChange={(o) => !o && setActive(null)}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle className="font-display text-brand-deep">
+              {active ? TASK_KIND_LABELS[active.kind] : ""} — {active?.title}
+            </DialogTitle>
+          </DialogHeader>
+
+          {active?.kind === "konu" && (
+            <div className="space-y-4">
+              <p className="text-sm text-muted-foreground">
+                {active.subject} konusunu çalıştıysan işaretle.
+              </p>
+              <Button
+                className="w-full rounded-xl"
+                disabled={active.done}
+                onClick={() => {
+                  completeTask(active.id);
+                  setActive(null);
+                  toast.success("Konu çalışması tamamlandı");
+                }}
+              >
+                {active.done ? "Zaten tamamlandı" : "Tamamlandı olarak işaretle"}
+              </Button>
+            </div>
+          )}
+
+          {active?.kind === "soru" && (
+            <div className="space-y-4">
+              <div className="grid grid-cols-3 gap-3">
+                {(["solved", "wrong", "blank"] as const).map((k) => (
+                  <div key={k} className="space-y-2">
+                    <Label>
+                      {k === "solved" ? "Çözülen" : k === "wrong" ? "Yanlış" : "Boş"}
+                    </Label>
+                    <Input
+                      type="number"
+                      min={0}
+                      value={res[k]}
+                      onChange={(e) => setRes({ ...res, [k]: e.target.value })}
+                    />
+                  </div>
+                ))}
+              </div>
+              <Button
+                className="w-full rounded-xl"
+                onClick={() => {
+                  const solved = Number(res.solved);
+                  if (!solved) {
+                    toast.error("Çözülen soru sayısı gerekli");
+                    return;
+                  }
+                  const wrong = Number(res.wrong) || 0;
+                  const blank = Number(res.blank) || 0;
+                  if (active.topicId)
+                    addLog(active.topicId, {
+                      date: new Date().toLocaleDateString("tr-TR"),
+                      source: active.title,
+                      solved,
+                      wrong,
+                      blank,
+                    });
+                  completeTask(active.id, { solved, wrong, blank });
+                  setActive(null);
+                  toast.success("Soru çözümü kaydedildi");
+                }}
+              >
+                Sonucu kaydet
+              </Button>
+            </div>
+          )}
+
+          {active?.kind === "deneme" && (
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-3">
+                <div className="space-y-2">
+                  <Label>Kurum / Yayın</Label>
+                  <Input
+                    value={mock.publisher}
+                    placeholder="Ör: 3D Yayınları"
+                    onChange={(e) =>
+                      setMock({ ...mock, publisher: e.target.value })
+                    }
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label>Tür</Label>
+                  <Select
+                    value={mock.type}
+                    onValueChange={(v) => setMock({ ...mock, type: v })}
+                  >
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="TYT">TYT</SelectItem>
+                      <SelectItem value="AYT">AYT</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                {(["turkce", "matematik", "sosyal", "fen"] as const).map((k) => (
+                  <div key={k} className="space-y-2">
+                    <Label className="capitalize">
+                      {k === "turkce"
+                        ? "Türkçe net"
+                        : k === "matematik"
+                          ? "Matematik net"
+                          : k === "sosyal"
+                            ? "Sosyal net"
+                            : "Fen net"}
+                    </Label>
+                    <Input
+                      type="number"
+                      step="0.25"
+                      value={mock[k]}
+                      onChange={(e) => setMock({ ...mock, [k]: e.target.value })}
+                    />
+                  </div>
+                ))}
+              </div>
+              <Button
+                className="w-full rounded-xl"
+                onClick={() => {
+                  if (!mock.publisher.trim()) {
+                    toast.error("Kurum adı gerekli");
+                    return;
+                  }
+                  const id = addMockExam({
+                    date: new Date().toLocaleDateString("tr-TR"),
+                    publisher: mock.publisher.trim(),
+                    type: mock.type === "AYT" ? "AYT" : "TYT",
+                    turkce: Number(mock.turkce) || 0,
+                    matematik: Number(mock.matematik) || 0,
+                    sosyal: Number(mock.sosyal) || 0,
+                    fen: Number(mock.fen) || 0,
+                  });
+                  completeTask(active.id, { mockExamId: id });
+                  setActive(null);
+                  toast.success("Deneme sonucu kaydedildi");
+                }}
+              >
+                Denemeyi kaydet
+              </Button>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      {topics.length === 0 && (
+        <Card className="rounded-2xl border-dashed p-6 text-center text-sm text-muted-foreground">
+          Konu listesi için önce giriş yapmalısın.
+        </Card>
+      )}
     </div>
   );
 }
