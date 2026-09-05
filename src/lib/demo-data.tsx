@@ -476,12 +476,11 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       studentList,
       currentStudent,
       currentCoach,
-      signIn: (next) => setSession(next),
-      signOut: () => setSession(null),
-      setCoach: (studentId, coachId) =>
-        setStudentList((prev) =>
-          prev.map((s) => (s.id === studentId ? { ...s, coachId } : s)),
-        ),
+      coachList,
+      setCoach: (coachId) => {
+        void auth.setCoach(coachId);
+      },
+
       addTask: (t) =>
         setTasks((prev) => [
           ...prev,
