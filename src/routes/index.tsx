@@ -1,24 +1,125 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Flame, TriangleAlert, Target } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import {
+  CURRENT_STUDENT,
+  daysUntilYks,
+  subjectScores,
+  useDemoData,
+  exams,
+  topicStats,
+} from "@/lib/demo-data";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Özet — Hedefe.net YKS Paneli" },
+      {
+        name: "description",
+        content:
+          "YKS 2027 geri sayımı, aktif öğrenme borcu ve ders bazlı konu hakimiyeti tek ekranda.",
+      },
+      { property: "og:title", content: "Özet — Hedefe.net YKS Paneli" },
+      {
+        property: "og:description",
+        content: "Geri sayım, öğrenme borcu ve konu hakimiyeti özetin.",
+      },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+function ScoreBar({ name, score }: { name: string; score: number }) {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="rounded-2xl border border-border bg-card p-5 shadow-soft transition-transform hover:-translate-y-0.5">
+      <div className="flex items-baseline justify-between">
+        <span className="font-display text-sm font-semibold text-brand-deep">
+          {name}
+        </span>
+        <span className="text-sm font-bold text-primary">
+          %{score.toFixed(1)}
+        </span>
+      </div>
+      <div className="mt-3 h-3.5 w-full overflow-hidden rounded-full bg-muted">
+        <div
+          className="h-full rounded-full transition-[width] duration-700"
+          style={{
+            width: `${score}%`,
+            background: `linear-gradient(90deg, oklch(0.85 0.16 85), oklch(${0.72 - score / 1400} ${0.05 + score / 900} ${85 + score * 0.75}))`,
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
+function Index() {
+  const { examData } = useDemoData();
+  const days = daysUntilYks();
+  const debt = examData.reduce((sum, e) => sum + topicStats(e).debt, 0) + 30;
+
+  return (
+    <div className="space-y-8">
+      <section className="relative overflow-hidden rounded-3xl bg-brand-deep px-6 py-12 text-primary-foreground sm:px-12 sm:py-16">
+        <div className="absolute -right-20 -top-20 size-72 rounded-full bg-primary/25 blur-3xl" />
+        <div className="relative">
+          <span className="inline-flex items-center gap-2 rounded-full bg-primary/20 px-3 py-1 text-xs font-semibold uppercase tracking-widest">
+            <Target className="size-3.5" /> {CURRENT_STUDENT.name}
+          </span>
+          <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight sm:text-6xl">
+            🎯 YKS 2027 HEDEF
+          </h1>
+          <p className="mt-3 font-display text-2xl font-semibold text-primary sm:text-3xl">
+            {CURRENT_STUDENT.target}
+          </p>
+        </div>
+      </section>
+
+      <section className="grid gap-6 md:grid-cols-2">
+        <Card className="rounded-3xl border-border p-8 shadow-soft">
+          <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+            <Flame className="size-4 text-primary" /> 🔥 YKS'ye Kalan Süre
+          </div>
+          <p className="mt-4 font-display text-6xl font-extrabold text-primary sm:text-7xl">
+            {days} <span className="text-4xl sm:text-5xl">Gün</span>
+          </p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Her gün 1 konu tekrarı = sınava kadar {Math.round(days / 7)} hafta
+            planlı çalışma.
+          </p>
+        </Card>
+
+        <Card className="rounded-3xl border-border p-8 shadow-soft">
+          <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+            <TriangleAlert className="size-4 text-destructive" /> ⚠️ Aktif
+            Öğrenme Borcu
+          </div>
+          <p className="mt-4 font-display text-6xl font-extrabold text-destructive sm:text-7xl">
+            {debt}
+          </p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Hata / Boş — çözülmeyi bekleyen sorular
+          </p>
+        </Card>
+      </section>
+
+      <section>
+        <h2 className="font-display text-2xl font-bold text-brand-deep">
+          Konu Hakimiyeti (Başarı Oranı)
+        </h2>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Ders bazında güncel başarı yüzden.
+        </p>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {subjectScores.map((s) => (
+            <ScoreBar key={s.name} {...s} />
+          ))}
+        </div>
+      </section>
+
+      <p className="text-xs text-muted-foreground">
+        Bu ekrandaki veriler örnek verilerdir ({exams.length} sınav grubu).
+      </p>
     </div>
   );
 }
