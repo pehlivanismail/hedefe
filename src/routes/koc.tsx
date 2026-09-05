@@ -82,7 +82,8 @@ function MasteryDots({ level }: { level: number }) {
 }
 
 function KocPaneli() {
-  const { tasks, addTask, session, currentCoach, studentList } = useDemoData();
+  const { tasks, addTask, session, currentCoach, studentList, examData } =
+    useDemoData();
   const myStudents = studentList.filter((s) => s.coachId === currentCoach?.id);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [query, setQuery] = useState("");
@@ -189,7 +190,7 @@ function KocPaneli() {
         <div className="max-h-[560px] space-y-1.5 overflow-y-auto pr-1">
           {visible.map((s) => {
             const p = pendingOf(s.id);
-            const stats = overallStats(examsForStudent([], s));
+            const stats = overallStats(examsForStudent(examData, s));
             return (
               <button
                 key={s.id}
