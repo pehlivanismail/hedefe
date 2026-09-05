@@ -75,8 +75,8 @@ export type Task = {
   day: number; // 0 = Pazartesi
   done: boolean;
   studentId: string;
-  topicId?: string | null;
-  result?: TaskResult;
+  topicId?: string | null | undefined;
+  result?: TaskResult | undefined;
 };
 
 export type MockExam = {
