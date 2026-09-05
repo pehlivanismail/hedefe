@@ -8,3 +8,6 @@
 - [x] Coach panel: searchable/filterable student list + read-only Konu Analizi
 - [ ] Real accounts + persistent database (user has own Supabase/Hetzner; decide hosting path)
 
+- [x] Planner: Konu Çalışması / Soru Çözümü / Deneme ödevleri, konu listesinden seçim, kart tıklayınca sonuç kaydı
+- [x] Denemeler: doğru/yanlış girişli gerçek deneme ekleme formu
+- [ ] Gerçek konu listesini (ör. 231 konu, Ders > Alan > Konu) içeri aktar
