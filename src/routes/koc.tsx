@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { CalendarIcon, UserRound } from "lucide-react";
 import { format } from "date-fns";
@@ -26,7 +26,6 @@ import {
   DAYS,
   SUBJECT_OPTIONS,
   daysUntilYks,
-  students,
   subjectScores,
   useDemoData,
 } from "@/lib/demo-data";
@@ -52,13 +51,47 @@ export const Route = createFileRoute("/koc")({
 });
 
 function KocPaneli() {
-  const { tasks, addTask } = useDemoData();
-  const [selectedId, setSelectedId] = useState(students[0]!.id);
+  const { tasks, addTask, session, currentCoach, studentList } = useDemoData();
+  const myStudents = studentList.filter((s) => s.coachId === currentCoach?.id);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
   const [subject, setSubject] = useState("Matematik");
   const [description, setDescription] = useState("");
   const [due, setDue] = useState<Date | undefined>(new Date());
 
-  const student = students.find((s) => s.id === selectedId)!;
+  const student = myStudents.find((s) => s.id === selectedId) ?? myStudents[0];
+
+  if (session?.role !== "coach") {
+    return (
+      <Card className="mx-auto max-w-lg rounded-3xl border-border p-10 text-center shadow-soft">
+        <h1 className="font-display text-2xl font-bold text-brand-deep">
+          Bu sayfa koçlara özeldir
+        </h1>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Devam etmek için koç hesabınla giriş yap.
+        </p>
+        <Link
+          to="/"
+          className="mt-6 inline-block rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft"
+        >
+          Giriş sayfasına dön
+        </Link>
+      </Card>
+    );
+  }
+
+  if (!student) {
+    return (
+      <Card className="mx-auto max-w-lg rounded-3xl border-border p-10 text-center shadow-soft">
+        <h1 className="font-display text-2xl font-bold text-brand-deep">
+          Henüz öğrencin yok
+        </h1>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Öğrenciler kendi panellerinden seni koç olarak seçtiğinde burada
+          görünürler.
+        </p>
+      </Card>
+    );
+  }
   const studentTasks = tasks.filter((t) => t.studentId === student.id);
   const pending = studentTasks.filter((t) => !t.done).length;
 
@@ -68,7 +101,7 @@ function KocPaneli() {
         <h2 className="font-display text-lg font-bold text-brand-deep">
           Öğrencilerim
         </h2>
-        {students.map((s) => {
+        {myStudents.map((s) => {
           const p = tasks.filter(
             (t) => t.studentId === s.id && !t.done,
           ).length;
@@ -78,7 +111,7 @@ function KocPaneli() {
               onClick={() => setSelectedId(s.id)}
               className={cn(
                 "flex w-full items-center gap-3 rounded-2xl border border-border bg-card p-3 text-left transition-all hover:-translate-y-0.5 hover:shadow-soft",
-                s.id === selectedId && "border-primary bg-brand-soft",
+                s.id === student.id && "border-primary bg-brand-soft",
               )}
             >
               <span className="flex size-9 items-center justify-center rounded-full bg-brand-deep text-primary-foreground">

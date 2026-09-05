@@ -62,7 +62,20 @@ export type Student = {
   email: string;
   target: string;
   pending: number;
+  coachId: string | null;
 };
+
+export type Coach = {
+  id: string;
+  name: string;
+  email: string;
+  title: string;
+};
+
+export type Session =
+  | { role: "student"; id: string }
+  | { role: "coach"; id: string }
+  | null;
 
 const topic = (
   id: string,
@@ -183,10 +196,15 @@ export const mockExams: MockExam[] = [
   { id: "d6", date: "13.09.2026", publisher: "3D", type: "AYT", turkce: 21, matematik: 27, sosyal: 10, fen: 29 },
 ];
 
+export const coaches: Coach[] = [
+  { id: "c1", name: "Zeynep Koç", email: "zeynep@hedefe.net", title: "Sayısal Koçu" },
+  { id: "c2", name: "Ahmet Demir", email: "ahmet@hedefe.net", title: "Eşit Ağırlık Koçu" },
+];
+
 export const students: Student[] = [
-  { id: "s1", name: "Ismail Pehlivan", email: "ismail@hedefe.net", target: "Çapa Tıp Fakültesi", pending: 3 },
-  { id: "s2", name: "Elif Yıldız", email: "elif@hedefe.net", target: "Boğaziçi Bilgisayar Müh.", pending: 1 },
-  { id: "s3", name: "Mert Aydın", email: "mert@hedefe.net", target: "Hacettepe Diş Hekimliği", pending: 5 },
+  { id: "s1", name: "Ismail Pehlivan", email: "ismail@hedefe.net", target: "Çapa Tıp Fakültesi", pending: 3, coachId: "c1" },
+  { id: "s2", name: "Elif Yıldız", email: "elif@hedefe.net", target: "Boğaziçi Bilgisayar Müh.", pending: 1, coachId: "c1" },
+  { id: "s3", name: "Mert Aydın", email: "mert@hedefe.net", target: "Hacettepe Diş Hekimliği", pending: 5, coachId: null },
 ];
 
 export const CURRENT_STUDENT: Student = students[0]!;
@@ -230,6 +248,13 @@ type Store = {
   moveTask: (id: string, day: number) => void;
   examData: Exam[];
   addLog: (topicId: string, log: Omit<StudyLog, "id">) => void;
+  session: Session;
+  signIn: (session: NonNullable<Session>) => void;
+  signOut: () => void;
+  studentList: Student[];
+  currentStudent: Student | null;
+  currentCoach: Coach | null;
+  setCoach: (studentId: string, coachId: string | null) => void;
 };
 
 const StoreContext = createContext<Store | null>(null);
@@ -237,11 +262,32 @@ const StoreContext = createContext<Store | null>(null);
 export function DemoDataProvider({ children }: { children: ReactNode }) {
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
   const [examData, setExamData] = useState<Exam[]>(exams);
+  const [studentList, setStudentList] = useState<Student[]>(students);
+  const [session, setSession] = useState<Session>(null);
+
+  const currentStudent =
+    session?.role === "student"
+      ? (studentList.find((s) => s.id === session.id) ?? null)
+      : null;
+  const currentCoach =
+    session?.role === "coach"
+      ? (coaches.find((c) => c.id === session.id) ?? null)
+      : null;
 
   const value = useMemo<Store>(
     () => ({
       tasks,
       examData,
+      session,
+      studentList,
+      currentStudent,
+      currentCoach,
+      signIn: (next) => setSession(next),
+      signOut: () => setSession(null),
+      setCoach: (studentId, coachId) =>
+        setStudentList((prev) =>
+          prev.map((s) => (s.id === studentId ? { ...s, coachId } : s)),
+        ),
       addTask: (t) =>
         setTasks((prev) => [
           ...prev,
@@ -275,7 +321,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
           })),
         ),
     }),
-    [tasks, examData],
+    [tasks, examData, session, studentList, currentStudent, currentCoach],
   );
 
   return (

@@ -23,7 +23,6 @@ import {
 } from "@/components/ui/select";
 import { toast } from "sonner";
 import {
-  CURRENT_STUDENT,
   DAYS,
   SUBJECT_OPTIONS,
   useDemoData,
@@ -50,7 +49,8 @@ export const Route = createFileRoute("/odevler")({
 });
 
 function Odevler() {
-  const { tasks, addTask, toggleTask, moveTask } = useDemoData();
+  const { tasks, addTask, toggleTask, moveTask, currentStudent } =
+    useDemoData();
   const [weekOffset, setWeekOffset] = useState(0);
   const [open, setOpen] = useState(false);
   const [dragId, setDragId] = useState<string | null>(null);
@@ -59,7 +59,7 @@ function Odevler() {
   const base = addWeeks(new Date(), weekOffset);
   const start = startOfWeek(base, { weekStartsOn: 1 });
   const end = endOfWeek(base, { weekStartsOn: 1 });
-  const weekTasks = tasks.filter((t) => t.studentId === CURRENT_STUDENT.id);
+  const weekTasks = tasks.filter((t) => t.studentId === currentStudent?.id);
 
   return (
     <div className="space-y-6">
@@ -140,7 +140,7 @@ function Odevler() {
                     subject: form.subject,
                     title: form.title,
                     day: Number(form.day),
-                    studentId: CURRENT_STUDENT.id,
+                    studentId: currentStudent?.id ?? "s1",
                   });
                   setForm({ ...form, title: "" });
                   setOpen(false);
