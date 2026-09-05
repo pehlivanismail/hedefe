@@ -17,12 +17,12 @@ import {
 } from "@/components/ui/select";
 import {
   daysUntilYks,
-  subjectScores,
   useDemoData,
-  exams,
-  topicStats,
+  examsForStudent,
+  subjectScoresOf,
+  overallStats,
   coaches,
-  students,
+  TRACK_LABELS,
   type Student,
 } from "@/lib/demo-data";
 
