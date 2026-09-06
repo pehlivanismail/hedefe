@@ -119,3 +119,18 @@ CREATE POLICY "Coaches can view student study logs" ON public.study_logs FOR SEL
     WHERE cc.coach_id = auth.uid() AND cc.student_id = study_logs.user_id AND cc.status = 'approved'
   )
 );
+CREATE OR REPLACE FUNCTION public.get_my_email()
+RETURNS text
+LANGUAGE sql
+STABLE
+AS $$
+  SELECT auth.jwt()->>'email';
+$$;
+
+DROP POLICY IF EXISTS "Users can view their own invites" ON public.pair_invites;
+
+CREATE POLICY "Users can view their own invites" ON public.pair_invites
+  FOR SELECT USING (
+    auth.uid() = from_user
+    OR to_email = public.get_my_email()
+  );
