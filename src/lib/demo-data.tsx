@@ -438,6 +438,33 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
         : null
     : null;
 
+  // Gerçek (veritabanı) öğrencileri için örnek çalışma kayıtlarını hazırla
+  const trackedIds = useMemo(() => {
+    const ids = studentList.map((s) => s.id);
+    if (currentStudent) ids.push(currentStudent.id);
+    return Array.from(new Set(ids));
+  }, [studentList, currentStudent]);
+
+  useEffect(() => {
+    if (trackedIds.length === 0) return;
+    setTasks((prev) => {
+      const missing = trackedIds.filter(
+        (id) => !prev.some((t) => t.studentId === id),
+      );
+      return missing.length
+        ? [...prev, ...missing.flatMap((id) => seedTasksFor(id))]
+        : prev;
+    });
+    setMockExamList((prev) => {
+      const missing = trackedIds.filter(
+        (id) => !prev.some((e) => e.studentId === id),
+      );
+      return missing.length
+        ? [...prev, ...missing.flatMap((id) => seedMockExamsFor(id))]
+        : prev;
+    });
+  }, [trackedIds]);
+
 
   const value = useMemo<Store>(
     () => ({
