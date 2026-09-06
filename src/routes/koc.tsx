@@ -295,6 +295,10 @@ function KocPaneli() {
             <TabsTrigger value="plan" className="rounded-full">
               Haftalık Plan
             </TabsTrigger>
+            <TabsTrigger value="gunluk" className="rounded-full">
+              Çalışma Günlüğü
+            </TabsTrigger>
+
             <TabsTrigger value="denemeler" className="rounded-full">
               Denemeler
             </TabsTrigger>
