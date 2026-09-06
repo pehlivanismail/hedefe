@@ -272,7 +272,9 @@ function KocPaneli() {
             </p>
           )}
         </div>
+        <PairInvites role="coach" />
       </aside>
+
 
       <div className="space-y-6">
         <Card className="rounded-3xl border-border bg-brand-deep p-8 text-primary-foreground shadow-soft">
