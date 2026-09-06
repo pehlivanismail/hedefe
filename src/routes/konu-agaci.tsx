@@ -74,20 +74,36 @@ function MasteryDots({ level }: { level: number }) {
 }
 
 function KonuAgaci() {
-  const { examData, addLog, currentStudent } = useDemoData();
-  const [active, setActive] = useState<Topic | null>(null);
+  const { examData, addLog, addAreaLog, currentStudent } = useDemoData();
+  const [active, setActive] = useState<Detail | null>(null);
 
   const myExams = currentStudent
     ? examsForStudent(examData, currentStudent)
     : [];
 
-  const current =
-    active &&
-    myExams
-      .flatMap((e) => e.subjects)
-      .flatMap((s) => s.areas)
-      .flatMap((a) => a.topics)
-      .find((t) => t.id === active.id);
+  const allAreas = myExams
+    .flatMap((e) => e.subjects)
+    .flatMap((s) => s.areas);
+
+  let current: {
+    name: string;
+    mastery: number;
+    debt: number;
+    logs: StudyLog[];
+  } | null = null;
+
+  if (active?.kind === "topic") {
+    const t = allAreas.flatMap((a) => a.topics).find((x) => x.id === active.id);
+    if (t)
+      current = { name: t.name, mastery: t.mastery, debt: t.debt, logs: t.logs };
+  } else if (active?.kind === "area") {
+    const a = allAreas.find((x) => x.id === active.id);
+    if (a) {
+      const st = areaStats(a);
+      current = { name: `${a.name} (Alan)`, ...st };
+    }
+  }
+
 
   return (
     <div className="space-y-8">
