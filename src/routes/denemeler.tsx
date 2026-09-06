@@ -31,6 +31,7 @@ import { MockExamForm } from "@/components/mock-exam-form";
 import { toast } from "sonner";
 import { useDemoData, type MockExam } from "@/lib/demo-data";
 import { cn } from "@/lib/utils";
+import { EXAM_QUESTION_COUNTS } from "@/lib/exam-config";
 
 export const Route = createFileRoute("/denemeler")({
   head: () => ({
