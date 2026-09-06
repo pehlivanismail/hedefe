@@ -143,7 +143,8 @@ function Odevler() {
           ? "TYT Denemesi"
           : examScope === "AYT"
             ? "AYT Denemesi"
-            : `${examScope} Branş Denemesi`;
+            : (denemeSubjects.find((d) => d.value === examScope)?.label ??
+              `${examScope} Branş Denemesi`);
       addTask({
         kind: "deneme",
         subject: examScope,
