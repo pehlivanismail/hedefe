@@ -139,9 +139,10 @@ function Odevler() {
 
 
   const openRecord = (t: Task) => {
-    setRes({ solved: "", wrong: "", blank: "" });
+    setRes({ solved: "", wrong: "", blank: "", source: "" });
     setActive(t);
   };
+
 
   const saveTask = () => {
     if (addKind === "deneme") {
