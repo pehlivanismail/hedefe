@@ -31,6 +31,7 @@ import { MockExamForm } from "@/components/mock-exam-form";
 import { toast } from "sonner";
 import { useDemoData, type MockExam } from "@/lib/demo-data";
 import { cn } from "@/lib/utils";
+import { EXAM_QUESTION_COUNTS } from "@/lib/exam-config";
 
 export const Route = createFileRoute("/denemeler")({
   head: () => ({
@@ -58,15 +59,22 @@ function NetChart({
   data,
   color,
   id,
+  maxQuestions,
 }: {
   title: string;
   data: { date: string; net: number }[];
   color: string;
   id: string;
+  maxQuestions: number;
 }) {
   return (
     <Card className="rounded-3xl border-border p-6 shadow-soft">
-      <h3 className="font-display text-lg font-bold text-brand-deep">{title}</h3>
+      <h3 className="font-display text-lg font-bold text-brand-deep">
+        {title}{" "}
+        <span className="text-sm font-normal text-muted-foreground">
+          ({maxQuestions} soru)
+        </span>
+      </h3>
       <div className="mt-4 h-64">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data} margin={{ left: -20, right: 8, top: 8 }}>
@@ -78,12 +86,28 @@ function NetChart({
             </defs>
             <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
             <XAxis dataKey="date" tickLine={false} axisLine={false} fontSize={12} />
-            <YAxis tickLine={false} axisLine={false} fontSize={12} />
+            <YAxis
+              domain={[0, maxQuestions]}
+              tickLine={false}
+              axisLine={false}
+              fontSize={12}
+            />
             <Tooltip
-              contentStyle={{
-                borderRadius: 12,
-                border: "1px solid var(--border)",
-                background: "var(--card)",
+              content={({ active, payload, label }) => {
+                if (!active || !payload || !payload.length) return null;
+                const net = Number(payload[0]?.value) || 0;
+                const pct = maxQuestions ? (net / maxQuestions) * 100 : 0;
+                return (
+                  <div className="rounded-xl border border-border bg-card p-3 shadow-soft">
+                    <p className="text-xs text-muted-foreground">{label}</p>
+                    <p className="font-display text-sm font-bold text-brand-deep">
+                      {net.toFixed(2)} net
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      {maxQuestions} sorunun %{pct.toFixed(1)}&apos;i
+                    </p>
+                  </div>
+                );
               }}
             />
             <Area
@@ -153,12 +177,14 @@ function Denemeler() {
           title="TYT Net İlerlemesi"
           data={tyt}
           color="oklch(0.7 0.157 159.5)"
+          maxQuestions={EXAM_QUESTION_COUNTS.TYT}
         />
         <NetChart
           id="aytGrad"
           title="AYT Net İlerlemesi"
           data={ayt}
           color="oklch(0.45 0.09 220)"
+          maxQuestions={EXAM_QUESTION_COUNTS.AYT}
         />
       </div>
 
@@ -174,6 +200,7 @@ function Denemeler() {
               <TableHead className="text-right">Sosyal</TableHead>
               <TableHead className="text-right">Fen</TableHead>
               <TableHead className="text-right">Toplam Net</TableHead>
+              <TableHead className="text-right">Başarı %</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -189,6 +216,16 @@ function Denemeler() {
                 <TableCell className="text-right">
                   <span className="rounded-full bg-brand-soft px-3 py-1 font-display text-sm font-bold text-brand-deep">
                     {total(e).toFixed(1)}
+                  </span>
+                </TableCell>
+                <TableCell className="text-right">
+                  <span className="text-sm font-medium text-muted-foreground">
+                    {(
+                      (total(e) /
+                        EXAM_QUESTION_COUNTS[e.type === "AYT" ? "AYT" : "TYT"]) *
+                      100
+                    ).toFixed(1)}
+                    %
                   </span>
                 </TableCell>
               </TableRow>
