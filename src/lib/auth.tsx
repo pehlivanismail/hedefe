@@ -30,6 +30,7 @@ type ProfileRow = {
   email: string;
   role: string;
   exam_tracks: any;
+  track?: any;
 };
 
 type AuthValue = {
@@ -53,7 +54,7 @@ const toStudent = (p: ProfileRow): Student => ({
   email: p.email,
   target: "Hedef belirlenmedi", // Not in V1 schema, default to fallback
   pending: 0,
-  track: "sayisal", // Not strictly in V1 schema, default
+  track: (p.track as any) || "sayisal", 
   coachId: null, // We'll map this via coach_connections later if needed
 });
 
@@ -104,7 +105,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             full_name: p.full_name,
             email: p.email,
             role: r?.role || "student",
-            exam_tracks: (r?.exam_tracks as string[]) || null
+            exam_tracks: (r?.exam_tracks as string[]) || null,
+            track: p.track
         };
     });
 
@@ -150,7 +152,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       full_name: user.email?.split("@")[0] || "Öğrenci",
       email: user.email || "",
       role: role,
-      exam_tracks: []
+      exam_tracks: [],
+      track: "sayisal"
     };
   }
 
