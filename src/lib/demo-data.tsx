@@ -35,8 +35,19 @@ export type Topic = {
   logs: StudyLog[];
 };
 
-export type Area = { id: string; name: string; topics: Topic[] };
+export type Area = {
+  id: string;
+  name: string;
+  topics: Topic[];
+  /** Alan seviyesinde tutulan çalışma kayıtları */
+  logs?: StudyLog[];
+  /** Alan seviyesinde 0..5 hakimiyet (girilmediyse konulardan hesaplanır) */
+  mastery?: number;
+  /** Alan seviyesinde ek öğrenme borcu */
+  debt?: number;
+};
 export type Subject = { id: string; name: string; areas: Area[] };
+
 export type Track = "sayisal" | "sozel" | "esit";
 export type Exam = {
   id: string;
