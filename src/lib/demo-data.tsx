@@ -76,6 +76,8 @@ export type TaskResult = {
   solved?: number;
   wrong?: number;
   blank?: number;
+  /** Kaynak adı (kitap / yayın / fasikül) */
+  source?: string;
   /** Deneme için */
   mockExamId?: string;
   note?: string;
@@ -91,11 +93,16 @@ export type Task = {
   studentId: string;
   topicId?: string | null | undefined;
   areaId?: string | null | undefined;
+  /** Alan / konu adı (günlük raporda gösterilir) */
+  areaName?: string | undefined;
   /** Ödevi kim ekledi: öğrenci mi koç mu */
   assignedBy?: "student" | "coach" | undefined;
+  /** Tamamlanma tarihi (YYYY-MM-DD) */
+  completedAt?: string | undefined;
 
   result?: TaskResult | undefined;
 };
+
 
 export type MockExam = {
   id: string;
@@ -319,41 +326,53 @@ function seedNum(key: string) {
 const SEED_TASKS: Array<{
   kind: TaskKind;
   subject: string;
+  area: string;
   title: string;
+  source: string;
   day: number;
   coach: boolean;
 }> = [
-  { kind: "soru", subject: "Matematik", title: "Türev 40 soru", day: 0, coach: true },
-  { kind: "konu", subject: "Türkçe", title: "Paragraf konu tekrarı", day: 1, coach: false },
-  { kind: "soru", subject: "Fizik", title: "Hareket Test 2", day: 2, coach: true },
-  { kind: "konu", subject: "Kimya", title: "Mol Kavramı özet", day: 3, coach: false },
-  { kind: "soru", subject: "Biyoloji", title: "Hücre 30 soru", day: 4, coach: true },
-  { kind: "deneme", subject: "Matematik", title: "TYT Genel Deneme", day: 5, coach: true },
-  { kind: "konu", subject: "Tarih", title: "Haftalık tekrar", day: 6, coach: false },
+  { kind: "soru", subject: "AYT Matematik", area: "Türev", title: "Türev 40 soru", source: "Apotemi Türev Fasikülü", day: 0, coach: true },
+  { kind: "konu", subject: "TYT Türkçe", area: "Paragraf", title: "Paragraf konu tekrarı", source: "Hocalara Geldik video ders", day: 1, coach: false },
+  { kind: "soru", subject: "TYT Fizik", area: "Hareket", title: "Hareket Test 2", source: "3D TYT Fizik Soru Bankası", day: 2, coach: true },
+  { kind: "konu", subject: "TYT Kimya", area: "Mol Kavramı", title: "Mol Kavramı özet", source: "Bilgi Sarmal Konu Anlatımı", day: 3, coach: false },
+  { kind: "soru", subject: "AYT Biyoloji", area: "Hücre", title: "Hücre 30 soru", source: "Endemik AYT Biyoloji", day: 4, coach: true },
+  { kind: "deneme", subject: "TYT", area: "", title: "TYT Genel Deneme", source: "Limit TYT Deneme", day: 5, coach: true },
+  { kind: "konu", subject: "TYT Tarih", area: "İnkılap Tarihi", title: "Haftalık tekrar", source: "Kendi notları", day: 6, coach: false },
 ];
 
 /** Gerçek (veritabanındaki) bir öğrenci için örnek haftalık plan üretir */
 export function seedTasksFor(studentId: string): Task[] {
   const s = seedNum(studentId);
   return SEED_TASKS.map((t, i) => {
-    const done = (s + i * 7) % 3 === 0;
+    const done = (s + i * 7) % 3 !== 2;
     const solved = 20 + ((s + i * 13) % 30);
     const wrong = (s + i * 5) % 8;
+    const d = new Date();
+    d.setDate(d.getDate() - ((s + i * 3) % 12));
     return {
       id: `seed-${studentId}-${i}`,
       kind: t.kind,
       subject: t.subject,
+      areaName: t.area || undefined,
       title: t.title,
       day: t.day,
       done,
       studentId,
       assignedBy: t.coach ? ("coach" as const) : ("student" as const),
-      ...(done && t.kind === "soru"
-        ? { result: { solved, wrong, blank: (s + i) % 4 } }
+      ...(done
+        ? {
+            completedAt: d.toISOString().slice(0, 10),
+            result:
+              t.kind === "soru"
+                ? { solved, wrong, blank: (s + i) % 4, source: t.source }
+                : { source: t.source },
+          }
         : {}),
     };
   });
 }
+
 
 const SEED_PUBLISHERS = ["Endemik", "3D", "Bilgi Sarmal", "Apotemi", "Limit"];
 
@@ -493,9 +512,17 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       completeTask: (id, result) =>
         setTasks((prev) =>
           prev.map((t) =>
-            t.id === id ? { ...t, done: true, result: result ?? t.result } : t,
+            t.id === id
+              ? {
+                  ...t,
+                  done: true,
+                  completedAt: new Date().toISOString().slice(0, 10),
+                  result: result ?? t.result,
+                }
+              : t,
           ),
         ),
+
       mockExamList,
       addMockExam: (e) => {
         const id = `d-${Date.now()}`;

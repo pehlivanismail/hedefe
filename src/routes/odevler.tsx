@@ -114,7 +114,13 @@ function Odevler() {
     );
   }, [subjects]);
 
-  const [res, setRes] = useState({ solved: "", wrong: "", blank: "" });
+  const [res, setRes] = useState({
+    solved: "",
+    wrong: "",
+    blank: "",
+    source: "",
+  });
+
 
   const base = addWeeks(new Date(), weekOffset);
   const start = startOfWeek(base, { weekStartsOn: 1 });
@@ -133,9 +139,10 @@ function Odevler() {
 
 
   const openRecord = (t: Task) => {
-    setRes({ solved: "", wrong: "", blank: "" });
+    setRes({ solved: "", wrong: "", blank: "", source: "" });
     setActive(t);
   };
+
 
   const saveTask = () => {
     if (addKind === "deneme") {
@@ -169,13 +176,15 @@ function Odevler() {
     }
     addTask({
       kind: addKind ?? "konu",
-      subject: subject.name,
+      subject: `${subject.examName.startsWith("AYT") ? "AYT" : "TYT"} ${subject.name}`,
+      areaName: area.name,
       title: note.trim() || topic?.name || area.name,
       topicId: topic ? topic.id : null,
       areaId: topic ? null : area.id,
       day: Number(day),
       studentId: currentStudent?.id ?? "s1",
     });
+
     setAddKind(null);
     toast.success(`${TASK_KIND_LABELS[addKind ?? "konu"]} eklendi`);
   };
@@ -466,11 +475,21 @@ function Odevler() {
               <p className="text-sm text-muted-foreground">
                 {active.subject} konusunu çalıştıysan işaretle.
               </p>
+              <div className="space-y-2">
+                <Label>Kaynak (opsiyonel)</Label>
+                <Input
+                  value={res.source}
+                  placeholder="Ör: 3D Konu Anlatımı"
+                  onChange={(e) => setRes({ ...res, source: e.target.value })}
+                />
+              </div>
               <Button
                 className="w-full rounded-xl"
                 disabled={active.done}
                 onClick={() => {
-                  completeTask(active.id);
+                  completeTask(active.id, {
+                    source: res.source.trim() || active.title,
+                  });
                   setActive(null);
                   toast.success("Konu çalışması tamamlandı");
                 }}
@@ -482,6 +501,14 @@ function Odevler() {
 
           {active?.kind === "soru" && (
             <div className="space-y-4">
+              <div className="space-y-2">
+                <Label>Kaynak</Label>
+                <Input
+                  value={res.source}
+                  placeholder="Ör: Apotemi Türev Fasikülü"
+                  onChange={(e) => setRes({ ...res, source: e.target.value })}
+                />
+              </div>
               <div className="grid grid-cols-3 gap-3">
                 {(["solved", "wrong", "blank"] as const).map((k) => (
                   <div key={k} className="space-y-2">
@@ -507,16 +534,17 @@ function Odevler() {
                   }
                   const wrong = Number(res.wrong) || 0;
                   const blank = Number(res.blank) || 0;
+                  const source = res.source.trim() || active.title;
                   const log = {
                     date: new Date().toLocaleDateString("tr-TR"),
-                    source: active.title,
+                    source,
                     solved,
                     wrong,
                     blank,
                   };
                   if (active.topicId) addLog(active.topicId, log);
                   else if (active.areaId) addAreaLog(active.areaId, log);
-                  completeTask(active.id, { solved, wrong, blank });
+                  completeTask(active.id, { solved, wrong, blank, source });
                   setActive(null);
                   toast.success("Soru çözümü kaydedildi");
                 }}
@@ -525,6 +553,7 @@ function Odevler() {
               </Button>
             </div>
           )}
+
 
           {active?.kind === "deneme" &&
             (() => {
