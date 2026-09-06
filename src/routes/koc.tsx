@@ -60,6 +60,7 @@ import {
   type Task,
   type Track,
 } from "@/lib/demo-data";
+import { PairInvites } from "@/components/pair-invites";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/koc")({
