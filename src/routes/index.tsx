@@ -8,13 +8,8 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { PairInvites } from "@/components/pair-invites";
+
 import {
   daysUntilYks,
   useDemoData,
