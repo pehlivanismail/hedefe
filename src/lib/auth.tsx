@@ -11,6 +11,14 @@ import type { User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 import type { Coach, Student, Track } from "@/lib/demo-data";
 
+function formatEmailToName(email: string) {
+  const namePart = email.split('@')[0];
+  return namePart
+    .split(/[\.\-_]/)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+    .join(' ');
+}
+
 type Role = "student" | "coach";
 
 // We map user_roles from V1 to the shape the UI expects
@@ -39,7 +47,7 @@ const AuthContext = createContext<AuthValue | null>(null);
 
 const toStudent = (p: ProfileRow): Student => ({
   id: p.user_id,
-  name: p.full_name || p.email,
+  name: p.full_name || formatEmailToName(p.email),
   email: p.email,
   target: "Hedef belirlenmedi", // Not in V1 schema, default to fallback
   pending: 0,
@@ -49,7 +57,7 @@ const toStudent = (p: ProfileRow): Student => ({
 
 const toCoach = (p: ProfileRow): Coach => ({
   id: p.user_id,
-  name: p.full_name || p.email,
+  name: p.full_name || formatEmailToName(p.email),
   email: p.email,
   title: "Koç",
 });

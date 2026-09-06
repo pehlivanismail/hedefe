@@ -19,5 +19,14 @@ export const Route = createFileRoute("/giris")({
       { name: "twitter:card", content: "summary" },
     ],
   }),
-  component: () => <AuthForm role="student" />,
+  component: () => (
+    <div className="flex min-h-[calc(100vh-10rem)] flex-col items-center justify-center py-10">
+      <div className="w-full max-w-md">
+        <AuthForm role="student" />
+        <div className="mt-8 text-center text-sm text-muted-foreground">
+          İletişim: <a href="mailto:iletisim@hedefe.net" className="underline hover:text-primary transition-colors">iletisim@hedefe.net</a>
+        </div>
+      </div>
+    </div>
+  ),
 });
