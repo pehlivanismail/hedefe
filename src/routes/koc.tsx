@@ -264,9 +264,15 @@ function KocPaneli() {
         </Card>
 
         <Tabs defaultValue="analiz">
-          <TabsList className="rounded-full">
+          <TabsList className="flex-wrap rounded-3xl">
             <TabsTrigger value="analiz" className="rounded-full">
               Konu Analizi
+            </TabsTrigger>
+            <TabsTrigger value="plan" className="rounded-full">
+              Haftalık Plan
+            </TabsTrigger>
+            <TabsTrigger value="denemeler" className="rounded-full">
+              Denemeler
             </TabsTrigger>
             <TabsTrigger value="genel" className="rounded-full">
               Genel Durum
@@ -283,6 +289,14 @@ function KocPaneli() {
             <TopicAnalysis student={student} />
           </TabsContent>
 
+          <TabsContent value="plan" className="mt-4">
+            <StudentWeek tasks={studentTasks} />
+          </TabsContent>
+
+          <TabsContent value="denemeler" className="mt-4">
+            <StudentMockExams student={student} />
+          </TabsContent>
+
           <TabsContent value="genel" className="mt-4 space-y-3">
             {studentTasks.length === 0 && (
               <p className="text-sm text-muted-foreground">
@@ -295,8 +309,11 @@ function KocPaneli() {
                 className="flex items-center justify-between rounded-2xl border border-border bg-card p-4 shadow-sm"
               >
                 <div>
-                  <span className="rounded-full bg-brand-soft px-2 py-0.5 text-[11px] font-semibold text-brand-deep">
-                    {t.subject}
+                  <span className="flex items-center gap-1.5">
+                    <span className="rounded-full bg-brand-soft px-2 py-0.5 text-[11px] font-semibold text-brand-deep">
+                      {t.subject}
+                    </span>
+                    {t.assignedBy === "coach" && <CoachBadge />}
                   </span>
                   <p
                     className={cn(
@@ -313,6 +330,7 @@ function KocPaneli() {
               </div>
             ))}
           </TabsContent>
+
 
           <TabsContent value="odev" className="mt-4">
             <Card className="max-w-xl rounded-3xl border-border p-6 shadow-soft">
