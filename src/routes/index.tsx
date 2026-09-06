@@ -8,13 +8,8 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { PairInvites } from "@/components/pair-invites";
+
 import {
   daysUntilYks,
   useDemoData,
@@ -166,44 +161,26 @@ function CoachWelcome() {
 }
 
 function CoachPicker({ student }: { student: Student }) {
-  const { setCoach, coachList } = useDemoData();
+  const { coachList } = useDemoData();
   const coach = coachList.find((c) => c.id === student.coachId);
 
   return (
-    <Card className="rounded-3xl border-border p-6 shadow-soft">
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <p className="font-display text-lg font-bold text-brand-deep">
-            🤝 Koçum
-          </p>
-          <p className="mt-1 text-sm text-muted-foreground">
-            {coach
-              ? `${coach.name} · ${coach.title}`
-              : coachList.length === 0
-                ? "Sistemde henüz kayıtlı koç yok."
-                : "Henüz bir koç seçmedin."}
-          </p>
-        </div>
-        <Select
-          value={student.coachId ?? "none"}
-          onValueChange={(v) => setCoach(v === "none" ? null : v)}
-        >
-          <SelectTrigger className="w-64">
-            <SelectValue placeholder="Koç seç" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="none">Koçum yok</SelectItem>
-            {coachList.map((c) => (
-              <SelectItem key={c.id} value={c.id}>
-                {c.name} — {c.title}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
-    </Card>
+    <div className="space-y-4">
+      <Card className="rounded-3xl border-border p-6 shadow-soft">
+        <p className="font-display text-lg font-bold text-brand-deep">
+          🤝 Koçum
+        </p>
+        <p className="mt-1 text-sm text-muted-foreground">
+          {coach
+            ? `${coach.name} · ${coach.title}`
+            : "Henüz bir koçunla eşleşmedin."}
+        </p>
+      </Card>
+      <PairInvites role="student" />
+    </div>
   );
 }
+
 
 
 

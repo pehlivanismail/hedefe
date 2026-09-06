@@ -60,6 +60,7 @@ import {
   type Task,
   type Track,
 } from "@/lib/demo-data";
+import { PairInvites } from "@/components/pair-invites";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/koc")({
@@ -173,17 +174,20 @@ function KocPaneli() {
 
   if (!student) {
     return (
-      <Card className="mx-auto max-w-lg rounded-3xl border-border p-10 text-center shadow-soft">
-        <h1 className="font-display text-2xl font-bold text-brand-deep">
-          Henüz öğrencin yok
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Öğrenciler kendi panellerinden seni koç olarak seçtiğinde burada
-          görünürler.
-        </p>
-      </Card>
+      <div className="mx-auto max-w-lg space-y-4">
+        <Card className="rounded-3xl border-border p-10 text-center shadow-soft">
+          <h1 className="font-display text-2xl font-bold text-brand-deep">
+            Henüz öğrencin yok
+          </h1>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Öğrencini e-posta ile davet et; kabul ettiğinde burada görünür.
+          </p>
+        </Card>
+        <PairInvites role="coach" />
+      </div>
     );
   }
+
 
   const studentTasks = tasks.filter((t) => t.studentId === student.id);
   const pending = studentTasks.filter((t) => !t.done).length;
@@ -269,7 +273,9 @@ function KocPaneli() {
             </p>
           )}
         </div>
+        <PairInvites role="coach" />
       </aside>
+
 
       <div className="space-y-6">
         <Card className="rounded-3xl border-border bg-brand-deep p-8 text-primary-foreground shadow-soft">
