@@ -332,6 +332,8 @@ type Store = {
   moveTask: (id: string, day: number) => void;
   examData: Exam[];
   addLog: (topicId: string, log: Omit<StudyLog, "id">) => void;
+  addAreaLog: (areaId: string, log: Omit<StudyLog, "id">) => void;
+
   session: Session;
   studentList: Student[];
   currentStudent: Student | null;
