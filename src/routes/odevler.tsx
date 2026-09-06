@@ -273,13 +273,24 @@ function Odevler() {
                     )}
                   >
                     <div className="flex items-center justify-between gap-2">
-                      <span
-                        className={cn(
-                          "rounded-full px-2 py-0.5 text-[11px] font-semibold",
-                          KIND_STYLE[t.kind],
+                      <span className="flex items-center gap-1.5">
+                        <span
+                          className={cn(
+                            "rounded-full px-2 py-0.5 text-[11px] font-semibold",
+                            KIND_STYLE[t.kind],
+                          )}
+                        >
+                          {TASK_KIND_LABELS[t.kind]}
+                        </span>
+                        {t.assignedBy === "coach" && (
+                          <span
+                            title="Koçun verdiği ödev"
+                            aria-label="Koçun verdiği ödev"
+                            className="flex size-5 items-center justify-center rounded-full bg-brand-deep text-primary-foreground"
+                          >
+                            <GraduationCap className="size-3" />
+                          </span>
                         )}
-                      >
-                        {TASK_KIND_LABELS[t.kind]}
                       </span>
                       <GripVertical className="size-3.5 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
                     </div>
