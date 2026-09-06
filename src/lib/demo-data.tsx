@@ -505,6 +505,24 @@ export function subjectStats(subject: Subject) {
   };
 }
 
+/** Alanın konularından ortalama hakimiyet (0..5). */
+export function areaMasteryFromTopics(area: Area) {
+  if (!area.topics.length) return 0;
+  const sum = area.topics.reduce((n, t) => n + t.mastery, 0);
+  return Math.round(sum / area.topics.length);
+}
+
+/** Alan seviyesinde gösterilecek hakimiyet, borç ve kayıtlar. */
+export function areaStats(area: Area) {
+  const topicDebt = area.topics.reduce((n, t) => n + t.debt, 0);
+  return {
+    mastery: area.mastery ?? areaMasteryFromTopics(area),
+    debt: topicDebt + (area.debt ?? 0),
+    logs: area.logs ?? [],
+  };
+}
+
+
 /* ---------- Analiz yardımcıları ---------- */
 
 function hash(s: string) {
