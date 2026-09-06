@@ -34,11 +34,11 @@ import {
   DAYS,
   TASK_KIND_LABELS,
   examsForStudent,
-  flatTopics,
+  flatTargets,
   useDemoData,
   type Task,
   type TaskKind,
-  type TopicOption,
+  type StudyTarget,
 } from "@/lib/demo-data";
 import { cn } from "@/lib/utils";
 
@@ -67,14 +67,14 @@ const KIND_STYLE: Record<TaskKind, string> = {
   deneme: "bg-warning/15 text-warning",
 };
 
-function TopicPicker({
+function TargetPicker({
   topics,
   value,
   onSelect,
 }: {
-  topics: TopicOption[];
-  value: TopicOption | null;
-  onSelect: (t: TopicOption) => void;
+  topics: StudyTarget[];
+  value: StudyTarget | null;
+  onSelect: (t: StudyTarget) => void;
 }) {
   const [q, setQ] = useState("");
   const filtered = useMemo(() => {
@@ -86,7 +86,7 @@ function TopicPicker({
 
   return (
     <div className="space-y-2">
-      <Label>Konu</Label>
+      <Label>Alan veya Konu</Label>
       <div className="relative">
         <Search className="absolute top-2.5 left-3 size-4 text-muted-foreground" />
         <Input
@@ -99,23 +99,34 @@ function TopicPicker({
       <div className="max-h-52 space-y-1 overflow-y-auto rounded-xl border border-border p-1">
         {filtered.map((t) => (
           <button
-            key={t.topicId}
+            key={`${t.kind}-${t.id}`}
             type="button"
             onClick={() => onSelect(t)}
             className={cn(
               "w-full rounded-lg px-3 py-2 text-left text-sm transition-colors hover:bg-secondary",
-              value?.topicId === t.topicId && "bg-brand-soft text-brand-deep",
+              value?.kind === t.kind &&
+                value?.id === t.id &&
+                "bg-brand-soft text-brand-deep",
             )}
           >
-            <span className="block font-medium">{t.topicName}</span>
+            <span className="flex items-center gap-2 font-medium">
+              {t.name}
+              {t.kind === "area" && (
+                <span className="rounded-full bg-secondary px-2 py-0.5 text-[10px] font-semibold text-muted-foreground">
+                  Alan
+                </span>
+              )}
+            </span>
             <span className="block text-xs text-muted-foreground">
-              {t.examName} · {t.subjectName} · {t.areaName}
+              {t.kind === "area"
+                ? `${t.examName} · ${t.subjectName}`
+                : `${t.examName} · ${t.subjectName} · ${t.areaName}`}
             </span>
           </button>
         ))}
         {filtered.length === 0 && (
           <p className="px-3 py-6 text-center text-xs text-muted-foreground">
-            Konu bulunamadı
+            Sonuç bulunamadı
           </p>
         )}
       </div>
@@ -132,6 +143,7 @@ function Odevler() {
     currentStudent,
     examData,
     addLog,
+    addAreaLog,
     addMockExam,
   } = useDemoData();
 
@@ -142,11 +154,13 @@ function Odevler() {
 
   const topics = useMemo(
     () =>
-      currentStudent ? flatTopics(examsForStudent(examData, currentStudent)) : [],
+      currentStudent
+        ? flatTargets(examsForStudent(examData, currentStudent))
+        : [],
     [examData, currentStudent],
   );
 
-  const [picked, setPicked] = useState<TopicOption | null>(null);
+  const [picked, setPicked] = useState<StudyTarget | null>(null);
   const [day, setDay] = useState("0");
   const [note, setNote] = useState("");
 
@@ -187,14 +201,15 @@ function Odevler() {
 
   const saveTask = () => {
     if (!picked) {
-      toast.error("Lütfen bir konu seç");
+      toast.error("Lütfen bir alan veya konu seç");
       return;
     }
     addTask({
       kind: addKind ?? "konu",
       subject: picked.subjectName,
-      title: note.trim() || picked.topicName,
-      topicId: picked.topicId,
+      title: note.trim() || picked.name,
+      topicId: picked.kind === "topic" ? picked.id : null,
+      areaId: picked.kind === "area" ? picked.id : null,
       day: Number(day),
       studentId: currentStudent?.id ?? "s1",
     });
@@ -340,7 +355,7 @@ function Odevler() {
             </DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
-            <TopicPicker topics={topics} value={picked} onSelect={setPicked} />
+            <TargetPicker topics={topics} value={picked} onSelect={setPicked} />
             <div className="space-y-2">
               <Label>Açıklama (opsiyonel)</Label>
               <Input
@@ -426,14 +441,15 @@ function Odevler() {
                   }
                   const wrong = Number(res.wrong) || 0;
                   const blank = Number(res.blank) || 0;
-                  if (active.topicId)
-                    addLog(active.topicId, {
-                      date: new Date().toLocaleDateString("tr-TR"),
-                      source: active.title,
-                      solved,
-                      wrong,
-                      blank,
-                    });
+                  const log = {
+                    date: new Date().toLocaleDateString("tr-TR"),
+                    source: active.title,
+                    solved,
+                    wrong,
+                    blank,
+                  };
+                  if (active.topicId) addLog(active.topicId, log);
+                  else if (active.areaId) addAreaLog(active.areaId, log);
                   completeTask(active.id, { solved, wrong, blank });
                   setActive(null);
                   toast.success("Soru çözümü kaydedildi");
