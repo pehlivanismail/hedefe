@@ -59,15 +59,22 @@ function NetChart({
   data,
   color,
   id,
+  maxQuestions,
 }: {
   title: string;
   data: { date: string; net: number }[];
   color: string;
   id: string;
+  maxQuestions: number;
 }) {
   return (
     <Card className="rounded-3xl border-border p-6 shadow-soft">
-      <h3 className="font-display text-lg font-bold text-brand-deep">{title}</h3>
+      <h3 className="font-display text-lg font-bold text-brand-deep">
+        {title}{" "}
+        <span className="text-sm font-normal text-muted-foreground">
+          ({maxQuestions} soru)
+        </span>
+      </h3>
       <div className="mt-4 h-64">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data} margin={{ left: -20, right: 8, top: 8 }}>
@@ -79,12 +86,28 @@ function NetChart({
             </defs>
             <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
             <XAxis dataKey="date" tickLine={false} axisLine={false} fontSize={12} />
-            <YAxis tickLine={false} axisLine={false} fontSize={12} />
+            <YAxis
+              domain={[0, maxQuestions]}
+              tickLine={false}
+              axisLine={false}
+              fontSize={12}
+            />
             <Tooltip
-              contentStyle={{
-                borderRadius: 12,
-                border: "1px solid var(--border)",
-                background: "var(--card)",
+              content={({ active, payload, label }) => {
+                if (!active || !payload || !payload.length) return null;
+                const net = Number(payload[0].value) || 0;
+                const pct = maxQuestions ? (net / maxQuestions) * 100 : 0;
+                return (
+                  <div className="rounded-xl border border-border bg-card p-3 shadow-soft">
+                    <p className="text-xs text-muted-foreground">{label}</p>
+                    <p className="font-display text-sm font-bold text-brand-deep">
+                      {net.toFixed(2)} net
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      {maxQuestions} sorunun %{pct.toFixed(1}&apos;i
+                    </p>
+                  </div>
+                );
               }}
             />
             <Area
