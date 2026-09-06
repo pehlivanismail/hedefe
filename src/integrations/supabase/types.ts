@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      pair_invites: {
+        Row: {
+          created_at: string
+          from_role: Database["public"]["Enums"]["app_role"]
+          from_user: string
+          id: string
+          message: string
+          responded_at: string | null
+          status: string
+          to_email: string
+          to_user: string | null
+        }
+        Insert: {
+          created_at?: string
+          from_role: Database["public"]["Enums"]["app_role"]
+          from_user: string
+          id?: string
+          message?: string
+          responded_at?: string | null
+          status?: string
+          to_email: string
+          to_user?: string | null
+        }
+        Update: {
+          created_at?: string
+          from_role?: Database["public"]["Enums"]["app_role"]
+          from_user?: string
+          id?: string
+          message?: string
+          responded_at?: string | null
+          status?: string
+          to_email?: string
+          to_user?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           coach_id: string | null
@@ -84,6 +120,11 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      my_email: { Args: never; Returns: string }
+      respond_pair_invite: {
+        Args: { _accept: boolean; _invite_id: string }
+        Returns: undefined
       }
     }
     Enums: {
