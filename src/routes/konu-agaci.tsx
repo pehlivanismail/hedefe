@@ -163,21 +163,45 @@ function KonuAgaci() {
                     </div>
                     <AccordionContent className="px-4 pb-4 pt-3">
                       <Accordion type="multiple" className="space-y-2">
-                        {subject.areas.map((area) => (
+                        {subject.areas.map((area) => {
+                          const ar = areaStats(area);
+                          return (
                           <AccordionItem
                             key={area.id}
                             value={area.id}
                             className="rounded-xl border border-border bg-secondary/40"
                           >
                             <AccordionTrigger className="px-4 py-2.5 text-sm font-semibold hover:no-underline">
-                              {area.name}
+                              <div className="flex w-full items-center justify-between gap-3 pr-2">
+                                <span>{area.name}</span>
+                                <span className="flex items-center gap-3">
+                                  <MasteryDots level={ar.mastery} />
+                                  <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-[11px] font-semibold text-destructive">
+                                    Borç: {ar.debt}
+                                  </span>
+                                </span>
+                              </div>
                             </AccordionTrigger>
                             <AccordionContent className="px-2 pb-2">
+                              <div className="px-2 pb-2">
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  className="w-full rounded-lg"
+                                  onClick={() =>
+                                    setActive({ kind: "area", id: area.id })
+                                  }
+                                >
+                                  <Plus className="size-3.5" /> Alan çalışması ({area.name})
+                                </Button>
+                              </div>
                               <ul className="space-y-1">
                                 {area.topics.map((t) => (
                                   <li key={t.id}>
                                     <button
-                                      onClick={() => setActive(t)}
+                                      onClick={() =>
+                                        setActive({ kind: "topic", id: t.id })
+                                      }
                                       className="grid w-full grid-cols-[1fr_auto] items-center gap-3 rounded-lg px-3 py-2 text-left transition-colors hover:bg-card"
                                     >
                                       <span className="text-sm text-foreground">
@@ -195,7 +219,9 @@ function KonuAgaci() {
                               </ul>
                             </AccordionContent>
                           </AccordionItem>
-                        ))}
+                          );
+                        })}
+
                       </Accordion>
                     </AccordionContent>
                   </AccordionItem>
