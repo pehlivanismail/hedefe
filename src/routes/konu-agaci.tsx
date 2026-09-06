@@ -27,12 +27,16 @@ import { toast } from "sonner";
 import {
   subjectStats,
   topicStats,
+  areaStats,
   useDemoData,
   examsForStudent,
   TRACK_LABELS,
-  type Topic,
+  type StudyLog,
 } from "@/lib/demo-data";
 import { cn } from "@/lib/utils";
+
+type Detail = { kind: "topic" | "area"; id: string };
+
 
 export const Route = createFileRoute("/konu-agaci")({
   head: () => ({
