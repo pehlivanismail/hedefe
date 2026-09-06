@@ -272,9 +272,14 @@ function Odevler() {
               className="flex w-64 shrink-0 flex-col rounded-2xl bg-secondary/60 p-3"
             >
               <div className="mb-3 flex items-center justify-between px-1">
-                <span className="font-display text-sm font-bold text-brand-deep">
-                  {d}
-                </span>
+                <div>
+                  <span className="font-display text-sm font-bold text-brand-deep">
+                    {d}
+                  </span>
+                  <span className="block text-[11px] text-muted-foreground">
+                    {format(addDays(start, i), "d MMM", { locale: tr })}
+                  </span>
+                </div>
                 <span className="rounded-full bg-card px-2 py-0.5 text-[11px] font-semibold text-muted-foreground">
                   {dayTasks.length}
                 </span>
