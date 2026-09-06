@@ -131,6 +131,26 @@ function Odevler() {
   };
 
   const saveTask = () => {
+    if (addKind === "deneme") {
+      const label =
+        examScope === "TYT"
+          ? "TYT Denemesi"
+          : examScope === "AYT"
+            ? "AYT Denemesi"
+            : `${examScope} Branş Denemesi`;
+      addTask({
+        kind: "deneme",
+        subject: examScope,
+        title: note.trim() || label,
+        topicId: null,
+        areaId: null,
+        day: Number(day),
+        studentId: currentStudent?.id ?? "s1",
+      });
+      setAddKind(null);
+      toast.success("Deneme eklendi");
+      return;
+    }
     if (!subject) {
       toast.error("Lütfen bir ders seç");
       return;
@@ -151,6 +171,7 @@ function Odevler() {
     setAddKind(null);
     toast.success(`${TASK_KIND_LABELS[addKind ?? "konu"]} eklendi`);
   };
+
 
   return (
     <div className="space-y-6">
