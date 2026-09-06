@@ -254,7 +254,22 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
         .select("*")
         .eq("student_id", targetStudentId);
       if (error) throw error;
-      return data as any as Task[];
+      // Map DB snake_case fields to Task camelCase fields
+      return (data || []).map((row: any): Task => ({
+        id: row.id,
+        kind: row.kind as TaskKind,
+        subject: row.subject,
+        title: row.title,
+        day: row.day,
+        weekOffset: row.week_offset ?? 0,
+        done: row.done,
+        studentId: row.student_id,
+        topicId: row.topic_id,
+        areaId: row.area_id,
+        areaName: row.area_name,
+        assignedBy: row.assigned_by,
+        result: row.result as TaskResult | undefined,
+      }));
     },
     enabled: !!targetStudentId,
   });
