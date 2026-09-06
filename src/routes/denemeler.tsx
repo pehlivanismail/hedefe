@@ -218,6 +218,16 @@ function Denemeler() {
                     {total(e).toFixed(1)}
                   </span>
                 </TableCell>
+                <TableCell className="text-right">
+                  <span className="text-sm font-medium text-muted-foreground">
+                    {(
+                      (total(e) /
+                        EXAM_QUESTION_COUNTS[e.type === "AYT" ? "AYT" : "TYT"]) *
+                      100
+                    ).toFixed(1)}
+                    %
+                  </span>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
