@@ -10,7 +10,7 @@ import {
   ListChecks,
   Plus,
 } from "lucide-react";
-import { addWeeks, endOfWeek, format, startOfWeek } from "date-fns";
+import { addDays, addWeeks, endOfWeek, format, startOfWeek } from "date-fns";
 import { tr } from "date-fns/locale";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -128,12 +128,15 @@ function Odevler() {
   const weekTasks = tasks.filter((t) => t.studentId === currentStudent?.id && (t.weekOffset || 0) === weekOffset);
 
   const openAdd = (kind: TaskKind) => {
+    const jsDay = new Date().getDay();
+    const currentAppDay = jsDay === 0 ? 6 : jsDay - 1;
+
     setSubjectId("");
     setAreaId("");
     setTopicId("");
     setExamScope("TYT");
     setNote("");
-    setDay("0");
+    setDay(currentAppDay.toString());
     setAddKind(kind);
   };
 
@@ -453,11 +456,14 @@ function Odevler() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  {DAYS.map((d, i) => (
-                    <SelectItem key={d} value={String(i)}>
-                      {d}
-                    </SelectItem>
-                  ))}
+                  {DAYS.map((d, i) => {
+                    const targetDate = addDays(start, i);
+                    return (
+                      <SelectItem key={d} value={String(i)}>
+                        {d} ({format(targetDate, "d MMM", { locale: tr })})
+                      </SelectItem>
+                    );
+                  })}
                 </SelectContent>
               </Select>
             </div>
