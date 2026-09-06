@@ -93,12 +93,19 @@ function Odevler() {
   const [subjectId, setSubjectId] = useState("");
   const [areaId, setAreaId] = useState("");
   const [topicId, setTopicId] = useState("");
+  const [examScope, setExamScope] = useState("TYT");
   const [day, setDay] = useState("0");
   const [note, setNote] = useState("");
 
   const subject = subjects.find((s) => s.id === subjectId) ?? null;
   const area = subject?.areas.find((a) => a.id === areaId) ?? null;
   const topic = area?.topics.find((t) => t.id === topicId) ?? null;
+
+  /** Deneme ödevleri için benzersiz ders adları (branş denemesi) */
+  const denemeSubjects = useMemo(
+    () => Array.from(new Set(subjects.map((s) => s.name))).sort((a, b) => a.localeCompare(b, "tr")),
+    [subjects],
+  );
 
   const [res, setRes] = useState({ solved: "", wrong: "", blank: "" });
 
@@ -111,10 +118,12 @@ function Odevler() {
     setSubjectId("");
     setAreaId("");
     setTopicId("");
+    setExamScope("TYT");
     setNote("");
     setDay("0");
     setAddKind(kind);
   };
+
 
   const openRecord = (t: Task) => {
     setRes({ solved: "", wrong: "", blank: "" });
