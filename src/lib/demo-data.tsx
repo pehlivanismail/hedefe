@@ -157,63 +157,7 @@ const baseLogs: StudyLog[] = [
 export const exams: Exam[] = [
   ...realExams,
 
-  {
-    id: "ayt-sozel",
-    name: "AYT Sözel",
-    track: "sozel",
-    subjects: [
-      {
-        id: "ayt-edebiyat",
-        name: "Edebiyat",
-        areas: [
-          {
-            id: "siir-bilgisi",
-            name: "Şiir Bilgisi",
-            topics: [
-              topic("siir-1", "Ölçü ve Uyak", 4, 1, baseLogs),
-              topic("siir-2", "Söz Sanatları", 3, 3),
-            ],
-          },
-          {
-            id: "edebi-donemler",
-            name: "Edebi Dönemler",
-            topics: [
-              topic("donem-1", "Divan Edebiyatı", 2, 5),
-              topic("donem-2", "Tanzimat Edebiyatı", 2, 4),
-            ],
-          },
-        ],
-      },
-      {
-        id: "ayt-tarih-sozel",
-        name: "Tarih",
-        areas: [
-          {
-            id: "osmanli",
-            name: "Osmanlı Tarihi",
-            topics: [
-              topic("osmanli-1", "Kuruluş Dönemi", 3, 2, baseLogs),
-              topic("osmanli-2", "Dağılma Dönemi", 1, 6),
-            ],
-          },
-        ],
-      },
-      {
-        id: "ayt-cografya-sozel",
-        name: "Coğrafya",
-        areas: [
-          {
-            id: "beseri",
-            name: "Beşeri Coğrafya",
-            topics: [
-              topic("beseri-1", "Nüfus Politikaları", 3, 2),
-              topic("beseri-2", "Göçler", 2, 3),
-            ],
-          },
-        ],
-      },
-    ],
-  },
+
   {
     id: "ayt-esit",
     name: "AYT Eşit Ağırlık",
