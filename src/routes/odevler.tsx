@@ -145,6 +145,11 @@ function Odevler() {
 
 
   const saveTask = () => {
+    if (!currentStudent?.id) {
+      toast.error("Öğrenci bilgisi bulunamadı");
+      return;
+    }
+
     if (addKind === "deneme") {
       const label =
         examScope === "TYT"
@@ -161,7 +166,7 @@ function Odevler() {
         areaId: null,
         day: Number(day),
         weekOffset,
-        studentId: currentStudent?.id ?? "s1",
+        studentId: currentStudent.id,
       });
       setAddKind(null);
       toast.success("Deneme eklendi");
@@ -184,7 +189,7 @@ function Odevler() {
       areaId: topic ? null : area.id,
       day: Number(day),
       weekOffset,
-      studentId: currentStudent?.id ?? "s1",
+      studentId: currentStudent.id,
     });
 
     setAddKind(null);

@@ -77,10 +77,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return;
     }
     
-    // Fetch all user roles for the coach/student listings
     const { data: roleRows, error } = await supabase
         .from("user_roles")
-        .select("user_id, email, role, exam_tracks");
+        .select("user_id, role, exam_tracks");
         
     console.log("Supabase Auth UID:", uid);
     console.log("Supabase User Roles Fetch Error:", error ? JSON.stringify(error) : "None");
