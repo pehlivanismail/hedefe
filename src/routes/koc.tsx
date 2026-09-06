@@ -1,6 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { CalendarIcon, Search, TriangleAlert, UserRound } from "lucide-react";
+import {
+  CalendarIcon,
+  GraduationCap,
+  Search,
+  TriangleAlert,
+  UserRound,
+} from "lucide-react";
 import { format } from "date-fns";
 import { tr } from "date-fns/locale";
 import {
@@ -28,11 +34,20 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import {
   DAYS,
   SUBJECT_OPTIONS,
+  TASK_KIND_LABELS,
   TRACK_LABELS,
   daysUntilYks,
   examsForStudent,
@@ -41,7 +56,9 @@ import {
   subjectStats,
   useDemoData,
   weakestTopics,
+  type MockExam,
   type Student,
+  type Task,
   type Track,
 } from "@/lib/demo-data";
 import { cn } from "@/lib/utils";
@@ -247,9 +264,15 @@ function KocPaneli() {
         </Card>
 
         <Tabs defaultValue="analiz">
-          <TabsList className="rounded-full">
+          <TabsList className="flex-wrap rounded-3xl">
             <TabsTrigger value="analiz" className="rounded-full">
               Konu Analizi
+            </TabsTrigger>
+            <TabsTrigger value="plan" className="rounded-full">
+              Haftalık Plan
+            </TabsTrigger>
+            <TabsTrigger value="denemeler" className="rounded-full">
+              Denemeler
             </TabsTrigger>
             <TabsTrigger value="genel" className="rounded-full">
               Genel Durum
@@ -266,6 +289,14 @@ function KocPaneli() {
             <TopicAnalysis student={student} />
           </TabsContent>
 
+          <TabsContent value="plan" className="mt-4">
+            <StudentWeek tasks={studentTasks} />
+          </TabsContent>
+
+          <TabsContent value="denemeler" className="mt-4">
+            <StudentMockExams student={student} />
+          </TabsContent>
+
           <TabsContent value="genel" className="mt-4 space-y-3">
             {studentTasks.length === 0 && (
               <p className="text-sm text-muted-foreground">
@@ -278,8 +309,11 @@ function KocPaneli() {
                 className="flex items-center justify-between rounded-2xl border border-border bg-card p-4 shadow-sm"
               >
                 <div>
-                  <span className="rounded-full bg-brand-soft px-2 py-0.5 text-[11px] font-semibold text-brand-deep">
-                    {t.subject}
+                  <span className="flex items-center gap-1.5">
+                    <span className="rounded-full bg-brand-soft px-2 py-0.5 text-[11px] font-semibold text-brand-deep">
+                      {t.subject}
+                    </span>
+                    {t.assignedBy === "coach" && <CoachBadge />}
                   </span>
                   <p
                     className={cn(
@@ -296,6 +330,7 @@ function KocPaneli() {
               </div>
             ))}
           </TabsContent>
+
 
           <TabsContent value="odev" className="mt-4">
             <Card className="max-w-xl rounded-3xl border-border p-6 shadow-soft">
@@ -367,6 +402,7 @@ function KocPaneli() {
                       title: description,
                       day,
                       studentId: student.id,
+                      assignedBy: "coach",
                     });
                     setDescription("");
                     toast.success(`${student.name} için ödev atandı`);
@@ -560,5 +596,133 @@ function StudentScores({ student }: { student: Student }) {
         </Card>
       ))}
     </div>
+  );
+}
+
+function CoachBadge() {
+  return (
+    <span
+      title="Koçun verdiği ödev"
+      aria-label="Koçun verdiği ödev"
+      className="flex size-5 items-center justify-center rounded-full bg-brand-deep text-primary-foreground"
+    >
+      <GraduationCap className="size-3" />
+    </span>
+  );
+}
+
+function StudentWeek({ tasks }: { tasks: Task[] }) {
+  return (
+    <div className="flex gap-4 overflow-x-auto pb-4">
+      {DAYS.map((d, i) => {
+        const dayTasks = tasks.filter((t) => t.day === i);
+        return (
+          <div
+            key={d}
+            className="flex w-60 shrink-0 flex-col rounded-2xl bg-secondary/60 p-3"
+          >
+            <div className="mb-3 flex items-center justify-between px-1">
+              <span className="font-display text-sm font-bold text-brand-deep">
+                {d}
+              </span>
+              <span className="rounded-full bg-card px-2 py-0.5 text-[11px] font-semibold text-muted-foreground">
+                {dayTasks.length}
+              </span>
+            </div>
+            <div className="space-y-2">
+              {dayTasks.map((t) => (
+                <div
+                  key={t.id}
+                  className={cn(
+                    "rounded-xl border border-border bg-card p-3 shadow-sm",
+                    t.done && "opacity-55",
+                  )}
+                >
+                  <div className="flex items-center gap-1.5">
+                    <span className="rounded-full bg-brand-soft px-2 py-0.5 text-[11px] font-semibold text-brand-deep">
+                      {TASK_KIND_LABELS[t.kind]}
+                    </span>
+                    {t.assignedBy === "coach" && <CoachBadge />}
+                  </div>
+                  <p
+                    className={cn(
+                      "mt-2 text-sm leading-snug font-medium",
+                      t.done && "text-muted-foreground line-through",
+                    )}
+                  >
+                    {t.title}
+                  </p>
+                  <p className="mt-1 text-[11px] text-muted-foreground">
+                    {t.subject}
+                    {t.done && t.result?.solved != null
+                      ? ` · ${t.result.solved} soru · ${t.result.wrong ?? 0} yanlış`
+                      : ""}
+                  </p>
+                </div>
+              ))}
+              {dayTasks.length === 0 && (
+                <p className="rounded-xl border border-dashed border-border px-3 py-6 text-center text-xs text-muted-foreground">
+                  Boş gün
+                </p>
+              )}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+const netTotal = (e: MockExam) => e.turkce + e.matematik + e.sosyal + e.fen;
+
+function StudentMockExams({ student }: { student: Student }) {
+  const { mockExamList } = useDemoData();
+  const rows = mockExamList.filter(
+    (e) => !e.studentId || e.studentId === student.id,
+  );
+
+  if (rows.length === 0) {
+    return (
+      <Card className="rounded-3xl border-dashed p-8 text-center text-sm text-muted-foreground">
+        Bu öğrencinin kayıtlı denemesi yok.
+      </Card>
+    );
+  }
+
+  return (
+    <Card className="overflow-hidden rounded-3xl border-border p-0 shadow-soft">
+      <Table>
+        <TableHeader>
+          <TableRow className="bg-secondary/60">
+            <TableHead>Tarih</TableHead>
+            <TableHead>Kurum</TableHead>
+            <TableHead>Tür</TableHead>
+            <TableHead className="text-right">Türkçe</TableHead>
+            <TableHead className="text-right">Matematik</TableHead>
+            <TableHead className="text-right">Sosyal</TableHead>
+            <TableHead className="text-right">Fen</TableHead>
+            <TableHead className="text-right">Toplam Net</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {rows.map((e, i) => (
+            <TableRow key={e.id} className={cn(i % 2 === 1 && "bg-secondary/30")}>
+              <TableCell>{e.date}</TableCell>
+              <TableCell className="font-medium">{e.publisher}</TableCell>
+              <TableCell className="text-muted-foreground">{e.type}</TableCell>
+              <TableCell className="text-right">{e.turkce}</TableCell>
+              <TableCell className="text-right">{e.matematik}</TableCell>
+              <TableCell className="text-right">{e.sosyal}</TableCell>
+              <TableCell className="text-right">{e.fen}</TableCell>
+              <TableCell className="text-right">
+                <span className="rounded-full bg-brand-soft px-3 py-1 font-display text-sm font-bold text-brand-deep">
+                  {netTotal(e).toFixed(1)}
+                </span>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </Card>
   );
 }

@@ -90,6 +90,8 @@ export type Task = {
   studentId: string;
   topicId?: string | null | undefined;
   areaId?: string | null | undefined;
+  /** Ödevi kim ekledi: öğrenci mi koç mu */
+  assignedBy?: "student" | "coach" | undefined;
 
   result?: TaskResult | undefined;
 };
@@ -103,6 +105,7 @@ export type MockExam = {
   matematik: number;
   sosyal: number;
   fen: number;
+  studentId?: string | undefined;
 };
 
 export type Student = {
@@ -379,7 +382,13 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       addTask: (t) =>
         setTasks((prev) => [
           ...prev,
-          { kind: "konu" as TaskKind, ...t, id: `t-${Date.now()}`, done: false },
+          {
+            kind: "konu" as TaskKind,
+            assignedBy: session?.role === "coach" ? "coach" : "student",
+            ...t,
+            id: `t-${Date.now()}`,
+            done: false,
+          },
         ]),
       completeTask: (id, result) =>
         setTasks((prev) =>
@@ -390,7 +399,10 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       mockExamList,
       addMockExam: (e) => {
         const id = `d-${Date.now()}`;
-        setMockExamList((prev) => [...prev, { ...e, id }]);
+        setMockExamList((prev) => [
+          ...prev,
+          { studentId: currentStudent?.id, ...e, id },
+        ]);
         return id;
       },
       toggleTask: (id) =>
