@@ -176,13 +176,15 @@ function Odevler() {
     }
     addTask({
       kind: addKind ?? "konu",
-      subject: subject.name,
+      subject: `${subject.examName.startsWith("AYT") ? "AYT" : "TYT"} ${subject.name}`,
+      areaName: area.name,
       title: note.trim() || topic?.name || area.name,
       topicId: topic ? topic.id : null,
       areaId: topic ? null : area.id,
       day: Number(day),
       studentId: currentStudent?.id ?? "s1",
     });
+
     setAddKind(null);
     toast.success(`${TASK_KIND_LABELS[addKind ?? "konu"]} eklendi`);
   };
