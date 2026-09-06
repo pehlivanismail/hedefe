@@ -105,9 +105,15 @@ function KocPaneli() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [trackFilter, setTrackFilter] = useState<Track | "all">("all");
-  const [subject, setSubject] = useState("Matematik");
+  const [subject, setSubject] = useState("");
+  const [areaId, setAreaId] = useState("");
+  const [taskKind, setTaskKind] = useState<"konu" | "soru">("soru");
+  const [examScope, setExamScope] = useState("TYT");
   const [description, setDescription] = useState("");
+  const [denemeNote, setDenemeNote] = useState("");
   const [due, setDue] = useState<Date | undefined>(new Date());
+  const [denemeDue, setDenemeDue] = useState<Date | undefined>(new Date());
+
 
   const pendingOf = (id: string) =>
     tasks.filter((t) => t.studentId === id && !t.done).length;
