@@ -101,11 +101,17 @@ function Odevler() {
   const area = subject?.areas.find((a) => a.id === areaId) ?? null;
   const topic = area?.topics.find((t) => t.id === topicId) ?? null;
 
-  /** Deneme ödevleri için benzersiz ders adları (branş denemesi) */
-  const denemeSubjects = useMemo(
-    () => Array.from(new Set(subjects.map((s) => s.name))).sort((a, b) => a.localeCompare(b, "tr")),
-    [subjects],
-  );
+  /** Deneme ödevleri için benzersiz dersler (TYT/AYT önekli branş denemesi) */
+  const denemeSubjects = useMemo(() => {
+    const seen = new Map<string, string>();
+    for (const s of subjects) {
+      const prefix = s.examName.startsWith("AYT") ? "AYT" : "TYT";
+      seen.set(`${prefix} ${s.name}`, `${prefix} ${s.name} Branş Denemesi`);
+    }
+    return Array.from(seen, ([value, label]) => ({ value, label })).sort(
+      (a, b) => a.label.localeCompare(b.label, "tr"),
+    );
+  }, [subjects]);
 
   const [res, setRes] = useState({ solved: "", wrong: "", blank: "" });
 
