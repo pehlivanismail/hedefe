@@ -76,6 +76,8 @@ export type TaskResult = {
   solved?: number;
   wrong?: number;
   blank?: number;
+  /** Kaynak adı (kitap / yayın / fasikül) */
+  source?: string;
   /** Deneme için */
   mockExamId?: string;
   note?: string;
@@ -91,11 +93,16 @@ export type Task = {
   studentId: string;
   topicId?: string | null | undefined;
   areaId?: string | null | undefined;
+  /** Alan / konu adı (günlük raporda gösterilir) */
+  areaName?: string | undefined;
   /** Ödevi kim ekledi: öğrenci mi koç mu */
   assignedBy?: "student" | "coach" | undefined;
+  /** Tamamlanma tarihi (YYYY-MM-DD) */
+  completedAt?: string | undefined;
 
   result?: TaskResult | undefined;
 };
+
 
 export type MockExam = {
   id: string;
