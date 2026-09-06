@@ -169,7 +169,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       ? profiles.filter((p) => p.coach_id === user.id).map(p => toStudent(p, p.track))
       : [];
       
+    
+    console.log("DEBUG AUTH STATE:", {
+      profilesLength: profiles.length,
+      coachConnectionsLength: coachConnections.length,
+      userRole: role,
+      userId: user?.id,
+      meCoachId: me?.coach_id,
+      profilesSample: profiles.slice(0,2),
+    });
     // Attach coach ID to the current student
+
     let currentStudent = role === "student" && me ? toStudent(me, (user?.user_metadata?.["track"] as string | undefined)) : null;
 
     return {
