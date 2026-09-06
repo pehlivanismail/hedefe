@@ -402,6 +402,7 @@ function KocPaneli() {
                       title: description,
                       day,
                       studentId: student.id,
+                      assignedBy: "coach",
                     });
                     setDescription("");
                     toast.success(`${student.name} için ödev atandı`);
