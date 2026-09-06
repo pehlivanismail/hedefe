@@ -8,7 +8,6 @@ import {
   GripVertical,
   ListChecks,
   Plus,
-  Search,
 } from "lucide-react";
 import { addWeeks, endOfWeek, format, startOfWeek } from "date-fns";
 import { tr } from "date-fns/locale";
@@ -34,12 +33,11 @@ import {
   DAYS,
   TASK_KIND_LABELS,
   examsForStudent,
-  flatTargets,
   useDemoData,
   type Task,
   type TaskKind,
-  type StudyTarget,
 } from "@/lib/demo-data";
+import { MockExamForm } from "@/components/mock-exam-form";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/odevler")({
@@ -67,73 +65,6 @@ const KIND_STYLE: Record<TaskKind, string> = {
   deneme: "bg-warning/15 text-warning",
 };
 
-function TargetPicker({
-  topics,
-  value,
-  onSelect,
-}: {
-  topics: StudyTarget[];
-  value: StudyTarget | null;
-  onSelect: (t: StudyTarget) => void;
-}) {
-  const [q, setQ] = useState("");
-  const filtered = useMemo(() => {
-    const needle = q.toLocaleLowerCase("tr");
-    return topics
-      .filter((t) => t.label.toLocaleLowerCase("tr").includes(needle))
-      .slice(0, 60);
-  }, [topics, q]);
-
-  return (
-    <div className="space-y-2">
-      <Label>Alan veya Konu</Label>
-      <div className="relative">
-        <Search className="absolute top-2.5 left-3 size-4 text-muted-foreground" />
-        <Input
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          placeholder="Ders, alan veya konu ara…"
-          className="pl-9"
-        />
-      </div>
-      <div className="max-h-52 space-y-1 overflow-y-auto rounded-xl border border-border p-1">
-        {filtered.map((t) => (
-          <button
-            key={`${t.kind}-${t.id}`}
-            type="button"
-            onClick={() => onSelect(t)}
-            className={cn(
-              "w-full rounded-lg px-3 py-2 text-left text-sm transition-colors hover:bg-secondary",
-              value?.kind === t.kind &&
-                value?.id === t.id &&
-                "bg-brand-soft text-brand-deep",
-            )}
-          >
-            <span className="flex items-center gap-2 font-medium">
-              {t.name}
-              {t.kind === "area" && (
-                <span className="rounded-full bg-secondary px-2 py-0.5 text-[10px] font-semibold text-muted-foreground">
-                  Alan
-                </span>
-              )}
-            </span>
-            <span className="block text-xs text-muted-foreground">
-              {t.kind === "area"
-                ? `${t.examName} · ${t.subjectName}`
-                : `${t.examName} · ${t.subjectName} · ${t.areaName}`}
-            </span>
-          </button>
-        ))}
-        {filtered.length === 0 && (
-          <p className="px-3 py-6 text-center text-xs text-muted-foreground">
-            Sonuç bulunamadı
-          </p>
-        )}
-      </div>
-    </div>
-  );
-}
-
 function Odevler() {
   const {
     tasks,
@@ -152,27 +83,24 @@ function Odevler() {
   const [addKind, setAddKind] = useState<TaskKind | null>(null);
   const [active, setActive] = useState<Task | null>(null);
 
-  const topics = useMemo(
-    () =>
-      currentStudent
-        ? flatTargets(examsForStudent(examData, currentStudent))
-        : [],
-    [examData, currentStudent],
-  );
+  const subjects = useMemo(() => {
+    if (!currentStudent) return [];
+    return examsForStudent(examData, currentStudent).flatMap((e) =>
+      e.subjects.map((s) => ({ ...s, examName: e.name })),
+    );
+  }, [examData, currentStudent]);
 
-  const [picked, setPicked] = useState<StudyTarget | null>(null);
+  const [subjectId, setSubjectId] = useState("");
+  const [areaId, setAreaId] = useState("");
+  const [topicId, setTopicId] = useState("");
   const [day, setDay] = useState("0");
   const [note, setNote] = useState("");
 
+  const subject = subjects.find((s) => s.id === subjectId) ?? null;
+  const area = subject?.areas.find((a) => a.id === areaId) ?? null;
+  const topic = area?.topics.find((t) => t.id === topicId) ?? null;
+
   const [res, setRes] = useState({ solved: "", wrong: "", blank: "" });
-  const [mock, setMock] = useState({
-    publisher: "",
-    type: "TYT",
-    turkce: "",
-    matematik: "",
-    sosyal: "",
-    fen: "",
-  });
 
   const base = addWeeks(new Date(), weekOffset);
   const start = startOfWeek(base, { weekStartsOn: 1 });
@@ -180,7 +108,9 @@ function Odevler() {
   const weekTasks = tasks.filter((t) => t.studentId === currentStudent?.id);
 
   const openAdd = (kind: TaskKind) => {
-    setPicked(null);
+    setSubjectId("");
+    setAreaId("");
+    setTopicId("");
     setNote("");
     setDay("0");
     setAddKind(kind);
@@ -188,28 +118,24 @@ function Odevler() {
 
   const openRecord = (t: Task) => {
     setRes({ solved: "", wrong: "", blank: "" });
-    setMock({
-      publisher: "",
-      type: "TYT",
-      turkce: "",
-      matematik: "",
-      sosyal: "",
-      fen: "",
-    });
     setActive(t);
   };
 
   const saveTask = () => {
-    if (!picked) {
-      toast.error("Lütfen bir alan veya konu seç");
+    if (!subject) {
+      toast.error("Lütfen bir ders seç");
+      return;
+    }
+    if (!area) {
+      toast.error("Lütfen bir alan seç");
       return;
     }
     addTask({
       kind: addKind ?? "konu",
-      subject: picked.subjectName,
-      title: note.trim() || picked.name,
-      topicId: picked.kind === "topic" ? picked.id : null,
-      areaId: picked.kind === "area" ? picked.id : null,
+      subject: subject.name,
+      title: note.trim() || topic?.name || area.name,
+      topicId: topic ? topic.id : null,
+      areaId: topic ? null : area.id,
       day: Number(day),
       studentId: currentStudent?.id ?? "s1",
     });
@@ -355,7 +281,75 @@ function Odevler() {
             </DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
-            <TargetPicker topics={topics} value={picked} onSelect={setPicked} />
+            <div className="space-y-2">
+              <Label>Ders</Label>
+              <Select
+                value={subjectId}
+                onValueChange={(v) => {
+                  setSubjectId(v);
+                  setAreaId("");
+                  setTopicId("");
+                }}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Ders seç" />
+                </SelectTrigger>
+                <SelectContent>
+                  {subjects.map((s) => (
+                    <SelectItem key={s.id} value={s.id}>
+                      {s.examName} · {s.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2">
+              <Label>Alan</Label>
+              <Select
+                value={areaId}
+                onValueChange={(v) => {
+                  setAreaId(v);
+                  setTopicId("");
+                }}
+                disabled={!subject}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Alan seç" />
+                </SelectTrigger>
+                <SelectContent>
+                  {(subject?.areas ?? []).map((a) => (
+                    <SelectItem key={a.id} value={a.id}>
+                      {a.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2">
+              <Label>
+                Konu{" "}
+                <span className="text-xs font-normal text-muted-foreground">
+                  (opsiyonel — boş bırakırsan alan geneli sayılır)
+                </span>
+              </Label>
+              <Select
+                value={topicId}
+                onValueChange={(v) => setTopicId(v === "__all" ? "" : v)}
+                disabled={!area}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Tüm alan" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="__all">Tüm alan</SelectItem>
+                  {(area?.topics ?? []).map((t) => (
+                    <SelectItem key={t.id} value={t.id}>
+                      {t.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
             <div className="space-y-2">
               <Label>Açıklama (opsiyonel)</Label>
               <Input
@@ -461,84 +455,21 @@ function Odevler() {
           )}
 
           {active?.kind === "deneme" && (
-            <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-3">
-                <div className="space-y-2">
-                  <Label>Kurum / Yayın</Label>
-                  <Input
-                    value={mock.publisher}
-                    placeholder="Ör: 3D Yayınları"
-                    onChange={(e) =>
-                      setMock({ ...mock, publisher: e.target.value })
-                    }
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label>Tür</Label>
-                  <Select
-                    value={mock.type}
-                    onValueChange={(v) => setMock({ ...mock, type: v })}
-                  >
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="TYT">TYT</SelectItem>
-                      <SelectItem value="AYT">AYT</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-3">
-                {(["turkce", "matematik", "sosyal", "fen"] as const).map((k) => (
-                  <div key={k} className="space-y-2">
-                    <Label className="capitalize">
-                      {k === "turkce"
-                        ? "Türkçe net"
-                        : k === "matematik"
-                          ? "Matematik net"
-                          : k === "sosyal"
-                            ? "Sosyal net"
-                            : "Fen net"}
-                    </Label>
-                    <Input
-                      type="number"
-                      step="0.25"
-                      value={mock[k]}
-                      onChange={(e) => setMock({ ...mock, [k]: e.target.value })}
-                    />
-                  </div>
-                ))}
-              </div>
-              <Button
-                className="w-full rounded-xl"
-                onClick={() => {
-                  if (!mock.publisher.trim()) {
-                    toast.error("Kurum adı gerekli");
-                    return;
-                  }
-                  const id = addMockExam({
-                    date: new Date().toLocaleDateString("tr-TR"),
-                    publisher: mock.publisher.trim(),
-                    type: mock.type === "AYT" ? "AYT" : "TYT",
-                    turkce: Number(mock.turkce) || 0,
-                    matematik: Number(mock.matematik) || 0,
-                    sosyal: Number(mock.sosyal) || 0,
-                    fen: Number(mock.fen) || 0,
-                  });
-                  completeTask(active.id, { mockExamId: id });
-                  setActive(null);
-                  toast.success("Deneme sonucu kaydedildi");
-                }}
-              >
-                Denemeyi kaydet
-              </Button>
-            </div>
+            <MockExamForm
+              track={currentStudent?.track ?? "sayisal"}
+              submitLabel="Denemeyi kaydet"
+              onSave={(e) => {
+                const id = addMockExam(e);
+                completeTask(active.id, { mockExamId: id });
+                setActive(null);
+                toast.success("Deneme sonucu kaydedildi");
+              }}
+            />
           )}
         </DialogContent>
       </Dialog>
 
-      {topics.length === 0 && (
+      {subjects.length === 0 && (
         <Card className="rounded-2xl border-dashed p-6 text-center text-sm text-muted-foreground">
           Konu listesi için önce giriş yapmalısın.
         </Card>
