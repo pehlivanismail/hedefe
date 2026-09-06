@@ -283,22 +283,54 @@ function KonuAgaci() {
                 </TableBody>
               </Table>
             </div>
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+              <div className="col-span-2 space-y-1.5">
+                <Label>Kaynak</Label>
+                <Input
+                  value={form.source}
+                  placeholder="Ör: 3D Soru Bankası"
+                  onChange={(e) => setForm({ ...form, source: e.target.value })}
+                />
+              </div>
+              {(["solved", "wrong", "blank"] as const).map((k) => (
+                <div key={k} className="space-y-1.5">
+                  <Label>
+                    {k === "solved" ? "Çözülen" : k === "wrong" ? "Yanlış" : "Boş"}
+                  </Label>
+                  <Input
+                    type="number"
+                    min={0}
+                    value={form[k]}
+                    onChange={(e) => setForm({ ...form, [k]: e.target.value })}
+                  />
+                </div>
+              ))}
+            </div>
             <Button
               className="w-full rounded-xl"
               onClick={() => {
-                if (!current) return;
-                addLog(current.id, {
+                if (!active) return;
+                const solved = Number(form.solved);
+                if (!solved) {
+                  toast.error("Çözülen soru sayısı gerekli");
+                  return;
+                }
+                const log = {
                   date: new Date().toLocaleDateString("tr-TR"),
-                  source: "Hızlı Çalışma",
-                  solved: 20,
-                  wrong: 3,
-                  blank: 1,
-                });
+                  source: form.source.trim() || "Çalışma",
+                  solved,
+                  wrong: Number(form.wrong) || 0,
+                  blank: Number(form.blank) || 0,
+                };
+                if (active.kind === "area") addAreaLog(active.id, log);
+                else addLog(active.id, log);
+                setForm({ source: "", solved: "", wrong: "", blank: "" });
                 toast.success("Yeni çalışma eklendi");
               }}
             >
               <Plus className="size-4" /> Yeni Çalışma Ekle
             </Button>
+
           </div>
         </DialogContent>
       </Dialog>
