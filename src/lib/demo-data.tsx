@@ -1,11 +1,14 @@
 import {
   createContext,
   useContext,
+  useEffect,
   useMemo,
   useState,
   type ReactNode,
 } from "react";
 import { useAuth } from "@/lib/auth";
+import { supabase } from "@/integrations/supabase/client";
+import { useQuery } from "@tanstack/react-query";
 
 export const YKS_DATE = new Date("2027-06-19T10:00:00Z");
 
@@ -476,9 +479,6 @@ type Store = {
 const StoreContext = createContext<Store | null>(null);
 
 export function DemoDataProvider({ children }: { children: ReactNode }) {
-  const [tasks, setTasks] = useState<Task[]>(initialTasks);
-  const [examData, setExamData] = useState<Exam[]>(exams);
-  const [mockExamList, setMockExamList] = useState<MockExam[]>(mockExams);
   const auth = useAuth();
 
   const currentStudent = auth.student;
@@ -493,11 +493,126 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
         : null
     : null;
 
+  const targetStudentId = currentStudent?.id || (session?.role === "student" ? session.id : null);
+
+  const { data: studyLogsData } = useQuery({
+    queryKey: ["study_logs", targetStudentId],
+    queryFn: async () => {
+      if (!targetStudentId) return [];
+      const { data } = await supabase.from("study_logs").select("*").eq("user_id", targetStudentId);
+      return data || [];
+    },
+    enabled: !!targetStudentId,
+  });
+
+  const { data: mockExamsData } = useQuery({
+    queryKey: ["mock_exams", targetStudentId],
+    queryFn: async () => {
+      if (!targetStudentId) return [];
+      const { data } = await supabase.from("mock_exams").select("*").eq("user_id", targetStudentId);
+      return data || [];
+    },
+    enabled: !!targetStudentId,
+  });
+
+  const { data: schedulesData } = useQuery({
+    queryKey: ["weekly_schedules", targetStudentId],
+    queryFn: async () => {
+      if (!targetStudentId) return null;
+      const { data } = await supabase
+        .from("weekly_schedules")
+        .select("*")
+        .eq("student_id", targetStudentId)
+        .order("created_at", { ascending: false })
+        .limit(1)
+        .maybeSingle();
+      return data;
+    },
+    enabled: !!targetStudentId,
+  });
+
+  const examData = useMemo(() => {
+    const clonedExams: Exam[] = JSON.parse(JSON.stringify(exams));
+    
+    for (const e of clonedExams) {
+      for (const s of e.subjects) {
+        for (const a of s.areas) {
+          for (const t of a.topics) {
+            t.logs = [];
+            t.mastery = 0;
+            t.debt = 0;
+          }
+        }
+      }
+    }
+
+    const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9ğüşıöç]/g, "");
+
+    if (studyLogsData && studyLogsData.length > 0) {
+      for (const log of studyLogsData) {
+        let matched = false;
+        const normSubj = normalize(log.subject);
+        const normArea = normalize(log.area);
+        const normTopic = normalize(log.sub_topic);
+        
+        for (const e of clonedExams) {
+          for (const s of e.subjects) {
+            if (normalize(s.name) !== normSubj && normalize(s.id) !== normSubj) continue;
+            for (const a of s.areas) {
+              if (normalize(a.name) !== normArea && normalize(a.id) !== normArea) continue;
+              for (const t of a.topics) {
+                if (normalize(t.name) === normTopic || normalize(t.id) === normTopic) {
+                  matched = true;
+                  t.logs.push({
+                    id: log.id,
+                    date: log.date,
+                    source: log.source,
+                    solved: log.total_questions,
+                    wrong: log.wrong_answers,
+                    blank: log.blank_answers,
+                  });
+                  t.mastery = Math.min(5, t.mastery + log.total_questions / 50);
+                  t.debt = t.debt + log.wrong_answers + log.blank_answers;
+                }
+              }
+            }
+          }
+        }
+        if (!matched) {
+          console.warn("Unmatched DB Log:", log.subject, ">", log.area, ">", log.sub_topic, "for log ID:", log.id);
+        }
+      }
+    }
+    return clonedExams;
+  }, [studyLogsData]);
+
+  const mockExamList = useMemo(() => {
+    if (!mockExamsData) return [];
+    return mockExamsData.map((dbExam) => ({
+      id: dbExam.id,
+      name: dbExam.publisher,
+      date: dbExam.date,
+      type: dbExam.exam_type as any,
+      score: dbExam.total_net,
+      subjects: [], // Add breakdown implementation if needed
+    }));
+  }, [mockExamsData]);
+
+  const [localTasks, setLocalTasks] = useState<Task[]>([]);
+  
+  useEffect(() => {
+    if (schedulesData?.schedule_data) {
+      setLocalTasks(schedulesData.schedule_data as any);
+    } else {
+      setLocalTasks([]);
+    }
+  }, [schedulesData]);
 
   const value = useMemo<Store>(
     () => ({
-      tasks,
+      tasks: localTasks,
       examData,
+      mockExamList,
       session,
       studentList,
       currentStudent,
@@ -506,54 +621,106 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       setCoach: (coachId) => {
         void auth.setCoach(coachId);
       },
-
-      addTask: (t) =>
-        setTasks((prev) => [
-          ...prev,
-          { kind: "konu" as TaskKind, ...t, id: `t-${Date.now()}`, done: false },
-        ]),
-      completeTask: (id, result) =>
-        setTasks((prev) =>
-          prev.map((t) =>
-            t.id === id ? { ...t, done: true, result: result ?? t.result } : t,
-          ),
-        ),
-      mockExamList,
-      addMockExam: (e) => {
-        const id = `d-${Date.now()}`;
-        setMockExamList((prev) => [...prev, { ...e, id }]);
-        return id;
+      addTask: async (t) => {
+        const newTask = { kind: "konu" as TaskKind, ...t, id: `t-${Date.now()}`, done: false };
+        const newTasks = [...localTasks, newTask];
+        setLocalTasks(newTasks);
+        if (targetStudentId) {
+          await supabase.from("weekly_schedules").upsert({
+            student_id: targetStudentId,
+            week_start_date: new Date().toISOString().split("T")[0],
+            schedule_data: newTasks,
+          });
+        }
       },
-      toggleTask: (id) =>
-        setTasks((prev) =>
-          prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t)),
-        ),
-      moveTask: (id, day) =>
-        setTasks((prev) => prev.map((t) => (t.id === id ? { ...t, day } : t))),
-      addLog: (topicId, log) =>
-        setExamData((prev) =>
-          prev.map((e) => ({
-            ...e,
-            subjects: e.subjects.map((s) => ({
-              ...s,
-              areas: s.areas.map((a) => ({
-                ...a,
-                topics: a.topics.map((tp) =>
-                  tp.id === topicId
-                    ? {
-                        ...tp,
-                        debt: Math.max(0, tp.debt + log.wrong + log.blank - 1),
-                        logs: [...tp.logs, { ...log, id: `l-${Date.now()}` }],
-                      }
-                    : tp,
-                ),
-              })),
-            })),
-          })),
-        ),
+      completeTask: async (id, result) => {
+        const newTasks = localTasks.map((t) =>
+          t.id === id ? { ...t, done: true, result: result ?? t.result } : t,
+        );
+        setLocalTasks(newTasks);
+        if (targetStudentId) {
+          await supabase.from("weekly_schedules").upsert({
+            student_id: targetStudentId,
+            week_start_date: new Date().toISOString().split("T")[0],
+            schedule_data: newTasks,
+          });
+        }
+      },
+      addMockExam: (e) => {
+        if (targetStudentId) {
+          supabase.from("mock_exams").insert({
+            user_id: targetStudentId,
+            date: e.date,
+            exam_type: e.type,
+            publisher: e.name,
+            turkce_net: 0,
+            matematik_net: 0,
+            sosyal_net: 0,
+            fen_net: 0,
+            total_net: e.score,
+          }).then();
+        }
+        return `d-${Date.now()}`;
+      },
+      toggleTask: async (id) => {
+        const newTasks = localTasks.map((t) => (t.id === id ? { ...t, done: !t.done } : t));
+        setLocalTasks(newTasks);
+        if (targetStudentId) {
+          await supabase.from("weekly_schedules").upsert({
+            student_id: targetStudentId,
+            week_start_date: new Date().toISOString().split("T")[0],
+            schedule_data: newTasks,
+          });
+        }
+      },
+      moveTask: async (id, day) => {
+        const newTasks = localTasks.map((t) => (t.id === id ? { ...t, day } : t));
+        setLocalTasks(newTasks);
+        if (targetStudentId) {
+          await supabase.from("weekly_schedules").upsert({
+            student_id: targetStudentId,
+            week_start_date: new Date().toISOString().split("T")[0],
+            schedule_data: newTasks,
+          });
+        }
+      },
+      addLog: (topicId, log) => {
+        // First find subject, area, topic names from the ID
+        let subjectName = "";
+        let areaName = "";
+        let subTopicName = "";
+        for (const e of exams) {
+          for (const s of e.subjects) {
+            for (const a of s.areas) {
+              for (const t of a.topics) {
+                if (t.id === topicId) {
+                  subjectName = s.name;
+                  areaName = a.name;
+                  subTopicName = t.name;
+                }
+              }
+            }
+          }
+        }
+        
+        if (targetStudentId && subTopicName) {
+           supabase.from("study_logs").insert({
+             user_id: targetStudentId,
+             date: log.date,
+             subject: subjectName,
+             area: areaName,
+             sub_topic: subTopicName,
+             source: log.source,
+             total_questions: log.solved,
+             correct_answers: log.solved - log.wrong - log.blank,
+             wrong_answers: log.wrong,
+             blank_answers: log.blank
+           }).then();
+        }
+      },
     }),
     [
-      tasks,
+      localTasks,
       examData,
       mockExamList,
       session,
@@ -562,6 +729,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       currentCoach,
       coachList,
       auth,
+      targetStudentId
     ],
   );
 

@@ -13,14 +13,13 @@ import type { Coach, Student, Track } from "@/lib/demo-data";
 
 type Role = "student" | "coach";
 
+// We map user_roles from V1 to the shape the UI expects
 type ProfileRow = {
-  id: string;
-  full_name: string;
+  user_id: string;
+  full_name: string | null;
   email: string;
-  target: string;
-  track: Track;
-  title: string;
-  coach_id: string | null;
+  role: string;
+  exam_tracks: any;
 };
 
 type AuthValue = {
@@ -39,20 +38,20 @@ type AuthValue = {
 const AuthContext = createContext<AuthValue | null>(null);
 
 const toStudent = (p: ProfileRow): Student => ({
-  id: p.id,
+  id: p.user_id,
   name: p.full_name || p.email,
   email: p.email,
-  target: p.target || "Hedef belirlenmedi",
+  target: "Hedef belirlenmedi", // Not in V1 schema, default to fallback
   pending: 0,
-  track: p.track,
-  coachId: p.coach_id,
+  track: "sayisal", // Not strictly in V1 schema, default
+  coachId: null, // We'll map this via coach_connections later if needed
 });
 
 const toCoach = (p: ProfileRow): Coach => ({
-  id: p.id,
+  id: p.user_id,
   name: p.full_name || p.email,
   email: p.email,
-  title: p.title || "Koç",
+  title: "Koç",
 });
 
 export function AuthProvider({ children }: { children: ReactNode }) {
@@ -60,25 +59,38 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [profiles, setProfiles] = useState<ProfileRow[]>([]);
   const [roles, setRoles] = useState<Record<string, Role>>({});
+  const [coachConnections, setCoachConnections] = useState<{ student_id: string; coach_id: string }[]>([]);
 
   const load = useCallback(async (uid: string | null) => {
     if (!uid) {
       setProfiles([]);
       setRoles({});
+      setCoachConnections([]);
       return;
     }
-    const [{ data: profileRows }, { data: roleRows }] = await Promise.all([
-      supabase
-        .from("profiles")
-        .select("id, full_name, email, target, track, title, coach_id"),
-      supabase.from("user_roles").select("user_id, role"),
-    ]);
-    setProfiles((profileRows ?? []) as ProfileRow[]);
+    
+    // Fetch all user roles for the coach/student listings
+    const { data: roleRows, error } = await supabase
+        .from("user_roles")
+        .select("user_id, email, role, exam_tracks");
+        
+    console.log("Supabase Auth UID:", uid);
+    console.log("Supabase User Roles Fetch Error:", error ? JSON.stringify(error) : "None");
+    console.log("Supabase User Roles Fetched:", roleRows);
+
+    // Fetch connections for coach-student relationship
+    const { data: connections } = await supabase
+        .from("coach_connections")
+        .select("student_id, coach_id")
+        .eq("status", "approved");
+
+    setProfiles((roleRows ?? []) as ProfileRow[]);
     setRoles(
       Object.fromEntries(
         (roleRows ?? []).map((r) => [r.user_id, r.role as Role]),
       ),
     );
+    setCoachConnections(connections ?? []);
   }, []);
 
   useEffect(() => {
@@ -103,32 +115,61 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
   }, [load]);
 
-  const me = profiles.find((p) => p.id === user?.id) ?? null;
-  const role = user ? (roles[user.id] ?? null) : null;
+    // If the user is logged in but doesn't have a role in the DB yet, default to student for testing
+  let me = profiles.find((p) => p.user_id === user?.id) ?? null;
+  let role = user ? (roles[user.id] ?? null) : null;
+  
+  if (user && !role) {
+    role = "student";
+    me = {
+      user_id: user.id,
+      full_name: user.email?.split("@")[0] || "Test",
+      email: user.email || "",
+      role: "student",
+      exam_tracks: []
+    };
+  }
 
   const value = useMemo<AuthValue>(() => {
     const coachList = profiles
-      .filter((p) => roles[p.id] === "coach")
+      .filter((p) => p.role === "coach")
       .map(toCoach);
+      
+    // Students belonging to this coach
+    const myStudentIds = coachConnections.filter(c => c.coach_id === user?.id).map(c => c.student_id);
     const myStudents = user
-      ? profiles.filter((p) => p.coach_id === user.id).map(toStudent)
+      ? profiles.filter((p) => myStudentIds.includes(p.user_id)).map(toStudent)
       : [];
+      
+    // Attach coach ID to the current student
+    let currentStudent = role === "student" && me ? toStudent(me) : null;
+    if (currentStudent) {
+        const connection = coachConnections.find(c => c.student_id === currentStudent!.id);
+        if (connection) {
+            currentStudent.coachId = connection.coach_id;
+        }
+    }
 
     return {
       loading,
       user,
       role,
-      student: role === "student" && me ? toStudent(me) : null,
+      student: currentStudent,
       coach: role === "coach" && me ? toCoach(me) : null,
       coachList,
       myStudents,
       refresh: () => load(user?.id ?? null),
       setCoach: async (coachId) => {
         if (!user) return;
-        await supabase
-          .from("profiles")
-          .update({ coach_id: coachId })
-          .eq("id", user.id);
+        
+        // Remove existing connections
+        await supabase.from("coach_connections").delete().eq("student_id", user.id);
+        
+        if (coachId) {
+            await supabase
+              .from("coach_connections")
+              .insert({ student_id: user.id, coach_id: coachId, status: "approved" });
+        }
         await load(user.id);
       },
       signOut: async () => {
@@ -138,7 +179,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setUser(null);
       },
     };
-  }, [loading, user, role, me, profiles, roles, load]);
+  }, [loading, user, role, me, profiles, roles, coachConnections, load]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
