@@ -919,3 +919,163 @@ function StudentMockExams({ student }: { student: Student }) {
     </Card>
   );
 }
+
+type JournalGroup = {
+  key: string;
+  label: string;
+  rows: Task[];
+};
+
+function trDate(iso: string) {
+  const d = new Date(`${iso}T00:00:00`);
+  return format(d, "d MMMM yyyy EEEE", { locale: tr });
+}
+
+function weekLabel(iso: string) {
+  const d = new Date(`${iso}T00:00:00`);
+  const day = (d.getDay() + 6) % 7;
+  const start = new Date(d);
+  start.setDate(d.getDate() - day);
+  const end = new Date(start);
+  end.setDate(start.getDate() + 6);
+  return {
+    key: start.toISOString().slice(0, 10),
+    label: `${format(start, "d MMM", { locale: tr })} — ${format(end, "d MMM yyyy", { locale: tr })}`,
+  };
+}
+
+function StudyJournal({ tasks }: { tasks: Task[] }) {
+  const [mode, setMode] = useState<"gun" | "hafta">("gun");
+
+  const groups = useMemo<JournalGroup[]>(() => {
+    const done = tasks.filter((t) => t.done && t.completedAt);
+    const map = new Map<string, JournalGroup>();
+    for (const t of done) {
+      const iso = t.completedAt!;
+      const g =
+        mode === "gun"
+          ? { key: iso, label: trDate(iso) }
+          : weekLabel(iso);
+      const cur = map.get(g.key) ?? { ...g, rows: [] };
+      cur.rows.push(t);
+      map.set(g.key, cur);
+    }
+    return Array.from(map.values()).sort((a, b) => (a.key < b.key ? 1 : -1));
+  }, [tasks, mode]);
+
+  if (groups.length === 0) {
+    return (
+      <Card className="rounded-3xl border-dashed p-8 text-center text-sm text-muted-foreground">
+        Bu öğrencinin tamamlanmış çalışma kaydı yok.
+      </Card>
+    );
+  }
+
+  return (
+    <div className="space-y-5">
+      <div className="flex gap-1.5">
+        {(["gun", "hafta"] as const).map((m) => (
+          <button
+            key={m}
+            onClick={() => setMode(m)}
+            className={cn(
+              "rounded-full border border-border px-4 py-1.5 text-xs font-semibold transition-colors",
+              mode === m
+                ? "border-primary bg-primary text-primary-foreground"
+                : "bg-card text-muted-foreground hover:bg-brand-soft",
+            )}
+          >
+            {m === "gun" ? "Günlük" : "Haftalık"}
+          </button>
+        ))}
+      </div>
+
+      {groups.map((g) => {
+        const solved = g.rows.reduce((n, t) => n + (t.result?.solved ?? 0), 0);
+        const wrong = g.rows.reduce((n, t) => n + (t.result?.wrong ?? 0), 0);
+        const blank = g.rows.reduce((n, t) => n + (t.result?.blank ?? 0), 0);
+        const correct = solved - wrong - blank;
+        return (
+          <Card
+            key={g.key}
+            className="overflow-hidden rounded-3xl border-border p-0 shadow-soft"
+          >
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border bg-secondary/50 px-5 py-3">
+              <span className="font-display text-sm font-bold text-brand-deep">
+                {g.label}
+              </span>
+              <span className="flex flex-wrap gap-2 text-[11px] font-semibold">
+                <span className="rounded-full bg-card px-2.5 py-0.5 text-muted-foreground">
+                  {g.rows.length} çalışma
+                </span>
+                <span className="rounded-full bg-brand-soft px-2.5 py-0.5 text-brand-deep">
+                  {solved} soru
+                </span>
+                <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-primary">
+                  {Math.max(0, correct)} doğru
+                </span>
+                <span className="rounded-full bg-destructive/10 px-2.5 py-0.5 text-destructive">
+                  {wrong} yanlış
+                </span>
+                <span className="rounded-full bg-muted px-2.5 py-0.5 text-muted-foreground">
+                  {blank} boş
+                </span>
+              </span>
+            </div>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Tür</TableHead>
+                  <TableHead>Ders</TableHead>
+                  <TableHead>Alan / Konu</TableHead>
+                  <TableHead>Kaynak</TableHead>
+                  <TableHead className="text-right">Soru</TableHead>
+                  <TableHead className="text-right">Doğru</TableHead>
+                  <TableHead className="text-right">Yanlış</TableHead>
+                  <TableHead className="text-right">Boş</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {g.rows.map((t, i) => {
+                  const s = t.result?.solved;
+                  const w = t.result?.wrong ?? 0;
+                  const b = t.result?.blank ?? 0;
+                  return (
+                    <TableRow
+                      key={t.id}
+                      className={cn(i % 2 === 1 && "bg-secondary/30")}
+                    >
+                      <TableCell>
+                        <span className="flex items-center gap-1.5">
+                          <span className="rounded-full bg-brand-soft px-2 py-0.5 text-[11px] font-semibold text-brand-deep">
+                            {TASK_KIND_LABELS[t.kind]}
+                          </span>
+                          {t.assignedBy === "coach" && <CoachBadge />}
+                        </span>
+                      </TableCell>
+                      <TableCell className="font-medium">{t.subject}</TableCell>
+                      <TableCell className="text-muted-foreground">
+                        {t.areaName ?? t.title}
+                      </TableCell>
+                      <TableCell>{t.result?.source ?? "—"}</TableCell>
+                      <TableCell className="text-right">{s ?? "—"}</TableCell>
+                      <TableCell className="text-right">
+                        {s != null ? Math.max(0, s - w - b) : "—"}
+                      </TableCell>
+                      <TableCell className="text-right">
+                        {s != null ? w : "—"}
+                      </TableCell>
+                      <TableCell className="text-right">
+                        {s != null ? b : "—"}
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
+          </Card>
+        );
+      })}
+    </div>
+  );
+}
