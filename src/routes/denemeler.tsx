@@ -177,12 +177,14 @@ function Denemeler() {
           title="TYT Net İlerlemesi"
           data={tyt}
           color="oklch(0.7 0.157 159.5)"
+          maxQuestions={EXAM_QUESTION_COUNTS.TYT}
         />
         <NetChart
           id="aytGrad"
           title="AYT Net İlerlemesi"
           data={ayt}
           color="oklch(0.45 0.09 220)"
+          maxQuestions={EXAM_QUESTION_COUNTS.AYT}
         />
       </div>
 
