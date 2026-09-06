@@ -101,7 +101,7 @@ function MasteryDots({ level }: { level: number }) {
 function KocPaneli() {
   const { tasks, addTask, session, currentCoach, studentList, examData } =
     useDemoData();
-  const myStudents = studentList.filter((s) => s.coachId === currentCoach?.id);
+  const myStudents = studentList;
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [trackFilter, setTrackFilter] = useState<Track | "all">("all");
