@@ -4,6 +4,12 @@ export type ExamKind = "TYT" | "AYT";
 
 export type NetBucket = "turkce" | "matematik" | "sosyal" | "fen";
 
+/** Sınav başına toplam soru sayısı (ÖSYM standartları) */
+export const EXAM_QUESTION_COUNTS: Record<ExamKind, number> = {
+  TYT: 120,
+  AYT: 80,
+};
+
 export type SectionDef = {
   key: string;
   label: string;
