@@ -420,7 +420,34 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
             })),
           })),
         ),
+      addAreaLog: (areaId, log) =>
+        setExamData((prev) =>
+          prev.map((e) => ({
+            ...e,
+            subjects: e.subjects.map((s) => ({
+              ...s,
+              areas: s.areas.map((a) =>
+                a.id === areaId
+                  ? {
+                      ...a,
+                      debt: Math.max(
+                        0,
+                        (a.debt ?? 0) + log.wrong + log.blank - 1,
+                      ),
+                      mastery: Math.min(
+                        5,
+                        (a.mastery ?? areaMasteryFromTopics(a)) +
+                          (log.wrong + log.blank <= 2 ? 1 : 0),
+                      ),
+                      logs: [...(a.logs ?? []), { ...log, id: `al-${Date.now()}` }],
+                    }
+                  : a,
+              ),
+            })),
+          })),
+        ),
     }),
+
     [
       tasks,
       examData,
