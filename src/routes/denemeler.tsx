@@ -104,7 +104,7 @@ function NetChart({
                       {net.toFixed(2)} net
                     </p>
                     <p className="text-xs text-muted-foreground">
-                      {maxQuestions} sorunun %{pct.toFixed(1}&apos;i
+                      {maxQuestions} sorunun %{pct.toFixed(1)}&apos;i
                     </p>
                   </div>
                 );
