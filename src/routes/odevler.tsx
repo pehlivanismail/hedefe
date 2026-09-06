@@ -93,12 +93,19 @@ function Odevler() {
   const [subjectId, setSubjectId] = useState("");
   const [areaId, setAreaId] = useState("");
   const [topicId, setTopicId] = useState("");
+  const [examScope, setExamScope] = useState("TYT");
   const [day, setDay] = useState("0");
   const [note, setNote] = useState("");
 
   const subject = subjects.find((s) => s.id === subjectId) ?? null;
   const area = subject?.areas.find((a) => a.id === areaId) ?? null;
   const topic = area?.topics.find((t) => t.id === topicId) ?? null;
+
+  /** Deneme ödevleri için benzersiz ders adları (branş denemesi) */
+  const denemeSubjects = useMemo(
+    () => Array.from(new Set(subjects.map((s) => s.name))).sort((a, b) => a.localeCompare(b, "tr")),
+    [subjects],
+  );
 
   const [res, setRes] = useState({ solved: "", wrong: "", blank: "" });
 
@@ -111,10 +118,12 @@ function Odevler() {
     setSubjectId("");
     setAreaId("");
     setTopicId("");
+    setExamScope("TYT");
     setNote("");
     setDay("0");
     setAddKind(kind);
   };
+
 
   const openRecord = (t: Task) => {
     setRes({ solved: "", wrong: "", blank: "" });
@@ -122,6 +131,26 @@ function Odevler() {
   };
 
   const saveTask = () => {
+    if (addKind === "deneme") {
+      const label =
+        examScope === "TYT"
+          ? "TYT Denemesi"
+          : examScope === "AYT"
+            ? "AYT Denemesi"
+            : `${examScope} Branş Denemesi`;
+      addTask({
+        kind: "deneme",
+        subject: examScope,
+        title: note.trim() || label,
+        topicId: null,
+        areaId: null,
+        day: Number(day),
+        studentId: currentStudent?.id ?? "s1",
+      });
+      setAddKind(null);
+      toast.success("Deneme eklendi");
+      return;
+    }
     if (!subject) {
       toast.error("Lütfen bir ders seç");
       return;
@@ -142,6 +171,7 @@ function Odevler() {
     setAddKind(null);
     toast.success(`${TASK_KIND_LABELS[addKind ?? "konu"]} eklendi`);
   };
+
 
   return (
     <div className="space-y-6">
@@ -281,75 +311,98 @@ function Odevler() {
             </DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
-            <div className="space-y-2">
-              <Label>Ders</Label>
-              <Select
-                value={subjectId}
-                onValueChange={(v) => {
-                  setSubjectId(v);
-                  setAreaId("");
-                  setTopicId("");
-                }}
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Ders seç" />
-                </SelectTrigger>
-                <SelectContent>
-                  {subjects.map((s) => (
-                    <SelectItem key={s.id} value={s.id}>
-                      {s.examName} · {s.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="space-y-2">
-              <Label>Alan</Label>
-              <Select
-                value={areaId}
-                onValueChange={(v) => {
-                  setAreaId(v);
-                  setTopicId("");
-                }}
-                disabled={!subject}
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Alan seç" />
-                </SelectTrigger>
-                <SelectContent>
-                  {(subject?.areas ?? []).map((a) => (
-                    <SelectItem key={a.id} value={a.id}>
-                      {a.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="space-y-2">
-              <Label>
-                Konu{" "}
-                <span className="text-xs font-normal text-muted-foreground">
-                  (opsiyonel — boş bırakırsan alan geneli sayılır)
-                </span>
-              </Label>
-              <Select
-                value={topicId}
-                onValueChange={(v) => setTopicId(v === "__all" ? "" : v)}
-                disabled={!area}
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Tüm alan" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="__all">Tüm alan</SelectItem>
-                  {(area?.topics ?? []).map((t) => (
-                    <SelectItem key={t.id} value={t.id}>
-                      {t.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
+            {addKind === "deneme" ? (
+              <div className="space-y-2">
+                <Label>Deneme Türü</Label>
+                <Select value={examScope} onValueChange={setExamScope}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Seç" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="TYT">TYT Denemesi</SelectItem>
+                    <SelectItem value="AYT">AYT Denemesi</SelectItem>
+                    {denemeSubjects.map((n) => (
+                      <SelectItem key={n} value={n}>
+                        {n} Branş Denemesi
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            ) : (
+              <>
+                <div className="space-y-2">
+                  <Label>Ders</Label>
+                  <Select
+                    value={subjectId}
+                    onValueChange={(v) => {
+                      setSubjectId(v);
+                      setAreaId("");
+                      setTopicId("");
+                    }}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Ders seç" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {subjects.map((s) => (
+                        <SelectItem key={s.id} value={s.id}>
+                          {s.examName} · {s.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label>Alan</Label>
+                  <Select
+                    value={areaId}
+                    onValueChange={(v) => {
+                      setAreaId(v);
+                      setTopicId("");
+                    }}
+                    disabled={!subject}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Alan seç" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {(subject?.areas ?? []).map((a) => (
+                        <SelectItem key={a.id} value={a.id}>
+                          {a.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label>
+                    Konu{" "}
+                    <span className="text-xs font-normal text-muted-foreground">
+                      (opsiyonel — boş bırakırsan alan geneli sayılır)
+                    </span>
+                  </Label>
+                  <Select
+                    value={topicId}
+                    onValueChange={(v) => setTopicId(v === "__all" ? "" : v)}
+                    disabled={!area}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Tüm alan" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="__all">Tüm alan</SelectItem>
+                      {(area?.topics ?? []).map((t) => (
+                        <SelectItem key={t.id} value={t.id}>
+                          {t.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </>
+            )}
+
             <div className="space-y-2">
               <Label>Açıklama (opsiyonel)</Label>
               <Input
@@ -458,6 +511,10 @@ function Odevler() {
             <MockExamForm
               track={currentStudent?.track ?? "sayisal"}
               submitLabel="Denemeyi kaydet"
+              {...(active.subject === "TYT" || active.subject === "AYT"
+                ? { fixedKind: active.subject as "TYT" | "AYT" }
+                : { onlySubject: active.subject })}
+
               onSave={(e) => {
                 const id = addMockExam(e);
                 completeTask(active.id, { mockExamId: id });
