@@ -165,7 +165,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     // Students belonging to this coach
     const myStudentIds = coachConnections.filter(c => c.coach_id === user?.id).map(c => c.student_id);
     const myStudents = user
-      ? profiles.filter((p) => myStudentIds.includes(p.user_id)).map(p => toStudent(p, p.track))
+      ? profiles.filter((p) => myStudentIds.includes(p.user_id)).map(p => {
+          const s = toStudent(p, p.track);
+          s.coachId = user.id;
+          return s;
+        })
       : [];
       
     // Attach coach ID to the current student
