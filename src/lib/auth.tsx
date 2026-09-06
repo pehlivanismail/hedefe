@@ -31,6 +31,7 @@ type ProfileRow = {
   role: string;
   exam_tracks: any;
   track?: any;
+  coach_id?: string | null;
 };
 
 type AuthValue = {
@@ -55,7 +56,7 @@ const toStudent = (p: ProfileRow, fallbackTrack: string = "sayisal"): Student =>
   target: "Hedef belirlenmedi", // Not in V1 schema, default to fallback
   pending: 0,
   track: (p.track as any) || fallbackTrack, 
-  coachId: null, // We'll map this via coach_connections later if needed
+  coachId: p.coach_id || null, // Map directly from profile
 });
 
 const toCoach = (p: ProfileRow): Coach => ({
@@ -106,7 +107,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             email: p.email,
             role: r?.role || "student",
             exam_tracks: (r?.exam_tracks as string[]) || null,
-            track: p.track
+            track: p.track,
+            coach_id: p.coach_id,
         };
     });
 
@@ -163,23 +165,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       .map(toCoach);
       
     // Students belonging to this coach
-    const myStudentIds = coachConnections.filter(c => c.coach_id === user?.id).map(c => c.student_id);
     const myStudents = user
-      ? profiles.filter((p) => myStudentIds.includes(p.user_id)).map(p => {
-          const s = toStudent(p, p.track);
-          s.coachId = user.id;
-          return s;
-        })
+      ? profiles.filter((p) => p.coach_id === user.id).map(p => toStudent(p, p.track))
       : [];
       
     // Attach coach ID to the current student
     let currentStudent = role === "student" && me ? toStudent(me, (user?.user_metadata?.["track"] as string | undefined)) : null;
-    if (currentStudent) {
-        const connection = coachConnections.find(c => c.student_id === currentStudent!.id);
-        if (connection) {
-            currentStudent.coachId = connection.coach_id;
-        }
-    }
 
     return {
       loading,
