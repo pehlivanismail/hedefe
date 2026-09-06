@@ -311,75 +311,98 @@ function Odevler() {
             </DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
-            <div className="space-y-2">
-              <Label>Ders</Label>
-              <Select
-                value={subjectId}
-                onValueChange={(v) => {
-                  setSubjectId(v);
-                  setAreaId("");
-                  setTopicId("");
-                }}
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Ders seç" />
-                </SelectTrigger>
-                <SelectContent>
-                  {subjects.map((s) => (
-                    <SelectItem key={s.id} value={s.id}>
-                      {s.examName} · {s.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="space-y-2">
-              <Label>Alan</Label>
-              <Select
-                value={areaId}
-                onValueChange={(v) => {
-                  setAreaId(v);
-                  setTopicId("");
-                }}
-                disabled={!subject}
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Alan seç" />
-                </SelectTrigger>
-                <SelectContent>
-                  {(subject?.areas ?? []).map((a) => (
-                    <SelectItem key={a.id} value={a.id}>
-                      {a.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="space-y-2">
-              <Label>
-                Konu{" "}
-                <span className="text-xs font-normal text-muted-foreground">
-                  (opsiyonel — boş bırakırsan alan geneli sayılır)
-                </span>
-              </Label>
-              <Select
-                value={topicId}
-                onValueChange={(v) => setTopicId(v === "__all" ? "" : v)}
-                disabled={!area}
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Tüm alan" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="__all">Tüm alan</SelectItem>
-                  {(area?.topics ?? []).map((t) => (
-                    <SelectItem key={t.id} value={t.id}>
-                      {t.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
+            {addKind === "deneme" ? (
+              <div className="space-y-2">
+                <Label>Deneme Türü</Label>
+                <Select value={examScope} onValueChange={setExamScope}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Seç" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="TYT">TYT Denemesi</SelectItem>
+                    <SelectItem value="AYT">AYT Denemesi</SelectItem>
+                    {denemeSubjects.map((n) => (
+                      <SelectItem key={n} value={n}>
+                        {n} Branş Denemesi
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            ) : (
+              <>
+                <div className="space-y-2">
+                  <Label>Ders</Label>
+                  <Select
+                    value={subjectId}
+                    onValueChange={(v) => {
+                      setSubjectId(v);
+                      setAreaId("");
+                      setTopicId("");
+                    }}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Ders seç" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {subjects.map((s) => (
+                        <SelectItem key={s.id} value={s.id}>
+                          {s.examName} · {s.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label>Alan</Label>
+                  <Select
+                    value={areaId}
+                    onValueChange={(v) => {
+                      setAreaId(v);
+                      setTopicId("");
+                    }}
+                    disabled={!subject}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Alan seç" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {(subject?.areas ?? []).map((a) => (
+                        <SelectItem key={a.id} value={a.id}>
+                          {a.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label>
+                    Konu{" "}
+                    <span className="text-xs font-normal text-muted-foreground">
+                      (opsiyonel — boş bırakırsan alan geneli sayılır)
+                    </span>
+                  </Label>
+                  <Select
+                    value={topicId}
+                    onValueChange={(v) => setTopicId(v === "__all" ? "" : v)}
+                    disabled={!area}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Tüm alan" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="__all">Tüm alan</SelectItem>
+                      {(area?.topics ?? []).map((t) => (
+                        <SelectItem key={t.id} value={t.id}>
+                          {t.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </>
+            )}
+
             <div className="space-y-2">
               <Label>Açıklama (opsiyonel)</Label>
               <Input
