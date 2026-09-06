@@ -140,3 +140,8 @@ DROP POLICY IF EXISTS "Coaches can view all profiles" ON public.profiles;
 
 -- Create an open read policy for profiles so invites can display names
 CREATE POLICY "Anyone can view profiles" ON public.profiles FOR SELECT USING (true);
+DROP POLICY IF EXISTS "Allow all operations for authenticated users on coach_connectio" ON public.coach_connections;
+CREATE POLICY "Anyone can read coach connections" ON public.coach_connections FOR SELECT USING (true);
+CREATE POLICY "Users can insert coach connections" ON public.coach_connections FOR INSERT WITH CHECK (auth.role() = 'authenticated');
+CREATE POLICY "Users can update their coach connections" ON public.coach_connections FOR UPDATE USING (auth.role() = 'authenticated');
+CREATE POLICY "Users can delete their coach connections" ON public.coach_connections FOR DELETE USING (auth.role() = 'authenticated');
