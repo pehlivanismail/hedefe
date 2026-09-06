@@ -598,3 +598,131 @@ function StudentScores({ student }: { student: Student }) {
     </div>
   );
 }
+
+function CoachBadge() {
+  return (
+    <span
+      title="Koçun verdiği ödev"
+      aria-label="Koçun verdiği ödev"
+      className="flex size-5 items-center justify-center rounded-full bg-brand-deep text-primary-foreground"
+    >
+      <GraduationCap className="size-3" />
+    </span>
+  );
+}
+
+function StudentWeek({ tasks }: { tasks: Task[] }) {
+  return (
+    <div className="flex gap-4 overflow-x-auto pb-4">
+      {DAYS.map((d, i) => {
+        const dayTasks = tasks.filter((t) => t.day === i);
+        return (
+          <div
+            key={d}
+            className="flex w-60 shrink-0 flex-col rounded-2xl bg-secondary/60 p-3"
+          >
+            <div className="mb-3 flex items-center justify-between px-1">
+              <span className="font-display text-sm font-bold text-brand-deep">
+                {d}
+              </span>
+              <span className="rounded-full bg-card px-2 py-0.5 text-[11px] font-semibold text-muted-foreground">
+                {dayTasks.length}
+              </span>
+            </div>
+            <div className="space-y-2">
+              {dayTasks.map((t) => (
+                <div
+                  key={t.id}
+                  className={cn(
+                    "rounded-xl border border-border bg-card p-3 shadow-sm",
+                    t.done && "opacity-55",
+                  )}
+                >
+                  <div className="flex items-center gap-1.5">
+                    <span className="rounded-full bg-brand-soft px-2 py-0.5 text-[11px] font-semibold text-brand-deep">
+                      {TASK_KIND_LABELS[t.kind]}
+                    </span>
+                    {t.assignedBy === "coach" && <CoachBadge />}
+                  </div>
+                  <p
+                    className={cn(
+                      "mt-2 text-sm leading-snug font-medium",
+                      t.done && "text-muted-foreground line-through",
+                    )}
+                  >
+                    {t.title}
+                  </p>
+                  <p className="mt-1 text-[11px] text-muted-foreground">
+                    {t.subject}
+                    {t.done && t.result?.solved != null
+                      ? ` · ${t.result.solved} soru · ${t.result.wrong ?? 0} yanlış`
+                      : ""}
+                  </p>
+                </div>
+              ))}
+              {dayTasks.length === 0 && (
+                <p className="rounded-xl border border-dashed border-border px-3 py-6 text-center text-xs text-muted-foreground">
+                  Boş gün
+                </p>
+              )}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+const netTotal = (e: MockExam) => e.turkce + e.matematik + e.sosyal + e.fen;
+
+function StudentMockExams({ student }: { student: Student }) {
+  const { mockExamList } = useDemoData();
+  const rows = mockExamList.filter(
+    (e) => !e.studentId || e.studentId === student.id,
+  );
+
+  if (rows.length === 0) {
+    return (
+      <Card className="rounded-3xl border-dashed p-8 text-center text-sm text-muted-foreground">
+        Bu öğrencinin kayıtlı denemesi yok.
+      </Card>
+    );
+  }
+
+  return (
+    <Card className="overflow-hidden rounded-3xl border-border p-0 shadow-soft">
+      <Table>
+        <TableHeader>
+          <TableRow className="bg-secondary/60">
+            <TableHead>Tarih</TableHead>
+            <TableHead>Kurum</TableHead>
+            <TableHead>Tür</TableHead>
+            <TableHead className="text-right">Türkçe</TableHead>
+            <TableHead className="text-right">Matematik</TableHead>
+            <TableHead className="text-right">Sosyal</TableHead>
+            <TableHead className="text-right">Fen</TableHead>
+            <TableHead className="text-right">Toplam Net</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {rows.map((e, i) => (
+            <TableRow key={e.id} className={cn(i % 2 === 1 && "bg-secondary/30")}>
+              <TableCell>{e.date}</TableCell>
+              <TableCell className="font-medium">{e.publisher}</TableCell>
+              <TableCell className="text-muted-foreground">{e.type}</TableCell>
+              <TableCell className="text-right">{e.turkce}</TableCell>
+              <TableCell className="text-right">{e.matematik}</TableCell>
+              <TableCell className="text-right">{e.sosyal}</TableCell>
+              <TableCell className="text-right">{e.fen}</TableCell>
+              <TableCell className="text-right">
+                <span className="rounded-full bg-brand-soft px-3 py-1 font-display text-sm font-bold text-brand-deep">
+                  {netTotal(e).toFixed(1)}
+                </span>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </Card>
+  );
+}
