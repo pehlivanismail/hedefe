@@ -174,6 +174,8 @@ function CoachPicker({ student }: { student: Student }) {
           {coach
             ? `${coach.name} · ${coach.title}`
             : "Henüz bir koçunla eşleşmedin."}
+          <br/>
+          DEBUG: coachId: {student.coachId}, coachList: {coachList.map(c=>c.id).join(',')}
         </p>
       </Card>
       <PairInvites role="student" />

@@ -181,6 +181,8 @@ function KocPaneli() {
           </h1>
           <p className="mt-2 text-sm text-muted-foreground">
             Öğrencini e-posta ile davet et; kabul ettiğinde burada görünür.
+            <br/>
+            DEBUG: coachId: {currentCoach?.id}, studentList: {studentList.map(s => s.id).join(',')}
           </p>
         </Card>
         <PairInvites role="coach" />
