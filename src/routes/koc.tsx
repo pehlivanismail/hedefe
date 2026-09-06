@@ -34,11 +34,20 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import {
   DAYS,
   SUBJECT_OPTIONS,
+  TASK_KIND_LABELS,
   TRACK_LABELS,
   daysUntilYks,
   examsForStudent,
@@ -47,7 +56,9 @@ import {
   subjectStats,
   useDemoData,
   weakestTopics,
+  type MockExam,
   type Student,
+  type Task,
   type Track,
 } from "@/lib/demo-data";
 import { cn } from "@/lib/utils";
