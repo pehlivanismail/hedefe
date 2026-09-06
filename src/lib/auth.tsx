@@ -143,13 +143,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   let me = profiles.find((p) => p.user_id === user?.id) ?? null;
   let role = user ? (roles[user.id] ?? null) : null;
   
-  if (user && !role) {
-    role = "student";
+  if (user && (!role || !me)) {
+    role = role || "student";
     me = {
       user_id: user.id,
-      full_name: user.email?.split("@")[0] || "Test",
+      full_name: user.email?.split("@")[0] || "Öğrenci",
       email: user.email || "",
-      role: "student",
+      role: role,
       exam_tracks: []
     };
   }
