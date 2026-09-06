@@ -321,6 +321,11 @@ function KocPaneli() {
             <StudentWeek tasks={studentTasks} />
           </TabsContent>
 
+          <TabsContent value="gunluk" className="mt-4">
+            <StudyJournal tasks={studentTasks} />
+          </TabsContent>
+
+
           <TabsContent value="denemeler" className="mt-4">
             <StudentMockExams student={student} />
           </TabsContent>
