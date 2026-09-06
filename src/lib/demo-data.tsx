@@ -35,8 +35,19 @@ export type Topic = {
   logs: StudyLog[];
 };
 
-export type Area = { id: string; name: string; topics: Topic[] };
+export type Area = {
+  id: string;
+  name: string;
+  topics: Topic[];
+  /** Alan seviyesinde tutulan çalışma kayıtları */
+  logs?: StudyLog[];
+  /** Alan seviyesinde 0..5 hakimiyet (girilmediyse konulardan hesaplanır) */
+  mastery?: number;
+  /** Alan seviyesinde ek öğrenme borcu */
+  debt?: number;
+};
 export type Subject = { id: string; name: string; areas: Area[] };
+
 export type Track = "sayisal" | "sozel" | "esit";
 export type Exam = {
   id: string;
@@ -78,6 +89,8 @@ export type Task = {
   done: boolean;
   studentId: string;
   topicId?: string | null | undefined;
+  areaId?: string | null | undefined;
+
   result?: TaskResult | undefined;
 };
 
@@ -319,6 +332,8 @@ type Store = {
   moveTask: (id: string, day: number) => void;
   examData: Exam[];
   addLog: (topicId: string, log: Omit<StudyLog, "id">) => void;
+  addAreaLog: (areaId: string, log: Omit<StudyLog, "id">) => void;
+
   session: Session;
   studentList: Student[];
   currentStudent: Student | null;
@@ -405,7 +420,34 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
             })),
           })),
         ),
+      addAreaLog: (areaId, log) =>
+        setExamData((prev) =>
+          prev.map((e) => ({
+            ...e,
+            subjects: e.subjects.map((s) => ({
+              ...s,
+              areas: s.areas.map((a) =>
+                a.id === areaId
+                  ? {
+                      ...a,
+                      debt: Math.max(
+                        0,
+                        (a.debt ?? 0) + log.wrong + log.blank - 1,
+                      ),
+                      mastery: Math.min(
+                        5,
+                        (a.mastery ?? areaMasteryFromTopics(a)) +
+                          (log.wrong + log.blank <= 2 ? 1 : 0),
+                      ),
+                      logs: [...(a.logs ?? []), { ...log, id: `al-${Date.now()}` }],
+                    }
+                  : a,
+              ),
+            })),
+          })),
+        ),
     }),
+
     [
       tasks,
       examData,
@@ -462,6 +504,24 @@ export function subjectStats(subject: Subject) {
     debt,
   };
 }
+
+/** Alanın konularından ortalama hakimiyet (0..5). */
+export function areaMasteryFromTopics(area: Area) {
+  if (!area.topics.length) return 0;
+  const sum = area.topics.reduce((n, t) => n + t.mastery, 0);
+  return Math.round(sum / area.topics.length);
+}
+
+/** Alan seviyesinde gösterilecek hakimiyet, borç ve kayıtlar. */
+export function areaStats(area: Area) {
+  const topicDebt = area.topics.reduce((n, t) => n + t.debt, 0);
+  return {
+    mastery: area.mastery ?? areaMasteryFromTopics(area),
+    debt: topicDebt + (area.debt ?? 0),
+    logs: area.logs ?? [],
+  };
+}
+
 
 /* ---------- Analiz yardımcıları ---------- */
 
@@ -581,5 +641,46 @@ export function flatTopics(list: Exam[]): TopicOption[] {
             examName: e.name,
             label: `${e.name} · ${s.name} · ${a.name} · ${t.name}`,
           });
+  return rows;
+}
+
+export type TargetKind = "area" | "topic";
+
+export type StudyTarget = {
+  kind: TargetKind;
+  id: string;
+  name: string;
+  areaName: string;
+  subjectName: string;
+  examName: string;
+  label: string;
+};
+
+/** Alanları ve konuları birlikte, seçilebilir hedefler olarak düzleştirir. */
+export function flatTargets(list: Exam[]): StudyTarget[] {
+  const rows: StudyTarget[] = [];
+  for (const e of list)
+    for (const s of e.subjects)
+      for (const a of s.areas) {
+        rows.push({
+          kind: "area",
+          id: a.id,
+          name: a.name,
+          areaName: a.name,
+          subjectName: s.name,
+          examName: e.name,
+          label: `${e.name} · ${s.name} · ${a.name}`,
+        });
+        for (const t of a.topics)
+          rows.push({
+            kind: "topic",
+            id: t.id,
+            name: t.name,
+            areaName: a.name,
+            subjectName: s.name,
+            examName: e.name,
+            label: `${e.name} · ${s.name} · ${a.name} · ${t.name}`,
+          });
+      }
   return rows;
 }
