@@ -339,6 +339,8 @@ type Store = {
   addLog: (topicId: string, log: Omit<StudyLog, "id">) => void;
   addAreaLog: (areaId: string, log: Omit<StudyLog, "id">) => void;
 
+  studyLogs: any[];
+
   session: Session;
   studentList: Student[];
   currentStudent: Student | null;
@@ -380,6 +382,20 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
         .eq("user_id", targetStudentId);
       if (error) throw error;
       return data as any as MockExam[];
+    },
+    enabled: !!targetStudentId,
+  });
+
+  const { data: studyLogsData } = useQuery({
+    queryKey: ["study_logs", targetStudentId],
+    queryFn: async () => {
+      if (!targetStudentId) return [];
+      const { data, error } = await supabase
+        .from("study_logs")
+        .select("*")
+        .eq("user_id", targetStudentId);
+      if (error) throw error;
+      return data;
     },
     enabled: !!targetStudentId,
   });
@@ -497,6 +513,32 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
         : null
     : null;
 
+  const addLogMutation = useMutation({
+    mutationFn: async ({ topicId, log, isArea }: { topicId: string, log: Omit<StudyLog, "id">, isArea?: boolean }) => {
+      if (!targetStudentId) throw new Error("No user");
+      const { data, error } = await supabase
+        .from("study_logs")
+        .insert({
+          user_id: targetStudentId,
+          date: log.date,
+          subject: "Bilinmiyor", 
+          area: "Bilinmiyor", 
+          sub_topic: topicId,
+          source: log.source,
+          total_questions: log.solved,
+          correct_answers: Math.max(0, log.solved - log.wrong - log.blank),
+          wrong_answers: log.wrong,
+          blank_answers: log.blank,
+        })
+        .select()
+        .single();
+      
+      if (error) throw error;
+      return data;
+    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["study_logs"] }),
+  });
+
   const value = useMemo<Store>(
     () => ({
       tasks: tasksData || [],
@@ -519,13 +561,15 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       },
       toggleTask: (id) => toggleTaskMutation.mutate(id),
       moveTask: (id, day) => moveTaskMutation.mutate({ id, day }),
-      addLog: (topicId, log) => {},
-      addAreaLog: (areaId, log) => {},
+      addLog: (topicId, log) => addLogMutation.mutate({ topicId, log }),
+      addAreaLog: (areaId, log) => addLogMutation.mutate({ topicId: areaId, log, isArea: true }),
+      studyLogs: studyLogsData || [],
     }),
 
     [
       tasksData,
       mockExamsData,
+      studyLogsData,
       examData,
       session,
       studentList,
@@ -615,24 +659,54 @@ const clamp = (n: number, min: number, max: number) =>
   Math.max(min, Math.min(max, n));
 
 /** Öğrencinin alanına göre TYT + ilgili AYT sınavlarını, kişiye özel varyasyonla döner. */
-export function examsForStudent(all: Exam[], student: Student): Exam[] {
+export function examsForStudent(all: Exam[], student: Student, studyLogs: any[] = []): Exam[] {
   return all
     .filter((e) => e.track === null || e.track === student.track)
     .map((e) => ({
       ...e,
       subjects: e.subjects.map((s) => ({
         ...s,
-        areas: s.areas.map((a) => ({
+        areas: s.areas.map((a) => {
+          const areaLogsRaw = studyLogs.filter((l) => l.sub_topic === a.id);
+          const areaLogs = areaLogsRaw.map((l) => ({
+            id: l.id,
+            date: l.date,
+            source: l.source,
+            solved: l.total_questions,
+            wrong: l.wrong_answers,
+            blank: l.blank_answers,
+          }));
+
+          return {
           ...a,
+          logs: areaLogs,
           topics: a.topics.map((t) => {
-            const seed = hash(student.id + t.id);
+            const topicLogsRaw = studyLogs.filter((l) => l.sub_topic === t.id);
+            const topicLogs = topicLogsRaw.map((l) => ({
+              id: l.id,
+              date: l.date,
+              source: l.source,
+              solved: l.total_questions,
+              wrong: l.wrong_answers,
+              blank: l.blank_answers,
+            }));
+
+            let totalQ = 0;
+            let correct = 0;
+            for (const l of topicLogsRaw) {
+               totalQ += l.total_questions;
+               correct += l.correct_answers;
+            }
+            const mastery = totalQ > 0 ? Math.max(1, Math.min(5, Math.round((correct / totalQ) * 5))) : 0;
+
             return {
               ...t,
-              mastery: clamp(t.mastery - 1 + (seed % 3), 0, 5),
-              debt: clamp(t.debt + (seed % 5) - 2, 0, 20),
+              mastery,
+              debt: 0,
+              logs: topicLogs,
             };
           }),
-        })),
+        }}),
       })),
     }));
 }

@@ -76,7 +76,7 @@ function MasteryDots({ level }: { level: number }) {
 }
 
 function KonuAgaci() {
-  const { examData, addLog, addAreaLog, currentStudent } = useDemoData();
+  const { examData, addLog, addAreaLog, currentStudent, studyLogs } = useDemoData();
   const [active, setActive] = useState<Detail | null>(null);
   const [form, setForm] = useState({
     source: "",
@@ -86,7 +86,7 @@ function KonuAgaci() {
   });
 
   const myExams = currentStudent
-    ? examsForStudent(examData, currentStudent)
+    ? examsForStudent(examData, currentStudent, studyLogs)
     : [];
 
   const allAreas = myExams

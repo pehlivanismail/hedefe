@@ -185,9 +185,9 @@ function CoachPicker({ student }: { student: Student }) {
 
 
 function Ozet({ student }: { student: Student }) {
-  const { examData } = useDemoData();
+  const { examData, studyLogs } = useDemoData();
   const days = daysUntilYks();
-  const mine = examsForStudent(examData, student);
+  const mine = examsForStudent(examData, student, studyLogs);
   const scores = subjectScoresOf(mine);
   const debt = overallStats(mine).debt;
 

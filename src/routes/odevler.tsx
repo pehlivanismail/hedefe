@@ -77,6 +77,7 @@ function Odevler() {
     addLog,
     addAreaLog,
     addMockExam,
+    studyLogs,
   } = useDemoData();
 
   const [weekOffset, setWeekOffset] = useState(0);
@@ -86,10 +87,10 @@ function Odevler() {
 
   const subjects = useMemo(() => {
     if (!currentStudent) return [];
-    return examsForStudent(examData, currentStudent).flatMap((e) =>
+    return examsForStudent(examData, currentStudent, studyLogs).flatMap((e) =>
       e.subjects.map((s) => ({ ...s, examName: e.name })),
     );
-  }, [examData, currentStudent]);
+  }, [examData, currentStudent, studyLogs]);
 
   const [subjectId, setSubjectId] = useState("");
   const [areaId, setAreaId] = useState("");
