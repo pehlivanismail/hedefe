@@ -533,14 +533,15 @@ function Odevler() {
                   submitLabel="Denemeyi kaydet"
                   {...scopeProps}
 
-              onSave={(e) => {
-                const id = addMockExam(e);
-                completeTask(active.id, { mockExamId: id });
-                setActive(null);
-                toast.success("Deneme sonucu kaydedildi");
-              }}
-            />
-          )}
+                  onSave={(e) => {
+                    const id = addMockExam(e);
+                    completeTask(active.id, { mockExamId: id });
+                    setActive(null);
+                    toast.success("Deneme sonucu kaydedildi");
+                  }}
+                />
+              );
+            })()}
         </DialogContent>
       </Dialog>
 
