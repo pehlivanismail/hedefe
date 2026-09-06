@@ -101,11 +101,17 @@ function Odevler() {
   const area = subject?.areas.find((a) => a.id === areaId) ?? null;
   const topic = area?.topics.find((t) => t.id === topicId) ?? null;
 
-  /** Deneme ödevleri için benzersiz ders adları (branş denemesi) */
-  const denemeSubjects = useMemo(
-    () => Array.from(new Set(subjects.map((s) => s.name))).sort((a, b) => a.localeCompare(b, "tr")),
-    [subjects],
-  );
+  /** Deneme ödevleri için benzersiz dersler (TYT/AYT önekli branş denemesi) */
+  const denemeSubjects = useMemo(() => {
+    const seen = new Map<string, string>();
+    for (const s of subjects) {
+      const prefix = s.examName.startsWith("AYT") ? "AYT" : "TYT";
+      seen.set(`${prefix} ${s.name}`, `${prefix} ${s.name} Branş Denemesi`);
+    }
+    return Array.from(seen, ([value, label]) => ({ value, label })).sort(
+      (a, b) => a.label.localeCompare(b.label, "tr"),
+    );
+  }, [subjects]);
 
   const [res, setRes] = useState({ solved: "", wrong: "", blank: "" });
 
@@ -137,7 +143,8 @@ function Odevler() {
           ? "TYT Denemesi"
           : examScope === "AYT"
             ? "AYT Denemesi"
-            : `${examScope} Branş Denemesi`;
+            : (denemeSubjects.find((d) => d.value === examScope)?.label ??
+              `${examScope} Branş Denemesi`);
       addTask({
         kind: "deneme",
         subject: examScope,
@@ -321,9 +328,9 @@ function Odevler() {
                   <SelectContent>
                     <SelectItem value="TYT">TYT Denemesi</SelectItem>
                     <SelectItem value="AYT">AYT Denemesi</SelectItem>
-                    {denemeSubjects.map((n) => (
-                      <SelectItem key={n} value={n}>
-                        {n} Branş Denemesi
+                    {denemeSubjects.map((d) => (
+                      <SelectItem key={d.value} value={d.value}>
+                        {d.label}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -507,22 +514,34 @@ function Odevler() {
             </div>
           )}
 
-          {active?.kind === "deneme" && (
-            <MockExamForm
-              track={currentStudent?.track ?? "sayisal"}
-              submitLabel="Denemeyi kaydet"
-              {...(active.subject === "TYT" || active.subject === "AYT"
-                ? { fixedKind: active.subject as "TYT" | "AYT" }
-                : { onlySubject: active.subject })}
+          {active?.kind === "deneme" &&
+            (() => {
+              const s = active.subject;
+              const brans = /^(TYT|AYT) (.+)$/.exec(s);
+              const scopeProps =
+                s === "TYT" || s === "AYT"
+                  ? { fixedKind: s as "TYT" | "AYT" }
+                  : brans
+                    ? {
+                        fixedKind: brans[1] as "TYT" | "AYT",
+                        onlySubject: brans[2]!,
+                      }
+                    : { onlySubject: s };
+              return (
+                <MockExamForm
+                  track={currentStudent?.track ?? "sayisal"}
+                  submitLabel="Denemeyi kaydet"
+                  {...scopeProps}
 
-              onSave={(e) => {
-                const id = addMockExam(e);
-                completeTask(active.id, { mockExamId: id });
-                setActive(null);
-                toast.success("Deneme sonucu kaydedildi");
-              }}
-            />
-          )}
+                  onSave={(e) => {
+                    const id = addMockExam(e);
+                    completeTask(active.id, { mockExamId: id });
+                    setActive(null);
+                    toast.success("Deneme sonucu kaydedildi");
+                  }}
+                />
+              );
+            })()}
         </DialogContent>
       </Dialog>
 
