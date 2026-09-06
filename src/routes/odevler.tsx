@@ -511,6 +511,10 @@ function Odevler() {
             <MockExamForm
               track={currentStudent?.track ?? "sayisal"}
               submitLabel="Denemeyi kaydet"
+              {...(active.subject === "TYT" || active.subject === "AYT"
+                ? { fixedKind: active.subject as "TYT" | "AYT" }
+                : { onlySubject: active.subject })}
+
               onSave={(e) => {
                 const id = addMockExam(e);
                 completeTask(active.id, { mockExamId: id });
