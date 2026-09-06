@@ -524,7 +524,7 @@ function Odevler() {
                   : brans
                     ? {
                         fixedKind: brans[1] as "TYT" | "AYT",
-                        onlySubject: brans[2],
+                        onlySubject: brans[2]!,
                       }
                     : { onlySubject: s };
               return (
