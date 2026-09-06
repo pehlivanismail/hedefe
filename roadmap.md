@@ -10,4 +10,5 @@
 
 - [x] Planner: Konu Çalışması / Soru Çözümü / Deneme ödevleri, konu listesinden seçim, kart tıklayınca sonuç kaydı
 - [x] Denemeler: doğru/yanlış girişli gerçek deneme ekleme formu
-- [ ] Gerçek konu listesini (ör. 231 konu, Ders > Alan > Konu) içeri aktar
+- [x] Gerçek konu listesi (TYT + AYT Sayısal, 230 konu) içeri aktarıldı
+- [ ] AYT Sözel / Eşit Ağırlık konu listeleri
