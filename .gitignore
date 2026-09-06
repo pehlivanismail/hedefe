@@ -15,7 +15,7 @@ dist-ssr
 .tanstack/**
 .nitro
 *.local
-
+cikmis_sorular/
 # Wrangler / Cloudflare
 .wrangler/
 .dev.vars
