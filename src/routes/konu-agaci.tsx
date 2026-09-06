@@ -9,6 +9,8 @@ import {
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Dialog,
   DialogContent,
@@ -76,6 +78,12 @@ function MasteryDots({ level }: { level: number }) {
 function KonuAgaci() {
   const { examData, addLog, addAreaLog, currentStudent } = useDemoData();
   const [active, setActive] = useState<Detail | null>(null);
+  const [form, setForm] = useState({
+    source: "",
+    solved: "",
+    wrong: "",
+    blank: "",
+  });
 
   const myExams = currentStudent
     ? examsForStudent(examData, currentStudent)
