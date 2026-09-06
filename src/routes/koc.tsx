@@ -46,7 +46,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import {
   DAYS,
-  SUBJECT_OPTIONS,
   TASK_KIND_LABELS,
   TRACK_LABELS,
   daysUntilYks,
