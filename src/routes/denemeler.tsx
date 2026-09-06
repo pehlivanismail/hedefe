@@ -27,18 +27,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { MockExamForm } from "@/components/mock-exam-form";
 import { toast } from "sonner";
 import { useDemoData, type MockExam } from "@/lib/demo-data";
 import { cn } from "@/lib/utils";
+import { EXAM_QUESTION_COUNTS } from "@/lib/exam-config";
 
 export const Route = createFileRoute("/denemeler")({
   head: () => ({
@@ -66,15 +59,22 @@ function NetChart({
   data,
   color,
   id,
+  maxQuestions,
 }: {
   title: string;
   data: { date: string; net: number }[];
   color: string;
   id: string;
+  maxQuestions: number;
 }) {
   return (
     <Card className="rounded-3xl border-border p-6 shadow-soft">
-      <h3 className="font-display text-lg font-bold text-brand-deep">{title}</h3>
+      <h3 className="font-display text-lg font-bold text-brand-deep">
+        {title}{" "}
+        <span className="text-sm font-normal text-muted-foreground">
+          ({maxQuestions} soru)
+        </span>
+      </h3>
       <div className="mt-4 h-64">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data} margin={{ left: -20, right: 8, top: 8 }}>
@@ -86,12 +86,28 @@ function NetChart({
             </defs>
             <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
             <XAxis dataKey="date" tickLine={false} axisLine={false} fontSize={12} />
-            <YAxis tickLine={false} axisLine={false} fontSize={12} />
+            <YAxis
+              domain={[0, maxQuestions]}
+              tickLine={false}
+              axisLine={false}
+              fontSize={12}
+            />
             <Tooltip
-              contentStyle={{
-                borderRadius: 12,
-                border: "1px solid var(--border)",
-                background: "var(--card)",
+              content={({ active, payload, label }) => {
+                if (!active || !payload || !payload.length) return null;
+                const net = Number(payload[0]?.value) || 0;
+                const pct = maxQuestions ? (net / maxQuestions) * 100 : 0;
+                return (
+                  <div className="rounded-xl border border-border bg-card p-3 shadow-soft">
+                    <p className="text-xs text-muted-foreground">{label}</p>
+                    <p className="font-display text-sm font-bold text-brand-deep">
+                      {net.toFixed(2)} net
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      {maxQuestions} sorunun %{pct.toFixed(1)}&apos;i
+                    </p>
+                  </div>
+                );
               }}
             />
             <Area
@@ -108,36 +124,10 @@ function NetChart({
   );
 }
 
-const SECTIONS = [
-  { key: "turkce", label: "Türkçe", max: 40 },
-  { key: "matematik", label: "Matematik", max: 40 },
-  { key: "sosyal", label: "Sosyal", max: 20 },
-  { key: "fen", label: "Fen", max: 20 },
-] as const;
-
-type SectionKey = (typeof SECTIONS)[number]["key"];
-type Entry = Record<SectionKey, { dogru: string; yanlis: string }>;
-
-const emptyEntry = (): Entry => ({
-  turkce: { dogru: "", yanlis: "" },
-  matematik: { dogru: "", yanlis: "" },
-  sosyal: { dogru: "", yanlis: "" },
-  fen: { dogru: "", yanlis: "" },
-});
-
-const net = (c: { dogru: string; yanlis: string }) =>
-  Math.max(0, (Number(c.dogru) || 0) - (Number(c.yanlis) || 0) / 4);
-
 function Denemeler() {
-  const { mockExamList, addMockExam } = useDemoData();
+  const { mockExamList, addMockExam, currentStudent } = useDemoData();
   const rows = mockExamList;
   const [open, setOpen] = useState(false);
-  const [type, setType] = useState<"TYT" | "AYT">("TYT");
-  const [publisher, setPublisher] = useState("");
-  const [date, setDate] = useState(() => new Date().toISOString().slice(0, 10));
-  const [entry, setEntry] = useState<Entry>(emptyEntry);
-
-  const totalNet = SECTIONS.reduce((sum, s) => sum + net(entry[s.key]), 0);
 
   const tyt = rows
     .filter((e) => e.type === "TYT")
@@ -169,112 +159,14 @@ function Denemeler() {
                 Yeni Deneme Sonucu
               </DialogTitle>
             </DialogHeader>
-            <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-3">
-                <div className="space-y-2">
-                  <Label>Sınav Türü</Label>
-                  <Select
-                    value={type}
-                    onValueChange={(v) => setType(v as "TYT" | "AYT")}
-                  >
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="TYT">TYT</SelectItem>
-                      <SelectItem value="AYT">AYT</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="space-y-2">
-                  <Label>Tarih</Label>
-                  <Input
-                    type="date"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                  />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <Label>Kurum / Yayın</Label>
-                <Input
-                  value={publisher}
-                  placeholder="Ör: Endemik Yayınları"
-                  onChange={(e) => setPublisher(e.target.value)}
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label>Doğru / Yanlış</Label>
-                <div className="space-y-2 rounded-xl border border-border p-3">
-                  {SECTIONS.map((s) => (
-                    <div key={s.key} className="flex items-center gap-3">
-                      <span className="w-24 text-sm font-medium">{s.label}</span>
-                      <Input
-                        type="number"
-                        min={0}
-                        max={s.max}
-                        placeholder="Doğru"
-                        value={entry[s.key].dogru}
-                        onChange={(e) =>
-                          setEntry({
-                            ...entry,
-                            [s.key]: { ...entry[s.key], dogru: e.target.value },
-                          })
-                        }
-                      />
-                      <Input
-                        type="number"
-                        min={0}
-                        max={s.max}
-                        placeholder="Yanlış"
-                        value={entry[s.key].yanlis}
-                        onChange={(e) =>
-                          setEntry({
-                            ...entry,
-                            [s.key]: { ...entry[s.key], yanlis: e.target.value },
-                          })
-                        }
-                      />
-                      <span className="w-14 text-right font-display text-sm font-bold text-brand-deep">
-                        {net(entry[s.key]).toFixed(2)}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-                <p className="text-right text-sm text-muted-foreground">
-                  Toplam net:{" "}
-                  <span className="font-display font-bold text-brand-deep">
-                    {totalNet.toFixed(2)}
-                  </span>
-                </p>
-              </div>
-
-              <Button
-                className="w-full rounded-xl"
-                onClick={() => {
-                  if (!publisher.trim()) {
-                    toast.error("Kurum adı gerekli");
-                    return;
-                  }
-                  addMockExam({
-                    date: new Date(date).toLocaleDateString("tr-TR"),
-                    publisher: publisher.trim(),
-                    type,
-                    turkce: Number(net(entry.turkce).toFixed(2)),
-                    matematik: Number(net(entry.matematik).toFixed(2)),
-                    sosyal: Number(net(entry.sosyal).toFixed(2)),
-                    fen: Number(net(entry.fen).toFixed(2)),
-                  });
-                  setEntry(emptyEntry());
-                  setPublisher("");
-                  setOpen(false);
-                  toast.success("Deneme sonucu eklendi");
-                }}
-              >
-                Kaydet
-              </Button>
-            </div>
+            <MockExamForm
+              track={currentStudent?.track ?? "sayisal"}
+              onSave={(e) => {
+                addMockExam(e);
+                setOpen(false);
+                toast.success("Deneme sonucu eklendi");
+              }}
+            />
           </DialogContent>
         </Dialog>
       </div>
@@ -285,12 +177,14 @@ function Denemeler() {
           title="TYT Net İlerlemesi"
           data={tyt}
           color="oklch(0.7 0.157 159.5)"
+          maxQuestions={EXAM_QUESTION_COUNTS.TYT}
         />
         <NetChart
           id="aytGrad"
           title="AYT Net İlerlemesi"
           data={ayt}
           color="oklch(0.45 0.09 220)"
+          maxQuestions={EXAM_QUESTION_COUNTS.AYT}
         />
       </div>
 
@@ -306,6 +200,7 @@ function Denemeler() {
               <TableHead className="text-right">Sosyal</TableHead>
               <TableHead className="text-right">Fen</TableHead>
               <TableHead className="text-right">Toplam Net</TableHead>
+              <TableHead className="text-right">Başarı %</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -321,6 +216,16 @@ function Denemeler() {
                 <TableCell className="text-right">
                   <span className="rounded-full bg-brand-soft px-3 py-1 font-display text-sm font-bold text-brand-deep">
                     {total(e).toFixed(1)}
+                  </span>
+                </TableCell>
+                <TableCell className="text-right">
+                  <span className="text-sm font-medium text-muted-foreground">
+                    {(
+                      (total(e) /
+                        EXAM_QUESTION_COUNTS[e.type === "AYT" ? "AYT" : "TYT"]) *
+                      100
+                    ).toFixed(1)}
+                    %
                   </span>
                 </TableCell>
               </TableRow>

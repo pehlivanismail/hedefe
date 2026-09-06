@@ -9,6 +9,8 @@ import {
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Dialog,
   DialogContent,
@@ -27,12 +29,16 @@ import { toast } from "sonner";
 import {
   subjectStats,
   topicStats,
+  areaStats,
   useDemoData,
   examsForStudent,
   TRACK_LABELS,
-  type Topic,
+  type StudyLog,
 } from "@/lib/demo-data";
 import { cn } from "@/lib/utils";
+
+type Detail = { kind: "topic" | "area"; id: string };
+
 
 export const Route = createFileRoute("/konu-agaci")({
   head: () => ({
@@ -70,20 +76,42 @@ function MasteryDots({ level }: { level: number }) {
 }
 
 function KonuAgaci() {
-  const { examData, addLog, currentStudent } = useDemoData();
-  const [active, setActive] = useState<Topic | null>(null);
+  const { examData, addLog, addAreaLog, currentStudent } = useDemoData();
+  const [active, setActive] = useState<Detail | null>(null);
+  const [form, setForm] = useState({
+    source: "",
+    solved: "",
+    wrong: "",
+    blank: "",
+  });
 
   const myExams = currentStudent
     ? examsForStudent(examData, currentStudent)
     : [];
 
-  const current =
-    active &&
-    myExams
-      .flatMap((e) => e.subjects)
-      .flatMap((s) => s.areas)
-      .flatMap((a) => a.topics)
-      .find((t) => t.id === active.id);
+  const allAreas = myExams
+    .flatMap((e) => e.subjects)
+    .flatMap((s) => s.areas);
+
+  let current: {
+    name: string;
+    mastery: number;
+    debt: number;
+    logs: StudyLog[];
+  } | null = null;
+
+  if (active?.kind === "topic") {
+    const t = allAreas.flatMap((a) => a.topics).find((x) => x.id === active.id);
+    if (t)
+      current = { name: t.name, mastery: t.mastery, debt: t.debt, logs: t.logs };
+  } else if (active?.kind === "area") {
+    const a = allAreas.find((x) => x.id === active.id);
+    if (a) {
+      const st = areaStats(a);
+      current = { name: `${a.name} (Alan)`, ...st };
+    }
+  }
+
 
   return (
     <div className="space-y-8">
@@ -143,21 +171,45 @@ function KonuAgaci() {
                     </div>
                     <AccordionContent className="px-4 pb-4 pt-3">
                       <Accordion type="multiple" className="space-y-2">
-                        {subject.areas.map((area) => (
+                        {subject.areas.map((area) => {
+                          const ar = areaStats(area);
+                          return (
                           <AccordionItem
                             key={area.id}
                             value={area.id}
                             className="rounded-xl border border-border bg-secondary/40"
                           >
                             <AccordionTrigger className="px-4 py-2.5 text-sm font-semibold hover:no-underline">
-                              {area.name}
+                              <div className="flex w-full items-center justify-between gap-3 pr-2">
+                                <span>{area.name}</span>
+                                <span className="flex items-center gap-3">
+                                  <MasteryDots level={ar.mastery} />
+                                  <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-[11px] font-semibold text-destructive">
+                                    Borç: {ar.debt}
+                                  </span>
+                                </span>
+                              </div>
                             </AccordionTrigger>
                             <AccordionContent className="px-2 pb-2">
+                              <div className="px-2 pb-2">
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  className="w-full rounded-lg"
+                                  onClick={() =>
+                                    setActive({ kind: "area", id: area.id })
+                                  }
+                                >
+                                  <Plus className="size-3.5" /> Alan çalışması ({area.name})
+                                </Button>
+                              </div>
                               <ul className="space-y-1">
                                 {area.topics.map((t) => (
                                   <li key={t.id}>
                                     <button
-                                      onClick={() => setActive(t)}
+                                      onClick={() =>
+                                        setActive({ kind: "topic", id: t.id })
+                                      }
                                       className="grid w-full grid-cols-[1fr_auto] items-center gap-3 rounded-lg px-3 py-2 text-left transition-colors hover:bg-card"
                                     >
                                       <span className="text-sm text-foreground">
@@ -175,7 +227,9 @@ function KonuAgaci() {
                               </ul>
                             </AccordionContent>
                           </AccordionItem>
-                        ))}
+                          );
+                        })}
+
                       </Accordion>
                     </AccordionContent>
                   </AccordionItem>
@@ -237,22 +291,54 @@ function KonuAgaci() {
                 </TableBody>
               </Table>
             </div>
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+              <div className="col-span-2 space-y-1.5">
+                <Label>Kaynak</Label>
+                <Input
+                  value={form.source}
+                  placeholder="Ör: 3D Soru Bankası"
+                  onChange={(e) => setForm({ ...form, source: e.target.value })}
+                />
+              </div>
+              {(["solved", "wrong", "blank"] as const).map((k) => (
+                <div key={k} className="space-y-1.5">
+                  <Label>
+                    {k === "solved" ? "Çözülen" : k === "wrong" ? "Yanlış" : "Boş"}
+                  </Label>
+                  <Input
+                    type="number"
+                    min={0}
+                    value={form[k]}
+                    onChange={(e) => setForm({ ...form, [k]: e.target.value })}
+                  />
+                </div>
+              ))}
+            </div>
             <Button
               className="w-full rounded-xl"
               onClick={() => {
-                if (!current) return;
-                addLog(current.id, {
+                if (!active) return;
+                const solved = Number(form.solved);
+                if (!solved) {
+                  toast.error("Çözülen soru sayısı gerekli");
+                  return;
+                }
+                const log = {
                   date: new Date().toLocaleDateString("tr-TR"),
-                  source: "Hızlı Çalışma",
-                  solved: 20,
-                  wrong: 3,
-                  blank: 1,
-                });
+                  source: form.source.trim() || "Çalışma",
+                  solved,
+                  wrong: Number(form.wrong) || 0,
+                  blank: Number(form.blank) || 0,
+                };
+                if (active.kind === "area") addAreaLog(active.id, log);
+                else addLog(active.id, log);
+                setForm({ source: "", solved: "", wrong: "", blank: "" });
                 toast.success("Yeni çalışma eklendi");
               }}
             >
               <Plus className="size-4" /> Yeni Çalışma Ekle
             </Button>
+
           </div>
         </DialogContent>
       </Dialog>

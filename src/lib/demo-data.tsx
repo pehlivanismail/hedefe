@@ -7,8 +7,8 @@ import {
   type ReactNode,
 } from "react";
 import { useAuth } from "@/lib/auth";
-import { supabase } from "@/integrations/supabase/client";
-import { useQuery } from "@tanstack/react-query";
+import { realExams } from "@/lib/topics-data";
+
 
 export const YKS_DATE = new Date("2027-06-19T10:00:00Z");
 
@@ -36,8 +36,19 @@ export type Topic = {
   logs: StudyLog[];
 };
 
-export type Area = { id: string; name: string; topics: Topic[] };
+export type Area = {
+  id: string;
+  name: string;
+  topics: Topic[];
+  /** Alan seviyesinde tutulan çalışma kayıtları */
+  logs?: StudyLog[];
+  /** Alan seviyesinde 0..5 hakimiyet (girilmediyse konulardan hesaplanır) */
+  mastery?: number;
+  /** Alan seviyesinde ek öğrenme borcu */
+  debt?: number;
+};
 export type Subject = { id: string; name: string; areas: Area[] };
+
 export type Track = "sayisal" | "sozel" | "esit";
 export type Exam = {
   id: string;
@@ -65,6 +76,8 @@ export type TaskResult = {
   solved?: number;
   wrong?: number;
   blank?: number;
+  /** Kaynak adı (kitap / yayın / fasikül) */
+  source?: string;
   /** Deneme için */
   mockExamId?: string;
   note?: string;
@@ -79,8 +92,17 @@ export type Task = {
   done: boolean;
   studentId: string;
   topicId?: string | null | undefined;
+  areaId?: string | null | undefined;
+  /** Alan / konu adı (günlük raporda gösterilir) */
+  areaName?: string | undefined;
+  /** Ödevi kim ekledi: öğrenci mi koç mu */
+  assignedBy?: "student" | "coach" | undefined;
+  /** Tamamlanma tarihi (YYYY-MM-DD) */
+  completedAt?: string | undefined;
+
   result?: TaskResult | undefined;
 };
+
 
 export type MockExam = {
   id: string;
@@ -91,6 +113,7 @@ export type MockExam = {
   matematik: number;
   sosyal: number;
   fen: number;
+  studentId?: string | undefined;
 };
 
 export type Student = {
@@ -129,156 +152,8 @@ const baseLogs: StudyLog[] = [
 ];
 
 export const exams: Exam[] = [
-  {
-    id: "tyt",
-    name: "TYT",
-    track: null,
-    subjects: [
-      {
-        id: "tyt-turkce",
-        name: "Türkçe",
-        areas: [
-          {
-            id: "paragraf",
-            name: "Paragraf",
-            topics: [
-              topic("paragraf-1", "Anlatım Teknikleri", 5, 0, baseLogs),
-              topic("paragraf-2", "Anlam Bütünlüğü", 4, 1),
-            ],
-          },
-          {
-            id: "dil-bilgisi",
-            name: "Dil Bilgisi",
-            topics: [
-              topic("dilbilgisi-1", "Sözcük Türleri", 3, 2),
-              topic("dilbilgisi-2", "Cümlenin Ögeleri", 2, 4),
-            ],
-          },
-        ],
-      },
-      {
-        id: "tyt-mat",
-        name: "Matematik",
-        areas: [
-          {
-            id: "tyt-temel",
-            name: "Temel Kavramlar",
-            topics: [
-              topic("tyt-temel-1", "Sayı Basamakları", 4, 1, baseLogs),
-              topic("tyt-temel-2", "Bölme ve Bölünebilme", 2, 5),
-            ],
-          },
-          {
-            id: "tyt-problem",
-            name: "Problemler",
-            topics: [
-              topic("tyt-problem-1", "Yaş Problemleri", 3, 2),
-              topic("tyt-problem-2", "Hız Problemleri", 1, 6),
-            ],
-          },
-        ],
-      },
-      {
-        id: "tyt-fen",
-        name: "Fen Bilimleri",
-        areas: [
-          {
-            id: "hareket",
-            name: "Fizik · Hareket",
-            topics: [
-              topic("hareket-1", "Newton Hareket Yasaları", 3, 2, baseLogs),
-              topic("hareket-2", "Bağıl Hareket", 2, 4),
-            ],
-          },
-          {
-            id: "tyt-kimya",
-            name: "Kimya · Maddenin Halleri",
-            topics: [topic("tyt-kimya-1", "Mol Kavramı", 2, 3)],
-          },
-        ],
-      },
-      {
-        id: "tyt-sosyal",
-        name: "Sosyal Bilimler",
-        areas: [
-          {
-            id: "tyt-tarih",
-            name: "Tarih",
-            topics: [
-              topic("tyt-tarih-1", "İlk Türk Devletleri", 3, 2),
-              topic("tyt-tarih-2", "İnkılap Tarihi", 2, 4),
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: "ayt-sayisal",
-    name: "AYT Sayısal",
-    track: "sayisal",
-    subjects: [
-      {
-        id: "ayt-bio",
-        name: "Biyoloji",
-        areas: [
-          {
-            id: "hucre",
-            name: "Hücre",
-            topics: [
-              topic("hucre-1", "Hücre Zarı ve Madde Geçişleri", 4, 2, baseLogs),
-              topic("hucre-2", "Organeller", 3, 3, baseLogs.slice(0, 1)),
-              topic("hucre-3", "Hücre Bölünmeleri", 2, 5),
-            ],
-          },
-          {
-            id: "kalitim",
-            name: "Kalıtım",
-            topics: [
-              topic("kalitim-1", "Mendel Genetiği", 3, 1, baseLogs),
-              topic("kalitim-2", "Eşeye Bağlı Kalıtım", 1, 4),
-            ],
-          },
-        ],
-      },
-      {
-        id: "ayt-mat-say",
-        name: "Matematik",
-        areas: [
-          {
-            id: "turev",
-            name: "Türev",
-            topics: [
-              topic("turev-1", "Limit ve Süreklilik", 3, 2, baseLogs),
-              topic("turev-2", "Türev Uygulamaları", 2, 6),
-            ],
-          },
-          {
-            id: "integral",
-            name: "İntegral",
-            topics: [
-              topic("integral-1", "Belirsiz İntegral", 2, 3),
-              topic("integral-2", "Alan Hesapları", 1, 5),
-            ],
-          },
-        ],
-      },
-      {
-        id: "ayt-fizik",
-        name: "Fizik",
-        areas: [
-          {
-            id: "ayt-elektrik",
-            name: "Elektrik ve Manyetizma",
-            topics: [
-              topic("ayt-elektrik-1", "Elektriksel Kuvvet", 2, 4),
-              topic("ayt-elektrik-2", "Manyetik Alan", 1, 6),
-            ],
-          },
-        ],
-      },
-    ],
-  },
+  ...realExams,
+
   {
     id: "ayt-sozel",
     name: "AYT Sözel",
@@ -438,6 +313,90 @@ const initialTasks: Task[] = [
   { id: "t9", kind: "soru", subject: "Fizik", title: "Optik Test 2", day: 2, done: false, studentId: "s2" },
 ];
 
+/** Basit deterministik sayı üreteci (aynı öğrenci hep aynı örnek veriyi görür) */
+function seedNum(key: string) {
+  let h = 2166136261;
+  for (let i = 0; i < key.length; i++) {
+    h ^= key.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return Math.abs(h);
+}
+
+const SEED_TASKS: Array<{
+  kind: TaskKind;
+  subject: string;
+  area: string;
+  title: string;
+  source: string;
+  day: number;
+  coach: boolean;
+}> = [
+  { kind: "soru", subject: "AYT Matematik", area: "Türev", title: "Türev 40 soru", source: "Apotemi Türev Fasikülü", day: 0, coach: true },
+  { kind: "konu", subject: "TYT Türkçe", area: "Paragraf", title: "Paragraf konu tekrarı", source: "Hocalara Geldik video ders", day: 1, coach: false },
+  { kind: "soru", subject: "TYT Fizik", area: "Hareket", title: "Hareket Test 2", source: "3D TYT Fizik Soru Bankası", day: 2, coach: true },
+  { kind: "konu", subject: "TYT Kimya", area: "Mol Kavramı", title: "Mol Kavramı özet", source: "Bilgi Sarmal Konu Anlatımı", day: 3, coach: false },
+  { kind: "soru", subject: "AYT Biyoloji", area: "Hücre", title: "Hücre 30 soru", source: "Endemik AYT Biyoloji", day: 4, coach: true },
+  { kind: "deneme", subject: "TYT", area: "", title: "TYT Genel Deneme", source: "Limit TYT Deneme", day: 5, coach: true },
+  { kind: "konu", subject: "TYT Tarih", area: "İnkılap Tarihi", title: "Haftalık tekrar", source: "Kendi notları", day: 6, coach: false },
+];
+
+/** Gerçek (veritabanındaki) bir öğrenci için örnek haftalık plan üretir */
+export function seedTasksFor(studentId: string): Task[] {
+  const s = seedNum(studentId);
+  return SEED_TASKS.map((t, i) => {
+    const done = (s + i * 7) % 3 !== 2;
+    const solved = 20 + ((s + i * 13) % 30);
+    const wrong = (s + i * 5) % 8;
+    const d = new Date();
+    d.setDate(d.getDate() - ((s + i * 3) % 12));
+    return {
+      id: `seed-${studentId}-${i}`,
+      kind: t.kind,
+      subject: t.subject,
+      areaName: t.area || undefined,
+      title: t.title,
+      day: t.day,
+      done,
+      studentId,
+      assignedBy: t.coach ? ("coach" as const) : ("student" as const),
+      ...(done
+        ? {
+            completedAt: d.toISOString().slice(0, 10),
+            result:
+              t.kind === "soru"
+                ? { solved, wrong, blank: (s + i) % 4, source: t.source }
+                : { source: t.source },
+          }
+        : {}),
+    };
+  });
+}
+
+
+const SEED_PUBLISHERS = ["Endemik", "3D", "Bilgi Sarmal", "Apotemi", "Limit"];
+
+/** Gerçek bir öğrenci için örnek deneme sonuçları üretir */
+export function seedMockExamsFor(studentId: string): MockExam[] {
+  const s = seedNum(studentId);
+  return Array.from({ length: 5 }, (_, i) => {
+    const d = new Date();
+    d.setDate(d.getDate() - (5 - i) * 14);
+    const g = i * 2;
+    return {
+      id: `seed-d-${studentId}-${i}`,
+      date: d.toLocaleDateString("tr-TR"),
+      publisher: SEED_PUBLISHERS[(s + i) % SEED_PUBLISHERS.length]!,
+      type: (i % 2 === 0 ? "TYT" : "AYT") as "TYT" | "AYT",
+      turkce: 22 + ((s + i * 3) % 8) + g,
+      matematik: 18 + ((s + i * 5) % 10) + g,
+      sosyal: 10 + ((s + i * 7) % 6) + Math.round(g / 2),
+      fen: 12 + ((s + i * 11) % 8) + g,
+      studentId,
+    };
+  });
+}
+
 export const DAYS = [
   "Pazartesi",
   "Salı",
@@ -468,6 +427,8 @@ type Store = {
   moveTask: (id: string, day: number) => void;
   examData: Exam[];
   addLog: (topicId: string, log: Omit<StudyLog, "id">) => void;
+  addAreaLog: (areaId: string, log: Omit<StudyLog, "id">) => void;
+
   session: Session;
   studentList: Student[];
   currentStudent: Student | null;
@@ -479,6 +440,9 @@ type Store = {
 const StoreContext = createContext<Store | null>(null);
 
 export function DemoDataProvider({ children }: { children: ReactNode }) {
+  const [tasks, setTasks] = useState<Task[]>(initialTasks);
+  const [examData, setExamData] = useState<Exam[]>(exams);
+  const [mockExamList, setMockExamList] = useState<MockExam[]>(mockExams);
   const auth = useAuth();
 
   const currentStudent = auth.student;
@@ -493,126 +457,38 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
         : null
     : null;
 
-  const targetStudentId = currentStudent?.id || (session?.role === "student" ? session.id : null);
+  // Gerçek (veritabanı) öğrencileri için örnek çalışma kayıtlarını hazırla
+  const trackedIds = useMemo(() => {
+    const ids = studentList.map((s) => s.id);
+    if (currentStudent) ids.push(currentStudent.id);
+    return Array.from(new Set(ids));
+  }, [studentList, currentStudent]);
 
-  const { data: studyLogsData } = useQuery({
-    queryKey: ["study_logs", targetStudentId],
-    queryFn: async () => {
-      if (!targetStudentId) return [];
-      const { data } = await supabase.from("study_logs").select("*").eq("user_id", targetStudentId);
-      return data || [];
-    },
-    enabled: !!targetStudentId,
-  });
-
-  const { data: mockExamsData } = useQuery({
-    queryKey: ["mock_exams", targetStudentId],
-    queryFn: async () => {
-      if (!targetStudentId) return [];
-      const { data } = await supabase.from("mock_exams").select("*").eq("user_id", targetStudentId);
-      return data || [];
-    },
-    enabled: !!targetStudentId,
-  });
-
-  const { data: schedulesData } = useQuery({
-    queryKey: ["weekly_schedules", targetStudentId],
-    queryFn: async () => {
-      if (!targetStudentId) return null;
-      const { data } = await supabase
-        .from("weekly_schedules")
-        .select("*")
-        .eq("student_id", targetStudentId)
-        .order("created_at", { ascending: false })
-        .limit(1)
-        .maybeSingle();
-      return data;
-    },
-    enabled: !!targetStudentId,
-  });
-
-  const examData = useMemo(() => {
-    const clonedExams: Exam[] = JSON.parse(JSON.stringify(exams));
-    
-    for (const e of clonedExams) {
-      for (const s of e.subjects) {
-        for (const a of s.areas) {
-          for (const t of a.topics) {
-            t.logs = [];
-            t.mastery = 0;
-            t.debt = 0;
-          }
-        }
-      }
-    }
-
-    const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9ğüşıöç]/g, "");
-
-    if (studyLogsData && studyLogsData.length > 0) {
-      for (const log of studyLogsData) {
-        let matched = false;
-        const normSubj = normalize(log.subject);
-        const normArea = normalize(log.area);
-        const normTopic = normalize(log.sub_topic);
-        
-        for (const e of clonedExams) {
-          for (const s of e.subjects) {
-            if (normalize(s.name) !== normSubj && normalize(s.id) !== normSubj) continue;
-            for (const a of s.areas) {
-              if (normalize(a.name) !== normArea && normalize(a.id) !== normArea) continue;
-              for (const t of a.topics) {
-                if (normalize(t.name) === normTopic || normalize(t.id) === normTopic) {
-                  matched = true;
-                  t.logs.push({
-                    id: log.id,
-                    date: log.date,
-                    source: log.source,
-                    solved: log.total_questions,
-                    wrong: log.wrong_answers,
-                    blank: log.blank_answers,
-                  });
-                  t.mastery = Math.min(5, t.mastery + log.total_questions / 50);
-                  t.debt = t.debt + log.wrong_answers + log.blank_answers;
-                }
-              }
-            }
-          }
-        }
-        if (!matched) {
-          console.warn("Unmatched DB Log:", log.subject, ">", log.area, ">", log.sub_topic, "for log ID:", log.id);
-        }
-      }
-    }
-    return clonedExams;
-  }, [studyLogsData]);
-
-  const mockExamList = useMemo(() => {
-    if (!mockExamsData) return [];
-    return mockExamsData.map((dbExam) => ({
-      id: dbExam.id,
-      name: dbExam.publisher,
-      date: dbExam.date,
-      type: dbExam.exam_type as any,
-      score: dbExam.total_net,
-      subjects: [], // Add breakdown implementation if needed
-    }));
-  }, [mockExamsData]);
-
-  const [localTasks, setLocalTasks] = useState<Task[]>([]);
-  
   useEffect(() => {
-    if (schedulesData?.schedule_data) {
-      setLocalTasks(schedulesData.schedule_data as any);
-    } else {
-      setLocalTasks([]);
-    }
-  }, [schedulesData]);
+    if (trackedIds.length === 0) return;
+    setTasks((prev) => {
+      const missing = trackedIds.filter(
+        (id) => !prev.some((t) => t.studentId === id),
+      );
+      return missing.length
+        ? [...prev, ...missing.flatMap((id) => seedTasksFor(id))]
+        : prev;
+    });
+    setMockExamList((prev) => {
+      const missing = trackedIds.filter(
+        (id) => !prev.some((e) => e.studentId === id),
+      );
+      return missing.length
+        ? [...prev, ...missing.flatMap((id) => seedMockExamsFor(id))]
+        : prev;
+    });
+  }, [trackedIds]);
+
 
   const value = useMemo<Store>(
     () => ({
-      tasks: localTasks,
+      tasks,
       examData,
-      mockExamList,
       session,
       studentList,
       currentStudent,
@@ -621,106 +497,98 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       setCoach: (coachId) => {
         void auth.setCoach(coachId);
       },
-      addTask: async (t) => {
-        const newTask = { kind: "konu" as TaskKind, ...t, id: `t-${Date.now()}`, done: false };
-        const newTasks = [...localTasks, newTask];
-        setLocalTasks(newTasks);
-        if (targetStudentId) {
-          await supabase.from("weekly_schedules").upsert({
-            student_id: targetStudentId,
-            week_start_date: new Date().toISOString().split("T")[0],
-            schedule_data: newTasks,
-          });
-        }
-      },
-      completeTask: async (id, result) => {
-        const newTasks = localTasks.map((t) =>
-          t.id === id ? { ...t, done: true, result: result ?? t.result } : t,
-        );
-        setLocalTasks(newTasks);
-        if (targetStudentId) {
-          await supabase.from("weekly_schedules").upsert({
-            student_id: targetStudentId,
-            week_start_date: new Date().toISOString().split("T")[0],
-            schedule_data: newTasks,
-          });
-        }
-      },
-      addMockExam: (e) => {
-        if (targetStudentId) {
-          supabase.from("mock_exams").insert({
-            user_id: targetStudentId,
-            date: e.date,
-            exam_type: e.type,
-            publisher: e.name,
-            turkce_net: 0,
-            matematik_net: 0,
-            sosyal_net: 0,
-            fen_net: 0,
-            total_net: e.score,
-          }).then();
-        }
-        return `d-${Date.now()}`;
-      },
-      toggleTask: async (id) => {
-        const newTasks = localTasks.map((t) => (t.id === id ? { ...t, done: !t.done } : t));
-        setLocalTasks(newTasks);
-        if (targetStudentId) {
-          await supabase.from("weekly_schedules").upsert({
-            student_id: targetStudentId,
-            week_start_date: new Date().toISOString().split("T")[0],
-            schedule_data: newTasks,
-          });
-        }
-      },
-      moveTask: async (id, day) => {
-        const newTasks = localTasks.map((t) => (t.id === id ? { ...t, day } : t));
-        setLocalTasks(newTasks);
-        if (targetStudentId) {
-          await supabase.from("weekly_schedules").upsert({
-            student_id: targetStudentId,
-            week_start_date: new Date().toISOString().split("T")[0],
-            schedule_data: newTasks,
-          });
-        }
-      },
-      addLog: (topicId, log) => {
-        // First find subject, area, topic names from the ID
-        let subjectName = "";
-        let areaName = "";
-        let subTopicName = "";
-        for (const e of exams) {
-          for (const s of e.subjects) {
-            for (const a of s.areas) {
-              for (const t of a.topics) {
-                if (t.id === topicId) {
-                  subjectName = s.name;
-                  areaName = a.name;
-                  subTopicName = t.name;
+
+      addTask: (t) =>
+        setTasks((prev) => [
+          ...prev,
+          {
+            kind: "konu" as TaskKind,
+            assignedBy: session?.role === "coach" ? "coach" : "student",
+            ...t,
+            id: `t-${Date.now()}`,
+            done: false,
+          },
+        ]),
+      completeTask: (id, result) =>
+        setTasks((prev) =>
+          prev.map((t) =>
+            t.id === id
+              ? {
+                  ...t,
+                  done: true,
+                  completedAt: new Date().toISOString().slice(0, 10),
+                  result: result ?? t.result,
                 }
-              }
-            }
-          }
-        }
-        
-        if (targetStudentId && subTopicName) {
-           supabase.from("study_logs").insert({
-             user_id: targetStudentId,
-             date: log.date,
-             subject: subjectName,
-             area: areaName,
-             sub_topic: subTopicName,
-             source: log.source,
-             total_questions: log.solved,
-             correct_answers: log.solved - log.wrong - log.blank,
-             wrong_answers: log.wrong,
-             blank_answers: log.blank
-           }).then();
-        }
+              : t,
+          ),
+        ),
+
+      mockExamList,
+      addMockExam: (e) => {
+        const id = `d-${Date.now()}`;
+        setMockExamList((prev) => [
+          ...prev,
+          { studentId: currentStudent?.id, ...e, id },
+        ]);
+        return id;
       },
+      toggleTask: (id) =>
+        setTasks((prev) =>
+          prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t)),
+        ),
+      moveTask: (id, day) =>
+        setTasks((prev) => prev.map((t) => (t.id === id ? { ...t, day } : t))),
+      addLog: (topicId, log) =>
+        setExamData((prev) =>
+          prev.map((e) => ({
+            ...e,
+            subjects: e.subjects.map((s) => ({
+              ...s,
+              areas: s.areas.map((a) => ({
+                ...a,
+                topics: a.topics.map((tp) =>
+                  tp.id === topicId
+                    ? {
+                        ...tp,
+                        debt: Math.max(0, tp.debt + log.wrong + log.blank - 1),
+                        logs: [...tp.logs, { ...log, id: `l-${Date.now()}` }],
+                      }
+                    : tp,
+                ),
+              })),
+            })),
+          })),
+        ),
+      addAreaLog: (areaId, log) =>
+        setExamData((prev) =>
+          prev.map((e) => ({
+            ...e,
+            subjects: e.subjects.map((s) => ({
+              ...s,
+              areas: s.areas.map((a) =>
+                a.id === areaId
+                  ? {
+                      ...a,
+                      debt: Math.max(
+                        0,
+                        (a.debt ?? 0) + log.wrong + log.blank - 1,
+                      ),
+                      mastery: Math.min(
+                        5,
+                        (a.mastery ?? areaMasteryFromTopics(a)) +
+                          (log.wrong + log.blank <= 2 ? 1 : 0),
+                      ),
+                      logs: [...(a.logs ?? []), { ...log, id: `al-${Date.now()}` }],
+                    }
+                  : a,
+              ),
+            })),
+          })),
+        ),
     }),
+
     [
-      localTasks,
+      tasks,
       examData,
       mockExamList,
       session,
@@ -729,7 +597,6 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       currentCoach,
       coachList,
       auth,
-      targetStudentId
     ],
   );
 
@@ -776,6 +643,24 @@ export function subjectStats(subject: Subject) {
     debt,
   };
 }
+
+/** Alanın konularından ortalama hakimiyet (0..5). */
+export function areaMasteryFromTopics(area: Area) {
+  if (!area.topics.length) return 0;
+  const sum = area.topics.reduce((n, t) => n + t.mastery, 0);
+  return Math.round(sum / area.topics.length);
+}
+
+/** Alan seviyesinde gösterilecek hakimiyet, borç ve kayıtlar. */
+export function areaStats(area: Area) {
+  const topicDebt = area.topics.reduce((n, t) => n + t.debt, 0);
+  return {
+    mastery: area.mastery ?? areaMasteryFromTopics(area),
+    debt: topicDebt + (area.debt ?? 0),
+    logs: area.logs ?? [],
+  };
+}
+
 
 /* ---------- Analiz yardımcıları ---------- */
 
@@ -895,5 +780,46 @@ export function flatTopics(list: Exam[]): TopicOption[] {
             examName: e.name,
             label: `${e.name} · ${s.name} · ${a.name} · ${t.name}`,
           });
+  return rows;
+}
+
+export type TargetKind = "area" | "topic";
+
+export type StudyTarget = {
+  kind: TargetKind;
+  id: string;
+  name: string;
+  areaName: string;
+  subjectName: string;
+  examName: string;
+  label: string;
+};
+
+/** Alanları ve konuları birlikte, seçilebilir hedefler olarak düzleştirir. */
+export function flatTargets(list: Exam[]): StudyTarget[] {
+  const rows: StudyTarget[] = [];
+  for (const e of list)
+    for (const s of e.subjects)
+      for (const a of s.areas) {
+        rows.push({
+          kind: "area",
+          id: a.id,
+          name: a.name,
+          areaName: a.name,
+          subjectName: s.name,
+          examName: e.name,
+          label: `${e.name} · ${s.name} · ${a.name}`,
+        });
+        for (const t of a.topics)
+          rows.push({
+            kind: "topic",
+            id: t.id,
+            name: t.name,
+            areaName: a.name,
+            subjectName: s.name,
+            examName: e.name,
+            label: `${e.name} · ${s.name} · ${a.name} · ${t.name}`,
+          });
+      }
   return rows;
 }
