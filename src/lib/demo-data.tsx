@@ -156,64 +156,7 @@ const baseLogs: StudyLog[] = [
 
 export const exams: Exam[] = [
   ...realExams,
-
-
-  {
-    id: "ayt-esit",
-    name: "AYT Eşit Ağırlık",
-    track: "esit",
-    subjects: [
-      {
-        id: "ayt-mat-ea",
-        name: "Matematik",
-        areas: [
-          {
-            id: "ea-turev",
-            name: "Türev",
-            topics: [
-              topic("ea-turev-1", "Limit ve Süreklilik", 3, 2, baseLogs),
-              topic("ea-turev-2", "Türev Uygulamaları", 2, 5),
-            ],
-          },
-          {
-            id: "ea-diziler",
-            name: "Diziler",
-            topics: [topic("ea-diziler-1", "Aritmetik Diziler", 2, 4)],
-          },
-        ],
-      },
-      {
-        id: "ayt-edebiyat-ea",
-        name: "Edebiyat",
-        areas: [
-          {
-            id: "ea-siir",
-            name: "Şiir Bilgisi",
-            topics: [
-              topic("ea-siir-1", "Ölçü ve Uyak", 3, 2),
-              topic("ea-siir-2", "Söz Sanatları", 2, 4),
-            ],
-          },
-        ],
-      },
-      {
-        id: "ayt-tarih-ea",
-        name: "Tarih",
-        areas: [
-          {
-            id: "ea-inkilap",
-            name: "İnkılap Tarihi",
-            topics: [
-              topic("ea-inkilap-1", "Kurtuluş Savaşı", 3, 3),
-              topic("ea-inkilap-2", "Atatürk İlkeleri", 2, 4),
-            ],
-          },
-        ],
-      },
-    ],
-  },
 ];
-
 export const mockExams: MockExam[] = [];
 
 export const coachList = [

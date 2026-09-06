@@ -1,0 +1,1824 @@
+{
+  "ayt-matematik_esitagirlik.pdf": [
+    {
+      "name": "DENKLEM VE EŞİTSİZLİKLER",
+      "topics": [
+        {
+          "name": "Temel Kavramlar"
+        }
+      ]
+    },
+    {
+      "name": "123",
+      "topics": [
+        {
+          "name": "MANTIK"
+        },
+        {
+          "name": "Önermeler ve Bileşik Önermeler, Niceleyiciler, Tanım, Aksiyom, Teorem ve İspat Yöntemleri"
+        }
+      ]
+    },
+    {
+      "name": "KÜMELER",
+      "topics": [
+        {
+          "name": "Kümelerde Temel Kavramlar, Kümelerde İşlemler"
+        }
+      ]
+    },
+    {
+      "name": "FONKSİYONLAR",
+      "topics": [
+        {
+          "name": "Fonksiyon Kavramı ve Gösterimi, İki Fonksiyonun Bileşkesi ve Bir Fonksiyonun Tersi"
+        }
+      ]
+    },
+    {
+      "name": "FONKSİYONLARDA UYGULAMALAR",
+      "topics": [
+        {
+          "name": "Fonksiyonlar ile İlgili Uygulamalar, Fonksiyon Dönüşümleri"
+        },
+        {
+          "name": "İkinci Dereceden Fonksiyon ve Grafikleri"
+        }
+      ]
+    },
+    {
+      "name": "POLİNOMLAR",
+      "topics": [
+        {
+          "name": "Polinom Kavramı ve Polinomlarda İşlemler, Polinomların Çapanlara Ayrılması"
+        }
+      ]
+    },
+    {
+      "name": "138",
+      "topics": [
+        {
+          "name": "İKİNCİ DERECEDEN DENKLEMLER/"
+        },
+        {
+          "name": "DENKLEM VE EŞİTSİZLİK SİSTEMLERİ"
+        },
+        {
+          "name": "İkinci Dereceden Denklemler, Karmaşık Sayılar, Denklem ve Eşitsizlik Sistemleri"
+        }
+      ]
+    },
+    {
+      "name": "142",
+      "topics": [
+        {
+          "name": "SAYMA VE OLASILIK"
+        },
+        {
+          "name": "Permütasyon, Kombinasyon"
+        },
+        {
+          "name": "Binom"
+        },
+        {
+          "name": "Olasılık"
+        }
+      ]
+    },
+    {
+      "name": "TRİGONOMETRİ",
+      "topics": [
+        {
+          "name": "Yönlü Açılar, Trigonometrik Fonksiyonlar"
+        }
+      ]
+    },
+    {
+      "name": "Kosinüs Teoremi, Sinüs Teoremi, Ters Trigonometrik Fonksiyonlar",
+      "topics": [
+        {
+          "name": "-"
+        },
+        {
+          "name": "Toplam-Fark ve İki Kat Açı Formülleri"
+        }
+      ]
+    },
+    {
+      "name": "Trigonometrik Denklemler",
+      "topics": [
+        {
+          "name": "1"
+        }
+      ]
+    },
+    {
+      "name": "ÜSTEL VE LOGARİTMİK FONKSİYONLAR",
+      "topics": [
+        {
+          "name": "Üstel Fonksiyon, Logaritma Fonksiyonu"
+        }
+      ]
+    },
+    {
+      "name": "160",
+      "topics": [
+        {
+          "name": "DİZİLER"
+        },
+        {
+          "name": "Gerçek Sayı Dizileri"
+        }
+      ]
+    },
+    {
+      "name": "163",
+      "topics": [
+        {
+          "name": "TÜREV"
+        },
+        {
+          "name": "Limit ve Süreklilik"
+        }
+      ]
+    },
+    {
+      "name": "Anlık Değişim Oranı ve Türev, Türevin Uygulamaları",
+      "topics": [
+        {
+          "name": "3"
+        }
+      ]
+    },
+    {
+      "name": "ÖĞRENME ALANI VE KONULARA GÖRE SORU DAĞILIM TABLOSU",
+      "topics": [
+        {
+          "name": "SAYFA"
+        },
+        {
+          "name": "ÖĞRENME ALANI"
+        }
+      ]
+    },
+    {
+      "name": "İNTEGRAL",
+      "topics": [
+        {
+          "name": "Belirsiz İntegral, Belirli İntegral ve Uygulamaları"
+        }
+      ]
+    },
+    {
+      "name": "178",
+      "topics": [
+        {
+          "name": "GEOMETRİ"
+        },
+        {
+          "name": "Üçgen, Çokgen, Dörtgen, Özel Dörtgenler"
+        }
+      ]
+    },
+    {
+      "name": "Çember ve Daire",
+      "topics": [
+        {
+          "name": "-"
+        }
+      ]
+    },
+    {
+      "name": "190",
+      "topics": [
+        {
+          "name": "ANALİTİK GEOMETRİ"
+        },
+        {
+          "name": "Doğrunun Analitik İncelenmesi"
+        }
+      ]
+    },
+    {
+      "name": "Çemberin Analitik İncelenmesi",
+      "topics": [
+        {
+          "name": "1"
+        }
+      ]
+    },
+    {
+      "name": "GEOMETRİ",
+      "topics": [
+        {
+          "name": "Dönüşümler"
+        }
+      ]
+    },
+    {
+      "name": "UZAY GEOMETRİ",
+      "topics": [
+        {
+          "name": "Katı Cisimler"
+        }
+      ]
+    }
+  ],
+  "ayt-tarih2_sozel.pdf": [
+    {
+      "name": "TARIH VE ZAMAN",
+      "topics": [
+        {
+          "name": "İnsanlığın Hafızası Tarih"
+        },
+        {
+          "name": "Zamanın Taksimi"
+        }
+      ]
+    },
+    {
+      "name": "İNSANLIĞIN İLK DÖNEMLERI",
+      "topics": [
+        {
+          "name": "İnsanlığın İlk İzleri"
+        }
+      ]
+    },
+    {
+      "name": "İLK VE ORTA ÇAĞLARDA TÜRK DÜNYASI",
+      "topics": [
+        {
+          "name": "Coğrafya ile Oluşan Yaşam Tarzı"
+        },
+        {
+          "name": "Boylardan Devlete"
+        },
+        {
+          "name": "Kavimler Göçü"
+        }
+      ]
+    },
+    {
+      "name": "TÜRKLERIN İSLAMIYET’I KABULÜ VE İLK",
+      "topics": [
+        {
+          "name": "TÜRK İSLAM DEVLETLERI"
+        },
+        {
+          "name": "İslamiyet’in Türk Devlet ve Toplum Yapısına Etkisi"
+        },
+        {
+          "name": "Büyük Selçuklu Devleti (1040-1157)"
+        },
+        {
+          "name": "Büyük Selçuklu Devleti’nde Yönetim ve Toplum Yapısı"
+        }
+      ]
+    },
+    {
+      "name": "YERLEŞME VE DEVLETLEŞME SÜRECINDE",
+      "topics": [
+        {
+          "name": "SELÇUKLU TÜRKIYESI"
+        },
+        {
+          "name": "Anadolu’nun İlk Türk Siyasi Teşekkülleri"
+        }
+      ]
+    },
+    {
+      "name": "BEYLIKTEN DEVLETE OSMANLI SIYASETI",
+      "topics": [
+        {
+          "name": "(1302-1453)"
+        },
+        {
+          "name": "Osmanlı Devleti’nin Rumeli’deki İskân ve İstimâlet Politikası"
+        },
+        {
+          "name": "Anadolu’da Türk Siyasi Birliğini Sağlama Çabaları"
+        }
+      ]
+    },
+    {
+      "name": "DEVLETLEŞME SÜRECINDE SAVAŞÇILAR",
+      "topics": [
+        {
+          "name": "VE ASKERLER"
+        },
+        {
+          "name": "Osmanlı Devleti’nde Tımar Sistemi"
+        },
+        {
+          "name": "Devşirme Sistemi ve Yeniçeri Ocağı"
+        }
+      ]
+    },
+    {
+      "name": "BEYLIKTEN DEVLETE OSMANLI",
+      "topics": [
+        {
+          "name": "MEDENIYETI"
+        },
+        {
+          "name": "Osmanlı Devleti’nde Yönetici Sınıf (Askerî Sınıf)"
+        }
+      ]
+    },
+    {
+      "name": "DÜNYA GÜCÜ OSMANLI (1453-1595)",
+      "topics": [
+        {
+          "name": "İstanbul’un Fethi ve Fethin Sonuçları"
+        },
+        {
+          "name": "Türk İslam Dünyasında Birliği Sağlama Çabaları"
+        },
+        {
+          "name": "Dünyanın Muhteşem Gücü Osmanlı"
+        }
+      ]
+    },
+    {
+      "name": "SULTAN VE OSMANLI MERKEZ TEŞKILATI",
+      "topics": [
+        {
+          "name": "Saray ve Şehir Kültürü"
+        }
+      ]
+    },
+    {
+      "name": "KLASIK ÇAĞ’DA OSMANLI TOPLUM DÜZENI",
+      "topics": [
+        {
+          "name": "Osmanlı Devleti’nde Millet Sistemi"
+        },
+        {
+          "name": "Osmanlı’da Devletin Toprak Üzerindeki Mülkiyeti ve Çifthane Sistemi"
+        }
+      ]
+    },
+    {
+      "name": "DEĞIŞEN DÜNYA DENGELERI KARŞISINDA",
+      "topics": [
+        {
+          "name": "OSMANLI SIYASETI (1595-1774)"
+        },
+        {
+          "name": "Uzun Savaşlardan Diplomasiye"
+        }
+      ]
+    },
+    {
+      "name": "DEĞIŞIM ÇAĞINDA AVRUPA VE OSMANLI",
+      "topics": [
+        {
+          "name": "Avrupa’da Değişim Çağı"
+        }
+      ]
+    },
+    {
+      "name": "DEVRIMLER ÇAĞINDA DEĞIŞEN DEVLET-",
+      "topics": [
+        {
+          "name": "TOPLUM İLIŞKILERI"
+        },
+        {
+          "name": "İhtilaller Çağı"
+        },
+        {
+          "name": "Osmanlı Devleti’nde Modern Orduya Geçiş"
+        }
+      ]
+    },
+    {
+      "name": "ULUSLARARASI İLIŞKILERDE DENGE",
+      "topics": [
+        {
+          "name": "STRATEJISI (1774-1914)"
+        },
+        {
+          "name": "Osmanlı Devleti’ne Yönelik Tehditler"
+        },
+        {
+          "name": "Osmanlı Devleti’nde Demokratikleşme Hareketleri"
+        }
+      ]
+    },
+    {
+      "name": "20. YÜZYIL BAŞLARINDA OSMANLI DEVLETI",
+      "topics": [
+        {
+          "name": "VE DÜNYA"
+        },
+        {
+          "name": "Mustafa Kemal’in Lider Olarak Yetişmesinde Etkili Koşullar"
+        },
+        {
+          "name": "20. Yüzyıl Başlarında Osmanlı Devleti"
+        },
+        {
+          "name": "I. Dünya Savaşı Sürecinde Osmanlı Devleti"
+        },
+        {
+          "name": "I. Dünya Savaşı’nın Sonuçları"
+        }
+      ]
+    },
+    {
+      "name": "MILLÎ MÜCADELE",
+      "topics": [
+        {
+          "name": "Millî Mücadele’ye Hazırlık Dönemi"
+        },
+        {
+          "name": "Büyük Millet Meclisinin Açılması (23 Nisan 1920)"
+        },
+        {
+          "name": "Batı Cephesi ve Bu Cephede Öne Çıkan Şahsiyetler"
+        }
+      ]
+    },
+    {
+      "name": "ATATÜRKÇÜLÜK VE TÜRK İNKILABI",
+      "topics": [
+        {
+          "name": "Atatürk İlkeleri"
+        },
+        {
+          "name": "Siyasi Alandaki Gelişmeler"
+        },
+        {
+          "name": "Hukuk Alanındaki Gelişmeler"
+        },
+        {
+          "name": "Toplumsal Alandaki İnkılaplar"
+        },
+        {
+          "name": "Ekonomi Alanındaki Gelişmeler"
+        },
+        {
+          "name": "Sağlık Alanındaki Gelişmeler"
+        }
+      ]
+    },
+    {
+      "name": "II. DÜNYA SAVAŞI SÜRECINDE TÜRKIYE VE",
+      "topics": [
+        {
+          "name": "DÜNYA"
+        },
+        {
+          "name": "II. Dünya Savaşı"
+        },
+        {
+          "name": "II. Dünya Savaşı Sürecinde Türkiye"
+        }
+      ]
+    },
+    {
+      "name": "II. DÜNYA SAVAŞI SONRASINDA TÜRKIYE",
+      "topics": [
+        {
+          "name": "VE DÜNYA"
+        },
+        {
+          "name": "II. Dünya Savaşı Sonrası Oluşan Güç Dengeleri ve Türkiye"
+        }
+      ]
+    },
+    {
+      "name": "TOPLUMSAL DEVRIM ÇAĞINDA DÜNYA VE",
+      "topics": [
+        {
+          "name": "TÜRKIYE"
+        },
+        {
+          "name": "1960 Sonrasında Türk Dış Politikası"
+        }
+      ]
+    },
+    {
+      "name": "21. YÜZYILIN EŞIĞINDE TÜRKIYE VE",
+      "topics": [
+        {
+          "name": "DÜNYA"
+        },
+        {
+          "name": "1990 Sonrasında Türkiye"
+        }
+      ]
+    }
+  ],
+  "ayt-psikoloji_sozel.pdf": [
+    {
+      "name": "PSİKOLOJİ BİLİMİNİ TANIYALIM",
+      "topics": [
+        {
+          "name": "Psikolojinin Konusu-Bir Bilim Dalı Olma Süreci"
+        },
+        {
+          "name": "Psikolojideki Yaklaşımlar"
+        },
+        {
+          "name": "Psikolojinin Bilim Dalı Olarak Ölçütleri, Amaçları-Araştırmalarda Uyulması Gereken Etik Kurallar"
+        },
+        {
+          "name": "Psikoloji Araştırmalarında Uygulanan Yöntem ve Teknikler"
+        },
+        {
+          "name": "Psikolojinin Alt Dalları -İş Alanları-Diğer Bilim Dallarıyla İlişkisi"
+        }
+      ]
+    },
+    {
+      "name": "PSİKOLOJİNİN TEMEL",
+      "topics": [
+        {
+          "name": "SÜREÇLERİ"
+        },
+        {
+          "name": "Davranışın Oluşumu-Kalıtım ve Çevrenin Davranışa Etkisi"
+        },
+        {
+          "name": "Gelişim ve Gelişim Kuramları"
+        },
+        {
+          "name": "Duyum ve Özellikleri"
+        },
+        {
+          "name": "Uyarılmanın Davranışlara Etkisi- Alışma ve Duyarlılaşma"
+        },
+        {
+          "name": "Algı ve Algı Yanılmaları"
+        },
+        {
+          "name": "Algıyı Etkileyen Faktörler- Duyum ve Algı Arasındaki Farklar"
+        },
+        {
+          "name": "Güdülenmeyi Ortaya Çıkaran Faktörler- Güdülenmiş Davranışın Özellikleri"
+        },
+        {
+          "name": "Duygu ve Duygu Türleri"
+        },
+        {
+          "name": "Bilinç ve Bilinçlilik Türleri"
+        },
+        {
+          "name": "Dikkat ve Türleri"
+        },
+        {
+          "name": "Sosyal Psikoloji"
+        }
+      ]
+    },
+    {
+      "name": "ÖĞRENME, BELLEK,",
+      "topics": [
+        {
+          "name": "DÜŞÜNME"
+        },
+        {
+          "name": "Öğrenme ve Öğrenme Türleri- Koşullanma Yoluyla Öğrenme"
+        },
+        {
+          "name": "Bilişsel Öğrenme"
+        },
+        {
+          "name": "Öğrenmeyi Etkileyen Faktörler ve Öğrenme Stratejileri"
+        },
+        {
+          "name": "Bellek ve Bellek Türleri"
+        },
+        {
+          "name": "Düşünmenin Yapı Taşları, Dil, Doğru Düşünme ve İrdeleme"
+        },
+        {
+          "name": "Zekâ ve Türleri"
+        }
+      ]
+    },
+    {
+      "name": "RUH SAĞLIĞININ TEMELLERİ",
+      "topics": [
+        {
+          "name": "Kişilik ve Kişilik Kuramları"
+        },
+        {
+          "name": "Bireysel Farklılıklar, Kişiliğin Ölçülmesi"
+        },
+        {
+          "name": "Stres ve Savunma Mekanizmaları"
+        },
+        {
+          "name": "Ruh Sağlığı ve Önemi"
+        },
+        {
+          "name": "Kişilik Bozuklukları"
+        }
+      ]
+    }
+  ],
+  "ayt_cografya1_esitagirlik.pdf": [
+    {
+      "name": "DOĞAL SİSTEMLER",
+      "topics": [
+        {
+          "name": "Ekosistemlerin Özellikleri ve İşleyişi"
+        },
+        {
+          "name": "Ekstrem Doğa Olayları"
+        },
+        {
+          "name": "Küresel İklim Değişikliği ve Doğa Olaylarının Geleceği"
+        }
+      ]
+    },
+    {
+      "name": "BEŞERÎ SİSTEMLER",
+      "topics": [
+        {
+          "name": "Nüfus Politikaları ve Projeksiyonları"
+        },
+        {
+          "name": "Şehirler ve Kırsal Yerleşmeler"
+        },
+        {
+          "name": "Dünyada Doğal Kaynak ve Ekonomi"
+        },
+        {
+          "name": "Türkiye’de Tarım, Sanayi, Maden ve Enerji Kaynakları"
+        },
+        {
+          "name": "Ekonomi, Şehirleşme ve Göç"
+        },
+        {
+          "name": "İşlevsel Bölge ve Kalkınma Projeleri"
+        },
+        {
+          "name": "Hizmet Sektörü ve Ulaşım"
+        },
+        {
+          "name": "Türkiye’de ve Dünyada Ticaret"
+        },
+        {
+          "name": "Türkiye’de Turizm"
+        }
+      ]
+    },
+    {
+      "name": "KÜRESEL ORTAM:",
+      "topics": [
+        {
+          "name": "BÖLGELER VE ÜLKELER"
+        },
+        {
+          "name": "Kültür Bölgeleri ve Türk Kültürü"
+        },
+        {
+          "name": "Küreselleşen Dünya"
+        },
+        {
+          "name": "Uluslararası Örgütler"
+        },
+        {
+          "name": "Jeopolitik Konum ve Ülkeler Arası Etkileşim"
+        }
+      ]
+    },
+    {
+      "name": "ÇEVRE VE TOPLUM",
+      "topics": [
+        {
+          "name": "Çevre Sorunları ve Geri Dönüşüm"
+        },
+        {
+          "name": "Çevre Sorunlarının Çözümüne Yönelik Yaklaşımlar"
+        }
+      ]
+    }
+  ],
+  "ayt-sosyoloji_sozel.pdf": [
+    {
+      "name": "SOSYOLOJİYE GİRİŞ",
+      "topics": [
+        {
+          "name": "Sosyolojiyi Tanıyalım"
+        },
+        {
+          "name": "Toplum ve Toplumu Oluşturan Ögeler"
+        },
+        {
+          "name": "Sosyolojinin Kurucuları"
+        },
+        {
+          "name": "Sosyolojide Kullanılan Başlıca Yöntemler ve Teknikleri"
+        },
+        {
+          "name": "Türkiye’de Sosyoloji"
+        }
+      ]
+    },
+    {
+      "name": "BİREY VE TOPLUM",
+      "topics": [
+        {
+          "name": "Sosyalleşme"
+        },
+        {
+          "name": "Sosyalleşmenin Aşamaları ve Sosyalleşmenin Toplumsal İlişkiler Üzerindeki Etkisi"
+        },
+        {
+          "name": "Toplumsal Statü, Rol, Saygınlık"
+        },
+        {
+          "name": "Toplumsal Değer - Toplumsal Norm Toplumsal Kontrol"
+        },
+        {
+          "name": "Toplumsal Sapma"
+        }
+      ]
+    },
+    {
+      "name": "TOPLUMSAL YAPI",
+      "topics": [
+        {
+          "name": "Toplumsal Yapı ve Unsurları"
+        },
+        {
+          "name": "Toplumsal Etkileşim Tipleri"
+        },
+        {
+          "name": "Toplumsal Tabakalaşma"
+        }
+      ]
+    },
+    {
+      "name": "TOPLUMSAL DEĞİŞME VE",
+      "topics": [
+        {
+          "name": "GELİŞME"
+        },
+        {
+          "name": "Toplumsal Değişme ve Toplumsal Değişmeyi Etkileyen Faktörler"
+        },
+        {
+          "name": "Toplumsal Değişme ve Kültür"
+        },
+        {
+          "name": "Modernleşme ve Küreselleşme"
+        },
+        {
+          "name": "Toplumsal Gelişme - Toplumsal Bütünleşme - Toplumsal Çözülme"
+        }
+      ]
+    },
+    {
+      "name": "TOPLUM VE KÜLTÜR",
+      "topics": [
+        {
+          "name": "Kültürün Anlamı ve İşlevleri"
+        },
+        {
+          "name": "Kültüre İlişkin Kavramlar"
+        },
+        {
+          "name": "Toplumsal Kültürün Önemi"
+        },
+        {
+          "name": "Kültürel Tutumlar ve Kültürler Arası Etkileşim"
+        }
+      ]
+    },
+    {
+      "name": "TOPLUMSAL KURUMLAR",
+      "topics": [
+        {
+          "name": "Kurum Kavramı ve İşlevleri"
+        },
+        {
+          "name": "Aile Kurumu ve Evlilik"
+        },
+        {
+          "name": "Eğitim Kurumu, Önemi ve İşlevleri"
+        },
+        {
+          "name": "Din Kurumu, Önemi ve İşlevleri"
+        },
+        {
+          "name": "Ekonomi Kurumu, Önemi ve İşlevleri"
+        },
+        {
+          "name": "Siyasal Yönetim Biçimleri"
+        }
+      ]
+    }
+  ],
+  "ayt-tde_sozel.pdf": [
+    {
+      "name": "SÖZCÜKTE ANLAM",
+      "topics": [
+        {
+          "name": "1"
+        }
+      ]
+    },
+    {
+      "name": "CÜMLEDE ANLAM",
+      "topics": [
+        {
+          "name": "1"
+        }
+      ]
+    },
+    {
+      "name": "PARAGRAFTA ANLAM",
+      "topics": [
+        {
+          "name": "2"
+        }
+      ]
+    },
+    {
+      "name": "30",
+      "topics": [
+        {
+          "name": "ŞIIR BILGISI"
+        }
+      ]
+    },
+    {
+      "name": "35",
+      "topics": [
+        {
+          "name": "SÖZ SANATLARI"
+        }
+      ]
+    },
+    {
+      "name": "37",
+      "topics": [
+        {
+          "name": "NESIR BILGISI"
+        }
+      ]
+    },
+    {
+      "name": "42",
+      "topics": [
+        {
+          "name": "İSLAMIYET ÖNCESI TÜRK EDEBIYATI / GEÇIŞ DÖNEMI"
+        },
+        {
+          "name": "TÜRK EDEBIYATI"
+        }
+      ]
+    },
+    {
+      "name": "HALK EDEBIYATI",
+      "topics": [
+        {
+          "name": "-"
+        }
+      ]
+    },
+    {
+      "name": "DIVAN EDEBIYATI",
+      "topics": [
+        {
+          "name": "4"
+        }
+      ]
+    },
+    {
+      "name": "52",
+      "topics": [
+        {
+          "name": "TANZIMAT DÖNEMI TÜRK EDEBIYATI"
+        }
+      ]
+    },
+    {
+      "name": "55",
+      "topics": [
+        {
+          "name": "SERVETIFÜNUN DÖNEMI TÜRK EDEBIYATI/ FECRIÂTI"
+        },
+        {
+          "name": "DÖNEMI TÜRK EDEBIYATI"
+        }
+      ]
+    },
+    {
+      "name": "MILLÎ EDEBIYAT DÖNEMI TÜRK EDEBIYATI",
+      "topics": [
+        {
+          "name": "1"
+        }
+      ]
+    },
+    {
+      "name": "CUMHURIYET DÖNEMI TÜRK EDEBIYATI",
+      "topics": [
+        {
+          "name": "5"
+        }
+      ]
+    },
+    {
+      "name": "69",
+      "topics": [
+        {
+          "name": "GELENEKSEL TÜRK TIYATROSU"
+        }
+      ]
+    },
+    {
+      "name": "MASAL/FABL/DESTAN/HALK HIKÂYESI",
+      "topics": [
+        {
+          "name": "1"
+        }
+      ]
+    },
+    {
+      "name": "EDEBÎ AKIMLAR",
+      "topics": [
+        {
+          "name": "1"
+        }
+      ]
+    }
+  ],
+  "ayt-cografya2_sozel.pdf": [
+    {
+      "name": "DOĞAL SİSTEMLER",
+      "topics": [
+        {
+          "name": "Ekosistemlerin Özellikleri ve İşleyişi"
+        },
+        {
+          "name": "Ekstrem Doğa Olayları"
+        },
+        {
+          "name": "Küresel İklim Değişikliği ve Doğa Olaylarının Geleceği"
+        }
+      ]
+    },
+    {
+      "name": "BEŞERÎ SİSTEMLER",
+      "topics": [
+        {
+          "name": "Nüfus Politikaları ve Projeksiyonları"
+        },
+        {
+          "name": "Şehirler ve Kırsal Yerleşmeler"
+        },
+        {
+          "name": "Dünyada Doğal Kaynak ve Ekonomi"
+        },
+        {
+          "name": "Türkiye’de Tarım, Sanayi, Maden ve Enerji Kaynakları"
+        },
+        {
+          "name": "Ekonomi, Şehirleşme ve Göç"
+        },
+        {
+          "name": "İşlevsel Bölge ve Kalkınma Projeleri"
+        },
+        {
+          "name": "Hizmet Sektörü ve Ulaşım"
+        },
+        {
+          "name": "Türkiye’de ve Dünyada Ticaret"
+        },
+        {
+          "name": "Türkiye’de Turizm"
+        }
+      ]
+    },
+    {
+      "name": "KÜRESEL ORTAM: BÖLGELER VE ÜLKELER",
+      "topics": [
+        {
+          "name": "Kültür Bölgeleri ve Türk Kültürü"
+        },
+        {
+          "name": "Küreselleşen Dünya"
+        },
+        {
+          "name": "Uluslararası Örgütler"
+        },
+        {
+          "name": "Jeopolitik Konum ve Ülkeler Arası Etkileşim"
+        }
+      ]
+    },
+    {
+      "name": "ÇEVRE VE TOPLUM",
+      "topics": [
+        {
+          "name": "Çevre Sorunları ve Geri Dönüşüm"
+        },
+        {
+          "name": "Çevre Sorunlarının Çözümüne Yönelik Yaklaşımlar"
+        }
+      ]
+    }
+  ],
+  "ayt-felsefe_sozel.pdf": [
+    {
+      "name": "FELSEFEYİ TANIMA",
+      "topics": [
+        {
+          "name": "Felsefenin Anlamı"
+        },
+        {
+          "name": "Felsefi Düşüncenin Ortaya Çıkışı ve Özellikleri"
+        },
+        {
+          "name": "Felsefenin İnsan ve Toplum Hayatı Üzerindeki Rolü"
+        }
+      ]
+    },
+    {
+      "name": "FELSEFE İLE DÜŞÜNME",
+      "topics": [
+        {
+          "name": "Düşünme ve Akıl Yürütmeye İlişkin Kavramlar"
+        },
+        {
+          "name": "Düşünme ve Dil İlişkisi"
+        }
+      ]
+    },
+    {
+      "name": "FELSEFENİN TEMEL KONULARI VE",
+      "topics": [
+        {
+          "name": "PROBLEMLERİ"
+        },
+        {
+          "name": "Varlık Felsefesinin Konusu ve Problemleri"
+        },
+        {
+          "name": "Evrende Amaçlılık ve Düzenlilik-Varlık Türlerinin Sınıflandırılması-"
+        },
+        {
+          "name": "Bir konunun Varlık Felsefesi Açısından Değerlendirilmesi"
+        },
+        {
+          "name": "Varlık Felsefesi Alanındaki Çağdaş Yaklaşımlar"
+        },
+        {
+          "name": "Bilgi Felsefesinin Konusu ve Bilginin İmkânı Problemi"
+        },
+        {
+          "name": "Bilginin Sınırları, Ölçütü- Doğruluk ve Gerçeklik-Bilginin Değeri ve Güvenirliği"
+        },
+        {
+          "name": "Bilim Felsefesinin Konusu ve Problemleri"
+        },
+        {
+          "name": "Bilimin Değeri-Bilim Felsefe İlişkisi-Bilim ve Hayat İlişkisi"
+        },
+        {
+          "name": "Ahlak Felsefesinde Özgürlük ve Sorumluluk"
+        },
+        {
+          "name": "Ahlak Felsefesinde İyilik ve Mutluluk İlişkisi"
+        },
+        {
+          "name": "Din Felsefesinin Konusu ve Soruları"
+        },
+        {
+          "name": "Siyaset Felsefesinin Konusu ve Problemleri"
+        },
+        {
+          "name": "Sanat Felsefesinin Konusu ve Problemleri"
+        }
+      ]
+    },
+    {
+      "name": "FELSEFİ OKUMA VE YAZMA",
+      "topics": [
+        {
+          "name": "Felsefi Metin Analizi"
+        }
+      ]
+    },
+    {
+      "name": "MÖ 6. YÜZYIL-MS 2. YÜZYIL FELSEFESİ",
+      "topics": [
+        {
+          "name": "İlk Medeniyetlerin Felsefenin Doğuşuna Etkisi-Anadolu’da Yaşamış Filozoflar"
+        },
+        {
+          "name": "Sofistler ile Sokrates'in Bilgi ve Değer Anlayışları"
+        },
+        {
+          "name": "Platon ve Aristoteles’in Varlık, Bilgi ve Değer Anlayışı"
+        }
+      ]
+    },
+    {
+      "name": "MS 2. YÜZYIL-MS 15. YÜZYIL FELSEFESİ",
+      "topics": [
+        {
+          "name": "İslam Felsefesinin Özellikleri İnanç Akıl İlişkisi ve Filozofların Görüşleri"
+        }
+      ]
+    },
+    {
+      "name": "15. YÜZYIL- 17. YÜZYIL FELSEFESİ",
+      "topics": [
+        {
+          "name": "15- 17. Yüzyıl Felsefesinde Öne Çıkan Görüşler"
+        }
+      ]
+    },
+    {
+      "name": "18. YÜZYIL- 19. YÜZYIL FELSEFESİ",
+      "topics": [
+        {
+          "name": "18-19. Yüzyıl Felsefesinde Öne Çıkan Problemler ve Görüşler"
+        }
+      ]
+    },
+    {
+      "name": "20. YÜZYIL FELSEFESİ",
+      "topics": [
+        {
+          "name": "20. Yüzyıl Felsefesinde Bazı Ana Akımlar"
+        },
+        {
+          "name": "20. Yüzyıl Filozoflarının Görüşleri"
+        }
+      ]
+    }
+  ],
+  "ayt-cografya1_sozel.pdf": [
+    {
+      "name": "DOĞAL SİSTEMLER",
+      "topics": [
+        {
+          "name": "Ekosistemlerin Özellikleri ve İşleyişi"
+        },
+        {
+          "name": "Ekstrem Doğa Olayları"
+        },
+        {
+          "name": "Küresel İklim Değişikliği ve Doğa Olaylarının Geleceği"
+        }
+      ]
+    },
+    {
+      "name": "BEŞERÎ SİSTEMLER",
+      "topics": [
+        {
+          "name": "Nüfus Politikaları ve Projeksiyonları"
+        },
+        {
+          "name": "Şehirler ve Kırsal Yerleşmeler"
+        },
+        {
+          "name": "Dünyada Doğal Kaynak ve Ekonomi"
+        },
+        {
+          "name": "Türkiye’de Tarım, Sanayi, Maden ve Enerji Kaynakları"
+        },
+        {
+          "name": "Ekonomi, Şehirleşme ve Göç"
+        },
+        {
+          "name": "İşlevsel Bölge ve Kalkınma Projeleri"
+        },
+        {
+          "name": "Hizmet Sektörü ve Ulaşım"
+        },
+        {
+          "name": "Türkiye’de ve Dünyada Ticaret"
+        },
+        {
+          "name": "Türkiye’de Turizm"
+        }
+      ]
+    },
+    {
+      "name": "KÜRESEL ORTAM:",
+      "topics": [
+        {
+          "name": "BÖLGELER VE ÜLKELER"
+        },
+        {
+          "name": "Kültür Bölgeleri ve Türk Kültürü"
+        },
+        {
+          "name": "Küreselleşen Dünya"
+        },
+        {
+          "name": "Uluslararası Örgütler"
+        },
+        {
+          "name": "Jeopolitik Konum ve Ülkeler Arası Etkileşim"
+        }
+      ]
+    },
+    {
+      "name": "ÇEVRE VE TOPLUM",
+      "topics": [
+        {
+          "name": "Çevre Sorunları ve Geri Dönüşüm"
+        },
+        {
+          "name": "Çevre Sorunlarının Çözümüne Yönelik Yaklaşımlar"
+        }
+      ]
+    }
+  ],
+  "ayt-tarih1_sozel.pdf": [
+    {
+      "name": "TARIH VE ZAMAN",
+      "topics": [
+        {
+          "name": "İnsanlığın Hafızası Tarih"
+        }
+      ]
+    },
+    {
+      "name": "İNSANLIĞIN İLK DÖNEMLERI",
+      "topics": [
+        {
+          "name": "İlk Çağ’da Başlıca Medeniyet Havzaları"
+        },
+        {
+          "name": "Kanunlar Doğuyor"
+        }
+      ]
+    },
+    {
+      "name": "İLK VE ORTA ÇAĞLARDA TÜRK DÜNYASI",
+      "topics": [
+        {
+          "name": "Coğrafya ile Oluşan Yaşam Tarzı"
+        },
+        {
+          "name": "Boylardan Devlete"
+        }
+      ]
+    },
+    {
+      "name": "İSLAM MEDENIYETININ DOĞUŞU",
+      "topics": [
+        {
+          "name": "İslamiyet Yayılıyor"
+        },
+        {
+          "name": "Abbasi Devleti ve Türkler"
+        }
+      ]
+    },
+    {
+      "name": "TÜRKLERIN İSLAMIYET’I KABULÜ VE",
+      "topics": [
+        {
+          "name": "İLK TÜRK İSLAM DEVLETLERI"
+        },
+        {
+          "name": "İslamiyet’in Türk Devlet ve Toplum Yapısına Etkisi"
+        },
+        {
+          "name": "Büyük Selçuklu Devleti (1040-1157)"
+        },
+        {
+          "name": "Büyük Selçuklu Devleti’nde Yönetim ve Toplum Yapısı"
+        }
+      ]
+    },
+    {
+      "name": "YERLEŞME VE DEVLETLEŞME SÜRECINDE",
+      "topics": [
+        {
+          "name": "SELÇUKLU TÜRKIYESI"
+        },
+        {
+          "name": "Anadolu’nun İlk Türk Siyasi Teşekkülleri"
+        },
+        {
+          "name": "Hilal ve Haç Mücadelesi"
+        }
+      ]
+    },
+    {
+      "name": "BEYLIKTEN DEVLETE",
+      "topics": [
+        {
+          "name": "OSMANLI SIYASETI (1302-1453)"
+        },
+        {
+          "name": "Devletleşme Sürecinde Osmanlı-Bizans İlişkileri"
+        },
+        {
+          "name": "Osmanlı Devleti’nin Rumeli’deki İskân ve İstimâlet Politikası"
+        }
+      ]
+    },
+    {
+      "name": "DEVLETLEŞME SÜRECINDE SAVAŞÇILAR",
+      "topics": [
+        {
+          "name": "VE ASKERLER"
+        },
+        {
+          "name": "Osmanlı Devleti’nde Tımar Sistemi"
+        },
+        {
+          "name": "Devşirme Sistemi ve Yeniçeri Ocağı"
+        }
+      ]
+    },
+    {
+      "name": "DÜNYA GÜCÜ OSMANLI (1453-1595)",
+      "topics": [
+        {
+          "name": "İstanbul’un Fethi ve Fethin Sonuçları"
+        }
+      ]
+    },
+    {
+      "name": "SULTAN VE OSMANLI MERKEZ TEŞKILATI",
+      "topics": [
+        {
+          "name": "Tek Hanedan Anlayışı ve Gelenekler Işığında Devlet İdarecisi"
+        }
+      ]
+    },
+    {
+      "name": "DEĞIŞIM ÇAĞINDA AVRUPA VE OSMANLI",
+      "topics": [
+        {
+          "name": "Osmanlı Devleti’nde İsyanlar ve Düzeni Koruma Çabaları"
+        }
+      ]
+    }
+  ],
+  "ayt-mantik_sozel.pdf": [
+    {
+      "name": "MANTIĞA GİRİŞ",
+      "topics": [
+        {
+          "name": "Doğru Düşünme-Temel Kavramlar"
+        },
+        {
+          "name": "Akıl İlkeleri"
+        },
+        {
+          "name": "Akıl Yürütme Yöntemleri"
+        },
+        {
+          "name": "Mantığın Uygulama Alanları"
+        }
+      ]
+    },
+    {
+      "name": "KLASİK MANTIK",
+      "topics": [
+        {
+          "name": "Kavram ve Terim"
+        },
+        {
+          "name": "Nelik, Gerçeklik, Kimlik-İçlem ve Kaplam"
+        },
+        {
+          "name": "Kavram Çeşitleri"
+        },
+        {
+          "name": "Beş Tümel"
+        },
+        {
+          "name": "Tanım"
+        },
+        {
+          "name": "Önerme ve Çeşitleri"
+        },
+        {
+          "name": "Çıkarım"
+        },
+        {
+          "name": "Eşdeğerlik Çıkarımları"
+        },
+        {
+          "name": "Kıyas"
+        }
+      ]
+    },
+    {
+      "name": "MANTIK VE DİL",
+      "topics": [
+        {
+          "name": "Dilin Görevleri"
+        },
+        {
+          "name": "Bilgi Aktarma ve Dil-Anlama ve Tanımlama"
+        }
+      ]
+    },
+    {
+      "name": "SEMBOLİK MANTIK",
+      "topics": [
+        {
+          "name": "Önerme ve Yapısı-Basit ve Bileşik Önermeler"
+        },
+        {
+          "name": "Çıkarım"
+        },
+        {
+          "name": "Sembolleştirme"
+        },
+        {
+          "name": "Önermelerin Doğruluk Değerleri"
+        },
+        {
+          "name": "Tutarlılık, Geçerlilik, Eşdeğerlik Denetlemesi"
+        },
+        {
+          "name": "Çözümleyici Çizelge"
+        },
+        {
+          "name": "Niceleme Mantığı"
+        },
+        {
+          "name": "Çok Değerli Mantık"
+        }
+      ]
+    }
+  ],
+  "ayt-tarih1_esitagirlik.pdf": [
+    {
+      "name": "TARIH VE ZAMAN",
+      "topics": [
+        {
+          "name": "İnsanlığın Hafızası Tarih"
+        }
+      ]
+    },
+    {
+      "name": "İNSANLIĞIN İLK DÖNEMLERI",
+      "topics": [
+        {
+          "name": "İlk Çağ’da Başlıca Medeniyet Havzaları"
+        },
+        {
+          "name": "Kanunlar Doğuyor"
+        }
+      ]
+    },
+    {
+      "name": "İLK VE ORTA ÇAĞLARDA TÜRK DÜNYASI",
+      "topics": [
+        {
+          "name": "Coğrafya ile Oluşan Yaşam Tarzı"
+        },
+        {
+          "name": "Boylardan Devlete"
+        }
+      ]
+    },
+    {
+      "name": "İSLAM MEDENIYETININ DOĞUŞU",
+      "topics": [
+        {
+          "name": "İslamiyet Yayılıyor"
+        },
+        {
+          "name": "Abbasi Devleti ve Türkler"
+        }
+      ]
+    },
+    {
+      "name": "TÜRKLERIN İSLAMIYET’I KABULÜ VE",
+      "topics": [
+        {
+          "name": "İLK TÜRK İSLAM DEVLETLERI"
+        },
+        {
+          "name": "İslamiyet’in Türk Devlet ve Toplum Yapısına Etkisi"
+        },
+        {
+          "name": "Büyük Selçuklu Devleti (1040-1157)"
+        },
+        {
+          "name": "Büyük Selçuklu Devleti’nde Yönetim ve Toplum Yapısı"
+        }
+      ]
+    },
+    {
+      "name": "YERLEŞME VE DEVLETLEŞME SÜRECINDE",
+      "topics": [
+        {
+          "name": "SELÇUKLU TÜRKIYESI"
+        },
+        {
+          "name": "Anadolu’nun İlk Türk Siyasi Teşekkülleri"
+        },
+        {
+          "name": "Hilal ve Haç Mücadelesi"
+        }
+      ]
+    },
+    {
+      "name": "BEYLIKTEN DEVLETE",
+      "topics": [
+        {
+          "name": "OSMANLI SIYASETI (1302-1453)"
+        },
+        {
+          "name": "Devletleşme Sürecinde Osmanlı-Bizans İlişkileri"
+        },
+        {
+          "name": "Osmanlı Devleti’nin Rumeli’deki İskân ve İstimâlet Politikası"
+        }
+      ]
+    },
+    {
+      "name": "DEVLETLEŞME SÜRECINDE SAVAŞÇILAR",
+      "topics": [
+        {
+          "name": "VE ASKERLER"
+        },
+        {
+          "name": "Osmanlı Devleti’nde Tımar Sistemi"
+        },
+        {
+          "name": "Devşirme Sistemi ve Yeniçeri Ocağı"
+        }
+      ]
+    },
+    {
+      "name": "DÜNYA GÜCÜ OSMANLI (1453-1595)",
+      "topics": [
+        {
+          "name": "İstanbul’un Fethi ve Fethin Sonuçları"
+        }
+      ]
+    },
+    {
+      "name": "SULTAN VE OSMANLI MERKEZ TEŞKILATI",
+      "topics": [
+        {
+          "name": "Tek Hanedan Anlayışı ve Gelenekler Işığında Devlet İdarecisi"
+        }
+      ]
+    },
+    {
+      "name": "DEĞIŞIM ÇAĞINDA AVRUPA VE OSMANLI",
+      "topics": [
+        {
+          "name": "Osmanlı Devleti’nde İsyanlar ve Düzeni Koruma Çabaları"
+        }
+      ]
+    },
+    {
+      "name": "DEVRIMLER ÇAĞINDA DEĞIŞEN DEVLET-",
+      "topics": [
+        {
+          "name": "TOPLUM İLIŞKILERI"
+        },
+        {
+          "name": "Osmanlı Devleti’nde Modern Orduya Geçiş"
+        }
+      ]
+    },
+    {
+      "name": "ULUSLARARASI İLIŞKILERDE DENGE",
+      "topics": [
+        {
+          "name": "STRATEJISI (1774-1914)"
+        },
+        {
+          "name": "Osmanlı Devleti’ne Yönelik Tehditler"
+        },
+        {
+          "name": "Osmanlı Devleti’nde Demokratikleşme Hareketleri"
+        }
+      ]
+    },
+    {
+      "name": "XIX VE XX. YÜZYILDA DEĞIŞEN",
+      "topics": [
+        {
+          "name": "SOSYOEKONOMIK HAYAT"
+        },
+        {
+          "name": "Osmanlı Devleti’nde Sanayileşme Çabaları"
+        }
+      ]
+    },
+    {
+      "name": "20. YÜZYIL BAŞLARINDA",
+      "topics": [
+        {
+          "name": "OSMANLI DEVLETI VE DÜNYA"
+        },
+        {
+          "name": "Mustafa Kemal’in Lider Olarak Yetişmesinde Etkili Koşullar"
+        },
+        {
+          "name": "I. Dünya Savaşı Sürecinde Osmanlı Devleti"
+        },
+        {
+          "name": "I. Dünya Savaşı’nın Sonuçları"
+        }
+      ]
+    },
+    {
+      "name": "MILLÎ MÜCADELE",
+      "topics": [
+        {
+          "name": "Millî Mücadele’ye Hazırlık Dönemi"
+        },
+        {
+          "name": "Doğu ve Güney Cepheleri ile Bu Cephelerde Öne Çıkan Şahsiyetler"
+        },
+        {
+          "name": "Batı Cephesi ve Bu Cephede Öne Çıkan Şahsiyetler"
+        },
+        {
+          "name": "Millî Mücadele’nin Sona Ermesi ve Lozan Barış Antlaşması"
+        }
+      ]
+    },
+    {
+      "name": "ATATÜRKÇÜLÜK VE TÜRK İNKILABI",
+      "topics": [
+        {
+          "name": "Atatürk İlkeleri"
+        },
+        {
+          "name": "Siyasi Alandaki Gelişmeler"
+        },
+        {
+          "name": "Toplumsal Alandaki İnkılaplar"
+        }
+      ]
+    },
+    {
+      "name": "İKI SAVAŞ ARASINDAKI DÖNEMDE",
+      "topics": [
+        {
+          "name": "TÜRKIYE VE DÜNYA"
+        },
+        {
+          "name": "Atatürk Dönemi Türk Dış Politikası"
+        }
+      ]
+    },
+    {
+      "name": "II. DÜNYA SAVAŞI SÜRECINDE",
+      "topics": [
+        {
+          "name": "TÜRKIYE VE DÜNYA"
+        },
+        {
+          "name": "II. Dünya Savaşı Sürecinde Türkiye"
+        }
+      ]
+    }
+  ],
+  "ayt-tde_esitagirlik.pdf": [
+    {
+      "name": "SÖZCÜKTE ANLAM",
+      "topics": [
+        {
+          "name": "1"
+        }
+      ]
+    },
+    {
+      "name": "CÜMLEDE ANLAM",
+      "topics": [
+        {
+          "name": "1"
+        }
+      ]
+    },
+    {
+      "name": "PARAGRAFTA ANLAM",
+      "topics": [
+        {
+          "name": "2"
+        }
+      ]
+    },
+    {
+      "name": "30",
+      "topics": [
+        {
+          "name": "ŞIIR BILGISI"
+        }
+      ]
+    },
+    {
+      "name": "35",
+      "topics": [
+        {
+          "name": "SÖZ SANATLARI"
+        }
+      ]
+    },
+    {
+      "name": "37",
+      "topics": [
+        {
+          "name": "NESIR BILGISI"
+        }
+      ]
+    },
+    {
+      "name": "42",
+      "topics": [
+        {
+          "name": "İSLAMIYET ÖNCESI TÜRK EDEBIYATI / GEÇIŞ DÖNEMI"
+        },
+        {
+          "name": "TÜRK EDEBIYATI"
+        }
+      ]
+    },
+    {
+      "name": "HALK EDEBIYATI",
+      "topics": [
+        {
+          "name": "-"
+        }
+      ]
+    },
+    {
+      "name": "DIVAN EDEBIYATI",
+      "topics": [
+        {
+          "name": "4"
+        }
+      ]
+    },
+    {
+      "name": "52",
+      "topics": [
+        {
+          "name": "TANZIMAT DÖNEMI TÜRK EDEBIYATI"
+        }
+      ]
+    },
+    {
+      "name": "55",
+      "topics": [
+        {
+          "name": "SERVETIFÜNUN DÖNEMI TÜRK EDEBIYATI/ FECRIÂTI"
+        },
+        {
+          "name": "DÖNEMI TÜRK EDEBIYATI"
+        }
+      ]
+    },
+    {
+      "name": "MILLÎ EDEBIYAT DÖNEMI TÜRK EDEBIYATI",
+      "topics": [
+        {
+          "name": "1"
+        }
+      ]
+    },
+    {
+      "name": "CUMHURIYET DÖNEMI TÜRK EDEBIYATI",
+      "topics": [
+        {
+          "name": "5"
+        }
+      ]
+    },
+    {
+      "name": "69",
+      "topics": [
+        {
+          "name": "GELENEKSEL TÜRK TIYATROSU"
+        }
+      ]
+    },
+    {
+      "name": "MASAL/FABL/DESTAN/HALK HIKÂYESI",
+      "topics": [
+        {
+          "name": "1"
+        }
+      ]
+    },
+    {
+      "name": "EDEBÎ AKIMLAR",
+      "topics": [
+        {
+          "name": "1"
+        }
+      ]
+    }
+  ]
+}

@@ -146,14 +146,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   let role = user ? (roles[user.id] ?? null) : null;
   
   if (user && (!role || !me)) {
-    role = role || user.user_metadata?.role || "student";
+    role = (role || (user.user_metadata?.["role"] as string | undefined) || "student") as Role;
     me = {
       user_id: user.id,
-      full_name: user.user_metadata?.full_name || user.email?.split("@")[0] || "Öğrenci",
-      email: user.email || "",
-      role: role,
+      full_name: (user.user_metadata?.["full_name"] as string | undefined) || user.email?.split("@")[0] || "Öğrenci",
+      email: user.email ?? "",
+      role: role!,
       exam_tracks: [],
-      track: user.user_metadata?.track || "sayisal"
+      track: (user.user_metadata?.["track"] as string | undefined) || "sayisal"
     };
   }
 
@@ -169,7 +169,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       : [];
       
     // Attach coach ID to the current student
-    let currentStudent = role === "student" && me ? toStudent(me, user?.user_metadata?.track) : null;
+    let currentStudent = role === "student" && me ? toStudent(me, (user?.user_metadata?.["track"] as string | undefined)) : null;
     if (currentStudent) {
         const connection = coachConnections.find(c => c.student_id === currentStudent!.id);
         if (connection) {
