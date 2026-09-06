@@ -485,7 +485,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       }
     }
 
-    const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9ğüşıöç]/g, "");
+    const normalize = (s: string | null | undefined) => s ? s.toLowerCase().replace(/[^a-z0-9ğüşıöç]/g, "") : "";
 
     for (const log of studyLogsData) {
       let matched = false;
