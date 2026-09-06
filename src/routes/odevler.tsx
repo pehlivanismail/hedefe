@@ -114,7 +114,13 @@ function Odevler() {
     );
   }, [subjects]);
 
-  const [res, setRes] = useState({ solved: "", wrong: "", blank: "" });
+  const [res, setRes] = useState({
+    solved: "",
+    wrong: "",
+    blank: "",
+    source: "",
+  });
+
 
   const base = addWeeks(new Date(), weekOffset);
   const start = startOfWeek(base, { weekStartsOn: 1 });
