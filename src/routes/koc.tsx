@@ -678,7 +678,7 @@ const netTotal = (e: MockExam) => e.turkce + e.matematik + e.sosyal + e.fen;
 function StudentMockExams({ student }: { student: Student }) {
   const { mockExamList } = useDemoData();
   const rows = mockExamList.filter(
-    (e) => !e.studentId || e.studentId === student.id,
+    (e) => e.studentId === student.id,
   );
 
   if (rows.length === 0) {

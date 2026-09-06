@@ -1,6 +1,7 @@
 import {
   createContext,
   useContext,
+  useEffect,
   useMemo,
   useState,
   type ReactNode,
@@ -305,6 +306,78 @@ const initialTasks: Task[] = [
   { id: "t9", kind: "soru", subject: "Fizik", title: "Optik Test 2", day: 2, done: false, studentId: "s2" },
 ];
 
+/** Basit deterministik sayı üreteci (aynı öğrenci hep aynı örnek veriyi görür) */
+function seedNum(key: string) {
+  let h = 2166136261;
+  for (let i = 0; i < key.length; i++) {
+    h ^= key.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return Math.abs(h);
+}
+
+const SEED_TASKS: Array<{
+  kind: TaskKind;
+  subject: string;
+  title: string;
+  day: number;
+  coach: boolean;
+}> = [
+  { kind: "soru", subject: "Matematik", title: "Türev 40 soru", day: 0, coach: true },
+  { kind: "konu", subject: "Türkçe", title: "Paragraf konu tekrarı", day: 1, coach: false },
+  { kind: "soru", subject: "Fizik", title: "Hareket Test 2", day: 2, coach: true },
+  { kind: "konu", subject: "Kimya", title: "Mol Kavramı özet", day: 3, coach: false },
+  { kind: "soru", subject: "Biyoloji", title: "Hücre 30 soru", day: 4, coach: true },
+  { kind: "deneme", subject: "Matematik", title: "TYT Genel Deneme", day: 5, coach: true },
+  { kind: "konu", subject: "Tarih", title: "Haftalık tekrar", day: 6, coach: false },
+];
+
+/** Gerçek (veritabanındaki) bir öğrenci için örnek haftalık plan üretir */
+export function seedTasksFor(studentId: string): Task[] {
+  const s = seedNum(studentId);
+  return SEED_TASKS.map((t, i) => {
+    const done = (s + i * 7) % 3 === 0;
+    const solved = 20 + ((s + i * 13) % 30);
+    const wrong = (s + i * 5) % 8;
+    return {
+      id: `seed-${studentId}-${i}`,
+      kind: t.kind,
+      subject: t.subject,
+      title: t.title,
+      day: t.day,
+      done,
+      studentId,
+      assignedBy: t.coach ? ("coach" as const) : ("student" as const),
+      ...(done && t.kind === "soru"
+        ? { result: { solved, wrong, blank: (s + i) % 4 } }
+        : {}),
+    };
+  });
+}
+
+const SEED_PUBLISHERS = ["Endemik", "3D", "Bilgi Sarmal", "Apotemi", "Limit"];
+
+/** Gerçek bir öğrenci için örnek deneme sonuçları üretir */
+export function seedMockExamsFor(studentId: string): MockExam[] {
+  const s = seedNum(studentId);
+  return Array.from({ length: 5 }, (_, i) => {
+    const d = new Date();
+    d.setDate(d.getDate() - (5 - i) * 14);
+    const g = i * 2;
+    return {
+      id: `seed-d-${studentId}-${i}`,
+      date: d.toLocaleDateString("tr-TR"),
+      publisher: SEED_PUBLISHERS[(s + i) % SEED_PUBLISHERS.length]!,
+      type: (i % 2 === 0 ? "TYT" : "AYT") as "TYT" | "AYT",
+      turkce: 22 + ((s + i * 3) % 8) + g,
+      matematik: 18 + ((s + i * 5) % 10) + g,
+      sosyal: 10 + ((s + i * 7) % 6) + Math.round(g / 2),
+      fen: 12 + ((s + i * 11) % 8) + g,
+      studentId,
+    };
+  });
+}
+
 export const DAYS = [
   "Pazartesi",
   "Salı",
@@ -364,6 +437,33 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
         ? { role: "student", id: auth.user.id }
         : null
     : null;
+
+  // Gerçek (veritabanı) öğrencileri için örnek çalışma kayıtlarını hazırla
+  const trackedIds = useMemo(() => {
+    const ids = studentList.map((s) => s.id);
+    if (currentStudent) ids.push(currentStudent.id);
+    return Array.from(new Set(ids));
+  }, [studentList, currentStudent]);
+
+  useEffect(() => {
+    if (trackedIds.length === 0) return;
+    setTasks((prev) => {
+      const missing = trackedIds.filter(
+        (id) => !prev.some((t) => t.studentId === id),
+      );
+      return missing.length
+        ? [...prev, ...missing.flatMap((id) => seedTasksFor(id))]
+        : prev;
+    });
+    setMockExamList((prev) => {
+      const missing = trackedIds.filter(
+        (id) => !prev.some((e) => e.studentId === id),
+      );
+      return missing.length
+        ? [...prev, ...missing.flatMap((id) => seedMockExamsFor(id))]
+        : prev;
+    });
+  }, [trackedIds]);
 
 
   const value = useMemo<Store>(
