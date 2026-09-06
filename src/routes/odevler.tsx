@@ -125,7 +125,7 @@ function Odevler() {
   const base = addWeeks(new Date(), weekOffset);
   const start = startOfWeek(base, { weekStartsOn: 1 });
   const end = endOfWeek(base, { weekStartsOn: 1 });
-  const weekTasks = tasks.filter((t) => t.studentId === currentStudent?.id);
+  const weekTasks = tasks.filter((t) => t.studentId === currentStudent?.id && (t.weekOffset || 0) === weekOffset);
 
   const openAdd = (kind: TaskKind) => {
     setSubjectId("");
@@ -160,6 +160,7 @@ function Odevler() {
         topicId: null,
         areaId: null,
         day: Number(day),
+        weekOffset,
         studentId: currentStudent?.id ?? "s1",
       });
       setAddKind(null);
@@ -182,6 +183,7 @@ function Odevler() {
       topicId: topic ? topic.id : null,
       areaId: topic ? null : area.id,
       day: Number(day),
+      weekOffset,
       studentId: currentStudent?.id ?? "s1",
     });
 
