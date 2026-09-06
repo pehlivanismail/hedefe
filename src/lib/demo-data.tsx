@@ -90,6 +90,8 @@ export type Task = {
   studentId: string;
   topicId?: string | null | undefined;
   areaId?: string | null | undefined;
+  /** Ödevi kim ekledi: öğrenci mi koç mu */
+  assignedBy?: "student" | "coach" | undefined;
 
   result?: TaskResult | undefined;
 };
@@ -103,6 +105,7 @@ export type MockExam = {
   matematik: number;
   sosyal: number;
   fen: number;
+  studentId?: string | undefined;
 };
 
 export type Student = {
