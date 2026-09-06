@@ -1,6 +1,7 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -21,29 +22,52 @@ import {
 } from "@/lib/exam-config";
 import { TRACK_LABELS, type MockExam, type Track } from "@/lib/demo-data";
 
-type Cell = { wrong: string; blank: string };
+type Cell = { wrong: string; blank: string; done: boolean };
 
 export function MockExamForm({
   track,
   onSave,
   submitLabel = "Kaydet",
+  fixedKind,
+  onlySubject,
 }: {
   track: Track;
   onSave: (e: Omit<MockExam, "id">) => void;
   submitLabel?: string;
+  /** TYT / AYT denemesi ödevlerinde tür kilitli gelir */
+  fixedKind?: ExamKind;
+  /** Branş denemesi: sadece bu dersin bölümü gösterilir */
+  onlySubject?: string;
 }) {
-  const [kind, setKind] = useState<ExamKind>("TYT");
+  const [kind, setKind] = useState<ExamKind>(fixedKind ?? "TYT");
   const [publisher, setPublisher] = useState("");
   const [date, setDate] = useState(() => new Date().toISOString().slice(0, 10));
   const [cells, setCells] = useState<Record<string, Cell>>({});
 
-  const sections = useMemo(() => sectionsFor(kind, track), [kind, track]);
+  useEffect(() => {
+    if (fixedKind) setKind(fixedKind);
+  }, [fixedKind]);
 
-  const cell = (key: string) => cells[key] ?? { wrong: "", blank: "" };
+  const sections = useMemo(() => {
+    const all = sectionsFor(kind, track);
+    if (!onlySubject) return all;
+    const norm = (s: string) => s.toLocaleLowerCase("tr");
+    const filtered = all.filter((s) => norm(s.label) === norm(onlySubject));
+    return filtered.length ? filtered : all;
+  }, [kind, track, onlySubject]);
+
+  const cell = (key: string) =>
+    cells[key] ?? { wrong: "", blank: "", done: true };
+  const setCell = (key: string, patch: Partial<Cell>) =>
+    setCells((prev) => ({ ...prev, [key]: { ...cell(key), ...patch } }));
+
   const netFor = (key: string, questions: number) => {
     const c = cell(key);
+    if (!c.done) return 0;
     return netOf(questions, Number(c.wrong) || 0, Number(c.blank) || 0);
   };
+
+  const activeSections = sections.filter((s) => cell(s.key).done);
 
   const totals = sections.reduce(
     (acc, s) => {
@@ -65,7 +89,11 @@ export function MockExamForm({
       <div className="grid grid-cols-2 gap-3">
         <div className="space-y-2">
           <Label>Sınav Türü</Label>
-          <Select value={kind} onValueChange={(v) => setKind(v as ExamKind)}>
+          <Select
+            value={kind}
+            onValueChange={(v) => setKind(v as ExamKind)}
+            disabled={!!fixedKind}
+          >
             <SelectTrigger>
               <SelectValue />
             </SelectTrigger>
@@ -97,49 +125,60 @@ export function MockExamForm({
       <div className="flex items-center gap-2 rounded-xl bg-secondary/60 px-3 py-2 text-xs text-muted-foreground">
         <Clock className="size-3.5" />
         {kind} standart süresi: {formatDuration(EXAM_DURATION[kind])} ·{" "}
-        {sections.reduce((s, x) => s + x.questions, 0)} soru
+        {activeSections.reduce((s, x) => s + x.questions, 0)} soru
       </div>
 
       <div className="space-y-2">
-        <div className="grid grid-cols-[1fr_4rem_4rem_3.5rem] items-center gap-2 px-1 text-[11px] font-semibold text-muted-foreground">
-          <span>Bölüm (soru)</span>
+        <div className="grid grid-cols-[1.6rem_1fr_4rem_4rem_3.5rem] items-center gap-2 px-1 text-[11px] font-semibold text-muted-foreground">
+          <span className="text-center">✓</span>
+          <span>Ders (soru)</span>
           <span className="text-center">Yanlış</span>
           <span className="text-center">Boş</span>
           <span className="text-right">Net</span>
         </div>
         <div className="max-h-64 space-y-2 overflow-y-auto rounded-xl border border-border p-3">
-          {sections.map((s) => (
-            <div
-              key={s.key}
-              className="grid grid-cols-[1fr_4rem_4rem_3.5rem] items-center gap-2"
-            >
-              <span className="text-sm font-medium">
-                {s.label}{" "}
-                <span className="text-xs text-muted-foreground">
-                  ({s.questions})
-                </span>
-              </span>
-              {(["wrong", "blank"] as const).map((f) => (
-                <Input
-                  key={f}
-                  type="number"
-                  min={0}
-                  max={s.questions}
-                  className="h-9 px-2 text-center"
-                  value={cell(s.key)[f]}
-                  onChange={(e) =>
-                    setCells((prev) => ({
-                      ...prev,
-                      [s.key]: { ...cell(s.key), [f]: e.target.value },
-                    }))
-                  }
+          {sections.map((s) => {
+            const c = cell(s.key);
+            return (
+              <div
+                key={s.key}
+                className="grid grid-cols-[1.6rem_1fr_4rem_4rem_3.5rem] items-center gap-2"
+              >
+                <Checkbox
+                  checked={c.done}
+                  aria-label={`${s.label} çözdüm`}
+                  onCheckedChange={(v) => setCell(s.key, { done: v === true })}
                 />
-              ))}
-              <span className="text-right font-display text-sm font-bold text-brand-deep">
-                {netFor(s.key, s.questions).toFixed(2)}
-              </span>
-            </div>
-          ))}
+                <span
+                  className={
+                    c.done
+                      ? "text-sm font-medium"
+                      : "text-sm font-medium text-muted-foreground line-through"
+                  }
+                >
+                  {s.label}{" "}
+                  <span className="text-xs text-muted-foreground">
+                    ({s.questions})
+                  </span>
+                </span>
+                {(["wrong", "blank"] as const).map((f) => (
+                  <Input
+                    key={f}
+                    type="number"
+                    min={0}
+                    max={s.questions}
+                    disabled={!c.done}
+                    className="h-9 px-2 text-center"
+                    value={c[f]}
+                    onChange={(e) => setCell(s.key, { [f]: e.target.value })}
+                  />
+                ))}
+                <span className="text-right font-display text-sm font-bold text-brand-deep">
+                  {netFor(s.key, s.questions).toFixed(2)}
+                </span>
+              </div>
+            );
+          })}
         </div>
         <p className="text-right text-sm text-muted-foreground">
           Toplam net:{" "}
@@ -156,9 +195,14 @@ export function MockExamForm({
             toast.error("Kurum adı gerekli");
             return;
           }
-          const invalid = sections.find(
+          if (activeSections.length === 0) {
+            toast.error("En az bir ders seçili olmalı");
+            return;
+          }
+          const invalid = activeSections.find(
             (s) =>
-              (Number(cell(s.key).wrong) || 0) + (Number(cell(s.key).blank) || 0) >
+              (Number(cell(s.key).wrong) || 0) +
+                (Number(cell(s.key).blank) || 0) >
               s.questions,
           );
           if (invalid) {
