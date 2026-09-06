@@ -1,6 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { CalendarIcon, Search, TriangleAlert, UserRound } from "lucide-react";
+import {
+  CalendarIcon,
+  GraduationCap,
+  Search,
+  TriangleAlert,
+  UserRound,
+} from "lucide-react";
 import { format } from "date-fns";
 import { tr } from "date-fns/locale";
 import {
