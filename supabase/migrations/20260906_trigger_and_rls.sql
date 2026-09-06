@@ -134,3 +134,9 @@ CREATE POLICY "Users can view their own invites" ON public.pair_invites
     auth.uid() = from_user
     OR to_email = public.get_my_email()
   );
+-- Drop the overly restrictive profiles policies
+DROP POLICY IF EXISTS "Users can view own profile" ON public.profiles;
+DROP POLICY IF EXISTS "Coaches can view all profiles" ON public.profiles;
+
+-- Create an open read policy for profiles so invites can display names
+CREATE POLICY "Anyone can view profiles" ON public.profiles FOR SELECT USING (true);
