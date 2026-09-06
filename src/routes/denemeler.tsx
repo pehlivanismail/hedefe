@@ -95,7 +95,7 @@ function NetChart({
             <Tooltip
               content={({ active, payload, label }) => {
                 if (!active || !payload || !payload.length) return null;
-                const net = Number(payload[0].value) || 0;
+                const net = Number(payload[0]?.value) || 0;
                 const pct = maxQuestions ? (net / maxQuestions) * 100 : 0;
                 return (
                   <div className="rounded-xl border border-border bg-card p-3 shadow-soft">
