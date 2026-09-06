@@ -246,6 +246,58 @@ export type Database = {
         }
         Relationships: []
       }
+      tasks: {
+        Row: {
+          id: string
+          student_id: string
+          kind: string
+          subject: string
+          title: string
+          day: number
+          week_offset: number
+          done: boolean
+          topic_id: string | null
+          area_id: string | null
+          area_name: string | null
+          assigned_by: string
+          result: Json | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          student_id: string
+          kind: string
+          subject: string
+          title: string
+          day: number
+          week_offset?: number
+          done?: boolean
+          topic_id?: string | null
+          area_id?: string | null
+          area_name?: string | null
+          assigned_by?: string
+          result?: Json | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          student_id?: string
+          kind?: string
+          subject?: string
+          title?: string
+          day?: number
+          week_offset?: number
+          done?: boolean
+          topic_id?: string | null
+          area_id?: string | null
+          area_name?: string | null
+          assigned_by?: string
+          result?: Json | null
+          created_at?: string
+        }
+        Relationships: []
+      }
+    }
     Views: {
       [_ in never]: never
     }

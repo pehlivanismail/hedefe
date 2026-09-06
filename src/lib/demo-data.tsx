@@ -8,7 +8,7 @@ import {
 } from "react";
 import { useAuth } from "@/lib/auth";
 import { supabase } from "@/integrations/supabase/client";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { realExams } from "@/lib/topics-data";
 
 
@@ -270,16 +270,9 @@ export const exams: Exam[] = [
   },
 ];
 
-export const mockExams: MockExam[] = [
-  { id: "d1", date: "05.07.2026", publisher: "Endemik", type: "TYT", turkce: 28, matematik: 22, sosyal: 14, fen: 12 },
-  { id: "d2", date: "19.07.2026", publisher: "3D", type: "TYT", turkce: 31, matematik: 25, sosyal: 15, fen: 14 },
-  { id: "d3", date: "02.08.2026", publisher: "Bilgi Sarmal", type: "TYT", turkce: 33, matematik: 28, sosyal: 16, fen: 15 },
-  { id: "d4", date: "16.08.2026", publisher: "Apotemi", type: "AYT", turkce: 18, matematik: 20, sosyal: 8, fen: 22 },
-  { id: "d5", date: "30.08.2026", publisher: "Endemik", type: "AYT", turkce: 20, matematik: 24, sosyal: 9, fen: 26 },
-  { id: "d6", date: "13.09.2026", publisher: "3D", type: "AYT", turkce: 21, matematik: 27, sosyal: 10, fen: 29 },
-];
+export const mockExams: MockExam[] = [];
 
-export const coaches: Coach[] = [
+export const coachList = [
   { id: "c1", name: "Zeynep Koç", email: "zeynep@hedefe.net", title: "Sayısal Koçu" },
   { id: "c2", name: "Ahmet Demir", email: "ahmet@hedefe.net", title: "Eşit Ağırlık Koçu" },
 ];
@@ -304,18 +297,6 @@ export const students: Student[] = [
 
 export const CURRENT_STUDENT: Student = students[0]!;
 
-const initialTasks: Task[] = [
-  { id: "t1", kind: "soru", subject: "Fizik", title: "Newton Hareket Yasaları Test 1", day: 0, done: true, studentId: "s1" },
-  { id: "t2", kind: "soru", subject: "Matematik", title: "Türev Uygulamaları 40 soru", day: 0, done: false, studentId: "s1" },
-  { id: "t3", kind: "konu", subject: "Biyoloji", title: "Hücre Bölünmeleri konu tekrarı", day: 1, done: false, studentId: "s1" },
-  { id: "t4", kind: "soru", subject: "Türkçe", title: "Paragraf 30 soru", day: 2, done: true, studentId: "s1" },
-  { id: "t5", kind: "soru", subject: "Kimya", title: "Mol Kavramı Test 3", day: 3, done: false, studentId: "s1" },
-  { id: "t6", kind: "konu", subject: "Tarih", title: "İnkılap Tarihi özet çıkar", day: 4, done: false, studentId: "s1" },
-  { id: "t7", kind: "deneme", subject: "Matematik", title: "TYT Deneme çöz", day: 5, done: false, studentId: "s1" },
-  { id: "t8", kind: "konu", subject: "Biyoloji", title: "Haftalık tekrar", day: 6, done: false, studentId: "s1" },
-  { id: "t9", kind: "soru", subject: "Fizik", title: "Optik Test 2", day: 2, done: false, studentId: "s2" },
-];
-
 /** Basit deterministik sayı üreteci (aynı öğrenci hep aynı örnek veriyi görür) */
 function seedNum(key: string) {
   let h = 2166136261;
@@ -324,80 +305,6 @@ function seedNum(key: string) {
     h = Math.imul(h, 16777619);
   }
   return Math.abs(h);
-}
-
-const SEED_TASKS: Array<{
-  kind: TaskKind;
-  subject: string;
-  area: string;
-  title: string;
-  source: string;
-  day: number;
-  coach: boolean;
-}> = [
-  { kind: "soru", subject: "AYT Matematik", area: "Türev", title: "Türev 40 soru", source: "Apotemi Türev Fasikülü", day: 0, coach: true },
-  { kind: "konu", subject: "TYT Türkçe", area: "Paragraf", title: "Paragraf konu tekrarı", source: "Hocalara Geldik video ders", day: 1, coach: false },
-  { kind: "soru", subject: "TYT Fizik", area: "Hareket", title: "Hareket Test 2", source: "3D TYT Fizik Soru Bankası", day: 2, coach: true },
-  { kind: "konu", subject: "TYT Kimya", area: "Mol Kavramı", title: "Mol Kavramı özet", source: "Bilgi Sarmal Konu Anlatımı", day: 3, coach: false },
-  { kind: "soru", subject: "AYT Biyoloji", area: "Hücre", title: "Hücre 30 soru", source: "Endemik AYT Biyoloji", day: 4, coach: true },
-  { kind: "deneme", subject: "TYT", area: "", title: "TYT Genel Deneme", source: "Limit TYT Deneme", day: 5, coach: true },
-  { kind: "konu", subject: "TYT Tarih", area: "İnkılap Tarihi", title: "Haftalık tekrar", source: "Kendi notları", day: 6, coach: false },
-];
-
-/** Gerçek (veritabanındaki) bir öğrenci için örnek haftalık plan üretir */
-export function seedTasksFor(studentId: string): Task[] {
-  const s = seedNum(studentId);
-  return SEED_TASKS.map((t, i) => {
-    const done = (s + i * 7) % 3 !== 2;
-    const solved = 20 + ((s + i * 13) % 30);
-    const wrong = (s + i * 5) % 8;
-    const d = new Date();
-    d.setDate(d.getDate() - ((s + i * 3) % 12));
-    return {
-      id: `seed-${studentId}-${i}`,
-      kind: t.kind,
-      subject: t.subject,
-      areaName: t.area || undefined,
-      title: t.title,
-      day: t.day,
-      done,
-      studentId,
-      assignedBy: t.coach ? ("coach" as const) : ("student" as const),
-      ...(done
-        ? {
-            completedAt: d.toISOString().slice(0, 10),
-            result:
-              t.kind === "soru"
-                ? { solved, wrong, blank: (s + i) % 4, source: t.source }
-                : { source: t.source },
-          }
-        : {}),
-    };
-  });
-}
-
-
-const SEED_PUBLISHERS = ["Endemik", "3D", "Bilgi Sarmal", "Apotemi", "Limit"];
-
-/** Gerçek bir öğrenci için örnek deneme sonuçları üretir */
-export function seedMockExamsFor(studentId: string): MockExam[] {
-  const s = seedNum(studentId);
-  return Array.from({ length: 5 }, (_, i) => {
-    const d = new Date();
-    d.setDate(d.getDate() - (5 - i) * 14);
-    const g = i * 2;
-    return {
-      id: `seed-d-${studentId}-${i}`,
-      date: d.toLocaleDateString("tr-TR"),
-      publisher: SEED_PUBLISHERS[(s + i) % SEED_PUBLISHERS.length]!,
-      type: (i % 2 === 0 ? "TYT" : "AYT") as "TYT" | "AYT",
-      turkce: 22 + ((s + i * 3) % 8) + g,
-      matematik: 18 + ((s + i * 5) % 10) + g,
-      sosyal: 10 + ((s + i * 7) % 6) + Math.round(g / 2),
-      fen: 12 + ((s + i * 11) % 8) + g,
-      studentId,
-    };
-  });
 }
 
 export const DAYS = [
@@ -443,86 +350,140 @@ type Store = {
 const StoreContext = createContext<Store | null>(null);
 
 export function DemoDataProvider({ children }: { children: ReactNode }) {
-  const [tasks, setTasks] = useState<Task[]>(initialTasks);
   const [examData, setExamData] = useState<Exam[]>(exams);
-  const [mockExamList, setMockExamList] = useState<MockExam[]>(mockExams);
   const auth = useAuth();
+  const queryClient = useQueryClient();
 
   const targetStudentId = auth.student?.id || (auth.user && auth.role === "student" ? auth.user.id : null);
 
-  const { data: studyLogsData } = useQuery({
-    queryKey: ["study_logs", targetStudentId],
+  const { data: tasksData } = useQuery({
+    queryKey: ["tasks", targetStudentId],
     queryFn: async () => {
       if (!targetStudentId) return [];
       const { data, error } = await supabase
-        .from("study_logs")
+        .from("tasks")
         .select("*")
-        .eq("user_id", targetStudentId);
-      if (error) {
-        console.error("Error fetching study logs:", error);
-        return [];
-      }
-      return data;
+        .eq("student_id", targetStudentId);
+      if (error) throw error;
+      return data as any as Task[];
     },
     enabled: !!targetStudentId,
   });
 
-  useEffect(() => {
-    if (!studyLogsData) return;
+  const { data: mockExamsData } = useQuery({
+    queryKey: ["mock_exams", targetStudentId],
+    queryFn: async () => {
+      if (!targetStudentId) return [];
+      const { data, error } = await supabase
+        .from("mock_exams")
+        .select("*")
+        .eq("user_id", targetStudentId);
+      if (error) throw error;
+      return data as any as MockExam[];
+    },
+    enabled: !!targetStudentId,
+  });
 
-    const clonedExams: Exam[] = JSON.parse(JSON.stringify(exams));
-    
-    // Clear out base mock logs/debt/mastery
-    for (const e of clonedExams) {
-      for (const s of e.subjects) {
-        for (const a of s.areas) {
-          for (const t of a.topics) {
-            t.logs = [];
-            t.mastery = 0;
-            t.debt = 0;
-          }
-        }
-      }
-    }
-
-    const normalize = (s: string | null | undefined) => s ? s.toLowerCase().replace(/[^a-z0-9ğüşıöç]/g, "") : "";
-
-    for (const log of studyLogsData) {
-      let matched = false;
-      const normSubj = normalize(log.subject);
-      const normArea = normalize(log.area);
-      const normTopic = normalize(log.sub_topic);
+  const addTaskMutation = useMutation({
+    mutationFn: async (t: Omit<Task, "id" | "done" | "kind"> & { kind?: TaskKind }) => {
+      const assignedBy = auth.role === "coach" ? "coach" : "student";
+      const { data, error } = await supabase
+        .from("tasks")
+        .insert({
+          student_id: t.studentId,
+          kind: t.kind ?? "konu",
+          subject: t.subject,
+          title: t.title,
+          day: t.day,
+          week_offset: t.weekOffset ?? 0,
+          done: false,
+          topic_id: t.topicId || null,
+          area_id: t.areaId || null,
+          area_name: t.areaName || null,
+          assigned_by: assignedBy,
+        })
+        .select()
+        .single();
       
-      for (const e of clonedExams) {
-        for (const s of e.subjects) {
-          if (normalize(s.name) !== normSubj && normalize(s.id) !== normSubj) continue;
-          for (const a of s.areas) {
-            if (normalize(a.name) !== normArea && normalize(a.id) !== normArea) continue;
-            for (const t of a.topics) {
-              if (normalize(t.name) === normTopic || normalize(t.id) === normTopic) {
-                matched = true;
-                t.logs.push({
-                  id: log.id,
-                  date: log.date,
-                  source: log.source,
-                  solved: log.total_questions,
-                  wrong: log.wrong_answers,
-                  blank: log.blank_answers,
-                });
-                t.mastery = Math.min(5, t.mastery + log.total_questions / 50);
-                t.debt = t.debt + log.wrong_answers + log.blank_answers;
-              }
-            }
-          }
-        }
-      }
-      if (!matched) {
-        console.warn("Unmatched DB Log:", log.subject, ">", log.area, ">", log.sub_topic, "for log ID:", log.id);
-      }
-    }
+      if (error) throw error;
+      return data;
+    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["tasks"] }),
+  });
 
-    setExamData(clonedExams);
-  }, [studyLogsData]);
+  const completeTaskMutation = useMutation({
+    mutationFn: async ({ id, result }: { id: string, result?: TaskResult | undefined }) => {
+      const { data, error } = await supabase
+        .from("tasks")
+        .update({
+          done: true,
+          result: result || null
+        })
+        .eq("id", id)
+        .select()
+        .single();
+      
+      if (error) throw error;
+      return data;
+    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["tasks"] }),
+  });
+
+  const toggleTaskMutation = useMutation({
+    mutationFn: async (id: string) => {
+      const task = (tasksData || []).find(t => t.id === id);
+      if (!task) return;
+      const { data, error } = await supabase
+        .from("tasks")
+        .update({ done: !task.done })
+        .eq("id", id)
+        .select()
+        .single();
+      
+      if (error) throw error;
+      return data;
+    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["tasks"] }),
+  });
+
+  const moveTaskMutation = useMutation({
+    mutationFn: async ({ id, day }: { id: string, day: number }) => {
+      const { data, error } = await supabase
+        .from("tasks")
+        .update({ day })
+        .eq("id", id)
+        .select()
+        .single();
+      
+      if (error) throw error;
+      return data;
+    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["tasks"] }),
+  });
+
+  const addMockExamMutation = useMutation({
+    mutationFn: async (e: Omit<MockExam, "id">) => {
+      const { data, error } = await supabase
+        .from("mock_exams")
+        .insert({
+          user_id: e.studentId || targetStudentId || "",
+          date: e.date,
+          exam_type: e.type,
+          publisher: e.publisher,
+          turkce_net: e.turkce,
+          matematik_net: e.matematik,
+          sosyal_net: e.sosyal,
+          fen_net: e.fen,
+          total_net: e.turkce + e.matematik + e.sosyal + e.fen
+        })
+        .select()
+        .single();
+      
+      if (error) throw error;
+      return data.id;
+    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["mock_exams"] }),
+  });
 
   const currentStudent = auth.student;
   const currentCoach = auth.coach;
@@ -536,37 +497,9 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
         : null
     : null;
 
-  // Gerçek (veritabanı) öğrencileri için örnek çalışma kayıtlarını hazırla
-  const trackedIds = useMemo(() => {
-    const ids = studentList.map((s) => s.id);
-    if (currentStudent) ids.push(currentStudent.id);
-    return Array.from(new Set(ids));
-  }, [studentList, currentStudent]);
-
-  useEffect(() => {
-    if (trackedIds.length === 0) return;
-    setTasks((prev) => {
-      const missing = trackedIds.filter(
-        (id) => !prev.some((t) => t.studentId === id),
-      );
-      return missing.length
-        ? [...prev, ...missing.flatMap((id) => seedTasksFor(id))]
-        : prev;
-    });
-    setMockExamList((prev) => {
-      const missing = trackedIds.filter(
-        (id) => !prev.some((e) => e.studentId === id),
-      );
-      return missing.length
-        ? [...prev, ...missing.flatMap((id) => seedMockExamsFor(id))]
-        : prev;
-    });
-  }, [trackedIds]);
-
-
   const value = useMemo<Store>(
     () => ({
-      tasks,
+      tasks: tasksData || [],
       examData,
       session,
       studentList,
@@ -577,105 +510,34 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
         void auth.setCoach(coachId);
       },
 
-      addTask: (t) =>
-        setTasks((prev) => [
-          ...prev,
-          {
-            kind: "konu" as TaskKind,
-            assignedBy: session?.role === "coach" ? "coach" : "student",
-            ...t,
-            id: `t-${Date.now()}`,
-            done: false,
-          },
-        ]),
-      completeTask: (id, result) =>
-        setTasks((prev) =>
-          prev.map((t) =>
-            t.id === id
-              ? {
-                  ...t,
-                  done: true,
-                  completedAt: new Date().toISOString().slice(0, 10),
-                  result: result ?? t.result,
-                }
-              : t,
-          ),
-        ),
-
-      mockExamList,
+      addTask: (t) => addTaskMutation.mutate(t),
+      completeTask: (id, result) => completeTaskMutation.mutate({ id, result }),
+      mockExamList: mockExamsData || [],
       addMockExam: (e) => {
-        const id = `d-${Date.now()}`;
-        setMockExamList((prev) => [
-          ...prev,
-          { studentId: currentStudent?.id, ...e, id },
-        ]);
-        return id;
+        addMockExamMutation.mutate(e);
+        return "temp-id";
       },
-      toggleTask: (id) =>
-        setTasks((prev) =>
-          prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t)),
-        ),
-      moveTask: (id, day) =>
-        setTasks((prev) => prev.map((t) => (t.id === id ? { ...t, day } : t))),
-      addLog: (topicId, log) =>
-        setExamData((prev) =>
-          prev.map((e) => ({
-            ...e,
-            subjects: e.subjects.map((s) => ({
-              ...s,
-              areas: s.areas.map((a) => ({
-                ...a,
-                topics: a.topics.map((tp) =>
-                  tp.id === topicId
-                    ? {
-                        ...tp,
-                        debt: Math.max(0, tp.debt + log.wrong + log.blank - 1),
-                        logs: [...tp.logs, { ...log, id: `l-${Date.now()}` }],
-                      }
-                    : tp,
-                ),
-              })),
-            })),
-          })),
-        ),
-      addAreaLog: (areaId, log) =>
-        setExamData((prev) =>
-          prev.map((e) => ({
-            ...e,
-            subjects: e.subjects.map((s) => ({
-              ...s,
-              areas: s.areas.map((a) =>
-                a.id === areaId
-                  ? {
-                      ...a,
-                      debt: Math.max(
-                        0,
-                        (a.debt ?? 0) + log.wrong + log.blank - 1,
-                      ),
-                      mastery: Math.min(
-                        5,
-                        (a.mastery ?? areaMasteryFromTopics(a)) +
-                          (log.wrong + log.blank <= 2 ? 1 : 0),
-                      ),
-                      logs: [...(a.logs ?? []), { ...log, id: `al-${Date.now()}` }],
-                    }
-                  : a,
-              ),
-            })),
-          })),
-        ),
+      toggleTask: (id) => toggleTaskMutation.mutate(id),
+      moveTask: (id, day) => moveTaskMutation.mutate({ id, day }),
+      addLog: (topicId, log) => {},
+      addAreaLog: (areaId, log) => {},
     }),
 
     [
-      tasks,
+      tasksData,
+      mockExamsData,
       examData,
-      mockExamList,
       session,
       studentList,
       currentStudent,
       currentCoach,
       coachList,
       auth,
+      addTaskMutation,
+      completeTaskMutation,
+      toggleTaskMutation,
+      moveTaskMutation,
+      addMockExamMutation
     ],
   );
 
