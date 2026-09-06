@@ -6,6 +6,8 @@ import {
   type ReactNode,
 } from "react";
 import { useAuth } from "@/lib/auth";
+import { realExams } from "@/lib/topics-data";
+
 
 export const YKS_DATE = new Date("2027-06-19T10:00:00Z");
 
