@@ -643,3 +643,44 @@ export function flatTopics(list: Exam[]): TopicOption[] {
           });
   return rows;
 }
+
+export type TargetKind = "area" | "topic";
+
+export type StudyTarget = {
+  kind: TargetKind;
+  id: string;
+  name: string;
+  areaName: string;
+  subjectName: string;
+  examName: string;
+  label: string;
+};
+
+/** Alanları ve konuları birlikte, seçilebilir hedefler olarak düzleştirir. */
+export function flatTargets(list: Exam[]): StudyTarget[] {
+  const rows: StudyTarget[] = [];
+  for (const e of list)
+    for (const s of e.subjects)
+      for (const a of s.areas) {
+        rows.push({
+          kind: "area",
+          id: a.id,
+          name: a.name,
+          areaName: a.name,
+          subjectName: s.name,
+          examName: e.name,
+          label: `${e.name} · ${s.name} · ${a.name}`,
+        });
+        for (const t of a.topics)
+          rows.push({
+            kind: "topic",
+            id: t.id,
+            name: t.name,
+            areaName: a.name,
+            subjectName: s.name,
+            examName: e.name,
+            label: `${e.name} · ${s.name} · ${a.name} · ${t.name}`,
+          });
+      }
+  return rows;
+}
