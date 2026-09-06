@@ -116,7 +116,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         (roleRows ?? []).map((r) => [r.user_id, r.role as Role]),
       ),
     );
-    setCoachConnections(connections ?? []);
+    setCoachConnections((connections ?? []) as { student_id: string; coach_id: string }[]);
   }, []);
 
   useEffect(() => {

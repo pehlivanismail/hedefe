@@ -12,288 +12,331 @@ export type Database = {
   __InternalSupabase: {
     PostgrestVersion: "14.5"
   }
+  graphql_public: {
+    Tables: {
+      [_ in never]: never
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      graphql: {
+        Args: {
+          extensions?: Json
+          operationName?: string
+          query?: string
+          variables?: Json
+        }
+        Returns: Json
+      }
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
+  }
   public: {
     Tables: {
-
-      profiles: {
+      coach_connections: {
         Row: {
-          id: string
-          email: string
-          full_name: string | null
-          target: string | null
-          title: string | null
-          track: Database["public"]["Enums"]["yks_track"] | null
           coach_id: string | null
           created_at: string
+          id: string
+          status: string | null
+          student_id: string | null
         }
         Insert: {
-          id: string
-          email: string
-          full_name?: string | null
-          target?: string | null
-          title?: string | null
-          track?: Database["public"]["Enums"]["yks_track"] | null
           coach_id?: string | null
           created_at?: string
+          id?: string
+          status?: string | null
+          student_id?: string | null
         }
         Update: {
-          id?: string
-          email?: string
-          full_name?: string | null
-          target?: string | null
-          title?: string | null
-          track?: Database["public"]["Enums"]["yks_track"] | null
           coach_id?: string | null
           created_at?: string
-        }
-        Relationships: []
-      }
-      user_roles: {
-        Row: {
-          id: string
-          user_id: string
-          email: string
-          full_name: string | null
-          role: string
-          exam_tracks: Json | null
-          created_at: string
-        }
-        Insert: {
           id?: string
-          user_id: string
-          email: string
-          full_name?: string | null
-          role: string
-          exam_tracks?: Json | null
-          created_at?: string
-        }
-        Update: {
-          id?: string
-          user_id?: string
-          email?: string
-          full_name?: string | null
-          role?: string
-          exam_tracks?: Json | null
-          created_at?: string
-        }
-        Relationships: []
-      }
-      study_logs: {
-        Row: {
-          id: string
-          user_id: string
-          date: string
-          subject: string
-          area: string
-          sub_topic: string
-          source: string
-          total_questions: number
-          correct_answers: number
-          wrong_answers: number
-          blank_answers: number
-          created_at: string
-        }
-        Insert: {
-          id?: string
-          user_id: string
-          date: string
-          subject: string
-          area: string
-          sub_topic: string
-          source: string
-          total_questions: number
-          correct_answers: number
-          wrong_answers: number
-          blank_answers: number
-          created_at?: string
-        }
-        Update: {
-          id?: string
-          user_id?: string
-          date?: string
-          subject?: string
-          area?: string
-          sub_topic?: string
-          source?: string
-          total_questions?: number
-          correct_answers?: number
-          wrong_answers?: number
-          blank_answers?: number
-          created_at?: string
+          status?: string | null
+          student_id?: string | null
         }
         Relationships: []
       }
       mock_exams: {
         Row: {
-          id: string
-          user_id: string
+          created_at: string | null
           date: string
           exam_type: string
-          publisher: string
-          turkce_net: number
-          matematik_net: number
-          sosyal_net: number
-          fen_net: number
-          total_net: number
-          created_at: string
+          id: string
+          net_score: number
+          results_data: Json
+          title: string
+          total_questions: number
+          user_id: string
         }
         Insert: {
-          id?: string
-          user_id: string
-          date: string
+          created_at?: string | null
+          date?: string
           exam_type: string
-          publisher: string
-          turkce_net: number
-          matematik_net: number
-          sosyal_net: number
-          fen_net: number
-          total_net: number
-          created_at?: string
+          id?: string
+          net_score?: number
+          results_data?: Json
+          title: string
+          total_questions?: number
+          user_id: string
         }
         Update: {
-          id?: string
-          user_id?: string
+          created_at?: string | null
           date?: string
           exam_type?: string
-          publisher?: string
-          turkce_net?: number
-          matematik_net?: number
-          sosyal_net?: number
-          fen_net?: number
-          total_net?: number
-          created_at?: string
-        }
-        Relationships: []
-      }
-      homeworks: {
-        Row: {
-          id: string
-          student_id: string
-          coach_id: string | null
-          title: string
-          description: string | null
-          due_date: string
-          status: string
-          created_at: string
-        }
-        Insert: {
           id?: string
-          student_id: string
-          coach_id?: string | null
-          title: string
-          description?: string | null
-          due_date: string
-          status?: string
-          created_at?: string
-        }
-        Update: {
-          id?: string
-          student_id?: string
-          coach_id?: string | null
+          net_score?: number
+          results_data?: Json
           title?: string
-          description?: string | null
-          due_date?: string
-          status?: string
-          created_at?: string
+          total_questions?: number
+          user_id?: string
         }
         Relationships: []
       }
-      weekly_schedules: {
+      pair_invites: {
         Row: {
-          id: string
-          student_id: string
-          week_start_date: string
-          schedule_data: Json
           created_at: string
-        }
-        Insert: {
-          id?: string
-          student_id: string
-          week_start_date: string
-          schedule_data: Json
-          created_at?: string
-        }
-        Update: {
-          id?: string
-          student_id?: string
-          week_start_date?: string
-          schedule_data?: Json
-          created_at?: string
-        }
-        Relationships: []
-      }
-      coach_connections: {
-        Row: {
+          from_role: Database["public"]["Enums"]["app_role"]
+          from_user: string
           id: string
-          coach_id: string
-          student_id: string
+          message: string
+          responded_at: string | null
           status: string
-          created_at: string
+          to_email: string
+          to_user: string | null
         }
         Insert: {
-          id?: string
-          coach_id: string
-          student_id: string
-          status?: string
           created_at?: string
+          from_role: Database["public"]["Enums"]["app_role"]
+          from_user: string
+          id?: string
+          message?: string
+          responded_at?: string | null
+          status?: string
+          to_email: string
+          to_user?: string | null
         }
         Update: {
-          id?: string
-          coach_id?: string
-          student_id?: string
-          status?: string
           created_at?: string
+          from_role?: Database["public"]["Enums"]["app_role"]
+          from_user?: string
+          id?: string
+          message?: string
+          responded_at?: string | null
+          status?: string
+          to_email?: string
+          to_user?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          coach_id: string | null
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          target: string
+          title: string
+          track: Database["public"]["Enums"]["yks_track"]
+        }
+        Insert: {
+          coach_id?: string | null
+          created_at?: string
+          email?: string
+          full_name?: string
+          id: string
+          target?: string
+          title?: string
+          track?: Database["public"]["Enums"]["yks_track"]
+        }
+        Update: {
+          coach_id?: string | null
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          target?: string
+          title?: string
+          track?: Database["public"]["Enums"]["yks_track"]
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_coach_id_fkey"
+            columns: ["coach_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      study_logs: {
+        Row: {
+          area: string | null
+          blank: number | null
+          correct: number | null
+          date: string | null
+          exam: string | null
+          id: string
+          source: string | null
+          status: string | null
+          sub_topic: string
+          subject: string
+          total_questions: number | null
+          user_id: string
+          wrong: number | null
+        }
+        Insert: {
+          area?: string | null
+          blank?: number | null
+          correct?: number | null
+          date?: string | null
+          exam?: string | null
+          id?: string
+          source?: string | null
+          status?: string | null
+          sub_topic: string
+          subject: string
+          total_questions?: number | null
+          user_id: string
+          wrong?: number | null
+        }
+        Update: {
+          area?: string | null
+          blank?: number | null
+          correct?: number | null
+          date?: string | null
+          exam?: string | null
+          id?: string
+          source?: string | null
+          status?: string | null
+          sub_topic?: string
+          subject?: string
+          total_questions?: number | null
+          user_id?: string
+          wrong?: number | null
         }
         Relationships: []
       }
       tasks: {
         Row: {
-          id: string
-          student_id: string
-          kind: string
-          subject: string
-          title: string
-          day: number
-          week_offset: number
-          done: boolean
-          topic_id: string | null
           area_id: string | null
           area_name: string | null
-          assigned_by: string
-          result: Json | null
+          assigned_by: string | null
           created_at: string
-        }
-        Insert: {
-          id?: string
-          student_id: string
+          day: number
+          done: boolean
+          id: string
           kind: string
+          result: Json | null
+          student_id: string
           subject: string
           title: string
-          day: number
-          week_offset?: number
-          done?: boolean
-          topic_id?: string | null
+          topic_id: string | null
+          week_offset: number
+        }
+        Insert: {
           area_id?: string | null
           area_name?: string | null
-          assigned_by?: string
-          result?: Json | null
+          assigned_by?: string | null
           created_at?: string
+          day: number
+          done?: boolean
+          id?: string
+          kind: string
+          result?: Json | null
+          student_id: string
+          subject: string
+          title: string
+          topic_id?: string | null
+          week_offset?: number
         }
         Update: {
-          id?: string
-          student_id?: string
-          kind?: string
-          subject?: string
-          title?: string
-          day?: number
-          week_offset?: number
-          done?: boolean
-          topic_id?: string | null
           area_id?: string | null
           area_name?: string | null
-          assigned_by?: string
-          result?: Json | null
+          assigned_by?: string | null
           created_at?: string
+          day?: number
+          done?: boolean
+          id?: string
+          kind?: string
+          result?: Json | null
+          student_id?: string
+          subject?: string
+          title?: string
+          topic_id?: string | null
+          week_offset?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tasks_student_id_fkey"
+            columns: ["student_id"]
+            isOneToOne: false
+            referencedRelation: "user_roles"
+            referencedColumns: ["user_id"]
+          },
+        ]
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          email: string | null
+          exam_tracks: Json
+          full_name: string | null
+          id: string
+          role: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          exam_tracks?: Json
+          full_name?: string | null
+          id?: string
+          role?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          exam_tracks?: Json
+          full_name?: string | null
+          id?: string
+          role?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      weekly_schedules: {
+        Row: {
+          created_at: string | null
+          id: string
+          schedule_data: Json
+          student_id: string
+          updated_at: string | null
+          week_start_date: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          schedule_data?: Json
+          student_id: string
+          updated_at?: string | null
+          week_start_date: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          schedule_data?: Json
+          student_id?: string
+          updated_at?: string | null
+          week_start_date?: string
         }
         Relationships: []
       }
@@ -302,12 +345,18 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      get_my_role: { Args: never; Returns: string }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
           _user_id: string
         }
         Returns: boolean
+      }
+      my_email: { Args: never; Returns: string }
+      respond_pair_invite: {
+        Args: { _accept: boolean; _invite_id: string }
+        Returns: undefined
       }
     }
     Enums: {
@@ -438,6 +487,9 @@ export type CompositeTypes<
     : never
 
 export const Constants = {
+  graphql_public: {
+    Enums: {},
+  },
   public: {
     Enums: {
       app_role: ["student", "coach"],

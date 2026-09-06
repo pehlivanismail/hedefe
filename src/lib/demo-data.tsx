@@ -387,12 +387,10 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
           user_id: e.studentId || targetStudentId || "",
           date: e.date,
           exam_type: e.type,
-          publisher: e.publisher,
-          turkce_net: e.turkce,
-          matematik_net: e.matematik,
-          sosyal_net: e.sosyal,
-          fen_net: e.fen,
-          total_net: e.turkce + e.matematik + e.sosyal + e.fen
+          title: e.publisher,
+          results_data: { turkce: e.turkce, matematik: e.matematik, sosyal: e.sosyal, fen: e.fen },
+          net_score: e.turkce + e.matematik + e.sosyal + e.fen,
+          total_questions: e.type === "TYT" ? 120 : 160
         })
         .select()
         .single();
@@ -428,9 +426,9 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
           sub_topic: topicId,
           source: log.source,
           total_questions: log.solved,
-          correct_answers: Math.max(0, log.solved - log.wrong - log.blank),
-          wrong_answers: log.wrong,
-          blank_answers: log.blank,
+          correct: Math.max(0, log.solved - log.wrong - log.blank),
+          wrong: log.wrong,
+          blank: log.blank,
         })
         .select()
         .single();
