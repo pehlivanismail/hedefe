@@ -328,9 +328,9 @@ function Odevler() {
                   <SelectContent>
                     <SelectItem value="TYT">TYT Denemesi</SelectItem>
                     <SelectItem value="AYT">AYT Denemesi</SelectItem>
-                    {denemeSubjects.map((n) => (
-                      <SelectItem key={n} value={n}>
-                        {n} Branş Denemesi
+                    {denemeSubjects.map((d) => (
+                      <SelectItem key={d.value} value={d.value}>
+                        {d.label}
                       </SelectItem>
                     ))}
                   </SelectContent>
