@@ -512,9 +512,17 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       completeTask: (id, result) =>
         setTasks((prev) =>
           prev.map((t) =>
-            t.id === id ? { ...t, done: true, result: result ?? t.result } : t,
+            t.id === id
+              ? {
+                  ...t,
+                  done: true,
+                  completedAt: new Date().toISOString().slice(0, 10),
+                  result: result ?? t.result,
+                }
+              : t,
           ),
         ),
+
       mockExamList,
       addMockExam: (e) => {
         const id = `d-${Date.now()}`;
