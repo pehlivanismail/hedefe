@@ -357,86 +357,246 @@ function KocPaneli() {
 
 
           <TabsContent value="odev" className="mt-4">
-            <Card className="max-w-xl rounded-3xl border-border p-6 shadow-soft">
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <Label>Ders</Label>
-                  <Select value={subject} onValueChange={setSubject}>
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {SUBJECT_OPTIONS.map((s) => (
-                        <SelectItem key={s} value={s}>
-                          {s}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
+            <Tabs defaultValue="calisma">
+              <TabsList className="rounded-3xl">
+                <TabsTrigger value="calisma" className="rounded-full">
+                  Çalışma Ödevi
+                </TabsTrigger>
+                <TabsTrigger value="deneme" className="rounded-full">
+                  Deneme Ödevi
+                </TabsTrigger>
+              </TabsList>
 
-                <div className="space-y-2">
-                  <Label>Ödev Açıklaması</Label>
-                  <Textarea
-                    rows={4}
-                    value={description}
-                    placeholder="Ör: Türev Uygulamaları 40 soru çöz"
-                    onChange={(e) => setDescription(e.target.value)}
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label>Teslim Tarihi</Label>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button
-                        variant="outline"
-                        className={cn(
-                          "w-full justify-start text-left font-normal",
-                          !due && "text-muted-foreground",
-                        )}
+              <TabsContent value="calisma" className="mt-4">
+                <Card className="max-w-xl rounded-3xl border-border p-6 shadow-soft">
+                  <div className="space-y-4">
+                    <div className="space-y-2">
+                      <Label>Ödev Türü</Label>
+                      <Select
+                        value={taskKind}
+                        onValueChange={(v) => setTaskKind(v as "konu" | "soru")}
                       >
-                        <CalendarIcon className="size-4" />
-                        {due
-                          ? format(due, "d MMMM yyyy", { locale: tr })
-                          : "Tarih seç"}
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0" align="start">
-                      <Calendar
-                        mode="single"
-                        selected={due}
-                        onSelect={setDue}
-                        className={cn("p-3 pointer-events-auto")}
-                      />
-                    </PopoverContent>
-                  </Popover>
-                </div>
+                        <SelectTrigger>
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="konu">Konu Çalışması</SelectItem>
+                          <SelectItem value="soru">Soru Çözümü</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
 
-                <Button
-                  className="w-full rounded-xl"
-                  onClick={() => {
-                    if (!description.trim()) {
-                      toast.error("Ödev açıklaması gerekli");
-                      return;
-                    }
-                    const day = due ? (due.getDay() + 6) % 7 : 0;
-                    addTask({
-                      subject,
-                      title: description,
-                      day,
-                      studentId: student.id,
-                      assignedBy: "coach",
-                    });
-                    setDescription("");
-                    toast.success(`${student.name} için ödev atandı`);
-                  }}
-                >
-                  Ata
-                </Button>
-              </div>
-            </Card>
+                    <div className="space-y-2">
+                      <Label>Ders</Label>
+                      <Select
+                        value={selectedSubject?.value ?? ""}
+                        onValueChange={(v) => {
+                          setSubject(v);
+                          setAreaId("");
+                        }}
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Ders seç" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {subjectOptions.map((s) => (
+                            <SelectItem key={s.value} value={s.value}>
+                              {s.value}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label>
+                        Alan{" "}
+                        <span className="text-xs font-normal text-muted-foreground">
+                          (opsiyonel)
+                        </span>
+                      </Label>
+                      <Select
+                        value={areaId}
+                        onValueChange={(v) => setAreaId(v === "__all" ? "" : v)}
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Ders geneli" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="__all">Ders geneli</SelectItem>
+                          {(selectedSubject?.areas ?? []).map((a) => (
+                            <SelectItem key={a.id} value={a.id}>
+                              {a.name}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label>Ödev Açıklaması</Label>
+                      <Textarea
+                        rows={3}
+                        value={description}
+                        placeholder="Ör: Türev Uygulamaları 40 soru çöz"
+                        onChange={(e) => setDescription(e.target.value)}
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label>Teslim Tarihi</Label>
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <Button
+                            variant="outline"
+                            className={cn(
+                              "w-full justify-start text-left font-normal",
+                              !due && "text-muted-foreground",
+                            )}
+                          >
+                            <CalendarIcon className="size-4" />
+                            {due
+                              ? format(due, "d MMMM yyyy", { locale: tr })
+                              : "Tarih seç"}
+                          </Button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-auto p-0" align="start">
+                          <Calendar
+                            mode="single"
+                            selected={due}
+                            onSelect={setDue}
+                            className={cn("p-3 pointer-events-auto")}
+                          />
+                        </PopoverContent>
+                      </Popover>
+                    </div>
+
+                    <Button
+                      className="w-full rounded-xl"
+                      onClick={() => {
+                        if (!selectedSubject) {
+                          toast.error("Ders seç");
+                          return;
+                        }
+                        const title =
+                          description.trim() ||
+                          selectedArea?.name ||
+                          selectedSubject.value;
+                        const day = due ? (due.getDay() + 6) % 7 : 0;
+                        addTask({
+                          kind: taskKind,
+                          subject: selectedSubject.value,
+                          areaName: selectedArea?.name,
+                          areaId: selectedArea?.id ?? null,
+                          topicId: null,
+                          title,
+                          day,
+                          studentId: student.id,
+                          assignedBy: "coach",
+                        });
+                        setDescription("");
+                        toast.success(`${student.name} için ödev atandı`);
+                      }}
+                    >
+                      Ata
+                    </Button>
+                  </div>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="deneme" className="mt-4">
+                <Card className="max-w-xl rounded-3xl border-border p-6 shadow-soft">
+                  <div className="space-y-4">
+                    <div className="space-y-2">
+                      <Label>Deneme Türü</Label>
+                      <Select value={examScope} onValueChange={setExamScope}>
+                        <SelectTrigger>
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="TYT">TYT Denemesi</SelectItem>
+                          <SelectItem value="AYT">AYT Denemesi</SelectItem>
+                          {subjectOptions.map((s) => (
+                            <SelectItem key={s.value} value={s.value}>
+                              {s.value} Branş Denemesi
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label>Açıklama (opsiyonel)</Label>
+                      <Textarea
+                        rows={3}
+                        value={denemeNote}
+                        placeholder="Ör: Süre tutarak çöz"
+                        onChange={(e) => setDenemeNote(e.target.value)}
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label>Teslim Tarihi</Label>
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <Button
+                            variant="outline"
+                            className={cn(
+                              "w-full justify-start text-left font-normal",
+                              !denemeDue && "text-muted-foreground",
+                            )}
+                          >
+                            <CalendarIcon className="size-4" />
+                            {denemeDue
+                              ? format(denemeDue, "d MMMM yyyy", { locale: tr })
+                              : "Tarih seç"}
+                          </Button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-auto p-0" align="start">
+                          <Calendar
+                            mode="single"
+                            selected={denemeDue}
+                            onSelect={setDenemeDue}
+                            className={cn("p-3 pointer-events-auto")}
+                          />
+                        </PopoverContent>
+                      </Popover>
+                    </div>
+
+                    <Button
+                      className="w-full rounded-xl"
+                      onClick={() => {
+                        const label =
+                          examScope === "TYT"
+                            ? "TYT Denemesi"
+                            : examScope === "AYT"
+                              ? "AYT Denemesi"
+                              : `${examScope} Branş Denemesi`;
+                        const day = denemeDue
+                          ? (denemeDue.getDay() + 6) % 7
+                          : 0;
+                        addTask({
+                          kind: "deneme",
+                          subject: examScope,
+                          title: denemeNote.trim() || label,
+                          topicId: null,
+                          areaId: null,
+                          day,
+                          studentId: student.id,
+                          assignedBy: "coach",
+                        });
+                        setDenemeNote("");
+                        toast.success(`${student.name} için deneme ödevi verildi`);
+                      }}
+                    >
+                      Deneme Ödevi Ver
+                    </Button>
+                  </div>
+                </Card>
+              </TabsContent>
+            </Tabs>
           </TabsContent>
+
 
           <TabsContent value="istatistik" className="mt-4">
             <StudentScores student={student} />
