@@ -5,6 +5,7 @@ import {
   ChevronLeft,
   ChevronRight,
   ClipboardList,
+  GraduationCap,
   GripVertical,
   ListChecks,
   Plus,
