@@ -514,13 +514,24 @@ function Odevler() {
             </div>
           )}
 
-          {active?.kind === "deneme" && (
-            <MockExamForm
-              track={currentStudent?.track ?? "sayisal"}
-              submitLabel="Denemeyi kaydet"
-              {...(active.subject === "TYT" || active.subject === "AYT"
-                ? { fixedKind: active.subject as "TYT" | "AYT" }
-                : { onlySubject: active.subject })}
+          {active?.kind === "deneme" &&
+            (() => {
+              const s = active.subject;
+              const brans = /^(TYT|AYT) (.+)$/.exec(s);
+              const scopeProps =
+                s === "TYT" || s === "AYT"
+                  ? { fixedKind: s as "TYT" | "AYT" }
+                  : brans
+                    ? {
+                        fixedKind: brans[1] as "TYT" | "AYT",
+                        onlySubject: brans[2],
+                      }
+                    : { onlySubject: s };
+              return (
+                <MockExamForm
+                  track={currentStudent?.track ?? "sayisal"}
+                  submitLabel="Denemeyi kaydet"
+                  {...scopeProps}
 
               onSave={(e) => {
                 const id = addMockExam(e);
