@@ -135,6 +135,24 @@ function KocPaneli() {
   const student =
     myStudents.find((s) => s.id === selectedId) ?? visible[0] ?? myStudents[0];
 
+  /** Öğrencinin sınavlarındaki dersler: "TYT Matematik", "AYT Fizik" ... */
+  const subjectOptions = useMemo(() => {
+    if (!student) return [];
+    return examsForStudent(examData, student).flatMap((e) =>
+      e.subjects.map((s) => ({
+        value: `${e.name.startsWith("AYT") ? "AYT" : "TYT"} ${s.name}`,
+        areas: s.areas.map((a) => ({ id: a.id, name: a.name })),
+      })),
+    );
+  }, [examData, student]);
+
+  const selectedSubject =
+    subjectOptions.find((s) => s.value === subject) ?? subjectOptions[0] ?? null;
+  const selectedArea =
+    selectedSubject?.areas.find((a) => a.id === areaId) ?? null;
+
+
+
   if (session?.role !== "coach") {
     return (
       <Card className="mx-auto max-w-lg rounded-3xl border-border p-10 text-center shadow-soft">
