@@ -48,13 +48,13 @@ type AuthValue = {
 
 const AuthContext = createContext<AuthValue | null>(null);
 
-const toStudent = (p: ProfileRow): Student => ({
+const toStudent = (p: ProfileRow, fallbackTrack: string = "sayisal"): Student => ({
   id: p.user_id,
   name: p.full_name || formatEmailToName(p.email),
   email: p.email,
   target: "Hedef belirlenmedi", // Not in V1 schema, default to fallback
   pending: 0,
-  track: (p.track as any) || "sayisal", 
+  track: (p.track as any) || fallbackTrack, 
   coachId: null, // We'll map this via coach_connections later if needed
 });
 
@@ -146,14 +146,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   let role = user ? (roles[user.id] ?? null) : null;
   
   if (user && (!role || !me)) {
-    role = role || "student";
+    role = role || user.user_metadata?.role || "student";
     me = {
       user_id: user.id,
-      full_name: user.email?.split("@")[0] || "Öğrenci",
+      full_name: user.user_metadata?.full_name || user.email?.split("@")[0] || "Öğrenci",
       email: user.email || "",
       role: role,
       exam_tracks: [],
-      track: "sayisal"
+      track: user.user_metadata?.track || "sayisal"
     };
   }
 
@@ -165,11 +165,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     // Students belonging to this coach
     const myStudentIds = coachConnections.filter(c => c.coach_id === user?.id).map(c => c.student_id);
     const myStudents = user
-      ? profiles.filter((p) => myStudentIds.includes(p.user_id)).map(toStudent)
+      ? profiles.filter((p) => myStudentIds.includes(p.user_id)).map(p => toStudent(p, p.track))
       : [];
       
     // Attach coach ID to the current student
-    let currentStudent = role === "student" && me ? toStudent(me) : null;
+    let currentStudent = role === "student" && me ? toStudent(me, user?.user_metadata?.track) : null;
     if (currentStudent) {
         const connection = coachConnections.find(c => c.student_id === currentStudent!.id);
         if (connection) {
