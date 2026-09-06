@@ -200,6 +200,7 @@ function Denemeler() {
               <TableHead className="text-right">Sosyal</TableHead>
               <TableHead className="text-right">Fen</TableHead>
               <TableHead className="text-right">Toplam Net</TableHead>
+              <TableHead className="text-right">Başarı %</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
