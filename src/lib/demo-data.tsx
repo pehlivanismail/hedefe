@@ -89,6 +89,8 @@ export type Task = {
   done: boolean;
   studentId: string;
   topicId?: string | null | undefined;
+  areaId?: string | null | undefined;
+
   result?: TaskResult | undefined;
 };
 
