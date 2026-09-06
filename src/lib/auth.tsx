@@ -11,8 +11,10 @@ import type { User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 import type { Coach, Student, Track } from "@/lib/demo-data";
 
-function formatEmailToName(email: string) {
+function formatEmailToName(email?: string | null) {
+  if (!email) return "Öğrenci";
   const namePart = email.split('@')[0];
+  if (!namePart) return "Öğrenci";
   return namePart
     .split(/[\.\-_]/)
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
@@ -77,13 +79,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return;
     }
     
-    const { data: roleRows, error } = await supabase
+    const { data: roleRows, error: roleError } = await supabase
         .from("user_roles")
         .select("user_id, role, exam_tracks");
         
+    const { data: profileRows, error: profileError } = await supabase
+        .from("profiles")
+        .select("*");
+        
     console.log("Supabase Auth UID:", uid);
-    console.log("Supabase User Roles Fetch Error:", error ? JSON.stringify(error) : "None");
-    console.log("Supabase User Roles Fetched:", roleRows);
+    console.log("Supabase User Roles Fetch Error:", roleError ? JSON.stringify(roleError) : "None");
+    console.log("Supabase Profiles Fetch Error:", profileError ? JSON.stringify(profileError) : "None");
 
     // Fetch connections for coach-student relationship
     const { data: connections } = await supabase
@@ -91,7 +97,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         .select("student_id, coach_id")
         .eq("status", "approved");
 
-    setProfiles((roleRows ?? []) as ProfileRow[]);
+    const mergedProfiles: ProfileRow[] = (profileRows || []).map(p => {
+        const r = (roleRows || []).find(role => role.user_id === p.id);
+        return {
+            user_id: p.id,
+            full_name: p.full_name,
+            email: p.email,
+            role: r?.role || "student",
+            exam_tracks: (r?.exam_tracks as string[]) || null
+        };
+    });
+
+    setProfiles(mergedProfiles);
     setRoles(
       Object.fromEntries(
         (roleRows ?? []).map((r) => [r.user_id, r.role as Role]),
