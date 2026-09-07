@@ -29,6 +29,7 @@ export type StudyLog = {
   solved?: number;
   wrong?: number;
   blank?: number;
+  subTopic?: string;
 };
 
 export type Topic = {
@@ -305,6 +306,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
         date: row.date,
         source: row.source,
         kind: row.kind,
+        subTopic: row.sub_topic,
         solved: row.total_questions,
         wrong: row.wrong,
         blank: row.blank,
@@ -580,7 +582,7 @@ export function examsForStudent(all: Exam[], student: Student, studyLogs: any[] 
       subjects: e.subjects.map((s) => ({
         ...s,
         areas: s.areas.map((a) => {
-          const areaLogsRaw = studyLogs.filter((l) => l.sub_topic === a.id);
+          const areaLogsRaw = studyLogs.filter((l) => l.subTopic === a.id);
           const areaLogs = areaLogsRaw.map((l) => ({
             id: l.id,
             date: l.date,
@@ -595,7 +597,7 @@ export function examsForStudent(all: Exam[], student: Student, studyLogs: any[] 
           ...a,
           logs: areaLogs,
           topics: a.topics.map((t) => {
-            const topicLogsRaw = studyLogs.filter((l) => l.sub_topic === t.id);
+            const topicLogsRaw = studyLogs.filter((l) => l.subTopic === t.id);
             const topicLogs = topicLogsRaw.map((l) => ({
               id: l.id,
               date: l.date,
