@@ -44,6 +44,7 @@ type AuthValue = {
   coachList: Coach[];
   myStudents: Student[];
   setCoach: (coachId: string | null) => Promise<void>;
+  removeStudent: (studentId: string) => Promise<void>;
   signOut: () => Promise<void>;
   refresh: () => Promise<void>;
 };
@@ -207,6 +208,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         
         await supabase.from("profiles").update({ coach_id: coachId }).eq("id", user.id);
         
+        await load(user.id);
+      },
+      removeStudent: async (studentId) => {
+        if (!user) return;
+        await supabase.from("coach_connections").delete().eq("coach_id", user.id).eq("student_id", studentId);
+        await supabase.from("profiles").update({ coach_id: null }).eq("id", studentId);
         await load(user.id);
       },
       signOut: async () => {

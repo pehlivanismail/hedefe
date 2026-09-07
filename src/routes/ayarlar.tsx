@@ -102,6 +102,7 @@ function AccountPage() {
                     toast.success("Koç bağlantısı kaldırıldı.");
                 }} />
             )}
+            {role === "coach" && <MyStudentsSection />}
             <PairInvites role={role as "student" | "coach"} />
             <DangerSection
                 onDelete={async () => {
@@ -292,6 +293,58 @@ function PasswordSection() {
                     {busy ? <Loader2 className="size-4 animate-spin" /> : <KeyRound className="size-4" />}
                     Parolayı Güncelle
                 </Button>
+            </div>
+        </Card>
+    );
+}
+
+function MyStudentsSection() {
+    const { myStudents, removeStudent, refresh } = useAuth();
+    
+    if (myStudents.length === 0) return null;
+    
+    return (
+        <Card className="rounded-3xl border-border p-6 shadow-soft">
+            <SectionTitle icon={<UserRound className="size-4" />} title="Öğrencilerim" />
+            <p className="mt-1 text-sm text-muted-foreground mb-4">
+                Bağlantıyı kestiğiniz öğrencilerin hedeflerini ve durumlarını göremezsiniz.
+            </p>
+            <div className="space-y-2">
+                {myStudents.map(student => (
+                    <div key={student.id} className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-border bg-brand-soft px-3 py-2">
+                        <span className="text-sm font-medium text-brand-deep">
+                            {student.name}
+                        </span>
+                        <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                                <Button size="sm" variant="outline" className="rounded-full text-destructive">
+                                    <Unlink className="size-4 mr-2" /> Bağlantıyı Kes
+                                </Button>
+                            </AlertDialogTrigger>
+                            <AlertDialogContent>
+                                <AlertDialogHeader>
+                                    <AlertDialogTitle>Bağlantı kesilsin mi?</AlertDialogTitle>
+                                    <AlertDialogDescription>
+                                        <strong className="text-brand-deep">{student.name}</strong> ile bağlantınız kesilecek. İsterseniz daha sonra tekrar davet gönderebilirsiniz.
+                                    </AlertDialogDescription>
+                                </AlertDialogHeader>
+                                <AlertDialogFooter>
+                                    <AlertDialogCancel>Vazgeç</AlertDialogCancel>
+                                    <AlertDialogAction
+                                        className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                                        onClick={async () => {
+                                            await removeStudent(student.id);
+                                            await refresh();
+                                            toast.success(`${student.name} ile bağlantı kesildi.`);
+                                        }}
+                                    >
+                                        Bağlantıyı Kes
+                                    </AlertDialogAction>
+                                </AlertDialogFooter>
+                            </AlertDialogContent>
+                        </AlertDialog>
+                    </div>
+                ))}
             </div>
         </Card>
     );
