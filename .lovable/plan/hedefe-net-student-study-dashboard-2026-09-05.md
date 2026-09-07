@@ -6,7 +6,7 @@ A modern, premium study-tracking app for a YKS 2027 student, plus a coach panel.
 
 **Shared shell** — Sticky glassy top bar: "Hedefe.net" logo left; centered pill links "📊 Özet", "📚 Konu Ağacı", "📝 Ödevler ve Hedefler", "🎯 Denemeler"; right side shows the user email with an avatar and a quiet "Çıkış" button. Active pill is green; content sits on a soft off-white background. A link to the coach panel lives in the right-hand area.
 
-**Özet (/)** — Dark-teal hero "🎯 YKS 2027 HEDEF / Çapa Tıp Fakültesi". Two big metric cards: countdown "287 Gün" in green, and "57 Hata/Boş" in red. Below, "Konu Hakimiyeti" grid with six thick rounded progress bars (Türkçe, Matematik, Fizik, Kimya, Biyoloji, Tarih), filled with a yellow→green gradient based on score.
+**Özet (/)** — Dark-teal hero "🎯 YKS 2027 HEDEF / Hacettepe Tıp Fakültesi". Two big metric cards: countdown "287 Gün" in green, and "57 Hata/Boş" in red. Below, "Konu Hakimiyeti" grid with six thick rounded progress bars (Türkçe, Matematik, Fizik, Kimya, Biyoloji, Tarih), filled with a yellow→green gradient based on score.
 
 **Konu Ağacı (/konu-agaci)** — Exam → Subject → Area → Topic. Exam header with "Başarı" and "Borç" badges; subject accordions with a thin progress bar on the card; area accordions inside; topic rows showing name, 5-dot mastery indicator and a small "Borç: X" badge. Clicking a topic opens a modal with a past-study-log table and a "➕ Yeni Çalışma Ekle" button that adds a log entry.
 

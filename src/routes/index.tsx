@@ -13,6 +13,8 @@ import {
   ClipboardList,
   NotebookPen,
   CheckCircle2,
+  Quote,
+  Mail,
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
@@ -31,16 +33,16 @@ import { useAuth } from "@/lib/auth";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Özet — Hedefe.net YKS Paneli" },
+      { title: "Hedefe.net — Ücretsiz YKS Takip Paneli" },
       {
         name: "description",
         content:
-          "YKS 2027 geri sayımı, aktif öğrenme borcu ve ders bazlı konu hakimiyeti tek ekranda.",
+          "YKS 2027 hazırlığını ücretsiz takip et: konu hakimiyeti, ödev planı, deneme analizi ve koç paneli. Şimdi ve her zaman bedava.",
       },
-      { property: "og:title", content: "Özet — Hedefe.net YKS Paneli" },
+      { property: "og:title", content: "Hedefe.net — Ücretsiz YKS Takip Paneli" },
       {
         property: "og:description",
-        content: "Geri sayım, öğrenme borcu ve konu hakimiyeti özetin.",
+        content: "YKS hazırlığını ücretsiz takip et: konu hakimiyeti, ödev planı, deneme analizi ve koç paneli.",
       },
     ],
   }),
@@ -150,7 +152,7 @@ const steps = [
 
 function Landing() {
   const { user, role } = useAuth();
-  const panelLink = role === "coach" ? "/koc" : "/ozet";
+  const panelLink = role === "coach" ? "/koc" : "/";
 
   return (
     <div className="space-y-16">
@@ -160,15 +162,22 @@ function Landing() {
         <div className="absolute -bottom-32 -left-16 size-72 rounded-full bg-primary/15 blur-3xl" />
         <div className="relative max-w-3xl">
           <span className="inline-flex items-center gap-2 rounded-full bg-primary/20 px-3 py-1 text-xs font-semibold uppercase tracking-widest">
-            <Target className="size-3.5" /> YKS 2027 Takip Paneli
+            <Target className="size-3.5" /> Ücretsiz YKS 2027 Takip Paneli
           </span>
           <h1 className="mt-5 font-display text-4xl font-extrabold tracking-tight sm:text-6xl">
             Hedefine giden yolu <span className="text-primary">birlikte planla</span>
           </h1>
           <p className="mt-5 max-w-2xl text-base opacity-85 sm:text-lg">
-            Hedefe.net, YKS öğrencileri ile eğitim koçlarını aynı çalışma masasına oturtur. Konu hakimiyeti, haftalık ödev planı, deneme analizleri ve öğrenme borcu — hepsi tek ekranda, iki taraf için de görünür.
+            Hedefe.net, YKS öğrencileri ile eğitim koçlarını aynı çalışma masasına oturtur. Konu hakimiyeti, haftalık ödev planı, deneme analizleri ve öğrenme borcu — hepsi tek ekranda, iki taraf için de görünür ve <span className="font-semibold text-primary">tamamen ücretsiz</span>.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary ring-1 ring-primary/20 backdrop-blur-sm">
+            <span className="relative flex size-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+              <span className="relative inline-flex size-2 rounded-full bg-primary" />
+            </span>
+            Şimdi ve her zaman bedava — kredi kartı yok, gizli ücret yok
+          </div>
+          <div className="mt-6 flex flex-wrap gap-3">
             {user ? (
               <Link
                 to={panelLink}
@@ -192,6 +201,10 @@ function Landing() {
                 </Link>
               </>
             )}
+          </div>
+          <div className="mt-8 inline-flex max-w-2xl items-start gap-3 rounded-2xl border border-primary/20 bg-primary/10 px-5 py-4 text-sm italic text-primary-foreground/90 shadow-sm backdrop-blur-sm sm:px-6 sm:text-base">
+            <Quote className="mt-0.5 size-5 shrink-0 text-primary" />
+            “Büyük bir fili yemenin tek yolu, onu küçük lokmalara bölmektir.”
           </div>
         </div>
       </section>
@@ -273,7 +286,7 @@ function Landing() {
             Hedefin belli, planın burada.
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-sm opacity-85 sm:text-base">
-            Bugün başla; ilk haftanı planla, ilk denemeni işle, koçunla aynı sayfada buluş.
+            Bugün başla; ilk haftanı planla, ilk denemeni işle, koçunla aynı sayfada buluş. Hedefe.net <span className="font-semibold text-primary">şimdi ve her zaman ücretsiz</span>.
           </p>
           {!user && (
             <div className="mt-7 flex flex-wrap justify-center gap-3">
@@ -282,6 +295,28 @@ function Landing() {
               </Link>
             </div>
           )}
+        </div>
+      </section>
+
+      {/* İletişim */}
+      <section className="rounded-3xl border border-border bg-card px-6 py-12 text-center shadow-soft sm:px-12" aria-labelledby="iletisim">
+        <div className="mx-auto max-w-xl">
+          <span className="mx-auto flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+            <Mail className="size-6" />
+          </span>
+          <h2 id="iletisim" className="mt-5 font-display text-2xl font-bold text-brand-deep sm:text-3xl">
+            Bize ulaşın
+          </h2>
+          <p className="mt-2 text-sm text-muted-foreground sm:text-base">
+            Sorularınız, önerileriniz veya geri bildirimleriniz için bize her zaman yazabilirsiniz.
+          </p>
+          <a
+            href="mailto:iletisim@hedefe.net"
+            className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5"
+          >
+            <Mail className="size-4" />
+            iletisim@hedefe.net
+          </a>
         </div>
       </section>
     </div>

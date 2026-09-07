@@ -10,6 +10,7 @@ import {
     Unlink,
     Trash2,
     Save,
+    Users,
 } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
@@ -88,7 +89,7 @@ function AccountPage() {
                     ⚙️ Hesap Ayarları
                 </h1>
                 <p className="mt-1 text-sm text-muted-foreground">
-                    {me?.name} · {me?.email} · {role === "student" ? "Öğrenci" : "Koç"}
+                    {me?.name} · {me?.email} · {role === "student" ? "Öğrenci" : role === "parent" ? "Veli" : "Koç"}
                 </p>
             </div>
 
@@ -103,10 +104,11 @@ function AccountPage() {
                 }} />
             )}
             {role === "coach" && <MyStudentsSection />}
-            <PairInvites role={role as "student" | "coach"} />
+            {role !== "coach" && <ParentLinkSection />}
+            <PairInvites role={(role ?? "student") as "student" | "coach" | "parent"} />
             <DangerSection
                 onDelete={async () => {
-                    await supabase.rpc("delete_user");
+                    await supabase.rpc("delete_user" as any);
                     await signOut();
                     toast.success("Hesabın silindi. Yolun açık olsun! 🎓");
                     void navigate({ to: "/", replace: true });
@@ -453,6 +455,62 @@ function DangerSection({ onDelete }: { onDelete: () => Promise<void> }) {
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>
+        </Card>
+    );
+}
+
+function ParentLinkSection() {
+    const { role, myParents, child, unlinkChild, refresh } = useAuth();
+    const [busy, setBusy] = useState(false);
+    const isParent = role === "parent";
+    const list = isParent
+        ? child
+            ? [{ id: child.id, name: child.name, email: child.email }]
+            : []
+        : myParents;
+
+    return (
+        <Card className="rounded-3xl border-border p-6 shadow-soft">
+            <SectionTitle
+                icon={<Users className="size-4" />}
+                title={isParent ? "Çocuğum" : "Veli Bağlantısı"}
+            />
+            {list.length === 0 ? (
+                <p className="mt-1 text-sm text-muted-foreground">
+                    {isParent
+                        ? "Henüz bağlı bir çocuk yok. Aşağıdan davet gönderebilirsin."
+                        : "Henüz bağlı bir veli yok. Aşağıdan velini davet edebilirsin; velin çalışmalarını görebilir ve koçunla iletişim kurabilir."}
+                </p>
+            ) : (
+                <div className="mt-3 space-y-2">
+                    {list.map((p) => (
+                        <div
+                            key={p.id}
+                            className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-border px-3 py-2"
+                        >
+                            <span className="text-sm text-brand-deep">
+                                <strong>{p.name}</strong>{" "}
+                                <span className="text-muted-foreground">{p.email}</span>
+                            </span>
+                            <Button
+                                size="sm"
+                                variant="outline"
+                                className="rounded-full text-destructive"
+                                disabled={busy}
+                                onClick={async () => {
+                                    setBusy(true);
+                                    await unlinkChild(isParent ? p.id : (child?.id ?? p.id));
+                                    await refresh();
+                                    setBusy(false);
+                                    toast.success("Bağlantı kaldırıldı.");
+                                }}
+                            >
+                                <Unlink className="size-4" /> Bağlantıyı Kes
+                            </Button>
+                        </div>
+                    ))}
+                </div>
+            )}
         </Card>
     );
 }

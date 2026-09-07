@@ -7,7 +7,4 @@ export default defineConfig({
   nitro: {
     preset: "node-server",
   },
-  build: {
-    target: "es2015",
-  },
 });

@@ -12,31 +12,6 @@ export type Database = {
   __InternalSupabase: {
     PostgrestVersion: "14.5"
   }
-  graphql_public: {
-    Tables: {
-      [_ in never]: never
-    }
-    Views: {
-      [_ in never]: never
-    }
-    Functions: {
-      graphql: {
-        Args: {
-          extensions?: Json
-          operationName?: string
-          query?: string
-          variables?: Json
-        }
-        Returns: Json
-      }
-    }
-    Enums: {
-      [_ in never]: never
-    }
-    CompositeTypes: {
-      [_ in never]: never
-    }
-  }
   public: {
     Tables: {
       coach_connections: {
@@ -135,6 +110,60 @@ export type Database = {
         }
         Relationships: []
       }
+      parent_links: {
+        Row: {
+          created_at: string
+          id: string
+          parent_id: string
+          status: string
+          student_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          parent_id: string
+          status?: string
+          student_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          parent_id?: string
+          status?: string
+          student_id?: string
+        }
+        Relationships: []
+      }
+      parent_messages: {
+        Row: {
+          body: string
+          coach_id: string | null
+          created_at: string
+          id: string
+          parent_id: string
+          sender_id: string
+          student_id: string
+        }
+        Insert: {
+          body: string
+          coach_id?: string | null
+          created_at?: string
+          id?: string
+          parent_id: string
+          sender_id: string
+          student_id: string
+        }
+        Update: {
+          body?: string
+          coach_id?: string | null
+          created_at?: string
+          id?: string
+          parent_id?: string
+          sender_id?: string
+          student_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           coach_id: string | null
@@ -181,9 +210,11 @@ export type Database = {
           area: string | null
           blank: number | null
           correct: number | null
+          created_at: string
           date: string | null
           exam: string | null
           id: string
+          kind: string | null
           source: string | null
           status: string | null
           sub_topic: string
@@ -196,9 +227,11 @@ export type Database = {
           area?: string | null
           blank?: number | null
           correct?: number | null
+          created_at?: string
           date?: string | null
           exam?: string | null
           id?: string
+          kind?: string | null
           source?: string | null
           status?: string | null
           sub_topic: string
@@ -211,9 +244,11 @@ export type Database = {
           area?: string | null
           blank?: number | null
           correct?: number | null
+          created_at?: string
           date?: string | null
           exam?: string | null
           id?: string
+          kind?: string | null
           source?: string | null
           status?: string | null
           sub_topic?: string
@@ -229,6 +264,7 @@ export type Database = {
           area_id: string | null
           area_name: string | null
           assigned_by: string | null
+          completed_at: string | null
           created_at: string
           day: number
           done: boolean
@@ -245,6 +281,7 @@ export type Database = {
           area_id?: string | null
           area_name?: string | null
           assigned_by?: string | null
+          completed_at?: string | null
           created_at?: string
           day: number
           done?: boolean
@@ -261,6 +298,7 @@ export type Database = {
           area_id?: string | null
           area_name?: string | null
           assigned_by?: string | null
+          completed_at?: string | null
           created_at?: string
           day?: number
           done?: boolean
@@ -273,15 +311,7 @@ export type Database = {
           topic_id?: string | null
           week_offset?: number
         }
-        Relationships: [
-          {
-            foreignKeyName: "tasks_student_id_fkey"
-            columns: ["student_id"]
-            isOneToOne: false
-            referencedRelation: "user_roles"
-            referencedColumns: ["user_id"]
-          },
-        ]
+        Relationships: []
       }
       user_roles: {
         Row: {
@@ -290,8 +320,8 @@ export type Database = {
           exam_tracks: Json
           full_name: string | null
           id: string
-          role: string | null
-          user_id: string | null
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
         }
         Insert: {
           created_at?: string
@@ -299,8 +329,8 @@ export type Database = {
           exam_tracks?: Json
           full_name?: string | null
           id?: string
-          role?: string | null
-          user_id?: string | null
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
         }
         Update: {
           created_at?: string
@@ -308,8 +338,8 @@ export type Database = {
           exam_tracks?: Json
           full_name?: string | null
           id?: string
-          role?: string | null
-          user_id?: string | null
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
         }
         Relationships: []
       }
@@ -345,7 +375,6 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      get_my_role: { Args: never; Returns: string }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -353,6 +382,8 @@ export type Database = {
         }
         Returns: boolean
       }
+      is_coach_of: { Args: { _student: string }; Returns: boolean }
+      is_parent_of: { Args: { _student: string }; Returns: boolean }
       my_email: { Args: never; Returns: string }
       respond_pair_invite: {
         Args: { _accept: boolean; _invite_id: string }
@@ -360,7 +391,7 @@ export type Database = {
       }
     }
     Enums: {
-      app_role: "student" | "coach"
+      app_role: "student" | "coach" | "parent"
       yks_track: "sayisal" | "sozel" | "esit"
     }
     CompositeTypes: {
@@ -487,12 +518,9 @@ export type CompositeTypes<
     : never
 
 export const Constants = {
-  graphql_public: {
-    Enums: {},
-  },
   public: {
     Enums: {
-      app_role: ["student", "coach"],
+      app_role: ["student", "coach", "parent"],
       yks_track: ["sayisal", "sozel", "esit"],
     },
   },

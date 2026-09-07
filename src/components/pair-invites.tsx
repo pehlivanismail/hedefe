@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 type InviteRow = {
   id: string;
   from_user: string;
-  from_role: "student" | "coach";
+  from_role: "student" | "coach" | "parent";
   to_email: string;
   status: string;
   created_at: string;
@@ -18,7 +18,7 @@ type InviteRow = {
 
 type Props = {
   /** Bu paneli kullanan kişinin rolü. */
-  role: "student" | "coach";
+  role: "student" | "coach" | "parent";
 };
 
 export function PairInvites({ role }: Props) {
@@ -58,7 +58,7 @@ export function PairInvites({ role }: Props) {
     void load();
   }, [load]);
 
-  const targetLabel = role === "student" ? "Koç" : "Öğrenci";
+  const targetLabel = role === "student" ? "Koç" : role === "parent" ? "Öğrenci" : "Öğrenci";
 
   const invite = async () => {
     const clean = email.trim().toLowerCase();
@@ -107,7 +107,11 @@ export function PairInvites({ role }: Props) {
   return (
     <Card className="rounded-3xl border-border p-6 shadow-soft">
       <p className="font-display text-lg font-bold text-brand-deep">
-        {role === "student" ? "🤝 Koçumu Davet Et" : "🤝 Öğrenci Davet Et"}
+        {role === "student"
+          ? "🤝 Koçumu Davet Et"
+          : role === "parent"
+            ? "🤝 Çocuğumu Davet Et"
+            : "🤝 Öğrenci Davet Et"}
       </p>
       <p className="mt-1 text-sm text-muted-foreground">
         {targetLabel} e-postasını yaz; karşı taraf onaylayınca eşleşme kurulur.
@@ -143,7 +147,11 @@ export function PairInvites({ role }: Props) {
             >
               <span className="text-sm font-medium text-brand-deep">
                 {names[i.from_user] ?? "Bilinmeyen kullanıcı"} ·{" "}
-                {i.from_role === "coach" ? "Koç" : "Öğrenci"}
+                {i.from_role === "coach"
+                  ? "Koç"
+                  : i.from_role === "parent"
+                    ? "Veli"
+                    : "Öğrenci"}
               </span>
               <span className="flex gap-2">
                 <Button

@@ -17,6 +17,8 @@ import { Route as KocRouteImport } from './routes/koc'
 import { Route as KocGirisRouteImport } from './routes/koc-giris'
 import { Route as KonuAgaciRouteImport } from './routes/konu-agaci'
 import { Route as OdevlerRouteImport } from './routes/odevler'
+import { Route as VeliRouteImport } from './routes/veli'
+import { Route as VeliGirisRouteImport } from './routes/veli-giris'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -58,6 +60,16 @@ const OdevlerRoute = OdevlerRouteImport.update({
   path: '/odevler',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VeliRoute = VeliRouteImport.update({
+  id: '/veli',
+  path: '/veli',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VeliGirisRoute = VeliGirisRouteImport.update({
+  id: '/veli-giris',
+  path: '/veli-giris',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -68,6 +80,8 @@ export interface FileRoutesByFullPath {
   '/koc-giris': typeof KocGirisRoute
   '/konu-agaci': typeof KonuAgaciRoute
   '/odevler': typeof OdevlerRoute
+  '/veli': typeof VeliRoute
+  '/veli-giris': typeof VeliGirisRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -78,6 +92,8 @@ export interface FileRoutesByTo {
   '/koc-giris': typeof KocGirisRoute
   '/konu-agaci': typeof KonuAgaciRoute
   '/odevler': typeof OdevlerRoute
+  '/veli': typeof VeliRoute
+  '/veli-giris': typeof VeliGirisRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -89,6 +105,8 @@ export interface FileRoutesById {
   '/koc-giris': typeof KocGirisRoute
   '/konu-agaci': typeof KonuAgaciRoute
   '/odevler': typeof OdevlerRoute
+  '/veli': typeof VeliRoute
+  '/veli-giris': typeof VeliGirisRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +119,8 @@ export interface FileRouteTypes {
     | '/koc-giris'
     | '/konu-agaci'
     | '/odevler'
+    | '/veli'
+    | '/veli-giris'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +131,8 @@ export interface FileRouteTypes {
     | '/koc-giris'
     | '/konu-agaci'
     | '/odevler'
+    | '/veli'
+    | '/veli-giris'
   id:
     | '__root__'
     | '/'
@@ -121,6 +143,8 @@ export interface FileRouteTypes {
     | '/koc-giris'
     | '/konu-agaci'
     | '/odevler'
+    | '/veli'
+    | '/veli-giris'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -132,6 +156,8 @@ export interface RootRouteChildren {
   KocGirisRoute: typeof KocGirisRoute
   KonuAgaciRoute: typeof KonuAgaciRoute
   OdevlerRoute: typeof OdevlerRoute
+  VeliRoute: typeof VeliRoute
+  VeliGirisRoute: typeof VeliGirisRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -192,6 +218,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OdevlerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/veli': {
+      id: '/veli'
+      path: '/veli'
+      fullPath: '/veli'
+      preLoaderRoute: typeof VeliRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/veli-giris': {
+      id: '/veli-giris'
+      path: '/veli-giris'
+      fullPath: '/veli-giris'
+      preLoaderRoute: typeof VeliGirisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -204,6 +244,8 @@ const rootRouteChildren: RootRouteChildren = {
   KocGirisRoute: KocGirisRoute,
   KonuAgaciRoute: KonuAgaciRoute,
   OdevlerRoute: OdevlerRoute,
+  VeliRoute: VeliRoute,
+  VeliGirisRoute: VeliGirisRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

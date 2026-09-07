@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { GraduationCap, Loader2, MailCheck, UserRound } from "lucide-react";
+import { GraduationCap, Loader2, MailCheck, UserRound, Users } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -17,7 +17,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { supabase } from "@/integrations/supabase/client";
 import { TRACK_LABELS, type Track } from "@/lib/demo-data";
 
-type Role = "student" | "coach";
+type Role = "student" | "coach" | "parent";
 
 function friendlyError(message: string) {
   if (/invalid login credentials/i.test(message))
@@ -34,6 +34,8 @@ function friendlyError(message: string) {
 export function AuthForm({ role }: { role: Role }) {
   const navigate = useNavigate();
   const isCoach = role === "coach";
+  const isParent = role === "parent";
+  const homeFor = isCoach ? "/koc" : isParent ? "/veli" : "/";
   const [tab, setTab] = useState("giris");
   const [busy, setBusy] = useState(false);
   const [confirmSent, setConfirmSent] = useState(false);
@@ -57,7 +59,7 @@ export function AuthForm({ role }: { role: Role }) {
       return;
     }
     toast.success("Giriş yapıldı");
-    void navigate({ to: isCoach ? "/koc" : "/", replace: true });
+    void navigate({ to: homeFor, replace: true });
   };
 
   const signUp = async () => {
@@ -90,7 +92,7 @@ export function AuthForm({ role }: { role: Role }) {
       return;
     }
     toast.success("Hesabın hazır");
-    void navigate({ to: isCoach ? "/koc" : "/", replace: true });
+    void navigate({ to: homeFor, replace: true });
   };
 
   if (confirmSent) {
@@ -123,15 +125,19 @@ export function AuthForm({ role }: { role: Role }) {
       <div className="flex items-center gap-2 font-display text-2xl font-bold text-brand-deep">
         {isCoach ? (
           <GraduationCap className="size-6 text-primary" />
+        ) : isParent ? (
+          <Users className="size-6 text-primary" />
         ) : (
           <UserRound className="size-6 text-primary" />
         )}
-        {isCoach ? "Koç Girişi" : "Öğrenci Girişi"}
+        {isCoach ? "Koç Girişi" : isParent ? "Veli Girişi" : "Öğrenci Girişi"}
       </div>
       <p className="mt-2 text-sm text-muted-foreground">
         {isCoach
           ? "Koç hesabınla giriş yap, öğrencilerini takip et."
-          : "Hesabınla giriş yap, çalışma panelin seni bekliyor."}
+          : isParent
+            ? "Veli hesabınla giriş yap, çocuğunun gelişimini takip et."
+            : "Hesabınla giriş yap, çalışma panelin seni bekliyor."}
       </p>
 
       <Tabs value={tab} onValueChange={setTab} className="mt-6">
@@ -189,7 +195,7 @@ export function AuthForm({ role }: { role: Role }) {
               placeholder="Ad Soyad"
             />
           </div>
-          {isCoach ? (
+          {isParent ? null : isCoach ? (
             <div className="space-y-2">
               <Label htmlFor="title">Uzmanlık</Label>
               <Input
@@ -258,7 +264,11 @@ export function AuthForm({ role }: { role: Role }) {
             onClick={() => void signUp()}
           >
             {busy && <Loader2 className="size-4 animate-spin" />}
-            {isCoach ? "Koç Hesabı Oluştur" : "Öğrenci Hesabı Oluştur"}
+            {isCoach
+              ? "Koç Hesabı Oluştur"
+              : isParent
+                ? "Veli Hesabı Oluştur"
+                : "Öğrenci Hesabı Oluştur"}
           </Button>
         </TabsContent>
       </Tabs>

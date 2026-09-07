@@ -15,6 +15,7 @@ import { AppHeader } from "@/components/app-header";
 import { DemoDataProvider } from "@/lib/demo-data";
 import { AuthProvider } from "@/lib/auth";
 import { Toaster } from "@/components/ui/sonner";
+import { initAnalytics, trackPageView } from "@/lib/analytics";
 
 
 function NotFoundComponent() {
@@ -132,6 +133,16 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+
+  useEffect(() => {
+    initAnalytics();
+    trackPageView(window.location.pathname);
+    const unsubscribe = router.subscribe("onResolved", () => {
+      trackPageView(window.location.pathname);
+    });
+    return () => unsubscribe();
+  }, [router]);
 
   return (
     <QueryClientProvider client={queryClient}>

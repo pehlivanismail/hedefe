@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   CalendarIcon,
   GraduationCap,
@@ -61,6 +61,9 @@ import {
   type Track,
 } from "@/lib/demo-data";
 
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/lib/auth";
+import { ParentCoachChat } from "@/components/parent-coach-chat";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/koc")({
@@ -99,9 +102,18 @@ function MasteryDots({ level }: { level: number }) {
 }
 
 function KocPaneli() {
-  const { tasks, addTask, session, currentCoach, studentList, examData } =
-    useDemoData();
+  const {
+    tasks,
+    addTask,
+    session,
+    currentCoach,
+    studentList,
+    examData,
+    studyLogs,
+    setViewStudentId,
+  } = useDemoData();
   const myStudents = studentList;
+
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [trackFilter, setTrackFilter] = useState<Track | "all">("all");
@@ -134,6 +146,12 @@ function KocPaneli() {
 
   const student =
     myStudents.find((s) => s.id === selectedId) ?? visible[0] ?? myStudents[0];
+
+  // Seçili öğrencinin ödev / deneme / çalışma kayıtları yüklensin
+  useEffect(() => {
+    setViewStudentId(student?.id ?? null);
+  }, [student?.id, setViewStudentId]);
+
 
   /** Öğrencinin sınavlarındaki dersler: "TYT Matematik", "AYT Fizik" ... */
   const subjectOptions = useMemo(() => {
@@ -323,10 +341,17 @@ function KocPaneli() {
             <TabsTrigger value="istatistik" className="rounded-full">
               İstatistikler
             </TabsTrigger>
+            <TabsTrigger value="veli" className="rounded-full">
+              Veli
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="analiz" className="mt-4">
             <TopicAnalysis student={student} />
+          </TabsContent>
+
+          <TabsContent value="veli" className="mt-4">
+            <CoachParentTab student={student} />
           </TabsContent>
 
           <TabsContent value="plan" className="mt-4">
@@ -334,8 +359,9 @@ function KocPaneli() {
           </TabsContent>
 
           <TabsContent value="gunluk" className="mt-4">
-            <StudyJournal tasks={studentTasks} />
+            <StudyJournal tasks={studentTasks} logs={studyLogs} />
           </TabsContent>
+
 
 
           <TabsContent value="denemeler" className="mt-4">
@@ -628,9 +654,10 @@ function KocPaneli() {
   );
 }
 
-function TopicAnalysis({ student }: { student: Student }) {
-  const { examData } = useDemoData();
-  const mine = examsForStudent(examData, student);
+export function TopicAnalysis({ student }: { student: Student }) {
+  const { examData, studyLogs } = useDemoData();
+  const mine = examsForStudent(examData, student, studyLogs);
+
   const stats = overallStats(mine);
   const weak = weakestTopics(mine, 5);
 
@@ -776,9 +803,10 @@ function TopicAnalysis({ student }: { student: Student }) {
   );
 }
 
-function StudentScores({ student }: { student: Student }) {
-  const { examData } = useDemoData();
-  const scores = subjectScoresOf(examsForStudent(examData, student));
+export function StudentScores({ student }: { student: Student }) {
+  const { examData, studyLogs } = useDemoData();
+  const scores = subjectScoresOf(examsForStudent(examData, student, studyLogs));
+
 
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -816,11 +844,55 @@ function CoachBadge() {
   );
 }
 
-function StudentWeek({ tasks }: { tasks: Task[] }) {
+function weekRangeLabel(offset: number) {
+  const now = new Date();
+  const day = (now.getDay() + 6) % 7;
+  const start = new Date(now);
+  start.setDate(now.getDate() - day + offset * 7);
+  const end = new Date(start);
+  end.setDate(start.getDate() + 6);
+  return `${format(start, "d MMM", { locale: tr })} — ${format(end, "d MMM yyyy", { locale: tr })}`;
+}
+
+export function StudentWeek({ tasks }: { tasks: Task[] }) {
+  const [week, setWeek] = useState(0);
+  const weekTasks = tasks.filter((t) => (t.weekOffset ?? 0) === week);
+  const doneCount = weekTasks.filter((t) => t.done).length;
+
   return (
-    <div className="flex gap-4 overflow-x-auto pb-4">
+    <div className="space-y-4">
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border bg-card px-4 py-3 shadow-sm">
+        <div className="flex items-center gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            className="rounded-full"
+            onClick={() => setWeek((w) => w - 1)}
+          >
+            ‹
+          </Button>
+          <span className="font-display text-sm font-bold text-brand-deep">
+            {week === 0 ? "Bu hafta" : weekRangeLabel(week)}
+          </span>
+          <Button
+            variant="outline"
+            size="sm"
+            className="rounded-full"
+            onClick={() => setWeek((w) => w + 1)}
+          >
+            ›
+          </Button>
+        </div>
+        <span className="text-xs font-semibold text-muted-foreground">
+          {weekTasks.length} ödev · {doneCount} tamamlandı ·{" "}
+          {weekTasks.length - doneCount} bekliyor
+        </span>
+      </div>
+
+      <div className="flex gap-4 overflow-x-auto pb-4">
       {DAYS.map((d, i) => {
-        const dayTasks = tasks.filter((t) => t.day === i);
+        const dayTasks = weekTasks.filter((t) => t.day === i);
+
         return (
           <div
             key={d}
@@ -878,13 +950,15 @@ function StudentWeek({ tasks }: { tasks: Task[] }) {
           </div>
         );
       })}
+      </div>
     </div>
   );
 }
 
+
 const netTotal = (e: MockExam) => e.turkce + e.matematik + e.sosyal + e.fen;
 
-function StudentMockExams({ student }: { student: Student }) {
+export function StudentMockExams({ student }: { student: Student }) {
   const { mockExamList } = useDemoData();
   const rows = mockExamList.filter(
     (e) => e.studentId === student.id,
@@ -936,11 +1010,25 @@ function StudentMockExams({ student }: { student: Student }) {
   );
 }
 
+type JournalEntry = {
+  id: string;
+  date: string;
+  kind: string;
+  subject: string;
+  detail: string;
+  source: string;
+  solved?: number | undefined;
+  wrong: number;
+  blank: number;
+  byCoach: boolean;
+};
+
 type JournalGroup = {
   key: string;
   label: string;
-  rows: Task[];
+  rows: JournalEntry[];
 };
+
 
 function trDate(iso: string) {
   const d = new Date(`${iso}T00:00:00`);
@@ -960,24 +1048,89 @@ function weekLabel(iso: string) {
   };
 }
 
-function StudyJournal({ tasks }: { tasks: Task[] }) {
+export function StudyJournal({ tasks, logs }: { tasks: Task[]; logs: any[] }) {
   const [mode, setMode] = useState<"gun" | "hafta">("gun");
+  const { examData } = useDemoData();
+
+  /** Konu / alan id → "Ders · Ad" */
+  const nameOf = useMemo(() => {
+    const map = new Map<string, { subject: string; detail: string }>();
+    for (const exam of examData) {
+      const prefix = exam.name.startsWith("AYT") ? "AYT" : "TYT";
+      for (const s of exam.subjects) {
+        const subject = `${prefix} ${s.name}`;
+        for (const a of s.areas) {
+          map.set(a.id, { subject, detail: a.name });
+          for (const t of a.topics) {
+            map.set(t.id, { subject, detail: `${a.name} · ${t.name}` });
+          }
+        }
+      }
+    }
+    return map;
+  }, [examData]);
+
+  const entries = useMemo<JournalEntry[]>(() => {
+    const out: JournalEntry[] = [];
+    const seen = new Set<string>();
+
+    for (const t of tasks) {
+      if (!t.done || !t.completedAt) continue;
+      const solved = t.result?.solved;
+      const source = t.result?.source ?? "";
+      out.push({
+        id: t.id,
+        date: t.completedAt,
+        kind: TASK_KIND_LABELS[t.kind] ?? t.kind,
+        subject: t.subject,
+        detail: t.topicName ?? t.areaName ?? t.title,
+        source: source || "—",
+        solved,
+        wrong: t.result?.wrong ?? 0,
+        blank: t.result?.blank ?? 0,
+        byCoach: t.assignedBy === "coach",
+      });
+      const key = `${t.topicId || t.areaId || ""}|${source}|${solved ?? ""}`;
+      seen.add(key);
+    }
+
+    for (const l of logs ?? []) {
+      const iso = String(l.date ?? "").slice(0, 10);
+      if (!iso) continue;
+      const key = `${l.subTopic ?? ""}|${l.source ?? ""}|${l.solved ?? ""}`;
+      if (seen.has(key)) continue;
+      const info = nameOf.get(l.subTopic);
+      out.push({
+        id: l.id,
+        date: iso,
+        kind: l.kind ? (TASK_KIND_LABELS[l.kind as never] ?? l.kind) : "Çalışma",
+        subject: info?.subject ?? "—",
+        detail: info?.detail ?? l.subTopic ?? "—",
+        source: l.source || "—",
+        solved: l.solved ?? undefined,
+        wrong: l.wrong ?? 0,
+        blank: l.blank ?? 0,
+        byCoach: false,
+      });
+    }
+
+    return out;
+  }, [tasks, logs, nameOf]);
 
   const groups = useMemo<JournalGroup[]>(() => {
-    const done = tasks.filter((t) => t.done && t.completedAt);
     const map = new Map<string, JournalGroup>();
-    for (const t of done) {
-      const iso = t.completedAt!;
+    for (const e of entries) {
       const g =
         mode === "gun"
-          ? { key: iso, label: trDate(iso) }
-          : weekLabel(iso);
+          ? { key: e.date, label: trDate(e.date) }
+          : weekLabel(e.date);
       const cur = map.get(g.key) ?? { ...g, rows: [] };
-      cur.rows.push(t);
+      cur.rows.push(e);
       map.set(g.key, cur);
     }
     return Array.from(map.values()).sort((a, b) => (a.key < b.key ? 1 : -1));
-  }, [tasks, mode]);
+  }, [entries, mode]);
+
 
   if (groups.length === 0) {
     return (
@@ -1007,10 +1160,11 @@ function StudyJournal({ tasks }: { tasks: Task[] }) {
       </div>
 
       {groups.map((g) => {
-        const solved = g.rows.reduce((n, t) => n + (t.result?.solved ?? 0), 0);
-        const wrong = g.rows.reduce((n, t) => n + (t.result?.wrong ?? 0), 0);
-        const blank = g.rows.reduce((n, t) => n + (t.result?.blank ?? 0), 0);
+        const solved = g.rows.reduce((n, t) => n + (t.solved ?? 0), 0);
+        const wrong = g.rows.reduce((n, t) => n + t.wrong, 0);
+        const blank = g.rows.reduce((n, t) => n + t.blank, 0);
         const correct = solved - wrong - blank;
+
         return (
           <Card
             key={g.key}
@@ -1053,9 +1207,9 @@ function StudyJournal({ tasks }: { tasks: Task[] }) {
               </TableHeader>
               <TableBody>
                 {g.rows.map((t, i) => {
-                  const s = t.result?.solved;
-                  const w = t.result?.wrong ?? 0;
-                  const b = t.result?.blank ?? 0;
+                  const s = t.solved;
+                  const w = t.wrong;
+                  const b = t.blank;
                   return (
                     <TableRow
                       key={t.id}
@@ -1064,16 +1218,17 @@ function StudyJournal({ tasks }: { tasks: Task[] }) {
                       <TableCell>
                         <span className="flex items-center gap-1.5">
                           <span className="rounded-full bg-brand-soft px-2 py-0.5 text-[11px] font-semibold text-brand-deep">
-                            {TASK_KIND_LABELS[t.kind]}
+                            {t.kind}
                           </span>
-                          {t.assignedBy === "coach" && <CoachBadge />}
+                          {t.byCoach && <CoachBadge />}
                         </span>
                       </TableCell>
                       <TableCell className="font-medium">{t.subject}</TableCell>
                       <TableCell className="text-muted-foreground">
-                        {t.areaName ?? t.title}
+                        {t.detail}
                       </TableCell>
-                      <TableCell>{t.result?.source ?? "—"}</TableCell>
+                      <TableCell>{t.source}</TableCell>
+
                       <TableCell className="text-right">{s ?? "—"}</TableCell>
                       <TableCell className="text-right">
                         {s != null ? Math.max(0, s - w - b) : "—"}
@@ -1092,6 +1247,78 @@ function StudyJournal({ tasks }: { tasks: Task[] }) {
           </Card>
         );
       })}
+    </div>
+  );
+}
+
+function CoachParentTab({ student }: { student: Student }) {
+  const { user } = useAuth();
+  const [parent, setParent] = useState<{ id: string; name: string } | null>(
+    null,
+  );
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    let alive = true;
+    void (async () => {
+      setReady(false);
+      const { data } = await supabase
+        .from("parent_links")
+        .select("parent_id")
+        .eq("student_id", student.id)
+        .eq("status", "approved");
+      const pid = data?.[0]?.parent_id ?? null;
+      if (!pid) {
+        if (alive) {
+          setParent(null);
+          setReady(true);
+        }
+        return;
+      }
+      const { data: prof } = await supabase
+        .from("profiles")
+        .select("id, full_name, email")
+        .eq("id", pid)
+        .maybeSingle();
+      if (alive) {
+        setParent({
+          id: pid,
+          name: prof?.full_name || prof?.email || "Veli",
+        });
+        setReady(true);
+      }
+    })();
+    return () => {
+      alive = false;
+    };
+  }, [student.id]);
+
+  if (!ready) {
+    return (
+      <p className="py-8 text-center text-sm text-muted-foreground">
+        Yükleniyor…
+      </p>
+    );
+  }
+
+  return (
+    <div className="space-y-4">
+      <Card className="rounded-3xl border-border p-6 shadow-soft">
+        <p className="font-display text-lg font-bold text-brand-deep">
+          👨‍👩‍👧 Veli
+        </p>
+        <p className="mt-1 text-sm text-muted-foreground">
+          {parent
+            ? `${student.name} için bağlı veli: ${parent.name}`
+            : `${student.name} için henüz bağlı bir veli yok. Öğrenci ayarlar sayfasından velisini davet edebilir.`}
+        </p>
+      </Card>
+      <ParentCoachChat
+        studentId={student.id}
+        parentId={parent?.id ?? null}
+        coachId={user?.id ?? null}
+        studentName={student.name}
+      />
     </div>
   );
 }

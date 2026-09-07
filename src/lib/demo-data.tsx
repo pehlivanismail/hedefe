@@ -234,6 +234,10 @@ type Store = {
 
   session: Session;
   studentList: Student[];
+  /** Koç panelinde görüntülenen öğrenci (öğrenci oturumunda null) */
+  viewStudentId: string | null;
+  setViewStudentId: (id: string | null) => void;
+
   currentStudent: Student | null;
   currentCoach: Coach | null;
   coachList: Coach[];
@@ -247,7 +251,13 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
   const auth = useAuth();
   const queryClient = useQueryClient();
 
-  const targetStudentId = auth.student?.id || (auth.user && auth.role === "student" ? auth.user.id : null);
+  const [viewStudentId, setViewStudentId] = useState<string | null>(null);
+
+  const ownStudentId =
+    auth.student?.id || (auth.user && auth.role === "student" ? auth.user.id : null);
+  const targetStudentId =
+    auth.role === "coach" || auth.role === "parent" ? viewStudentId : ownStudentId;
+
 
   const { data: tasksData } = useQuery({
     queryKey: ["tasks", targetStudentId],
@@ -273,8 +283,12 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
         areaName: row.area_name,
         topicName: row.topic_name,
         assignedBy: row.assigned_by,
+        completedAt: row.completed_at
+          ? String(row.completed_at).slice(0, 10)
+          : undefined,
         result: row.result as TaskResult | undefined,
       }));
+
     },
     enabled: !!targetStudentId,
   });
@@ -286,9 +300,24 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       const { data, error } = await supabase
         .from("mock_exams")
         .select("*")
-        .eq("user_id", targetStudentId);
+        .eq("user_id", targetStudentId)
+        .order("date", { ascending: true });
       if (error) throw error;
-      return data as any as MockExam[];
+      return (data || []).map((row: any): MockExam => {
+        const r = (row.results_data ?? {}) as Record<string, number>;
+        return {
+          id: row.id,
+          date: row.date,
+          publisher: row.title,
+          type: row.exam_type === "AYT" ? "AYT" : "TYT",
+          turkce: Number(r["turkce"] ?? 0),
+          matematik: Number(r["matematik"] ?? 0),
+          sosyal: Number(r["sosyal"] ?? 0),
+          fen: Number(r["fen"] ?? 0),
+          studentId: row.user_id,
+        };
+      });
+
     },
     enabled: !!targetStudentId,
   });
@@ -332,7 +361,6 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
           topic_id: t.topicId || null,
           area_id: t.areaId || null,
           area_name: t.areaName || null,
-          topic_name: t.topicName || null,
           assigned_by: assignedBy,
         })
         .select()
@@ -381,8 +409,10 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
         .from("tasks")
         .update({
           done: true,
+          completed_at: new Date().toISOString(),
           result: result || null
         })
+
         .eq("id", id)
         .select()
         .single();
@@ -462,16 +492,25 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
   const addLogMutation = useMutation({
     mutationFn: async ({ topicId, log, isArea }: { topicId: string, log: Omit<StudyLog, "id">, isArea?: boolean }) => {
       if (!targetStudentId) throw new Error("No user");
+      // "07.09.2026" gibi yerel tarihi ISO (YYYY-MM-DD) biçimine çevir
+      const isoDate = (() => {
+        const m = /^(\d{2})[./](\d{2})[./](\d{4})$/.exec(String(log.date ?? ""));
+        if (m) return `${m[3]}-${m[2]}-${m[1]}`;
+        const d = new Date(log.date ?? Date.now());
+        return isNaN(d.getTime())
+          ? new Date().toISOString().slice(0, 10)
+          : d.toISOString().slice(0, 10);
+      })();
       const { data, error } = await supabase
         .from("study_logs")
         .insert({
           user_id: targetStudentId,
-          date: log.date,
+          date: isoDate,
           subject: "Bilinmiyor", 
           area: "Bilinmiyor", 
           sub_topic: topicId,
           source: log.source,
-          kind: log.kind,
+          kind: log.kind ?? (log.solved ? "soru" : "konu"),
           total_questions: log.solved ?? 0,
           correct: Math.max(0, (log.solved ?? 0) - (log.wrong ?? 0) - (log.blank ?? 0)),
           wrong: log.wrong ?? 0,
@@ -512,6 +551,8 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       addLog: (topicId, log) => addLogMutation.mutate({ topicId, log }),
       addAreaLog: (areaId, log) => addLogMutation.mutate({ topicId: areaId, log, isArea: true }),
       studyLogs: studyLogsData || [],
+      viewStudentId,
+      setViewStudentId,
     }),
 
     [
@@ -521,6 +562,8 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       examData,
       session,
       studentList,
+      viewStudentId,
+
       currentStudent,
       currentCoach,
       coachList,

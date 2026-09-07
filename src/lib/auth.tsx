@@ -21,7 +21,7 @@ function formatEmailToName(email?: string | null) {
     .join(' ');
 }
 
-type Role = "student" | "coach";
+type Role = "student" | "coach" | "parent";
 
 // We map user_roles from V1 to the shape the UI expects
 type ProfileRow = {
@@ -43,8 +43,14 @@ type AuthValue = {
   coach: Coach | null;
   coachList: Coach[];
   myStudents: Student[];
+  /** Veli oturumunda takip edilen çocuk */
+  child: Student | null;
+  /** Öğrenci oturumunda bağlı veliler */
+  myParents: { id: string; name: string; email: string }[];
+  displayName: string;
   setCoach: (coachId: string | null) => Promise<void>;
   removeStudent: (studentId: string) => Promise<void>;
+  unlinkChild: (studentId: string) => Promise<void>;
   signOut: () => Promise<void>;
   refresh: () => Promise<void>;
 };
@@ -74,12 +80,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [profiles, setProfiles] = useState<ProfileRow[]>([]);
   const [roles, setRoles] = useState<Record<string, Role>>({});
   const [coachConnections, setCoachConnections] = useState<{ student_id: string; coach_id: string }[]>([]);
+  const [parentLinks, setParentLinks] = useState<{ parent_id: string; student_id: string }[]>([]);
 
   const load = useCallback(async (uid: string | null) => {
     if (!uid) {
       setProfiles([]);
       setRoles({});
       setCoachConnections([]);
+      setParentLinks([]);
       return;
     }
     
@@ -100,6 +108,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         .from("coach_connections")
         .select("student_id, coach_id")
         .eq("status", "approved");
+
+    const { data: links } = await supabase
+        .from("parent_links")
+        .select("parent_id, student_id")
+        .eq("status", "approved");
+    setParentLinks((links ?? []) as { parent_id: string; student_id: string }[]);
 
     const mergedProfiles: ProfileRow[] = (profileRows || []).map(p => {
         const r = (roleRows || []).find(role => role.user_id === p.id);
@@ -168,20 +182,30 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       .map(toCoach);
       
     // Students belonging to this coach
-    const myStudents = user
-      ? profiles.filter((p) => p.coach_id === user.id).map(p => toStudent(p, p.track))
+    const childIds = user
+      ? parentLinks.filter((l) => l.parent_id === user.id).map((l) => l.student_id)
       : [];
-      
-    
-    console.log("DEBUG AUTH STATE:", {
-      profilesLength: profiles.length,
-      coachConnectionsLength: coachConnections.length,
-      userRole: role,
-      userId: user?.id,
-      meCoachId: me?.coach_id,
-      profilesSample: profiles.slice(0,2),
-    });
-    // Attach coach ID to the current student
+
+    const myStudents = user
+      ? role === "parent"
+        ? profiles
+            .filter((p) => childIds.includes(p.user_id))
+            .map((p) => toStudent(p, p.track))
+        : profiles.filter((p) => p.coach_id === user.id).map(p => toStudent(p, p.track))
+      : [];
+
+    const myParents = user
+      ? parentLinks
+          .filter((l) => l.student_id === user.id)
+          .map((l) => {
+            const p = profiles.find((x) => x.user_id === l.parent_id);
+            return {
+              id: l.parent_id,
+              name: p?.full_name || p?.email || "Veli",
+              email: p?.email || "",
+            };
+          })
+      : [];
 
     let currentStudent = role === "student" && me ? toStudent(me, (user?.user_metadata?.["track"] as string | undefined)) : null;
 
@@ -191,6 +215,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       role,
       student: currentStudent,
       coach: role === "coach" && me ? toCoach(me) : null,
+      child: role === "parent" ? (myStudents[0] ?? null) : null,
+      myParents,
+      displayName:
+        me?.full_name || user?.email || "",
       coachList,
       myStudents,
       refresh: () => load(user?.id ?? null),
@@ -216,14 +244,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         await supabase.from("profiles").update({ coach_id: null }).eq("id", studentId);
         await load(user.id);
       },
+      unlinkChild: async (studentId) => {
+        if (!user) return;
+        await supabase
+          .from("parent_links")
+          .delete()
+          .eq("student_id", studentId)
+          .or(`parent_id.eq.${user.id},student_id.eq.${user.id}`);
+        await load(user.id);
+      },
       signOut: async () => {
         await supabase.auth.signOut();
         setProfiles([]);
         setRoles({});
+        setParentLinks([]);
         setUser(null);
       },
     };
-  }, [loading, user, role, me, profiles, roles, coachConnections, load]);
+  }, [loading, user, role, me, profiles, roles, coachConnections, parentLinks, load]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

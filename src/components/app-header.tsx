@@ -11,11 +11,12 @@ const links = [
 ] as const;
 
 export function AppHeader() {
-  const { user, role, student, coach, signOut } = useAuth();
+  const { user, role, student, coach, displayName, signOut } = useAuth();
   const navigate = useNavigate();
   const isStudent = role === "student";
   const isCoach = role === "coach";
-  const name = student?.name || coach?.name || user?.email;
+  const isParent = role === "parent";
+  const name = student?.name || coach?.name || displayName || user?.email;
   const session = user;
 
   const handleSignOut = async () => {
@@ -57,6 +58,15 @@ export function AppHeader() {
         )}
 
         <div className="ml-auto flex items-center gap-2">
+          {isParent && (
+            <Link
+              to="/veli"
+              className="rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+              activeProps={{ className: "bg-brand-deep text-primary-foreground" }}
+            >
+              Veli Paneli
+            </Link>
+          )}
           {isCoach && (
             <Link
               to="/koc"
@@ -89,6 +99,12 @@ export function AppHeader() {
             </>
           ) : (
             <>
+              <Link
+                to="/veli-giris"
+                className="hidden rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground sm:inline-block"
+              >
+                Veli Girişi
+              </Link>
               <Link
                 to="/koc-giris"
                 className="rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
