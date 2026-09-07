@@ -1,4 +1,4 @@
-# Student Success Hub
+# hedefe.net
 
 **Crucial Instruction for Lovable Setup:** Before running these prompts, tell Lovable: *"I want to build a modern React web application using TailwindCSS and shadcn/ui. Please output fully functional, responsive React components with beautiful modern styling, micro-animations, and glassmorphism effects where appropriate. The primary color palette should be vibrant teal/green (similar to #12B76A) and dark teal/navy for accents."*
 
