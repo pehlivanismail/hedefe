@@ -1,214 +1,417 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import {
+    KeyRound,
+    Target,
+    GraduationCap,
+    TriangleAlert,
+    UserRound,
+    Loader2,
+    Unlink,
+    Trash2,
+    Save,
+} from "lucide-react";
+import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/lib/auth";
-import { useDemoData } from "@/lib/demo-data";
+import { TRACK_LABELS, type Track } from "@/lib/demo-data";
+
+import { PairInvites } from "@/components/pair-invites";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
-import { PairInvites } from "@/components/pair-invites";
-import { useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
-import { toast } from "sonner";
-import { LogOut } from "lucide-react";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 export const Route = createFileRoute("/ayarlar")({
-  component: AyarlarSayfasi,
+    head: () => ({
+        meta: [
+            { title: "Hesap Ayarları — Hedefe.net" },
+            {
+                name: "description",
+                content:
+                    "Profil bilgileri, hedef, parola değiştirme, koç bağlantısı ve hesap silme ayarları.",
+            },
+            { property: "og:title", content: "Hesap Ayarları — Hedefe.net" },
+            {
+                property: "og:description",
+                content: "Hedefini, parolanı ve koç bağlantını yönet.",
+            },
+        ],
+    }),
+    component: AccountPage,
 });
 
-function AyarlarSayfasi() {
-  const { user, role, student, coach, setCoach, signOut, refresh } = useAuth();
-  const { currentStudent } = useDemoData();
-  const navigate = useNavigate();
+function AccountPage() {
+    const { user, role, student, coach, coachList, loading, refresh, setCoach, signOut } =
+        useAuth();
+    const navigate = useNavigate();
 
-  const [password, setPassword] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [target, setTarget] = useState(student?.target || "");
-  const [deleteConfirmation, setDeleteConfirmation] = useState("");
+    useEffect(() => {
+        if (!loading && !user) void navigate({ to: "/giris" });
+    }, [loading, user, navigate]);
 
-  const handlePasswordChange = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!password) return;
-    if (password !== passwordConfirm) {
-      toast.error("Şifreler eşleşmiyor.");
-      return;
+    if (loading || !user) {
+        return (
+            <div className="flex min-h-[50vh] items-center justify-center">
+                <Loader2 className="size-6 animate-spin text-primary" />
+            </div>
+        );
     }
-    setLoading(true);
-    const { error } = await supabase.auth.updateUser({ password });
-    setLoading(false);
-    if (error) {
-      toast.error("Şifre güncellenemedi: " + error.message);
-    } else {
-      toast.success("Şifreniz başarıyla güncellendi.");
-      setPassword("");
-      setPasswordConfirm("");
-    }
-  };
 
-  const handleTargetChange = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!user) return;
-    setLoading(true);
-    const { error } = await supabase
-      .from("profiles")
-      .update({ target })
-      .eq("id", user.id);
-    setLoading(false);
-    if (error) {
-      toast.error("Hedef güncellenemedi: " + error.message);
-    } else {
-      toast.success("Hedefiniz güncellendi.");
-      refresh();
-    }
-  };
+    const me = role === "student" ? student : coach;
+    const myCoach = student?.coachId
+        ? coachList.find((c) => c.id === student.coachId)
+        : undefined;
 
-  const handleDisconnect = async () => {
-    if (!confirm("Bağlantıyı kesmek istediğinize emin misiniz?")) return;
-    setLoading(true);
-    try {
-      await setCoach(null);
-      toast.success("Bağlantı başarıyla kesildi.");
-    } catch (e: any) {
-      toast.error("Hata oluştu.");
-    } finally {
-      setLoading(false);
-    }
-  };
+    return (
+        <div className="mx-auto max-w-2xl space-y-6">
+            <div>
+                <h1 className="font-display text-2xl font-bold text-brand-deep">
+                    ⚙️ Hesap Ayarları
+                </h1>
+                <p className="mt-1 text-sm text-muted-foreground">
+                    {me?.name} · {me?.email} · {role === "student" ? "Öğrenci" : "Koç"}
+                </p>
+            </div>
 
-  const handleDeleteAccount = async () => {
-    if (deleteConfirmation !== "Hesabimi sil") return;
-    setLoading(true);
-    try {
-      const { error } = await supabase.rpc('delete_user');
-      if (error) throw error;
-      toast.success("Hesabınız silindi.");
-      await signOut();
-      navigate({ to: "/" });
-    } catch (e: any) {
-      toast.error("Hesap silinirken hata oluştu: " + e.message);
-      setLoading(false);
-    }
-  };
+            <ProfileSection />
+            {role === "student" && <TargetSection />}
+            <PasswordSection />
+            {role === "student" ? (
+                <CoachSection coachName={myCoach?.name} onDisconnect={async () => {
+                    await setCoach(null);
+                    await refresh();
+                    toast.success("Koç bağlantısı kaldırıldı.");
+                }} />
+            ) : (
+                <Card className="rounded-3xl border-border p-6 shadow-soft">
+                    <SectionTitle icon={<GraduationCap className="size-4" />} title="Öğrenci Bağlantıları" />
+                    <p className="mt-1 text-sm text-muted-foreground">
+                        Öğrenci bağlantısı öğrenci tarafından yönetilir. Yeni öğrenci davetlerini koç panelinden gönderebilirsin.
+                    </p>
+                    <Link to="/koc">
+                        <Button variant="outline" className="mt-4 rounded-full">
+                            Koç Paneline Git
+                        </Button>
+                    </Link>
+                </Card>
+            )}
+            {role === "student" && <PairInvites role="student" />}
+            <DangerSection
+                onDelete={async () => {
+                    await supabase.rpc("delete_user");
+                    await signOut();
+                    toast.success("Hesabın silindi. Yolun açık olsun! 🎓");
+                    void navigate({ to: "/", replace: true });
+                }}
+            />
+        </div>
+    );
+}
 
-  if (!user) return null;
+function SectionTitle({ icon, title }: { icon: React.ReactNode; title: string }) {
+    return (
+        <p className="flex items-center gap-2 font-display text-lg font-bold text-brand-deep">
+            <span className="flex size-7 items-center justify-center rounded-lg bg-brand-soft text-brand-deep">
+                {icon}
+            </span>
+            {title}
+        </p>
+    );
+}
 
-  return (
-    <div className="mx-auto max-w-2xl space-y-8 p-4 pb-20 sm:p-8">
-      <div>
-        <h1 className="font-display text-2xl font-bold text-brand-deep">Ayarlar</h1>
-        <p className="text-sm text-muted-foreground">Hesap bilgilerinizi ve eşleşmelerinizi yönetin.</p>
-      </div>
+function ProfileSection() {
+    const { user, role, student, coach, refresh } = useAuth();
+    const me = role === "student" ? student : coach;
+    const [name, setName] = useState(me?.name ?? "");
+    const [title, setTitle] = useState(coach?.title ?? "");
+    const [track, setTrack] = useState<Track>(student?.track ?? "sayisal");
+    const [busy, setBusy] = useState(false);
 
-      <div className="grid gap-8 md:grid-cols-2">
-        <div className="space-y-6">
-          <Card className="p-6 rounded-3xl border-border shadow-soft">
-            <h2 className="font-display text-lg font-bold text-brand-deep mb-4">Şifre Değiştir</h2>
-            <form onSubmit={handlePasswordChange} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="password">Yeni Şifre</Label>
+    const save = async () => {
+        if (!user) return;
+        setBusy(true);
+        const { error } = await supabase
+            .from("profiles")
+            .update({
+                full_name: name.trim(),
+                ...(role === "student" ? { track } : { title: title.trim() }),
+            })
+            .eq("id", user.id);
+        setBusy(false);
+        if (error) {
+            toast.error("Kaydedilemedi.");
+            return;
+        }
+        await refresh();
+        toast.success("Profil güncellendi.");
+    };
+
+    return (
+        <Card className="rounded-3xl border-border p-6 shadow-soft">
+            <SectionTitle icon={<UserRound className="size-4" />} title="Profil Bilgileri" />
+            <div className="mt-4 space-y-4">
+                <div>
+                    <Label htmlFor="full_name">Ad Soyad</Label>
+                    <Input
+                        id="full_name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        className="mt-1"
+                    />
+                </div>
+                {role === "student" ? (
+                    <div>
+                        <Label>Alan</Label>
+                        <Select value={track} onValueChange={(v) => setTrack(v as Track)}>
+                            <SelectTrigger className="mt-1">
+                                <SelectValue />
+                            </SelectTrigger>
+                            <SelectContent>
+                                {(Object.keys(TRACK_LABELS) as Track[]).map((t) => (
+                                    <SelectItem key={t} value={t}>
+                                        {TRACK_LABELS[t]}
+                                    </SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+                    </div>
+                ) : (
+                    <div>
+                        <Label htmlFor="title">Unvan</Label>
+                        <Input
+                            id="title"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            className="mt-1"
+                            placeholder="ör. Eğitim Koçu"
+                        />
+                    </div>
+                )}
+                <Button onClick={save} disabled={busy} className="rounded-full">
+                    {busy ? <Loader2 className="size-4 animate-spin" /> : <Save className="size-4" />}
+                    Kaydet
+                </Button>
+            </div>
+        </Card>
+    );
+}
+
+function TargetSection() {
+    const { user, student, refresh } = useAuth();
+    const [target, setTarget] = useState(student?.target ?? "");
+    const [busy, setBusy] = useState(false);
+
+    const save = async () => {
+        if (!user) return;
+        setBusy(true);
+        const { error } = await supabase
+            .from("profiles")
+            .update({ target: target.trim() })
+            .eq("id", user.id);
+        setBusy(false);
+        if (error) {
+            toast.error("Kaydedilemedi.");
+            return;
+        }
+        await refresh();
+        toast.success("Hedef güncellendi. 🎯");
+    };
+
+    return (
+        <Card className="rounded-3xl border-border p-6 shadow-soft">
+            <SectionTitle icon={<Target className="size-4" />} title="Hedefim" />
+            <p className="mt-1 text-sm text-muted-foreground">
+                Şu anki hedefin: <strong className="text-brand-deep">{student?.target}</strong>
+            </p>
+            <div className="mt-4 flex gap-2">
                 <Input
-                  id="password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="En az 6 karakter"
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="passwordConfirm">Yeni Şifre (Tekrar)</Label>
-                <Input
-                  id="passwordConfirm"
-                  type="password"
-                  value={passwordConfirm}
-                  onChange={(e) => setPasswordConfirm(e.target.value)}
-                  placeholder="En az 6 karakter"
-                  required
-                />
-              </div>
-              <Button type="submit" disabled={loading} className="w-full rounded-full">
-                Güncelle
-              </Button>
-            </form>
-          </Card>
-
-          {role === "student" && (
-            <Card className="p-6 rounded-3xl border-border shadow-soft">
-              <h2 className="font-display text-lg font-bold text-brand-deep mb-4">Hedef Belirle</h2>
-              <form onSubmit={handleTargetChange} className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="target">Üniversite / Bölüm Hedefin</Label>
-                  <Input
-                    id="target"
                     value={target}
                     onChange={(e) => setTarget(e.target.value)}
-                    placeholder="Örn: Boğaziçi Bilgisayar"
-                  />
-                </div>
-                <Button type="submit" disabled={loading} className="w-full rounded-full">
-                  Kaydet
+                    placeholder="ör. Çapa Tıp Fakültesi"
+                    className="flex-1"
+                />
+                <Button onClick={save} disabled={busy} className="rounded-full">
+                    {busy ? <Loader2 className="size-4 animate-spin" /> : <Save className="size-4" />}
+                    Kaydet
                 </Button>
-              </form>
-            </Card>
-          )}
-
-          <Button 
-            variant="destructive" 
-            className="w-full rounded-full bg-destructive/10 text-destructive hover:bg-destructive/20 hover:text-destructive"
-            onClick={() => {
-              signOut();
-              navigate({ to: "/" });
-            }}
-          >
-            <LogOut className="mr-2 h-4 w-4" /> Çıkış Yap
-          </Button>
-
-          <Card className="p-6 rounded-3xl border-destructive/20 bg-destructive/5 shadow-soft">
-            <h2 className="font-display text-lg font-bold text-destructive mb-4">Hesabımı Sil</h2>
-            <div className="space-y-4">
-              <p className="text-sm text-destructive/80">
-                Bu işlem geri alınamaz ve tüm verileriniz kalıcı olarak silinir. Onaylamak için aşağıdaki alana <strong>Hesabimi sil</strong> yazın.
-              </p>
-              <Input
-                value={deleteConfirmation}
-                onChange={(e) => setDeleteConfirmation(e.target.value)}
-                placeholder="Hesabimi sil"
-                className="border-destructive/30 focus-visible:ring-destructive/50"
-              />
-              <Button 
-                variant="destructive" 
-                disabled={deleteConfirmation !== "Hesabimi sil" || loading}
-                className="w-full rounded-full"
-                onClick={handleDeleteAccount}
-              >
-                Hesabımı Kalıcı Olarak Sil
-              </Button>
             </div>
-          </Card>
-        </div>
+        </Card>
+    );
+}
 
-        <div className="space-y-6">
-          <Card className="p-6 rounded-3xl border-border shadow-soft">
-            <h2 className="font-display text-lg font-bold text-brand-deep mb-4">Eşleşmeler</h2>
-            
-            {role === "student" && student?.coachId ? (
-              <div className="rounded-xl border border-border p-4 mb-4">
-                <p className="text-sm font-semibold text-brand-deep">Mevcut Koçun</p>
-                <div className="mt-2 flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">Aktif bir koçla çalışıyorsun.</span>
-                  <Button variant="outline" size="sm" onClick={handleDisconnect} disabled={loading}>
-                    Bağlantıyı Kes
-                  </Button>
-                </div>
-              </div>
-            ) : role === "student" ? (
-              <p className="text-sm text-muted-foreground mb-4">Henüz bir koçla eşleşmedin.</p>
-            ) : null}
+function PasswordSection() {
+    const [pw, setPw] = useState("");
+    const [pw2, setPw2] = useState("");
+    const [busy, setBusy] = useState(false);
 
-            <PairInvites role={role || "student"} />
-          </Card>
-        </div>
-      </div>
-    </div>
-  );
+    const change = async () => {
+        if (pw.length < 8) {
+            toast.error("Parola en az 8 karakter olmalı.");
+            return;
+        }
+        if (pw !== pw2) {
+            toast.error("Parolalar eşleşmiyor.");
+            return;
+        }
+        setBusy(true);
+        const { error } = await supabase.auth.updateUser({ password: pw });
+        setBusy(false);
+        if (error) {
+            toast.error("Parola değiştirilemedi.");
+            return;
+        }
+        setPw("");
+        setPw2("");
+        toast.success("Parolan güncellendi. 🔑");
+    };
+
+    return (
+        <Card className="rounded-3xl border-border p-6 shadow-soft">
+            <SectionTitle icon={<KeyRound className="size-4" />} title="Parola Değiştir" />
+            <div className="mt-4 space-y-3">
+                <Input
+                    type="password"
+                    value={pw}
+                    onChange={(e) => setPw(e.target.value)}
+                    placeholder="Yeni parola (en az 8 karakter)"
+                />
+                <Input
+                    type="password"
+                    value={pw2}
+                    onChange={(e) => setPw2(e.target.value)}
+                    placeholder="Yeni parola (tekrar)"
+                />
+                <Button onClick={change} disabled={busy} variant="outline" className="rounded-full">
+                    {busy ? <Loader2 className="size-4 animate-spin" /> : <KeyRound className="size-4" />}
+                    Parolayı Güncelle
+                </Button>
+            </div>
+        </Card>
+    );
+}
+
+function CoachSection({
+    coachName,
+    onDisconnect,
+}: {
+    coachName: string | undefined;
+    onDisconnect: () => Promise<void>;
+}) {
+    const [busy, setBusy] = useState(false);
+
+    return (
+        <Card className="rounded-3xl border-border p-6 shadow-soft">
+            <SectionTitle icon={<GraduationCap className="size-4" />} title="Koç Bağlantısı" />
+            {coachName ? (
+                <>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                        Şu an <strong className="text-brand-deep">{coachName}</strong> ile çalışıyorsun.
+                    </p>
+                    <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                            <Button variant="outline" className="mt-4 rounded-full text-destructive">
+                                <Unlink className="size-4" /> Koç Bağlantısını Kes
+                            </Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent>
+                            <AlertDialogHeader>
+                                <AlertDialogTitle>Koç bağlantısı kesilsin mi?</AlertDialogTitle>
+                                <AlertDialogDescription>
+                                    {coachName} artık çalışmalarını göremeyecek. İstediğin zaman yeni bir davet gönderebilirsin.
+                                </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                                <AlertDialogCancel>Vazgeç</AlertDialogCancel>
+                                <AlertDialogAction
+                                    disabled={busy}
+                                    onClick={async () => {
+                                        setBusy(true);
+                                        await onDisconnect();
+                                        setBusy(false);
+                                    }}
+                                >
+                                    Evet, kes
+                                </AlertDialogAction>
+                            </AlertDialogFooter>
+                        </AlertDialogContent>
+                    </AlertDialog>
+                </>
+            ) : (
+                <p className="mt-1 text-sm text-muted-foreground">
+                    Şu an bağlı bir koçun yok. Aşağıdan yeni bir koç daveti gönderebilirsin.
+                </p>
+            )}
+        </Card>
+    );
+}
+
+function DangerSection({ onDelete }: { onDelete: () => Promise<void> }) {
+    const [busy, setBusy] = useState(false);
+    const [confirmText, setConfirmText] = useState("");
+
+    return (
+        <Card className="rounded-3xl border-destructive/30 bg-destructive/5 p-6 shadow-soft">
+            <SectionTitle icon={<TriangleAlert className="size-4" />} title="Tehlikeli Bölge" />
+            <p className="mt-1 text-sm text-muted-foreground">
+                Hesabını silersen profil bilgilerin ve koç bağlantıların kalıcı olarak kaldırılır. Bu işlem geri alınamaz.
+            </p>
+            <AlertDialog>
+                <AlertDialogTrigger asChild>
+                    <Button variant="destructive" className="mt-4 rounded-full">
+                        <Trash2 className="size-4" /> Hesabımı Sil
+                    </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                        <AlertDialogTitle>Hesabın tamamen silinsin mi?</AlertDialogTitle>
+                        <AlertDialogDescription>
+                            Onaylamak için aşağıya <strong>Hesabimi sil</strong> yaz.
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <Input
+                        value={confirmText}
+                        onChange={(e) => setConfirmText(e.target.value)}
+                        placeholder="Hesabimi sil"
+                    />
+                    <AlertDialogFooter>
+                        <AlertDialogCancel onClick={() => setConfirmText("")}>Vazgeç</AlertDialogCancel>
+                        <AlertDialogAction
+                            disabled={busy || confirmText !== "Hesabimi sil"}
+                            className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                            onClick={async () => {
+                                setBusy(true);
+                                try {
+                                    await onDelete();
+                                } catch {
+                                    toast.error("Hesap silinemedi.");
+                                }
+                                setBusy(false);
+                            }}
+                        >
+                            {busy ? <Loader2 className="size-4 animate-spin" /> : "Hesabı Sil"}
+                        </AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
+        </Card>
+    );
 }

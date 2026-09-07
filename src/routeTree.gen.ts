@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AyarlarRouteImport } from './routes/ayarlar'
 import { Route as DenemelerRouteImport } from './routes/denemeler'
 import { Route as GirisRouteImport } from './routes/giris'
 import { Route as KocRouteImport } from './routes/koc'
@@ -20,6 +21,11 @@ import { Route as OdevlerRouteImport } from './routes/odevler'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AyarlarRoute = AyarlarRouteImport.update({
+  id: '/ayarlar',
+  path: '/ayarlar',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DenemelerRoute = DenemelerRouteImport.update({
@@ -55,6 +61,7 @@ const OdevlerRoute = OdevlerRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ayarlar': typeof AyarlarRoute
   '/denemeler': typeof DenemelerRoute
   '/giris': typeof GirisRoute
   '/koc': typeof KocRoute
@@ -64,6 +71,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ayarlar': typeof AyarlarRoute
   '/denemeler': typeof DenemelerRoute
   '/giris': typeof GirisRoute
   '/koc': typeof KocRoute
@@ -74,6 +82,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ayarlar': typeof AyarlarRoute
   '/denemeler': typeof DenemelerRoute
   '/giris': typeof GirisRoute
   '/koc': typeof KocRoute
@@ -85,6 +94,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/ayarlar'
     | '/denemeler'
     | '/giris'
     | '/koc'
@@ -94,6 +104,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/ayarlar'
     | '/denemeler'
     | '/giris'
     | '/koc'
@@ -103,6 +114,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/ayarlar'
     | '/denemeler'
     | '/giris'
     | '/koc'
@@ -113,6 +125,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AyarlarRoute: typeof AyarlarRoute
   DenemelerRoute: typeof DenemelerRoute
   GirisRoute: typeof GirisRoute
   KocRoute: typeof KocRoute
@@ -128,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ayarlar': {
+      id: '/ayarlar'
+      path: '/ayarlar'
+      fullPath: '/ayarlar'
+      preLoaderRoute: typeof AyarlarRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/denemeler': {
@@ -177,6 +197,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AyarlarRoute: AyarlarRoute,
   DenemelerRoute: DenemelerRoute,
   GirisRoute: GirisRoute,
   KocRoute: KocRoute,
