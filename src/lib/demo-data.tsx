@@ -669,10 +669,25 @@ export function examsForStudent(all: Exam[], student: Student, studyLogs: any[] 
             blank: l.blank,
           }));
 
-          return {
-          ...a,
-          logs: areaLogs,
-          topics: a.topics.map((t) => {
+          const areaLogsRaw = studyLogs.filter((l) => l.subTopic === a.id);
+          const areaLogs = areaLogsRaw.map((l) => ({
+            id: l.id,
+            date: l.date,
+            source: l.source,
+            kind: l.kind,
+            solved: l.solved,
+            wrong: l.wrong,
+            blank: l.blank,
+          }));
+
+          let areaTotalQ = 0;
+          let areaCorrect = 0;
+          for (const l of areaLogsRaw) {
+            areaTotalQ += l.solved || 0;
+            areaCorrect += Math.max(0, (l.solved || 0) - (l.wrong || 0) - (l.blank || 0));
+          }
+
+          const processedTopics = a.topics.map((t) => {
             const topicLogsRaw = studyLogs.filter((l) => l.subTopic === t.id);
             const topicLogs = topicLogsRaw.map((l) => ({
               id: l.id,
@@ -690,6 +705,11 @@ export function examsForStudent(all: Exam[], student: Student, studyLogs: any[] 
                totalQ += l.solved || 0;
                correct += Math.max(0, (l.solved || 0) - (l.wrong || 0) - (l.blank || 0));
             }
+            
+            // Add topic questions to area totals
+            areaTotalQ += totalQ;
+            areaCorrect += correct;
+
             const mastery = totalQ > 0 ? Math.max(1, Math.min(5, Math.round((correct / totalQ) * 5))) : 0;
 
             return {
@@ -698,8 +718,17 @@ export function examsForStudent(all: Exam[], student: Student, studyLogs: any[] 
               debt: 0,
               logs: topicLogs,
             };
-          }),
-        }}),
+          });
+
+          const areaMastery = areaTotalQ > 0 ? Math.max(1, Math.min(5, Math.round((areaCorrect / areaTotalQ) * 5))) : undefined;
+
+          return {
+            ...a,
+            logs: areaLogs,
+            mastery: areaMastery,
+            topics: processedTopics,
+          };
+        }),
       })),
     }));
 }
