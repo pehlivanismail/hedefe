@@ -859,10 +859,14 @@ function StudentWeek({ tasks }: { tasks: Task[] }) {
                   </p>
                   <p className="mt-1 text-[11px] text-muted-foreground">
                     {t.subject}
-                    {t.done && t.result?.solved != null
-                      ? ` · ${t.result.solved} soru · ${t.result.wrong ?? 0} yanlış`
-                      : ""}
+                    {t.areaName && ` · ${t.areaName}`}
+                    {t.topicName && ` · ${t.topicName}`}
                   </p>
+                  {t.done && t.result?.solved != null && (
+                    <p className="mt-0.5 text-[11px] font-medium text-emerald-600">
+                      {t.result.solved} soru · {t.result.wrong ?? 0} yanlış
+                    </p>
+                  )}
                 </div>
               ))}
               {dayTasks.length === 0 && (

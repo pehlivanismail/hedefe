@@ -98,6 +98,7 @@ export type Task = {
   areaId?: string | null | undefined;
   /** Alan / konu adı (günlük raporda gösterilir) */
   areaName?: string | undefined;
+  topicName?: string | undefined;
   /** Ödevi kim ekledi: öğrenci mi koç mu */
   assignedBy?: "student" | "coach" | undefined;
   /** Tamamlanma tarihi (YYYY-MM-DD) */

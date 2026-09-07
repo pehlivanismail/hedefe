@@ -188,6 +188,7 @@ function Odevler() {
       kind: addKind ?? "konu",
       subject: `${subject.examName.startsWith("AYT") ? "AYT" : "TYT"} ${subject.name}`,
       areaName: area.name,
+      topicName: topic?.name,
       title: note.trim() || topic?.name || area.name,
       topicId: topic ? topic.id : null,
       areaId: topic ? null : area.id,
@@ -329,10 +330,14 @@ function Odevler() {
                     </p>
                     <p className="mt-1 text-[11px] text-muted-foreground">
                       {t.subject}
-                      {t.done && t.result?.solved != null
-                        ? ` · ${t.result.solved} soru · ${t.result.wrong ?? 0} yanlış`
-                        : ""}
+                      {t.areaName && ` · ${t.areaName}`}
+                      {t.topicName && ` · ${t.topicName}`}
                     </p>
+                    {t.done && t.result?.solved != null && (
+                      <p className="mt-0.5 text-[11px] font-medium text-emerald-600">
+                        {t.result.solved} soru · {t.result.wrong ?? 0} yanlış
+                      </p>
+                    )}
                   </button>
                 ))}
                 {dayTasks.length === 0 && (
@@ -487,6 +492,13 @@ function Odevler() {
             <DialogTitle className="font-display text-brand-deep">
               {active ? TASK_KIND_LABELS[active.kind] : ""} — {active?.title}
             </DialogTitle>
+            {active && (active.areaName || active.topicName) && (
+              <DialogDescription>
+                {active.subject}
+                {active.areaName && ` · ${active.areaName}`}
+                {active.topicName && ` · ${active.topicName}`}
+              </DialogDescription>
+            )}
           </DialogHeader>
 
           {active?.kind === "konu" && (
