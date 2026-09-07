@@ -387,11 +387,6 @@ function Ozet({ student }: { student: Student }) {
           ))}
         </div>
       </section>
-
-      <p className="text-xs text-muted-foreground">
-        Bu ekrandaki veriler örnek verilerdir.
-      </p>
-
     </div>
   );
 }
