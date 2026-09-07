@@ -32,6 +32,7 @@ type ProfileRow = {
   exam_tracks: any;
   track?: any;
   coach_id?: string | null;
+  target?: string | null;
 };
 
 type AuthValue = {
@@ -53,7 +54,7 @@ const toStudent = (p: ProfileRow, fallbackTrack: string = "sayisal"): Student =>
   id: p.user_id,
   name: p.full_name || formatEmailToName(p.email),
   email: p.email,
-  target: "Hedef belirlenmedi", // Not in V1 schema, default to fallback
+  target: p.target || "Hedef belirlenmedi",
   pending: 0,
   track: (p.track as any) || fallbackTrack, 
   coachId: p.coach_id || null, // Map directly from profile
