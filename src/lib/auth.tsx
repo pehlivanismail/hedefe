@@ -110,6 +110,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             exam_tracks: (r?.exam_tracks as string[]) || null,
             track: p.track,
             coach_id: p.coach_id,
+            target: p.target,
         };
     });
 
