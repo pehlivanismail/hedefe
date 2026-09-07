@@ -60,7 +60,7 @@ import {
   type Task,
   type Track,
 } from "@/lib/demo-data";
-import { PairInvites } from "@/components/pair-invites";
+
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/koc")({
@@ -180,12 +180,17 @@ function KocPaneli() {
             Henüz öğrencin yok
           </h1>
           <p className="mt-2 text-sm text-muted-foreground">
-            Öğrencini e-posta ile davet et; kabul ettiğinde burada görünür.
-            <br/>
-            DEBUG: coachId: {currentCoach?.id}, studentList: {studentList.length}
+            Eşleşmelerinizi yönetmek ve yeni öğrenci davet etmek için Ayarlar sayfasını kullanın.
           </p>
+          <div className="mt-6 flex justify-center">
+            <Link
+              to="/ayarlar"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft"
+            >
+              Ayarlar'a Git
+            </Link>
+          </div>
         </Card>
-        <PairInvites role="coach" />
       </div>
     );
   }
@@ -275,7 +280,7 @@ function KocPaneli() {
             </p>
           )}
         </div>
-        <PairInvites role="coach" />
+
       </aside>
 
 

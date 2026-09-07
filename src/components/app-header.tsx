@@ -8,6 +8,7 @@ const links = [
   { to: "/konu-agaci", label: "📚 Konu Ağacı" },
   { to: "/odevler", label: "📝 Ödevler ve Hedefler" },
   { to: "/denemeler", label: "🎯 Denemeler" },
+  { to: "/ayarlar", label: "⚙️ Ayarlar" },
 ] as const;
 
 export function AppHeader() {
@@ -58,13 +59,22 @@ export function AppHeader() {
 
         <div className="ml-auto flex items-center gap-2">
           {isCoach && (
-            <Link
-              to="/koc"
-              className="rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
-              activeProps={{ className: "bg-brand-deep text-primary-foreground" }}
-            >
-              Koç Paneli
-            </Link>
+            <>
+              <Link
+                to="/ayarlar"
+                className="rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                activeProps={{ className: "bg-brand-deep text-primary-foreground" }}
+              >
+                Ayarlar
+              </Link>
+              <Link
+                to="/koc"
+                className="rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                activeProps={{ className: "bg-brand-deep text-primary-foreground" }}
+              >
+                Koç Paneli
+              </Link>
+            </>
           )}
           {session ? (
             <>

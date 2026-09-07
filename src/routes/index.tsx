@@ -8,7 +8,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { PairInvites } from "@/components/pair-invites";
+
 
 import {
   daysUntilYks,
@@ -160,28 +160,7 @@ function CoachWelcome() {
   );
 }
 
-function CoachPicker({ student }: { student: Student }) {
-  const { coachList } = useDemoData();
-  const coach = coachList.find((c) => c.id === student.coachId);
 
-  return (
-    <div className="space-y-4">
-      <Card className="rounded-3xl border-border p-6 shadow-soft">
-        <p className="font-display text-lg font-bold text-brand-deep">
-          🤝 Koçum
-        </p>
-        <p className="mt-1 text-sm text-muted-foreground">
-          {coach
-            ? `${coach.name} · ${coach.title}`
-            : "Henüz bir koçunla eşleşmedin."}
-          <br/>
-          DEBUG: coachId: {student.coachId}, coachList: {coachList.map(c=>c.id).join(',')}
-        </p>
-      </Card>
-      <PairInvites role="student" />
-    </div>
-  );
-}
 
 
 
@@ -213,7 +192,7 @@ function Ozet({ student }: { student: Student }) {
         </div>
       </section>
 
-      <CoachPicker student={student} />
+
 
       <section className="grid gap-6 md:grid-cols-2">
         <Card className="rounded-3xl border-border p-8 shadow-soft">
