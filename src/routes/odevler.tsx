@@ -519,9 +519,16 @@ function Odevler() {
                 className="w-full rounded-xl"
                 disabled={active.done}
                 onClick={() => {
-                  completeTask(active.id, {
-                    source: res.source.trim() || active.title,
-                  });
+                  const source = res.source.trim() || active.title;
+                  const log = {
+                    date: new Date().toLocaleDateString("tr-TR"),
+                    source,
+                    kind: "konu" as const,
+                  };
+                  if (active.topicId) addLog(active.topicId, log);
+                  else if (active.areaId) addAreaLog(active.areaId, log);
+                  
+                  completeTask(active.id, { source });
                   setActive(null);
                   toast.success("Konu çalışması tamamlandı");
                 }}
@@ -570,6 +577,7 @@ function Odevler() {
                   const log = {
                     date: new Date().toLocaleDateString("tr-TR"),
                     source,
+                    kind: "soru" as const,
                     solved,
                     wrong,
                     blank,

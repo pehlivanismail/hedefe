@@ -25,9 +25,10 @@ export type StudyLog = {
   id: string;
   date: string;
   source: string;
-  solved: number;
-  wrong: number;
-  blank: number;
+  kind?: "konu" | "soru";
+  solved?: number;
+  wrong?: number;
+  blank?: number;
 };
 
 export type Topic = {

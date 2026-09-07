@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Plus, BookOpen } from "lucide-react";
+import { Plus, BookOpen, CheckSquare } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -181,7 +181,18 @@ function KonuAgaci() {
                           >
                             <AccordionTrigger className="px-4 py-2.5 text-sm font-semibold hover:no-underline">
                               <div className="flex w-full items-center justify-between gap-3 pr-2">
-                                <span>{area.name}</span>
+                                <div className="flex items-center gap-2">
+                                  <span>{area.name}</span>
+                                  {ar.logs?.some((l) => l.kind === "konu") && (
+                                    <span
+                                      className="flex items-center gap-1 text-[11px] font-medium text-emerald-600"
+                                      title="Konu Çalışması yapıldı"
+                                    >
+                                      <CheckSquare className="size-3.5" />
+                                      <span className="hidden sm:inline">Konu Çalışması</span>
+                                    </span>
+                                  )}
+                                </div>
                                 <span className="flex items-center gap-3">
                                   <MasteryDots level={ar.mastery} />
                                   <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-[11px] font-semibold text-destructive">
@@ -212,8 +223,17 @@ function KonuAgaci() {
                                       }
                                       className="grid w-full grid-cols-[1fr_auto] items-center gap-3 rounded-lg px-3 py-2 text-left transition-colors hover:bg-card"
                                     >
-                                      <span className="text-sm text-foreground">
+                                      <span className="flex items-center gap-2 text-sm text-foreground">
                                         {t.name}
+                                        {t.logs?.some((l) => l.kind === "konu") && (
+                                          <span
+                                            className="flex items-center gap-1 text-[11px] font-medium text-emerald-600"
+                                            title="Konu Çalışması yapıldı"
+                                          >
+                                            <CheckSquare className="size-3.5" />
+                                            <span className="hidden sm:inline">Konu Çalışması</span>
+                                          </span>
+                                        )}
                                       </span>
                                       <span className="flex items-center gap-3">
                                         <MasteryDots level={t.mastery} />
