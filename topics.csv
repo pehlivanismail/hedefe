@@ -1,129 +1,103 @@
-Sınav,Ders,Alan,Konu,Sınav ID,Ders ID,Alan ID,Konu ID
-TYT,Türkçe,ANLAM BILGISI,Sözcükte Anlam,tyt,tyt-turkce,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-sozcukte-anlam
-TYT,Türkçe,ANLAM BILGISI,Cümlede Anlam,tyt,tyt-turkce,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-cumlede-anlam
-TYT,Türkçe,ANLAM BILGISI,Paragrafta Anlam,tyt,tyt-turkce,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-anlam
-TYT,Türkçe,DIL BILGISI (SES-YAZIM-NOKTALAMA),Ses Bilgisi,tyt,tyt-turkce,tyt-turkce-dil-bilgisi-ses-yazim-noktalama,tyt-turkce-dil-bilgisi-ses-yazim-noktalama-ses-bilgisi
-TYT,Türkçe,DIL BILGISI (SES-YAZIM-NOKTALAMA),Sözcükte Yapı,tyt,tyt-turkce,tyt-turkce-dil-bilgisi-ses-yazim-noktalama,tyt-turkce-dil-bilgisi-ses-yazim-noktalama-sozcukte-yapi
-TYT,Türkçe,DIL BILGISI (SES-YAZIM-NOKTALAMA),Yazım Kuralları,tyt,tyt-turkce,tyt-turkce-dil-bilgisi-ses-yazim-noktalama,tyt-turkce-dil-bilgisi-ses-yazim-noktalama-yazim-kurallari
-TYT,Türkçe,DIL BILGISI (SES-YAZIM-NOKTALAMA),Noktalama İşaretleri,tyt,tyt-turkce,tyt-turkce-dil-bilgisi-ses-yazim-noktalama,tyt-turkce-dil-bilgisi-ses-yazim-noktalama-noktalama-isaretleri
-TYT,Türkçe,DIL BILGISI (SÖZCÜK VE CÜMLE),İsim Soylu Sözcükler,tyt,tyt-turkce,tyt-turkce-dil-bilgisi-sozcuk-ve-cumle,tyt-turkce-dil-bilgisi-sozcuk-ve-cumle-isim-soylu-sozcukler
-TYT,Türkçe,DIL BILGISI (SÖZCÜK VE CÜMLE),Fiiller,tyt,tyt-turkce,tyt-turkce-dil-bilgisi-sozcuk-ve-cumle,tyt-turkce-dil-bilgisi-sozcuk-ve-cumle-fiiller
-TYT,Türkçe,DIL BILGISI (SÖZCÜK VE CÜMLE),Tamlamalar,tyt,tyt-turkce,tyt-turkce-dil-bilgisi-sozcuk-ve-cumle,tyt-turkce-dil-bilgisi-sozcuk-ve-cumle-tamlamalar
-TYT,Türkçe,DIL BILGISI (SÖZCÜK VE CÜMLE),Cümlenin Ögeleri,tyt,tyt-turkce,tyt-turkce-dil-bilgisi-sozcuk-ve-cumle,tyt-turkce-dil-bilgisi-sozcuk-ve-cumle-cumlenin-ogeleri
-TYT,Türkçe,DIL BILGISI (SÖZCÜK VE CÜMLE),Cümle Türleri,tyt,tyt-turkce,tyt-turkce-dil-bilgisi-sozcuk-ve-cumle,tyt-turkce-dil-bilgisi-sozcuk-ve-cumle-cumle-turleri
-TYT,Türkçe,DIL BILGISI (SÖZCÜK VE CÜMLE),Anlatım Bozuklukları,tyt,tyt-turkce,tyt-turkce-dil-bilgisi-sozcuk-ve-cumle,tyt-turkce-dil-bilgisi-sozcuk-ve-cumle-anlatim-bozukluklari
-TYT,Matematik,MANTIK,Önermeler ve bileşik önermeler,tyt,tyt-matematik,tyt-matematik-mantik,tyt-matematik-mantik-onermeler-ve-bilesik-onermeler
-TYT,Matematik,KÜMELER,Sayı Kümeleri,tyt,tyt-matematik,tyt-matematik-kumeler,tyt-matematik-kumeler-sayi-kumeleri
-TYT,Matematik,KÜMELER,Kümelerde Temel Kavramlar,tyt,tyt-matematik,tyt-matematik-kumeler,tyt-matematik-kumeler-kumelerde-temel-kavramlar
-TYT,Matematik,KÜMELER,Kümelerde işlemler,tyt,tyt-matematik,tyt-matematik-kumeler,tyt-matematik-kumeler-kumelerde-islemler
-TYT,Matematik,DENKLEMLER VE EŞITSIZLIKLER,Bölünebilme Kuralları,tyt,tyt-matematik,tyt-matematik-denklemler-ve-esitsizlikler,tyt-matematik-denklemler-ve-esitsizlikler-bolunebilme-kurallari
-TYT,Matematik,DENKLEMLER VE EŞITSIZLIKLER,Birinci dereceden denklemler ve eşitsizlikler,tyt,tyt-matematik,tyt-matematik-denklemler-ve-esitsizlikler,tyt-matematik-denklemler-ve-esitsizlikler-birinci-dereceden-denklemler-ve-esitsizlikler
-TYT,Matematik,DENKLEMLER VE EŞITSIZLIKLER,Üslü İfadeler ve Denklemler,tyt,tyt-matematik,tyt-matematik-denklemler-ve-esitsizlikler,tyt-matematik-denklemler-ve-esitsizlikler-uslu-ifadeler-ve-denklemler
-TYT,Matematik,DENKLEMLER VE EŞITSIZLIKLER,Denklemler ve Eşitsizliklerle İlgili Uygulamalar,tyt,tyt-matematik,tyt-matematik-denklemler-ve-esitsizlikler,tyt-matematik-denklemler-ve-esitsizlikler-denklemler-ve-esitsizliklerle-ilgili-uygulamalar
-TYT,Matematik,ÜÇGENLER,Üçgenlerde temel kavramlar,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgenlerde-temel-kavramlar
-TYT,Matematik,ÜÇGENLER,Üçgenlerde eşlik ve benzerlik,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgenlerde-eslik-ve-benzerlik
-TYT,Matematik,ÜÇGENLER,Üçgenlerin yardımcı elemanları,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgenlerin-yardimci-elemanlari
-TYT,Matematik,ÜÇGENLER,Dik üçgen ve trigonometri,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-dik-ucgen-ve-trigonometri
-TYT,Matematik,ÜÇGENLER,Üçgenin alanı,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgenin-alani
-TYT,Matematik,VERI,Merkezi eğilim ve yayılım ölçüleri,tyt,tyt-matematik,tyt-matematik-veri,tyt-matematik-veri-merkezi-egilim-ve-yayilim-olculeri
-TYT,Matematik,VERI,Verilerin grafik ile gösterilmesi,tyt,tyt-matematik,tyt-matematik-veri,tyt-matematik-veri-verilerin-grafik-ile-gosterilmesi
-TYT,Matematik,SAYMA VE OLASILIK,Sıralama ve seçme,tyt,tyt-matematik,tyt-matematik-sayma-ve-olasilik,tyt-matematik-sayma-ve-olasilik-siralama-ve-secme
-TYT,Matematik,SAYMA VE OLASILIK,Basit Olayların Olasılıkları,tyt,tyt-matematik,tyt-matematik-sayma-ve-olasilik,tyt-matematik-sayma-ve-olasilik-basit-olaylarin-olasiliklari
-TYT,Matematik,FONKSIYONLAR,Fonksiyon kavramı ve gösterimi,tyt,tyt-matematik,tyt-matematik-fonksiyonlar,tyt-matematik-fonksiyonlar-fonksiyon-kavrami-ve-gosterimi
-TYT,Matematik,FONKSIYONLAR,İki fonksiyonun bileşkesi ve ters fonksiyon,tyt,tyt-matematik,tyt-matematik-fonksiyonlar,tyt-matematik-fonksiyonlar-iki-fonksiyonun-bileskesi-ve-ters-fonksiyon
-TYT,Matematik,POLINOMLAR,Polinom kavramı ve polinomlarda işlemler,tyt,tyt-matematik,tyt-matematik-polinomlar,tyt-matematik-polinomlar-polinom-kavrami-ve-polinomlarda-islemler
-TYT,Matematik,POLINOMLAR,Polinomların çarpanlara ayrılması,tyt,tyt-matematik,tyt-matematik-polinomlar,tyt-matematik-polinomlar-polinomlarin-carpanlara-ayrilmasi
-TYT,Matematik,İKINCI DERECEDEN DENKLEMLER,İkinci dereceden bir bilinmeyenli denklemler,tyt,tyt-matematik,tyt-matematik-ikinci-dereceden-denklemler,tyt-matematik-ikinci-dereceden-denklemler-ikinci-dereceden-bir-bilinmeyenli-denklemler
-TYT,Matematik,DÖRTGENLER VE ÇOKGENLER,Çokgenler,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-cokgenler
-TYT,Matematik,DÖRTGENLER VE ÇOKGENLER,Özel dörtgenler,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-ozel-dortgenler
-TYT,Matematik,UZAY GEOMETRI,Katı cisimler,tyt,tyt-matematik,tyt-matematik-uzay-geometri,tyt-matematik-uzay-geometri-kati-cisimler
-TYT,Fizik,FIZIK BILIMINE GIRIŞ VE MADDE,Fizik Bilimine Giriş,tyt,tyt-fizik,tyt-fizik-fizik-bilimine-giris-ve-madde,tyt-fizik-fizik-bilimine-giris-ve-madde-fizik-bilimine-giris
-TYT,Fizik,FIZIK BILIMINE GIRIŞ VE MADDE,Madde ve Özellikleri,tyt,tyt-fizik,tyt-fizik-fizik-bilimine-giris-ve-madde,tyt-fizik-fizik-bilimine-giris-ve-madde-madde-ve-ozellikleri
-TYT,Fizik,HAREKET VE KUVVET,Hareket,tyt,tyt-fizik,tyt-fizik-hareket-ve-kuvvet,tyt-fizik-hareket-ve-kuvvet-hareket
-TYT,Fizik,HAREKET VE KUVVET,Kuvvet,tyt,tyt-fizik,tyt-fizik-hareket-ve-kuvvet,tyt-fizik-hareket-ve-kuvvet-kuvvet
-TYT,Fizik,ENERJI,"İş, Güç ve Enerji",tyt,tyt-fizik,tyt-fizik-enerji,tyt-fizik-enerji-is-guc-ve-enerji
-TYT,Fizik,"ISI, SICAKLIK VE ELEKTRIK",Isı ve Sıcaklık,tyt,tyt-fizik,tyt-fizik-isi-sicaklik-ve-elektrik,tyt-fizik-isi-sicaklik-ve-elektrik-isi-ve-sicaklik
-TYT,Fizik,"ISI, SICAKLIK VE ELEKTRIK",Elektrostatik,tyt,tyt-fizik,tyt-fizik-isi-sicaklik-ve-elektrik,tyt-fizik-isi-sicaklik-ve-elektrik-elektrostatik
-TYT,Fizik,"ISI, SICAKLIK VE ELEKTRIK",Elektrik ve Manyetizma,tyt,tyt-fizik,tyt-fizik-isi-sicaklik-ve-elektrik,tyt-fizik-isi-sicaklik-ve-elektrik-elektrik-ve-manyetizma
-TYT,Fizik,BASINÇ VE KALDIRMA KUVVETI,Basınç,tyt,tyt-fizik,tyt-fizik-basinc-ve-kaldirma-kuvveti,tyt-fizik-basinc-ve-kaldirma-kuvveti-basinc
-TYT,Fizik,BASINÇ VE KALDIRMA KUVVETI,Kaldırma Kuvveti,tyt,tyt-fizik,tyt-fizik-basinc-ve-kaldirma-kuvveti,tyt-fizik-basinc-ve-kaldirma-kuvveti-kaldirma-kuvveti
-TYT,Fizik,DALGALAR VE OPTIK,Dalgalar,tyt,tyt-fizik,tyt-fizik-dalgalar-ve-optik,tyt-fizik-dalgalar-ve-optik-dalgalar
-TYT,Fizik,DALGALAR VE OPTIK,Optik,tyt,tyt-fizik,tyt-fizik-dalgalar-ve-optik,tyt-fizik-dalgalar-ve-optik-optik
-TYT,Kimya,KIMYA BILIMI,Simyadan Kimyaya - Kimya Disiplinleri ve Kimyacıların Çalışma Alanları,tyt,tyt-kimya,tyt-kimya-kimya-bilimi,tyt-kimya-kimya-bilimi-simyadan-kimyaya-kimya-disiplinleri-ve-kimyacilarin-calisma-alanlari
-TYT,Kimya,KIMYA BILIMI,Kimyanın Sembolik Dili - Kimya Uygulamalarında İş Sağlığı ve Güvenliği,tyt,tyt-kimya,tyt-kimya-kimya-bilimi,tyt-kimya-kimya-bilimi-kimyanin-sembolik-dili-kimya-uygulamalarinda-is-sagligi-ve-guvenligi
-TYT,Kimya,ATOM VE PERIYODIK SISTEM,Atom Modelleri ve Atomun Yapısı,tyt,tyt-kimya,tyt-kimya-atom-ve-periyodik-sistem,tyt-kimya-atom-ve-periyodik-sistem-atom-modelleri-ve-atomun-yapisi
-TYT,Kimya,ATOM VE PERIYODIK SISTEM,Periyodik Sistem,tyt,tyt-kimya,tyt-kimya-atom-ve-periyodik-sistem,tyt-kimya-atom-ve-periyodik-sistem-periyodik-sistem
-TYT,Kimya,KIMYASAL TÜRLER ARASI ETKILEŞIMLER,Kimyasal Türler Arası Etkileşimler,tyt,tyt-kimya,tyt-kimya-kimyasal-turler-arasi-etkilesimler,tyt-kimya-kimyasal-turler-arasi-etkilesimler-kimyasal-turler-arasi-etkilesimler
-TYT,Kimya,MADDENIN HALLERI,Katılar,tyt,tyt-kimya,tyt-kimya-maddenin-halleri,tyt-kimya-maddenin-halleri-katilar
-TYT,Kimya,MADDENIN HALLERI,Sıvılar,tyt,tyt-kimya,tyt-kimya-maddenin-halleri,tyt-kimya-maddenin-halleri-sivilar
-TYT,Kimya,MADDENIN HALLERI,Gazlar,tyt,tyt-kimya,tyt-kimya-maddenin-halleri,tyt-kimya-maddenin-halleri-gazlar
-TYT,Kimya,MADDENIN HALLERI,Plazma,tyt,tyt-kimya,tyt-kimya-maddenin-halleri,tyt-kimya-maddenin-halleri-plazma
-TYT,Kimya,DOĞA VE KIMYA,"Su, Hayat ve Çevre Kimyası",tyt,tyt-kimya,tyt-kimya-doga-ve-kimya,tyt-kimya-doga-ve-kimya-su-hayat-ve-cevre-kimyasi
-TYT,Kimya,KIMYANIN TEMEL KANUNLARI VE HESAPLAMALAR,Kimyanın Temel Kanunları ve Mol Kavramı,tyt,tyt-kimya,tyt-kimya-kimyanin-temel-kanunlari-ve-hesaplamalar,tyt-kimya-kimyanin-temel-kanunlari-ve-hesaplamalar-kimyanin-temel-kanunlari-ve-mol-kavrami
-TYT,Kimya,KIMYANIN TEMEL KANUNLARI VE HESAPLAMALAR,Kimyasal Tepkimeler - Kimyasal Tepkimelerde Hesaplamalar,tyt,tyt-kimya,tyt-kimya-kimyanin-temel-kanunlari-ve-hesaplamalar,tyt-kimya-kimyanin-temel-kanunlari-ve-hesaplamalar-kimyasal-tepkimeler-kimyasal-tepkimelerde-hesaplamalar
-TYT,Kimya,KARIŞIMLAR,Karışımlar - Karışımları Ayırma Teknikleri,tyt,tyt-kimya,tyt-kimya-karisimlar,tyt-kimya-karisimlar-karisimlar-karisimlari-ayirma-teknikleri
-TYT,Kimya,"ASITLER, BAZLAR VE TUZLAR","Asitler, Bazlar ve Tuzlar",tyt,tyt-kimya,tyt-kimya-asitler-bazlar-ve-tuzlar,tyt-kimya-asitler-bazlar-ve-tuzlar-asitler-bazlar-ve-tuzlar
-TYT,Kimya,KIMYA HER YERDE,Yaygın Günlük Hayat Kimyasalları ve Gıdalar,tyt,tyt-kimya,tyt-kimya-kimya-her-yerde,tyt-kimya-kimya-her-yerde-yaygin-gunluk-hayat-kimyasallari-ve-gidalar
-TYT,Biyoloji,YAŞAM BILIMI BIYOLOJI,Biyoloji ve Canlıların Ortak Özellikleri,tyt,tyt-biyoloji,tyt-biyoloji-yasam-bilimi-biyoloji,tyt-biyoloji-yasam-bilimi-biyoloji-biyoloji-ve-canlilarin-ortak-ozellikleri
-TYT,Biyoloji,YAŞAM BILIMI BIYOLOJI,İnorganik Bileşikler,tyt,tyt-biyoloji,tyt-biyoloji-yasam-bilimi-biyoloji,tyt-biyoloji-yasam-bilimi-biyoloji-inorganik-bilesikler
-TYT,Biyoloji,YAŞAM BILIMI BIYOLOJI,Karbonhidratlar - Lipitler - Proteinler,tyt,tyt-biyoloji,tyt-biyoloji-yasam-bilimi-biyoloji,tyt-biyoloji-yasam-bilimi-biyoloji-karbonhidratlar-lipitler-proteinler
-TYT,Biyoloji,YAŞAM BILIMI BIYOLOJI,Enzimler - Vitaminler - Hormonlar,tyt,tyt-biyoloji,tyt-biyoloji-yasam-bilimi-biyoloji,tyt-biyoloji-yasam-bilimi-biyoloji-enzimler-vitaminler-hormonlar
-TYT,Biyoloji,YAŞAM BILIMI BIYOLOJI,Nükleik Asitler - ATP,tyt,tyt-biyoloji,tyt-biyoloji-yasam-bilimi-biyoloji,tyt-biyoloji-yasam-bilimi-biyoloji-nukleik-asitler-atp
-TYT,Biyoloji,HÜCRE,Hücrenin Yapısı ve Kısımları,tyt,tyt-biyoloji,tyt-biyoloji-hucre,tyt-biyoloji-hucre-hucrenin-yapisi-ve-kisimlari
-TYT,Biyoloji,HÜCRE,Hücre Zarından Madde Geçişleri,tyt,tyt-biyoloji,tyt-biyoloji-hucre,tyt-biyoloji-hucre-hucre-zarindan-madde-gecisleri
-TYT,Biyoloji,CANLILAR DÜNYASI,Canlıların Çeşitliliği ve Sınıflandırılması,tyt,tyt-biyoloji,tyt-biyoloji-canlilar-dunyasi,tyt-biyoloji-canlilar-dunyasi-canlilarin-cesitliligi-ve-siniflandirilmasi
-TYT,Biyoloji,CANLILAR DÜNYASI,Canlı Alemleri ve Özellikleri - Virüsler,tyt,tyt-biyoloji,tyt-biyoloji-canlilar-dunyasi,tyt-biyoloji-canlilar-dunyasi-canli-alemleri-ve-ozellikleri-virusler
-TYT,Biyoloji,HÜCRE BÖLÜNMELERI,Mitoz ve Eşeysiz Üreme,tyt,tyt-biyoloji,tyt-biyoloji-hucre-bolunmeleri,tyt-biyoloji-hucre-bolunmeleri-mitoz-ve-eseysiz-ureme
-TYT,Biyoloji,HÜCRE BÖLÜNMELERI,Mayoz ve Eşeyli Üreme,tyt,tyt-biyoloji,tyt-biyoloji-hucre-bolunmeleri,tyt-biyoloji-hucre-bolunmeleri-mayoz-ve-eseyli-ureme
-TYT,Biyoloji,KALITIMIN GENEL İLKELERI,Kalıtımın Genel Esasları - Mendel İlkeleri ve Çaprazlamalar,tyt,tyt-biyoloji,tyt-biyoloji-kalitimin-genel-ilkeleri,tyt-biyoloji-kalitimin-genel-ilkeleri-kalitimin-genel-esaslari-mendel-ilkeleri-ve-caprazlamalar
-TYT,Biyoloji,KALITIMIN GENEL İLKELERI,Eş Baskınlık - Çok Alellilik - Kan Grupları,tyt,tyt-biyoloji,tyt-biyoloji-kalitimin-genel-ilkeleri,tyt-biyoloji-kalitimin-genel-ilkeleri-es-baskinlik-cok-alellilik-kan-gruplari
-TYT,Biyoloji,KALITIMIN GENEL İLKELERI,Eşeye Bağlı Kalıtım - Genetik Varyasyonlar,tyt,tyt-biyoloji,tyt-biyoloji-kalitimin-genel-ilkeleri,tyt-biyoloji-kalitimin-genel-ilkeleri-eseye-bagli-kalitim-genetik-varyasyonlar
-TYT,Biyoloji,KALITIMIN GENEL İLKELERI,Soyağaçları,tyt,tyt-biyoloji,tyt-biyoloji-kalitimin-genel-ilkeleri,tyt-biyoloji-kalitimin-genel-ilkeleri-soyagaclari
-TYT,Biyoloji,EKOSISTEM EKOLOJISI,Ekosistem Ekolojisi,tyt,tyt-biyoloji,tyt-biyoloji-ekosistem-ekolojisi,tyt-biyoloji-ekosistem-ekolojisi-ekosistem-ekolojisi
-TYT,Biyoloji,EKOSISTEM EKOLOJISI,Güncel Çevre Sorunları ve İnsan,tyt,tyt-biyoloji,tyt-biyoloji-ekosistem-ekolojisi,tyt-biyoloji-ekosistem-ekolojisi-guncel-cevre-sorunlari-ve-insan
-TYT,Biyoloji,EKOSISTEM EKOLOJISI,Doğal Kaynaklar ve Biyolojik Çeşitliliğin Korunması,tyt,tyt-biyoloji,tyt-biyoloji-ekosistem-ekolojisi,tyt-biyoloji-ekosistem-ekolojisi-dogal-kaynaklar-ve-biyolojik-cesitliligin-korunmasi
-TYT,Tarih,TARIH (TÜM KONULAR),Tarih ve Zaman,tyt,tyt-tarih,tyt-tarih-tarih-tum-konular,tyt-tarih-tarih-tum-konular-tarih-ve-zaman
-TYT,Tarih,TARIH (TÜM KONULAR),İlk ve Orta Çağlarda Türk Dünyası,tyt,tyt-tarih,tyt-tarih-tarih-tum-konular,tyt-tarih-tarih-tum-konular-ilk-ve-orta-caglarda-turk-dunyasi
-TYT,Tarih,TARIH (TÜM KONULAR),İslam Medeniyetinin Doğuşu,tyt,tyt-tarih,tyt-tarih-tarih-tum-konular,tyt-tarih-tarih-tum-konular-islam-medeniyetinin-dogusu
-TYT,Tarih,TARIH (TÜM KONULAR),Türklerin İslamiyet'i Kabulü ve İlk Türk İslam Devletleri,tyt,tyt-tarih,tyt-tarih-tarih-tum-konular,tyt-tarih-tarih-tum-konular-turklerin-islamiyeti-kabulu-ve-ilk-turk-islam-devletleri
-TYT,Tarih,TARIH (TÜM KONULAR),Yerleşme ve Devletleşme Sürecinde Selçuklu Türkiyesi,tyt,tyt-tarih,tyt-tarih-tarih-tum-konular,tyt-tarih-tarih-tum-konular-yerlesme-ve-devletlesme-surecinde-selcuklu-turkiyesi
-TYT,Tarih,TARIH (TÜM KONULAR),Beylikten Devlete Osmanlı Siyaseti (1302-1453),tyt,tyt-tarih,tyt-tarih-tarih-tum-konular,tyt-tarih-tarih-tum-konular-beylikten-devlete-osmanli-siyaseti-1302-1453
-TYT,Tarih,TARIH (TÜM KONULAR),Devletleşme Sürecinde Savaşçılar ve Askerler,tyt,tyt-tarih,tyt-tarih-tarih-tum-konular,tyt-tarih-tarih-tum-konular-devletlesme-surecinde-savascilar-ve-askerler
-TYT,Tarih,TARIH (TÜM KONULAR),Beylikten Devlete Osmanlı Medeniyeti,tyt,tyt-tarih,tyt-tarih-tarih-tum-konular,tyt-tarih-tarih-tum-konular-beylikten-devlete-osmanli-medeniyeti
-TYT,Tarih,TARIH (TÜM KONULAR),Dünya Gücü Osmanlı (1453-1595),tyt,tyt-tarih,tyt-tarih-tarih-tum-konular,tyt-tarih-tarih-tum-konular-dunya-gucu-osmanli-1453-1595
-TYT,Tarih,TARIH (TÜM KONULAR),Sultan ve Osmanlı Merkez Teşkilatı,tyt,tyt-tarih,tyt-tarih-tarih-tum-konular,tyt-tarih-tarih-tum-konular-sultan-ve-osmanli-merkez-teskilati
-TYT,Tarih,TARIH (TÜM KONULAR),Klasik Çağda Osmanlı Toplum Düzeni,tyt,tyt-tarih,tyt-tarih-tarih-tum-konular,tyt-tarih-tarih-tum-konular-klasik-cagda-osmanli-toplum-duzeni
-TYT,Tarih,TARIH (TÜM KONULAR),Değişen Dünya Dengeleri Karşısında Osmanlı Siyaseti (1595-1774),tyt,tyt-tarih,tyt-tarih-tarih-tum-konular,tyt-tarih-tarih-tum-konular-degisen-dunya-dengeleri-karsisinda-osmanli-siyaseti-1595-1774
-TYT,Tarih,TARIH (TÜM KONULAR),Değişim Çağında Avrupa ve Osmanlı,tyt,tyt-tarih,tyt-tarih-tarih-tum-konular,tyt-tarih-tarih-tum-konular-degisim-caginda-avrupa-ve-osmanli
-TYT,Tarih,TARIH (TÜM KONULAR),Devrimler Çağında Değişen Devlet -Toplum İlişkileri,tyt,tyt-tarih,tyt-tarih-tarih-tum-konular,tyt-tarih-tarih-tum-konular-devrimler-caginda-degisen-devlet-toplum-iliskileri
-TYT,Tarih,TARIH (TÜM KONULAR),Uluslararası İlişkilerde Denge Stratejisi (1774-1914),tyt,tyt-tarih,tyt-tarih-tarih-tum-konular,tyt-tarih-tarih-tum-konular-uluslararasi-iliskilerde-denge-stratejisi-1774-1914
-TYT,Tarih,TARIH (TÜM KONULAR),XIX. ve XX. Yüzyılda Değişen Sosyoekonomik Hayat,tyt,tyt-tarih,tyt-tarih-tarih-tum-konular,tyt-tarih-tarih-tum-konular-xix-ve-xx-yuzyilda-degisen-sosyoekonomik-hayat
-TYT,Tarih,TARIH (TÜM KONULAR),20. Yüzyıl Başlarında Osmanlı Devleti ve Dünya,tyt,tyt-tarih,tyt-tarih-tarih-tum-konular,tyt-tarih-tarih-tum-konular-20-yuzyil-baslarinda-osmanli-devleti-ve-dunya
-TYT,Tarih,TARIH (TÜM KONULAR),Millî Mücadele,tyt,tyt-tarih,tyt-tarih-tarih-tum-konular,tyt-tarih-tarih-tum-konular-milli-mucadele
-TYT,Tarih,TARIH (TÜM KONULAR),Atatürkçülük ve Türk İnkılabı,tyt,tyt-tarih,tyt-tarih-tarih-tum-konular,tyt-tarih-tarih-tum-konular-ataturkculuk-ve-turk-inkilabi
-TYT,Coğrafya,DOĞA VE İNSAN,Coğrafya Bilimi,tyt,tyt-cografya,tyt-cografya-doga-ve-insan,tyt-cografya-doga-ve-insan-cografya-bilimi
-TYT,Coğrafya,DOĞA VE İNSAN,Doğa ve İnsan,tyt,tyt-cografya,tyt-cografya-doga-ve-insan,tyt-cografya-doga-ve-insan-doga-ve-insan
-TYT,Coğrafya,DÜNYA VE İKLIM,Dünya'nın Şekli ve Hareketleri,tyt,tyt-cografya,tyt-cografya-dunya-ve-iklim,tyt-cografya-dunya-ve-iklim-dunyanin-sekli-ve-hareketleri
-TYT,Coğrafya,DÜNYA VE İKLIM,Yer ve Zaman,tyt,tyt-cografya,tyt-cografya-dunya-ve-iklim,tyt-cografya-dunya-ve-iklim-yer-ve-zaman
-TYT,Coğrafya,DÜNYA VE İKLIM,Koordinat Sistemi,tyt,tyt-cografya,tyt-cografya-dunya-ve-iklim,tyt-cografya-dunya-ve-iklim-koordinat-sistemi
-TYT,Coğrafya,DÜNYA VE İKLIM,Harita Bilimi,tyt,tyt-cografya,tyt-cografya-dunya-ve-iklim,tyt-cografya-dunya-ve-iklim-harita-bilimi
-TYT,Coğrafya,DÜNYA VE İKLIM,Atmosfer,tyt,tyt-cografya,tyt-cografya-dunya-ve-iklim,tyt-cografya-dunya-ve-iklim-atmosfer
-TYT,Coğrafya,DÜNYA VE İKLIM,Hava Durumu,tyt,tyt-cografya,tyt-cografya-dunya-ve-iklim,tyt-cografya-dunya-ve-iklim-hava-durumu
-TYT,Coğrafya,DÜNYA VE İKLIM,Sıcaklık,tyt,tyt-cografya,tyt-cografya-dunya-ve-iklim,tyt-cografya-dunya-ve-iklim-sicaklik
-TYT,Coğrafya,DÜNYA VE İKLIM,Basınç ve Rüzgâr,tyt,tyt-cografya,tyt-cografya-dunya-ve-iklim,tyt-cografya-dunya-ve-iklim-basinc-ve-ruzgar
-TYT,Coğrafya,DÜNYA VE İKLIM,Nem ve Yağış,tyt,tyt-cografya,tyt-cografya-dunya-ve-iklim,tyt-cografya-dunya-ve-iklim-nem-ve-yagis
-TYT,Coğrafya,DÜNYA VE İKLIM,İklim Tipleri ve Türkiye İklimi,tyt,tyt-cografya,tyt-cografya-dunya-ve-iklim,tyt-cografya-dunya-ve-iklim-iklim-tipleri-ve-turkiye-iklimi
-TYT,Coğrafya,YERYÜZÜ ŞEKILLERI,Yerleşmeler ve Bölgeler,tyt,tyt-cografya,tyt-cografya-yeryuzu-sekilleri,tyt-cografya-yeryuzu-sekilleri-yerlesmeler-ve-bolgeler
-TYT,Coğrafya,YERYÜZÜ ŞEKILLERI,Doğal Çevreyi Kullanma Biçimleri ve İnsan Etkileri,tyt,tyt-cografya,tyt-cografya-yeryuzu-sekilleri,tyt-cografya-yeryuzu-sekilleri-dogal-cevreyi-kullanma-bicimleri-ve-insan-etkileri
-TYT,Coğrafya,YERYÜZÜ ŞEKILLERI,Dünya'nın Tektonik Oluşumu ve İç Kuvvetler,tyt,tyt-cografya,tyt-cografya-yeryuzu-sekilleri,tyt-cografya-yeryuzu-sekilleri-dunyanin-tektonik-olusumu-ve-ic-kuvvetler
-TYT,Coğrafya,YERYÜZÜ ŞEKILLERI,Dış Kuvvetler,tyt,tyt-cografya,tyt-cografya-yeryuzu-sekilleri,tyt-cografya-yeryuzu-sekilleri-dis-kuvvetler
-TYT,Coğrafya,YERYÜZÜ ŞEKILLERI,Türkiye'nin Yüzey Şekilleri,tyt,tyt-cografya,tyt-cografya-yeryuzu-sekilleri,tyt-cografya-yeryuzu-sekilleri-turkiyenin-yuzey-sekilleri
-TYT,Coğrafya,YERYÜZÜ ŞEKILLERI,Su Kaynakları,tyt,tyt-cografya,tyt-cografya-yeryuzu-sekilleri,tyt-cografya-yeryuzu-sekilleri-su-kaynaklari
-TYT,Coğrafya,YERYÜZÜ ŞEKILLERI,Topraklar ve Bitkiler,tyt,tyt-cografya,tyt-cografya-yeryuzu-sekilleri,tyt-cografya-yeryuzu-sekilleri-topraklar-ve-bitkiler
-TYT,Coğrafya,BEŞERI VE EKONOMIK COĞRAFYA,Nüfus,tyt,tyt-cografya,tyt-cografya-beseri-ve-ekonomik-cografya,tyt-cografya-beseri-ve-ekonomik-cografya-nufus
-TYT,Coğrafya,BEŞERI VE EKONOMIK COĞRAFYA,Göçler,tyt,tyt-cografya,tyt-cografya-beseri-ve-ekonomik-cografya,tyt-cografya-beseri-ve-ekonomik-cografya-gocler
-TYT,Coğrafya,BEŞERI VE EKONOMIK COĞRAFYA,Ekonomik Faaliyetler ve Ulaşım Hatları,tyt,tyt-cografya,tyt-cografya-beseri-ve-ekonomik-cografya,tyt-cografya-beseri-ve-ekonomik-cografya-ekonomik-faaliyetler-ve-ulasim-hatlari
-TYT,Coğrafya,BEŞERI VE EKONOMIK COĞRAFYA,Afetler,tyt,tyt-cografya,tyt-cografya-beseri-ve-ekonomik-cografya,tyt-cografya-beseri-ve-ekonomik-cografya-afetler
+﻿Sınav,Ders,Alan,Konu,Sınav ID,Ders ID,Alan ID,Konu ID
+TYT,Biyoloji,YAŞAM BİLİMİ BİYOLOJİ,Biyoloji ve Canlıların Ortak Özellikleri,tyt,tyt-biyoloji,tyt-biyoloji-yasam-bilimi-biyoloji,tyt-biyoloji-yasam-bilimi-biyoloji-biyoloji-ve-canlilarin-ortak-ozellikleri
+TYT,Biyoloji,YAŞAM BİLİMİ BİYOLOJİ,İnorganik Bileşikler,tyt,tyt-biyoloji,tyt-biyoloji-yasam-bilimi-biyoloji,tyt-biyoloji-yasam-bilimi-biyoloji-inorganik-bilesikler
+TYT,Biyoloji,YAŞAM BİLİMİ BİYOLOJİ,Organik Bileşikler,tyt,tyt-biyoloji,tyt-biyoloji-yasam-bilimi-biyoloji,tyt-biyoloji-yasam-bilimi-biyoloji-organik-bilesikler
+TYT,Biyoloji,HÜCRE,Sitoplazma ve Organeller,tyt,tyt-biyoloji,tyt-biyoloji-hucre,tyt-biyoloji-hucre-sitoplazma-ve-organeller
+TYT,Biyoloji,HÜCRE,Hücre Zarı,tyt,tyt-biyoloji,tyt-biyoloji-hucre,tyt-biyoloji-hucre-hucre-zari
+TYT,Biyoloji,HÜCRE,Bilimsel Yöntem,tyt,tyt-biyoloji,tyt-biyoloji-hucre,tyt-biyoloji-hucre-bilimsel-yontem
+TYT,Biyoloji,CANLILAR DÜNYASI,Sınıflandırmanın Amacı ve Faydaları,tyt,tyt-biyoloji,tyt-biyoloji-canlilar-dunyasi,tyt-biyoloji-canlilar-dunyasi-siniflandirmanin-amaci-ve-faydalari
+TYT,Biyoloji,CANLILAR DÜNYASI,Sınıflandırmada Kullanılan Kategoriler,tyt,tyt-biyoloji,tyt-biyoloji-canlilar-dunyasi,tyt-biyoloji-canlilar-dunyasi-siniflandirmada-kullanilan-kategoriler
+TYT,Biyoloji,CANLILAR DÜNYASI,İkili Adlandırma,tyt,tyt-biyoloji,tyt-biyoloji-canlilar-dunyasi,tyt-biyoloji-canlilar-dunyasi-ikili-adlandirma
+TYT,Biyoloji,CANLILAR DÜNYASI,Canlı Âlemleri ve Özellikleri,tyt,tyt-biyoloji,tyt-biyoloji-canlilar-dunyasi,tyt-biyoloji-canlilar-dunyasi-canli-lemleri-ve-ozellikleri
+TYT,Biyoloji,CANLILAR DÜNYASI,Protistler-Bitkiler-Mantarlar Âlemleri,tyt,tyt-biyoloji,tyt-biyoloji-canlilar-dunyasi,tyt-biyoloji-canlilar-dunyasi-protistler-bitkiler-mantarlar-lemleri
+TYT,Biyoloji,CANLILAR DÜNYASI,Hayvanlar Âlemi,tyt,tyt-biyoloji,tyt-biyoloji-canlilar-dunyasi,tyt-biyoloji-canlilar-dunyasi-hayvanlar-lemi
+TYT,Biyoloji,CANLILAR DÜNYASI,Virüsler,tyt,tyt-biyoloji,tyt-biyoloji-canlilar-dunyasi,tyt-biyoloji-canlilar-dunyasi-virusler
+TYT,Biyoloji,HÜCRE BÖLÜNMELERİ VE ÜREME,Hücre Bölünmesinin Gerekliliği,tyt,tyt-biyoloji,tyt-biyoloji-hucre-bolunmeleri-ve-ureme,tyt-biyoloji-hucre-bolunmeleri-ve-ureme-hucre-bolunmesinin-gerekliligi
+TYT,Biyoloji,HÜCRE BÖLÜNMELERİ VE ÜREME,Mitoz,tyt,tyt-biyoloji,tyt-biyoloji-hucre-bolunmeleri-ve-ureme,tyt-biyoloji-hucre-bolunmeleri-ve-ureme-mitoz
+TYT,Biyoloji,HÜCRE BÖLÜNMELERİ VE ÜREME,Eşeysiz Üreme,tyt,tyt-biyoloji,tyt-biyoloji-hucre-bolunmeleri-ve-ureme,tyt-biyoloji-hucre-bolunmeleri-ve-ureme-eseysiz-ureme
+TYT,Biyoloji,HÜCRE BÖLÜNMELERİ VE ÜREME,Mayoz,tyt,tyt-biyoloji,tyt-biyoloji-hucre-bolunmeleri-ve-ureme,tyt-biyoloji-hucre-bolunmeleri-ve-ureme-mayoz
+TYT,Biyoloji,HÜCRE BÖLÜNMELERİ VE ÜREME,Eşeyli Üreme,tyt,tyt-biyoloji,tyt-biyoloji-hucre-bolunmeleri-ve-ureme,tyt-biyoloji-hucre-bolunmeleri-ve-ureme-eseyli-ureme
+TYT,Biyoloji,KALITIMIN VE BİYOLOJİK ÇEŞİTLİLİK,Mendel İlkeleri,tyt,tyt-biyoloji,tyt-biyoloji-kalitimin-ve-biyolojik-cesitlilik,tyt-biyoloji-kalitimin-ve-biyolojik-cesitlilik-mendel-ilkeleri
+TYT,Biyoloji,KALITIMIN VE BİYOLOJİK ÇEŞİTLİLİK,Mendel İlkelerine Uymayan Durumlar / Eş Baskınlık - Çok Alellilik,tyt,tyt-biyoloji,tyt-biyoloji-kalitimin-ve-biyolojik-cesitlilik,tyt-biyoloji-kalitimin-ve-biyolojik-cesitlilik-mendel-ilkelerine-uymayan-durumlar-es-baskinlik-cok-alellilik
+TYT,Biyoloji,KALITIMIN VE BİYOLOJİK ÇEŞİTLİLİK,Kan Grupları,tyt,tyt-biyoloji,tyt-biyoloji-kalitimin-ve-biyolojik-cesitlilik,tyt-biyoloji-kalitimin-ve-biyolojik-cesitlilik-kan-gruplari
+TYT,Biyoloji,KALITIMIN VE BİYOLOJİK ÇEŞİTLİLİK,Eşeye Bağlı Kalıtım,tyt,tyt-biyoloji,tyt-biyoloji-kalitimin-ve-biyolojik-cesitlilik,tyt-biyoloji-kalitimin-ve-biyolojik-cesitlilik-eseye-bagli-kalitim
+TYT,Biyoloji,KALITIMIN VE BİYOLOJİK ÇEŞİTLİLİK,Akraba Evlilikleri - Genetik Varyasyonlar ve Biyolojik Çeşitlilik,tyt,tyt-biyoloji,tyt-biyoloji-kalitimin-ve-biyolojik-cesitlilik,tyt-biyoloji-kalitimin-ve-biyolojik-cesitlilik-akraba-evlilikleri-genetik-varyasyonlar-ve-biyolojik-cesitlilik
+TYT,Biyoloji,EKOSİSTEM EKOLOJİSİ VE GÜNCEL ÇEVRE SORUNLARI,Ekosistemin Canlı ve Cansız Bileşenleri,tyt,tyt-biyoloji,tyt-biyoloji-ekosistem-ekolojisi-ve-guncel-cevre-sorunlari,tyt-biyoloji-ekosistem-ekolojisi-ve-guncel-cevre-sorunlari-ekosistemin-canli-ve-cansiz-bilesenleri
+TYT,Biyoloji,EKOSİSTEM EKOLOJİSİ VE GÜNCEL ÇEVRE SORUNLARI,Canlılardaki Beslenme Şekilleri,tyt,tyt-biyoloji,tyt-biyoloji-ekosistem-ekolojisi-ve-guncel-cevre-sorunlari,tyt-biyoloji-ekosistem-ekolojisi-ve-guncel-cevre-sorunlari-canlilardaki-beslenme-sekilleri
+TYT,Biyoloji,EKOSİSTEM EKOLOJİSİ VE GÜNCEL ÇEVRE SORUNLARI,Ekosistemde Madde ve Enerji Akışı,tyt,tyt-biyoloji,tyt-biyoloji-ekosistem-ekolojisi-ve-guncel-cevre-sorunlari,tyt-biyoloji-ekosistem-ekolojisi-ve-guncel-cevre-sorunlari-ekosistemde-madde-ve-enerji-akisi
+TYT,Biyoloji,EKOSİSTEM EKOLOJİSİ VE GÜNCEL ÇEVRE SORUNLARI,Madde Döngüleri ve Hayatın Sürdürülebilirliği,tyt,tyt-biyoloji,tyt-biyoloji-ekosistem-ekolojisi-ve-guncel-cevre-sorunlari,tyt-biyoloji-ekosistem-ekolojisi-ve-guncel-cevre-sorunlari-madde-donguleri-ve-hayatin-surdurulebilirligi
+TYT,Biyoloji,EKOSİSTEM EKOLOJİSİ VE GÜNCEL ÇEVRE SORUNLARI,Güncel Çevre Sorunları,tyt,tyt-biyoloji,tyt-biyoloji-ekosistem-ekolojisi-ve-guncel-cevre-sorunlari,tyt-biyoloji-ekosistem-ekolojisi-ve-guncel-cevre-sorunlari-guncel-cevre-sorunlari
+TYT,Coğrafya,DOĞA VE İNSAN,"İnsan, Doğa ve Coğrafya",tyt,tyt-cografya,tyt-cografya-doga-ve-insan,tyt-cografya-doga-ve-insan-insan-doga-ve-cografya
+TYT,Coğrafya,DÜNYA'NIN ŞEKLİ VE HAREKETLERİ,Dünya'nın Şekli ve Sonuçları,tyt,tyt-cografya,tyt-cografya-dunyanin-sekli-ve-hareketleri,tyt-cografya-dunyanin-sekli-ve-hareketleri-dunyanin-sekli-ve-sonuclari
+TYT,Coğrafya,DÜNYA'NIN ŞEKLİ VE HAREKETLERİ,Dünya'nın Günlük ve Yıllık Hareketleri,tyt,tyt-cografya,tyt-cografya-dunyanin-sekli-ve-hareketleri,tyt-cografya-dunyanin-sekli-ve-hareketleri-dunyanin-gunluk-ve-yillik-hareketleri
+TYT,Coğrafya,DÜNYA'NIN ŞEKLİ VE HAREKETLERİ,Mevsimlerin Oluşumu ve Özel Tarihler,tyt,tyt-cografya,tyt-cografya-dunyanin-sekli-ve-hareketleri,tyt-cografya-dunyanin-sekli-ve-hareketleri-mevsimlerin-olusumu-ve-ozel-tarihler
+TYT,Coğrafya,COĞRAFİ KONUM VE YEREL SAATLER,"Coğrafi Koordinatlar, Paralel, Meridyen, Enlem, Boylam",tyt,tyt-cografya,tyt-cografya-cografi-konum-ve-yerel-saatler,tyt-cografya-cografi-konum-ve-yerel-saatler-cografi-koordinatlar-paralel-meridyen-enlem-boylam
+TYT,Coğrafya,COĞRAFİ KONUM VE YEREL SAATLER,"Yerel Saat, Ortak Saat, Uluslararası Saat Dilimleri",tyt,tyt-cografya,tyt-cografya-cografi-konum-ve-yerel-saatler,tyt-cografya-cografi-konum-ve-yerel-saatler-yerel-saat-ortak-saat-uluslararasi-saat-dilimleri
+TYT,Coğrafya,COĞRAFİ KONUM VE YEREL SAATLER,Türkiye'nin Coğrafi Konumu,tyt,tyt-cografya,tyt-cografya-cografi-konum-ve-yerel-saatler,tyt-cografya-cografi-konum-ve-yerel-saatler-turkiyenin-cografi-konumu
+TYT,Coğrafya,HARİTA BİLGİSİ,Harita Bilgisi,tyt,tyt-cografya,tyt-cografya-harita-bilgisi,tyt-cografya-harita-bilgisi-harita-bilgisi
+TYT,Coğrafya,HARİTA BİLGİSİ,İzohipsler,tyt,tyt-cografya,tyt-cografya-harita-bilgisi,tyt-cografya-harita-bilgisi-izohipsler
+TYT,Coğrafya,HARİTA BİLGİSİ,Harita Çalışması,tyt,tyt-cografya,tyt-cografya-harita-bilgisi,tyt-cografya-harita-bilgisi-harita-calismasi
+TYT,Coğrafya,İKLİM BİLGİSİ (ATMOSFER VE SICAKLIK),İklim - Hava Durumu - Atmosfer,tyt,tyt-cografya,tyt-cografya-iklim-bilgisi-atmosfer-ve-sicaklik,tyt-cografya-iklim-bilgisi-atmosfer-ve-sicaklik-iklim-hava-durumu-atmosfer
+TYT,Coğrafya,İKLİM BİLGİSİ (ATMOSFER VE SICAKLIK),İklim Bilgisi - Sıcaklık,tyt,tyt-cografya,tyt-cografya-iklim-bilgisi-atmosfer-ve-sicaklik,tyt-cografya-iklim-bilgisi-atmosfer-ve-sicaklik-iklim-bilgisi-sicaklik
+TYT,Coğrafya,İKLİM BİLGİSİ (BASINÇ VE RÜZGÂRLAR),"İklim Bilgisi, Basınç",tyt,tyt-cografya,tyt-cografya-iklim-bilgisi-basinc-ve-ruzgrlar,tyt-cografya-iklim-bilgisi-basinc-ve-ruzgrlar-iklim-bilgisi-basinc
+TYT,Coğrafya,İKLİM BİLGİSİ (BASINÇ VE RÜZGÂRLAR),"İklim Bilgisi, Rüzgârlar",tyt,tyt-cografya,tyt-cografya-iklim-bilgisi-basinc-ve-ruzgrlar,tyt-cografya-iklim-bilgisi-basinc-ve-ruzgrlar-iklim-bilgisi-ruzgrlar
+TYT,Coğrafya,İKLİM BİLGİSİ (NEMLİLİK VE YAĞIŞ),İklim Bilgisi - Nem,tyt,tyt-cografya,tyt-cografya-iklim-bilgisi-nemlilik-ve-yagis,tyt-cografya-iklim-bilgisi-nemlilik-ve-yagis-iklim-bilgisi-nem
+TYT,Coğrafya,İKLİM BİLGİSİ (NEMLİLİK VE YAĞIŞ),İklim Bilgisi - Yağış,tyt,tyt-cografya,tyt-cografya-iklim-bilgisi-nemlilik-ve-yagis,tyt-cografya-iklim-bilgisi-nemlilik-ve-yagis-iklim-bilgisi-yagis
+TYT,Coğrafya,İKLİM BİLGİSİ (BÜYÜK İKLİM TİPLERİ),Büyük İklim Tipleri,tyt,tyt-cografya,tyt-cografya-iklim-bilgisi-buyuk-iklim-tipleri,tyt-cografya-iklim-bilgisi-buyuk-iklim-tipleri-buyuk-iklim-tipleri
+TYT,Coğrafya,TÜRKİYE'NİN İKLİMİ,Türkiye'nin İklimini Etkileyen Faktörler,tyt,tyt-cografya,tyt-cografya-turkiyenin-iklimi,tyt-cografya-turkiyenin-iklimi-turkiyenin-iklimini-etkileyen-faktorler
+TYT,Coğrafya,TÜRKİYE'NİN İKLİMİ,Türkiye'nin İklim Elemanları,tyt,tyt-cografya,tyt-cografya-turkiyenin-iklimi,tyt-cografya-turkiyenin-iklimi-turkiyenin-iklim-elemanlari
+TYT,Coğrafya,TÜRKİYE'NİN İKLİMİ,Türkiye'de Görülen İklim Tipleri,tyt,tyt-cografya,tyt-cografya-turkiyenin-iklimi,tyt-cografya-turkiyenin-iklimi-turkiyede-gorulen-iklim-tipleri
+TYT,Coğrafya,YERİN YAPISI VE OLUŞUM SÜRECİ,Yerin Yapısı ve Jeolojik Devirler,tyt,tyt-cografya,tyt-cografya-yerin-yapisi-ve-olusum-sureci,tyt-cografya-yerin-yapisi-ve-olusum-sureci-yerin-yapisi-ve-jeolojik-devirler
+TYT,Coğrafya,YERİN YAPISI VE OLUŞUM SÜRECİ,Topoğrafya ve Kayaçlar,tyt,tyt-cografya,tyt-cografya-yerin-yapisi-ve-olusum-sureci,tyt-cografya-yerin-yapisi-ve-olusum-sureci-topografya-ve-kayaclar
+TYT,Coğrafya,YERİN YAPISI VE OLUŞUM SÜRECİ,Levha Tektoniği ve İç Kuvvetler,tyt,tyt-cografya,tyt-cografya-yerin-yapisi-ve-olusum-sureci,tyt-cografya-yerin-yapisi-ve-olusum-sureci-levha-tektonigi-ve-ic-kuvvetler
+TYT,Coğrafya,DIŞ KUVVETLER,Kayaçların Çözülmesi - Toprak ve Kütle Hareketleri,tyt,tyt-cografya,tyt-cografya-dis-kuvvetler,tyt-cografya-dis-kuvvetler-kayaclarin-cozulmesi-toprak-ve-kutle-hareketleri
+TYT,Coğrafya,DIŞ KUVVETLER,Rüzgârların Oluşturduğu Yer Şekilleri,tyt,tyt-cografya,tyt-cografya-dis-kuvvetler,tyt-cografya-dis-kuvvetler-ruzgrlarin-olusturdugu-yer-sekilleri
+TYT,Coğrafya,DIŞ KUVVETLER,Akarsular ve Oluşturduğu Yer Şekilleri,tyt,tyt-cografya,tyt-cografya-dis-kuvvetler,tyt-cografya-dis-kuvvetler-akarsular-ve-olusturdugu-yer-sekilleri
+TYT,Coğrafya,DIŞ KUVVETLER,Karstik Şekiller,tyt,tyt-cografya,tyt-cografya-dis-kuvvetler,tyt-cografya-dis-kuvvetler-karstik-sekiller
+TYT,Coğrafya,DIŞ KUVVETLER,Buzul - Dalga ve Akıntıların Oluşturduğu Şekiller,tyt,tyt-cografya,tyt-cografya-dis-kuvvetler,tyt-cografya-dis-kuvvetler-buzul-dalga-ve-akintilarin-olusturdugu-sekiller
+TYT,Coğrafya,DIŞ KUVVETLER,Kıyı Tipleri,tyt,tyt-cografya,tyt-cografya-dis-kuvvetler,tyt-cografya-dis-kuvvetler-kiyi-tipleri
+TYT,Coğrafya,TÜRKİYE'NİN YER ŞEKİLLERİ,Türkiye'nin Yeryüzü Şekillerinin Genel Özellikleri,tyt,tyt-cografya,tyt-cografya-turkiyenin-yer-sekilleri,tyt-cografya-turkiyenin-yer-sekilleri-turkiyenin-yeryuzu-sekillerinin-genel-ozellikleri
+TYT,Coğrafya,TÜRKİYE'NİN YER ŞEKİLLERİ,"Türkiye'nin Dağları, Ovaları, Platoları",tyt,tyt-cografya,tyt-cografya-turkiyenin-yer-sekilleri,tyt-cografya-turkiyenin-yer-sekilleri-turkiyenin-daglari-ovalari-platolari
+TYT,Coğrafya,TÜRKİYE'NİN YER ŞEKİLLERİ,Türkiye'de Akarsular ve Oluşturdukları Şekiller,tyt,tyt-cografya,tyt-cografya-turkiyenin-yer-sekilleri,tyt-cografya-turkiyenin-yer-sekilleri-turkiyede-akarsular-ve-olusturduklari-sekiller
+TYT,Coğrafya,TÜRKİYE'NİN YER ŞEKİLLERİ,Türkiye'de Karstik Şekiller - Dalga ve Akıntıların Oluşturduğu Yer Şekilleri - Kıyı Tipleri,tyt,tyt-cografya,tyt-cografya-turkiyenin-yer-sekilleri,tyt-cografya-turkiyenin-yer-sekilleri-turkiyede-karstik-sekiller-dalga-ve-akintilarin-olusturdugu-yer-sekilleri-kiyi-tipleri
+TYT,Coğrafya,"DOĞADAKİ ÜÇ UNSUR: SU, TOPRAK VE BİTKİ",Su Kaynakları - Türkiye'nin Su Varlığı,tyt,tyt-cografya,tyt-cografya-dogadaki-uc-unsur-su-toprak-ve-bitki,tyt-cografya-dogadaki-uc-unsur-su-toprak-ve-bitki-su-kaynaklari-turkiyenin-su-varligi
+TYT,Coğrafya,"DOĞADAKİ ÜÇ UNSUR: SU, TOPRAK VE BİTKİ",Toprağın Hikâyesi ve Türkiye'de Toprak,tyt,tyt-cografya,tyt-cografya-dogadaki-uc-unsur-su-toprak-ve-bitki,tyt-cografya-dogadaki-uc-unsur-su-toprak-ve-bitki-topragin-hikyesi-ve-turkiyede-toprak
+TYT,Coğrafya,"DOĞADAKİ ÜÇ UNSUR: SU, TOPRAK VE BİTKİ",Dünya'yı Kaplayan Örtü: Bitkiler ve Türkiye'de Bitkiler,tyt,tyt-cografya,tyt-cografya-dogadaki-uc-unsur-su-toprak-ve-bitki,tyt-cografya-dogadaki-uc-unsur-su-toprak-ve-bitki-dunyayi-kaplayan-ortu-bitkiler-ve-turkiyede-bitkiler
+TYT,Coğrafya,"NÜFUSUN GELİŞİMİ, DAĞILIŞI VE NİTELİKLERİ",Beşeri Yapı,tyt,tyt-cografya,tyt-cografya-nufusun-gelisimi-dagilisi-ve-nitelikleri,tyt-cografya-nufusun-gelisimi-dagilisi-ve-nitelikleri-beseri-yapi
+TYT,Coğrafya,"NÜFUSUN GELİŞİMİ, DAĞILIŞI VE NİTELİKLERİ",Yerleşme Tipleri ve Özellikleri,tyt,tyt-cografya,tyt-cografya-nufusun-gelisimi-dagilisi-ve-nitelikleri,tyt-cografya-nufusun-gelisimi-dagilisi-ve-nitelikleri-yerlesme-tipleri-ve-ozellikleri
+TYT,Coğrafya,"NÜFUSUN GELİŞİMİ, DAĞILIŞI VE NİTELİKLERİ",Nüfusun Özellikleri ve Dağılışı,tyt,tyt-cografya,tyt-cografya-nufusun-gelisimi-dagilisi-ve-nitelikleri,tyt-cografya-nufusun-gelisimi-dagilisi-ve-nitelikleri-nufusun-ozellikleri-ve-dagilisi
+TYT,Coğrafya,"NÜFUSUN GELİŞİMİ, DAĞILIŞI VE NİTELİKLERİ",Nüfus Piramitleri ve Özellikleri,tyt,tyt-cografya,tyt-cografya-nufusun-gelisimi-dagilisi-ve-nitelikleri,tyt-cografya-nufusun-gelisimi-dagilisi-ve-nitelikleri-nufus-piramitleri-ve-ozellikleri
+TYT,Coğrafya,"NÜFUSUN GELİŞİMİ, DAĞILIŞI VE NİTELİKLERİ",Göçler,tyt,tyt-cografya,tyt-cografya-nufusun-gelisimi-dagilisi-ve-nitelikleri,tyt-cografya-nufusun-gelisimi-dagilisi-ve-nitelikleri-gocler
+TYT,Coğrafya,"NÜFUSUN GELİŞİMİ, DAĞILIŞI VE NİTELİKLERİ",Ekonomik Faaliyetlerin Sınıflandırılması,tyt,tyt-cografya,tyt-cografya-nufusun-gelisimi-dagilisi-ve-nitelikleri,tyt-cografya-nufusun-gelisimi-dagilisi-ve-nitelikleri-ekonomik-faaliyetlerin-siniflandirilmasi
+TYT,Coğrafya,TÜRKİYE'NİN NÜFUS ÖZELLİKLERİ VE NÜFUS HAREKETLERİ,Türkiye'de Nüfus ve Yerleşmeyi Etkileyen Faktörler,tyt,tyt-cografya,tyt-cografya-turkiyenin-nufus-ozellikleri-ve-nufus-hareketleri,tyt-cografya-turkiyenin-nufus-ozellikleri-ve-nufus-hareketleri-turkiyede-nufus-ve-yerlesmeyi-etkileyen-faktorler
+TYT,Coğrafya,TÜRKİYE'NİN NÜFUS ÖZELLİKLERİ VE NÜFUS HAREKETLERİ,Türkiye'de Nüfus ve Yerleşme,tyt,tyt-cografya,tyt-cografya-turkiyenin-nufus-ozellikleri-ve-nufus-hareketleri,tyt-cografya-turkiyenin-nufus-ozellikleri-ve-nufus-hareketleri-turkiyede-nufus-ve-yerlesme
+TYT,Coğrafya,TÜRKİYE'NİN NÜFUS ÖZELLİKLERİ VE NÜFUS HAREKETLERİ,Türkiye'de Nüfusun Yapısal Özellikleri,tyt,tyt-cografya,tyt-cografya-turkiyenin-nufus-ozellikleri-ve-nufus-hareketleri,tyt-cografya-turkiyenin-nufus-ozellikleri-ve-nufus-hareketleri-turkiyede-nufusun-yapisal-ozellikleri
+TYT,Coğrafya,TÜRKİYE'NİN NÜFUS ÖZELLİKLERİ VE NÜFUS HAREKETLERİ,Türkiye'de Nüfusun Tarihsel Değişimi ve Göçler,tyt,tyt-cografya,tyt-cografya-turkiyenin-nufus-ozellikleri-ve-nufus-hareketleri,tyt-cografya-turkiyenin-nufus-ozellikleri-ve-nufus-hareketleri-turkiyede-nufusun-tarihsel-degisimi-ve-gocler
+TYT,Coğrafya,KÜRESEL ORTAM: BÖLGELER VE ÜLKELER,Bölge Kavramı ve Türleri,tyt,tyt-cografya,tyt-cografya-kuresel-ortam-bolgeler-ve-ulkeler,tyt-cografya-kuresel-ortam-bolgeler-ve-ulkeler-bolge-kavrami-ve-turleri
+TYT,Coğrafya,KÜRESEL ORTAM: BÖLGELER VE ÜLKELER,Ulaşım,tyt,tyt-cografya,tyt-cografya-kuresel-ortam-bolgeler-ve-ulkeler,tyt-cografya-kuresel-ortam-bolgeler-ve-ulkeler-ulasim
+TYT,Coğrafya,KÜRESEL ORTAM: BÖLGELER VE ÜLKELER,Kıtaların Keşfi: Küçülen Dünya - Ulaşım,tyt,tyt-cografya,tyt-cografya-kuresel-ortam-bolgeler-ve-ulkeler,tyt-cografya-kuresel-ortam-bolgeler-ve-ulkeler-kitalarin-kesfi-kuculen-dunya-ulasim
+TYT,Coğrafya,ÇEVRE VE TOPLUM,Çevre ve İnsan,tyt,tyt-cografya,tyt-cografya-cevre-ve-toplum,tyt-cografya-cevre-ve-toplum-cevre-ve-insan
+TYT,Coğrafya,ÇEVRE VE TOPLUM,Doğal Afetler,tyt,tyt-cografya,tyt-cografya-cevre-ve-toplum,tyt-cografya-cevre-ve-toplum-dogal-afetler
+TYT,Din Kültürü ve Ahlak Bilgisi,İNSAN VE İNANÇ,Bilgi ve İnanç,tyt,tyt-din-kulturu-ve-ahlak-bilgisi,tyt-din-kulturu-ve-ahlak-bilgisi-insan-ve-inanc,tyt-din-kulturu-ve-ahlak-bilgisi-insan-ve-inanc-bilgi-ve-inanc
+TYT,Din Kültürü ve Ahlak Bilgisi,İNSAN VE İNANÇ,Din ve İslam,tyt,tyt-din-kulturu-ve-ahlak-bilgisi,tyt-din-kulturu-ve-ahlak-bilgisi-insan-ve-inanc,tyt-din-kulturu-ve-ahlak-bilgisi-insan-ve-inanc-din-ve-islam
+TYT,Din Kültürü ve Ahlak Bilgisi,İNSAN VE İNANÇ,Allah ve İnsan İlişkisi,tyt,tyt-din-kulturu-ve-ahlak-bilgisi,tyt-din-kulturu-ve-ahlak-bilgisi-insan-ve-inanc,tyt-din-kulturu-ve-ahlak-bilgisi-insan-ve-inanc-allah-ve-insan-iliskisi
+TYT,Din Kültürü ve Ahlak Bilgisi,İNSAN VE İNANÇ,Dünya ve Ahiret Hayatı,tyt,tyt-din-kulturu-ve-ahlak-bilgisi,tyt-din-kulturu-ve-ahlak-bilgisi-insan-ve-inanc,tyt-din-kulturu-ve-ahlak-bilgisi-insan-ve-inanc-dunya-ve-ahiret-hayati
+TYT,Din Kültürü ve Ahlak Bilgisi,İNSAN VE İNANÇ,Kur'an'dan Bazı Kavramlar,tyt,tyt-din-kulturu-ve-ahlak-bilgisi,tyt-din-kulturu-ve-ahlak-bilgisi-insan-ve-inanc,tyt-din-kulturu-ve-ahlak-bilgisi-insan-ve-inanc-kurandan-bazi-kavramlar
+TYT,Din Kültürü ve Ahlak Bilgisi,İNSAN VE İNANÇ,İnançla İlgili Meseleler,tyt,tyt-din-kulturu-ve-ahlak-bilgisi,tyt-din-kulturu-ve-ahlak-bilgisi-insan-ve-inanc,tyt-din-kulturu-ve-ahlak-bilgisi-insan-ve-inanc-inancla-ilgili-meseleler
+TYT,Din Kültürü ve Ahlak Bilgisi,GÜNÜMÜZDE YAŞAYAN DİNLER,Yahudilik ve Hristiyanlık,tyt,tyt-din-kulturu-ve-ahlak-bilgisi,tyt-din-kulturu-ve-ahlak-bilgisi-gunumuzde-yasayan-dinler,tyt-din-kulturu-ve-ahlak-bilgisi-gunumuzde-yasayan-dinler-yahudilik-ve-hristiyanlik
+TYT,Din Kültürü ve Ahlak Bilgisi,GÜNÜMÜZDE YAŞAYAN DİNLER,Hint ve Çin Dinleri,tyt,tyt-din-kulturu-ve-ahlak-bilgisi,tyt-din-kulturu-ve-ahlak-bilgisi-gunumuzde-yasayan-dinler,tyt-din-kulturu-ve-ahlak-bilgisi-gunumuzde-yasayan-dinler-hint-ve-cin-dinleri
+TYT,Din Kültürü ve Ahlak Bilgisi,İSLAM VE HAYAT,İslam ve İbadet,tyt,tyt-din-kulturu-ve-ahlak-bilgisi,tyt-din-kulturu-ve-ahlak-bilgisi-islam-ve-hayat,tyt-din-kulturu-ve-ahlak-bilgisi-islam-ve-hayat-islam-ve-ibadet
+TYT,Din Kültürü ve Ahlak Bilgisi,İSLAM VE HAYAT,Gençlik ve Değerler,tyt,tyt-din-kulturu-ve-ahlak-bilgisi,tyt-din-kulturu-ve-ahlak-bilgisi-islam-ve-hayat,tyt-din-kulturu-ve-ahlak-bilgisi-islam-ve-hayat-genclik-ve-degerler
+TYT,Din Kültürü ve Ahlak Bilgisi,İSLAM VE HAYAT,Gönül Coğrafyamız,tyt,tyt-din-kulturu-ve-ahlak-bilgisi,tyt-din-kulturu-ve-ahlak-bilgisi-islam-ve-hayat,tyt-din-kulturu-ve-ahlak-bilgisi-islam-ve-hayat-gonul-cografyamiz
+TYT,Din Kültürü ve Ahlak Bilgisi,İSLAM VE HAYAT,Din ve Hayat,tyt,tyt-din-kulturu-ve-ahlak-bilgisi,tyt-din-kulturu-ve-ahlak-bilgisi-islam-ve-hayat,tyt-din-kulturu-ve-ahlak-bilgisi-islam-ve-hayat-din-ve-hayat
+TYT,Din Kültürü ve Ahlak Bilgisi,İSLAM VE HAYAT,Ahlaki Tutum ve Davranışlar,tyt,tyt-din-kulturu-ve-ahlak-bilgisi,tyt-din-kulturu-ve-ahlak-bilgisi-islam-ve-hayat,tyt-din-kulturu-ve-ahlak-bilgisi-islam-ve-hayat-ahlaki-tutum-ve-davranislar
+TYT,Din Kültürü ve Ahlak Bilgisi,İSLAM VE HAYAT,İslam ve Bilim,tyt,tyt-din-kulturu-ve-ahlak-bilgisi,tyt-din-kulturu-ve-ahlak-bilgisi-islam-ve-hayat,tyt-din-kulturu-ve-ahlak-bilgisi-islam-ve-hayat-islam-ve-bilim
+TYT,Din Kültürü ve Ahlak Bilgisi,İSLAM VE HAYAT,Güncel Dini Meseleler,tyt,tyt-din-kulturu-ve-ahlak-bilgisi,tyt-din-kulturu-ve-ahlak-bilgisi-islam-ve-hayat,tyt-din-kulturu-ve-ahlak-bilgisi-islam-ve-hayat-guncel-dini-meseleler
+TYT,Din Kültürü ve Ahlak Bilgisi,HZ. MUHAMMED,Hz. Muhammed ve Gençlik,tyt,tyt-din-kulturu-ve-ahlak-bilgisi,tyt-din-kulturu-ve-ahlak-bilgisi-hz-muhammed,tyt-din-kulturu-ve-ahlak-bilgisi-hz-muhammed-hz-muhammed-ve-genclik
+TYT,Din Kültürü ve Ahlak Bilgisi,HZ. MUHAMMED,Kur'an'a Göre Hz. Muhammed,tyt,tyt-din-kulturu-ve-ahlak-bilgisi,tyt-din-kulturu-ve-ahlak-bilgisi-hz-muhammed,tyt-din-kulturu-ve-ahlak-bilgisi-hz-muhammed-kurana-gore-hz-muhammed
+TYT,Din Kültürü ve Ahlak Bilgisi,İSLAM'DA YORUMLAR,"İslam Düşüncesinde İtikadi, Siyasi ve Fıkhi Yorumlar",tyt,tyt-din-kulturu-ve-ahlak-bilgisi,tyt-din-kulturu-ve-ahlak-bilgisi-islamda-yorumlar,tyt-din-kulturu-ve-ahlak-bilgisi-islamda-yorumlar-islam-dusuncesinde-itikadi-siyasi-ve-fikhi-yorumlar
+TYT,Din Kültürü ve Ahlak Bilgisi,İSLAM'DA YORUMLAR,Anadolu'da İslam,tyt,tyt-din-kulturu-ve-ahlak-bilgisi,tyt-din-kulturu-ve-ahlak-bilgisi-islamda-yorumlar,tyt-din-kulturu-ve-ahlak-bilgisi-islamda-yorumlar-anadoluda-islam
+TYT,Din Kültürü ve Ahlak Bilgisi,İSLAM'DA YORUMLAR,İslam Düşüncesinde Tasavvufi Yorumlar,tyt,tyt-din-kulturu-ve-ahlak-bilgisi,tyt-din-kulturu-ve-ahlak-bilgisi-islamda-yorumlar,tyt-din-kulturu-ve-ahlak-bilgisi-islamda-yorumlar-islam-dusuncesinde-tasavvufi-yorumlar
 TYT,Felsefe,FELSEFEYE GIRIŞ,Felsefeye Giriş,tyt,tyt-felsefe,tyt-felsefe-felsefeye-giris,tyt-felsefe-felsefeye-giris-felsefeye-giris
 TYT,Felsefe,FELSEFEYE GIRIŞ,Düşünme ve Akıl Yürütme,tyt,tyt-felsefe,tyt-felsefe-felsefeye-giris,tyt-felsefe-felsefeye-giris-dusunme-ve-akil-yurutme
 TYT,Felsefe,FELSEFI DISIPLINLER,Varlık Felsefesi,tyt,tyt-felsefe,tyt-felsefe-felsefi-disiplinler,tyt-felsefe-felsefi-disiplinler-varlik-felsefesi
@@ -141,149 +115,276 @@ TYT,Felsefe,FELSEFE TARIHI,15-17. Yüzyıl'da Felsefe,tyt,tyt-felsefe,tyt-felsef
 TYT,Felsefe,FELSEFE TARIHI,18-19. Yüzyıl'da Felsefe,tyt,tyt-felsefe,tyt-felsefe-felsefe-tarihi,tyt-felsefe-felsefe-tarihi-18-19-yuzyilda-felsefe
 TYT,Felsefe,FELSEFE TARIHI,20. Yüzyıl Felsefesi ve Ana Akımlar,tyt,tyt-felsefe,tyt-felsefe-felsefe-tarihi,tyt-felsefe-felsefe-tarihi-20-yuzyil-felsefesi-ve-ana-akimlar
 TYT,Felsefe,FELSEFE TARIHI,20. Yüzyıl Filozoflarının Görüşleri,tyt,tyt-felsefe,tyt-felsefe-felsefe-tarihi,tyt-felsefe-felsefe-tarihi-20-yuzyil-filozoflarinin-gorusleri
-AYT,Matematik,TRIGONOMETRI,Yönlü açılar,ayt,ayt-matematik,ayt-matematik-trigonometri,ayt-matematik-trigonometri-yonlu-acilar
-AYT,Matematik,TRIGONOMETRI,Trigonometrik fonksiyonlar,ayt,ayt-matematik,ayt-matematik-trigonometri,ayt-matematik-trigonometri-trigonometrik-fonksiyonlar
-AYT,Matematik,TRIGONOMETRI,Toplam - fark ve iki kat açı formülleri,ayt,ayt-matematik,ayt-matematik-trigonometri,ayt-matematik-trigonometri-toplam-fark-ve-iki-kat-aci-formulleri
-AYT,Matematik,TRIGONOMETRI,Trigonometrik denklemler,ayt,ayt-matematik,ayt-matematik-trigonometri,ayt-matematik-trigonometri-trigonometrik-denklemler
-AYT,Matematik,ANALITIK GEOMETRI,Doğrunun analitik incelenmesi,ayt,ayt-matematik,ayt-matematik-analitik-geometri,ayt-matematik-analitik-geometri-dogrunun-analitik-incelenmesi
-AYT,Matematik,ANALITIK GEOMETRI,Çemberin Analitik İncelenmesi,ayt,ayt-matematik,ayt-matematik-analitik-geometri,ayt-matematik-analitik-geometri-cemberin-analitik-incelenmesi
-AYT,Matematik,FONKSIYONLARDA UYGULAMALAR,Fonksiyonlar ile ilgili uygulamalar,ayt,ayt-matematik,ayt-matematik-fonksiyonlarda-uygulamalar,ayt-matematik-fonksiyonlarda-uygulamalar-fonksiyonlar-ile-ilgili-uygulamalar
-AYT,Matematik,FONKSIYONLARDA UYGULAMALAR,İkinci dereceden fonksiyonlar ve grafikleri,ayt,ayt-matematik,ayt-matematik-fonksiyonlarda-uygulamalar,ayt-matematik-fonksiyonlarda-uygulamalar-ikinci-dereceden-fonksiyonlar-ve-grafikleri
-AYT,Matematik,FONKSIYONLARDA UYGULAMALAR,Fonksiyonların dönüşümleri,ayt,ayt-matematik,ayt-matematik-fonksiyonlarda-uygulamalar,ayt-matematik-fonksiyonlarda-uygulamalar-fonksiyonlarin-donusumleri
-AYT,Matematik,DENKLEM VE EŞITSIZLIKLER,İkinci dereceden iki bilinmeyenli denklem sistemleri,ayt,ayt-matematik,ayt-matematik-denklem-ve-esitsizlikler,ayt-matematik-denklem-ve-esitsizlikler-ikinci-dereceden-iki-bilinmeyenli-denklem-sistemleri
-AYT,Matematik,DENKLEM VE EŞITSIZLIKLER,İkinci dereceden bir bilinmeyenli eşitsizlik sistemleri,ayt,ayt-matematik,ayt-matematik-denklem-ve-esitsizlikler,ayt-matematik-denklem-ve-esitsizlikler-ikinci-dereceden-bir-bilinmeyenli-esitsizlik-sistemleri
-AYT,Matematik,ÇEMBER VE DAIRE,Çemberin temel elemanları ve Çemberde açılar,ayt,ayt-matematik,ayt-matematik-cember-ve-daire,ayt-matematik-cember-ve-daire-cemberin-temel-elemanlari-ve-cemberde-acilar
-AYT,Matematik,ÇEMBER VE DAIRE,Çemberde teğet ve Dairenin çevresi ve alanı,ayt,ayt-matematik,ayt-matematik-cember-ve-daire,ayt-matematik-cember-ve-daire-cemberde-teget-ve-dairenin-cevresi-ve-alani
-AYT,Matematik,UZAY GEOMETRI,Katı cisimler,ayt,ayt-matematik,ayt-matematik-uzay-geometri,ayt-matematik-uzay-geometri-kati-cisimler
-AYT,Matematik,OLASILIK,Koşullu olasılık ve Deneysel ve teorik olasılık,ayt,ayt-matematik,ayt-matematik-olasilik,ayt-matematik-olasilik-kosullu-olasilik-ve-deneysel-ve-teorik-olasilik
-AYT,Matematik,ÜSTEL VE LOGARITMIK FONKSIYONLAR,Üstel fonksiyon,ayt,ayt-matematik,ayt-matematik-ustel-ve-logaritmik-fonksiyonlar,ayt-matematik-ustel-ve-logaritmik-fonksiyonlar-ustel-fonksiyon
-AYT,Matematik,ÜSTEL VE LOGARITMIK FONKSIYONLAR,Logaritma fonksiyonu,ayt,ayt-matematik,ayt-matematik-ustel-ve-logaritmik-fonksiyonlar,ayt-matematik-ustel-ve-logaritmik-fonksiyonlar-logaritma-fonksiyonu
-AYT,Matematik,ÜSTEL VE LOGARITMIK FONKSIYONLAR,"Üstel, logaritmik denklemler ve eşitsizlikler",ayt,ayt-matematik,ayt-matematik-ustel-ve-logaritmik-fonksiyonlar,ayt-matematik-ustel-ve-logaritmik-fonksiyonlar-ustel-logaritmik-denklemler-ve-esitsizlikler
-AYT,Matematik,DIZILER,Gerçek sayı dizileri,ayt,ayt-matematik,ayt-matematik-diziler,ayt-matematik-diziler-gercek-sayi-dizileri
-AYT,Matematik,DÖNÜŞÜMLER,Analitik düzlemde temel dönüşümler,ayt,ayt-matematik,ayt-matematik-donusumler,ayt-matematik-donusumler-analitik-duzlemde-temel-donusumler
-AYT,Matematik,TÜREV,Limit ve Süreklilik,ayt,ayt-matematik,ayt-matematik-turev,ayt-matematik-turev-limit-ve-sureklilik
-AYT,Matematik,TÜREV,Anlık Değişim Oranı ve Türev,ayt,ayt-matematik,ayt-matematik-turev,ayt-matematik-turev-anlik-degisim-orani-ve-turev
-AYT,Matematik,TÜREV,Türevin Uygulamaları,ayt,ayt-matematik,ayt-matematik-turev,ayt-matematik-turev-turevin-uygulamalari
-AYT,Matematik,İNTEGRAL,Belirsiz Integral,ayt,ayt-matematik,ayt-matematik-integral,ayt-matematik-integral-belirsiz-integral
-AYT,Matematik,İNTEGRAL,Belirli İntegral ve Uygulamaları,ayt,ayt-matematik,ayt-matematik-integral,ayt-matematik-integral-belirli-integral-ve-uygulamalari
-AYT,Fizik,KUVVET VE HAREKET,Vektörler,ayt-sayisal,ayt-fizik,ayt-fizik-kuvvet-ve-hareket,ayt-fizik-kuvvet-ve-hareket-vektorler
-AYT,Fizik,KUVVET VE HAREKET,Bağıl Hareket,ayt-sayisal,ayt-fizik,ayt-fizik-kuvvet-ve-hareket,ayt-fizik-kuvvet-ve-hareket-bagil-hareket
-AYT,Fizik,KUVVET VE HAREKET,Newton'ın Hareket Yasaları,ayt-sayisal,ayt-fizik,ayt-fizik-kuvvet-ve-hareket,ayt-fizik-kuvvet-ve-hareket-newton-in-hareket-yasalari
-AYT,Fizik,KUVVET VE HAREKET,Bir Boyutta Sabit İvmeli Hareket,ayt-sayisal,ayt-fizik,ayt-fizik-kuvvet-ve-hareket,ayt-fizik-kuvvet-ve-hareket-bir-boyutta-sabit-ivmeli-hareket
-AYT,Fizik,KUVVET VE HAREKET,İki Boyutta Sabit İvmeli Hareket,ayt-sayisal,ayt-fizik,ayt-fizik-kuvvet-ve-hareket,ayt-fizik-kuvvet-ve-hareket-iki-boyutta-sabit-ivmeli-hareket
-AYT,Fizik,KUVVET VE HAREKET,Enerji ve Hareket,ayt-sayisal,ayt-fizik,ayt-fizik-kuvvet-ve-hareket,ayt-fizik-kuvvet-ve-hareket-enerji-ve-hareket
-AYT,Fizik,KUVVET VE HAREKET,İtme ve Çizgisel Momentum,ayt-sayisal,ayt-fizik,ayt-fizik-kuvvet-ve-hareket,ayt-fizik-kuvvet-ve-hareket-itme-ve-cizgisel-momentum
-AYT,Fizik,KUVVET VE HAREKET,Tork ve Denge,ayt-sayisal,ayt-fizik,ayt-fizik-kuvvet-ve-hareket,ayt-fizik-kuvvet-ve-hareket-tork-ve-denge
-AYT,Fizik,KUVVET VE HAREKET,Basit Makineler,ayt-sayisal,ayt-fizik,ayt-fizik-kuvvet-ve-hareket,ayt-fizik-kuvvet-ve-hareket-basit-makineler
-AYT,Fizik,ELEKTRIK VE MANYETIZMA,Elektriksel Kuvvet Elektrik Alan,ayt-sayisal,ayt-fizik,ayt-fizik-elektrik-ve-manyetizma,ayt-fizik-elektrik-ve-manyetizma-elektriksel-kuvvet-elektrik-alan
-AYT,Fizik,ELEKTRIK VE MANYETIZMA,Elektriksel Potansiyel,ayt-sayisal,ayt-fizik,ayt-fizik-elektrik-ve-manyetizma,ayt-fizik-elektrik-ve-manyetizma-elektriksel-potansiyel
-AYT,Fizik,ELEKTRIK VE MANYETIZMA,Düzgün Elektrik Alan ve Sığa,ayt-sayisal,ayt-fizik,ayt-fizik-elektrik-ve-manyetizma,ayt-fizik-elektrik-ve-manyetizma-duzgun-elektrik-alan-ve-siga
-AYT,Fizik,ELEKTRIK VE MANYETIZMA,Manyetizma ve Elektromanyetik İndüklenme,ayt-sayisal,ayt-fizik,ayt-fizik-elektrik-ve-manyetizma,ayt-fizik-elektrik-ve-manyetizma-manyetizma-ve-elektromanyetik-induklenme
-AYT,Fizik,ELEKTRIK VE MANYETIZMA,Alternatif Akım ve Transformatörler,ayt-sayisal,ayt-fizik,ayt-fizik-elektrik-ve-manyetizma,ayt-fizik-elektrik-ve-manyetizma-alternatif-akim-ve-transformatorler
-AYT,Fizik,ÇEMBERSEL HAREKET,Çembersel Hareket,ayt-sayisal,ayt-fizik,ayt-fizik-cembersel-hareket,ayt-fizik-cembersel-hareket-cembersel-hareket
-AYT,Fizik,ÇEMBERSEL HAREKET,Açısal Momentum-Kütle Çekim Kuvveti ve Kepler Kanunları,ayt-sayisal,ayt-fizik,ayt-fizik-cembersel-hareket,ayt-fizik-cembersel-hareket-acisal-momentum-kutle-cekim-kuvveti-ve-kepler-kanunlari
-AYT,Fizik,BASIT HARMONIK HAREKET,Basit Harmonik Hareket,ayt-sayisal,ayt-fizik,ayt-fizik-basit-harmonik-hareket,ayt-fizik-basit-harmonik-hareket-basit-harmonik-hareket
-AYT,Fizik,DALGA MEKANIĞI,"Dalgalarda Kırınım, Girişim, Doppler Olayı, Elektromanyetik Dalgalar",ayt-sayisal,ayt-fizik,ayt-fizik-dalga-mekanigi,ayt-fizik-dalga-mekanigi-dalgalarda-kirinim-girisim-doppler-olayi-elektromanyetik-dalgalar
-AYT,Fizik,ATOM FIZIĞINE GIRIŞ VE RADYOAKTIVITE,Atom Kavramının Tarihsel Gelişimi,ayt-sayisal,ayt-fizik,ayt-fizik-atom-fizigine-giris-ve-radyoaktivite,ayt-fizik-atom-fizigine-giris-ve-radyoaktivite-atom-kavraminin-tarihsel-gelisimi
-AYT,Fizik,ATOM FIZIĞINE GIRIŞ VE RADYOAKTIVITE,Büyük Patlama ve Evrenin Oluşumu,ayt-sayisal,ayt-fizik,ayt-fizik-atom-fizigine-giris-ve-radyoaktivite,ayt-fizik-atom-fizigine-giris-ve-radyoaktivite-buyuk-patlama-ve-evrenin-olusumu
-AYT,Fizik,ATOM FIZIĞINE GIRIŞ VE RADYOAKTIVITE,Radyoaktivite,ayt-sayisal,ayt-fizik,ayt-fizik-atom-fizigine-giris-ve-radyoaktivite,ayt-fizik-atom-fizigine-giris-ve-radyoaktivite-radyoaktivite
-AYT,Fizik,MODERN FIZIK,Özel Görelilik ve Kuantum Fiziğine Giriş,ayt-sayisal,ayt-fizik,ayt-fizik-modern-fizik,ayt-fizik-modern-fizik-ozel-gorelilik-ve-kuantum-fizigine-giris
-AYT,Fizik,MODERN FIZIK,Fotoelektrik Olayı,ayt-sayisal,ayt-fizik,ayt-fizik-modern-fizik,ayt-fizik-modern-fizik-fotoelektrik-olayi
-AYT,Fizik,MODERN FIZIĞIN TEKNOLOJIDEKI UYGULAMALARI,Compton Saçılması ve de Broglie Dalga Boyu,ayt-sayisal,ayt-fizik,ayt-fizik-modern-fizigin-teknolojideki-uygulamalari,ayt-fizik-modern-fizigin-teknolojideki-uygulamalari-compton-sacilmasi-ve-de-broglie-dalga-boyu
-AYT,Fizik,MODERN FIZIĞIN TEKNOLOJIDEKI UYGULAMALARI,Modern Fiziğin Teknolojideki Uygulamaları,ayt-sayisal,ayt-fizik,ayt-fizik-modern-fizigin-teknolojideki-uygulamalari,ayt-fizik-modern-fizigin-teknolojideki-uygulamalari-modern-fizigin-teknolojideki-uygulamalari
-AYT,Kimya,MODERN ATOM TEORISI,Atomun Kuantum Modeli - Periyodik Sistem ve Elektron Dizilimleri,ayt-sayisal,ayt-kimya,ayt-kimya-modern-atom-teorisi,ayt-kimya-modern-atom-teorisi-atomun-kuantum-modeli-periyodik-sistem-ve-elektron-dizilimleri
-AYT,Kimya,MODERN ATOM TEORISI,Periyodik Özellikler - Elementleri Tanıyalım - Yükseltgenme Basamakları,ayt-sayisal,ayt-kimya,ayt-kimya-modern-atom-teorisi,ayt-kimya-modern-atom-teorisi-periyodik-ozellikler-elementleri-taniyalim-yukseltgenme-basamaklari
-AYT,Kimya,GAZLAR,Gazların Özellikleri ve Gaz Yasaları - İdeal Gaz Yasası,ayt-sayisal,ayt-kimya,ayt-kimya-gazlar,ayt-kimya-gazlar-gazlarin-ozellikleri-ve-gaz-yasalari-ideal-gaz-yasasi
-AYT,Kimya,GAZLAR,Gazlarda Kinetik Teori - Gaz Karışımları - Gerçek Gazlar,ayt-sayisal,ayt-kimya,ayt-kimya-gazlar,ayt-kimya-gazlar-gazlarda-kinetik-teori-gaz-karisimlari-gercek-gazlar
-AYT,Kimya,SIVI ÇÖZELTILER VE ÇÖZÜNÜRLÜK,Çözücü ve Çözünen Etkileşimleri - Derişim Birimleri,ayt-sayisal,ayt-kimya,ayt-kimya-sivi-cozeltiler-ve-cozunurluk,ayt-kimya-sivi-cozeltiler-ve-cozunurluk-cozucu-ve-cozunen-etkilesimleri-derisim-birimleri
-AYT,Kimya,SIVI ÇÖZELTILER VE ÇÖZÜNÜRLÜK,Koligatif Özellikler - Çözünürlük - Çözünürlüğe Etki Eden Faktörler,ayt-sayisal,ayt-kimya,ayt-kimya-sivi-cozeltiler-ve-cozunurluk,ayt-kimya-sivi-cozeltiler-ve-cozunurluk-koligatif-ozellikler-cozunurluk-cozunurluge-etki-eden-faktorler
-AYT,Kimya,KIMYASAL TEPKIMELERDE ENERJI,Tepkimelerde Isı Değişimi - Oluşum Entalpisi - Tepkime Isılarının Toplanabilirliği,ayt-sayisal,ayt-kimya,ayt-kimya-kimyasal-tepkimelerde-enerji,ayt-kimya-kimyasal-tepkimelerde-enerji-tepkimelerde-isi-degisimi-olusum-entalpisi-tepkime-isilarinin-toplanabilirligi
-AYT,Kimya,KIMYASAL TEPKIMELERDE HIZ,Tepkime Hızı - Tepkime Hızını Etkileyen Faktörler,ayt-sayisal,ayt-kimya,ayt-kimya-kimyasal-tepkimelerde-hiz,ayt-kimya-kimyasal-tepkimelerde-hiz-tepkime-hizi-tepkime-hizini-etkileyen-faktorler
-AYT,Kimya,KIMYASAL TEPKIMELERDE DENGE,"Kimyasal Denge - Dengeyi Etkileyen Faktörler, Sulu Çözelti Dengeleri",ayt-sayisal,ayt-kimya,ayt-kimya-kimyasal-tepkimelerde-denge,ayt-kimya-kimyasal-tepkimelerde-denge-kimyasal-denge-dengeyi-etkileyen-faktorler-sulu-cozelti-dengeleri
-AYT,Kimya,KIMYA VE ELEKTRIK,İndirgenme - Yükseltgenme Tepkimelerinde Elektrik Akımı,ayt-sayisal,ayt-kimya,ayt-kimya-kimya-ve-elektrik,ayt-kimya-kimya-ve-elektrik-indirgenme-yukseltgenme-tepkimelerinde-elektrik-akimi
-AYT,Kimya,KIMYA VE ELEKTRIK,Elektrokimyasal Hücreler - Elektrot Potansiyelleri - Elektroliz - Korozyon,ayt-sayisal,ayt-kimya,ayt-kimya-kimya-ve-elektrik,ayt-kimya-kimya-ve-elektrik-elektrokimyasal-hucreler-elektrot-potansiyelleri-elektroliz-korozyon
-AYT,Kimya,KARBON KIMYASINA GIRIŞ,Anorganik ve Organik Bileşikler - Basit Formül - Molekül Formülü - Doğada Karbon,ayt-sayisal,ayt-kimya,ayt-kimya-karbon-kimyasina-giris,ayt-kimya-karbon-kimyasina-giris-anorganik-ve-organik-bilesikler-basit-formul-molekul-formulu-dogada-karbon
-AYT,Kimya,KARBON KIMYASINA GIRIŞ,Lewis Formülleri - Hibritleşme - Molekül Geometrisi,ayt-sayisal,ayt-kimya,ayt-kimya-karbon-kimyasina-giris,ayt-kimya-karbon-kimyasina-giris-lewis-formulleri-hibritlesme-molekul-geometrisi
-AYT,Kimya,ORGANIK BILEŞIKLER,Hidrokarbonlar,ayt-sayisal,ayt-kimya,ayt-kimya-organik-bilesikler,ayt-kimya-organik-bilesikler-hidrokarbonlar
-AYT,Kimya,ORGANIK BILEŞIKLER,"Organik Bileşik Sınıfları (Alkoller, Eterler, Karbonil Bileşikleri, Karboksilik Asitler, Esterler)",ayt-sayisal,ayt-kimya,ayt-kimya-organik-bilesikler,ayt-kimya-organik-bilesikler-organik-bilesik-siniflari-alkoller-eterler-karbonil-bilesikleri-karboksilik-asitler-esterler
-AYT,Kimya,ENERJI KAYNAKLARI VE BILIMSEL GELIŞMELER,Fosil Yakıtlar - Enerji Kaynakları - Sürdürülebilirlik - Nanoteknoloji,ayt-sayisal,ayt-kimya,ayt-kimya-enerji-kaynaklari-ve-bilimsel-gelismeler,ayt-kimya-enerji-kaynaklari-ve-bilimsel-gelismeler-fosil-yakitlar-enerji-kaynaklari-surdurulebilirlik-nanoteknoloji
-AYT,Biyoloji,İNSAN FIZYOLOJISI,Sinir Sistemi,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-insan-fizyolojisi,ayt-biyoloji-insan-fizyolojisi-sinir-sistemi
-AYT,Biyoloji,İNSAN FIZYOLOJISI,Endokrin Sistem,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-insan-fizyolojisi,ayt-biyoloji-insan-fizyolojisi-endokrin-sistem
-AYT,Biyoloji,İNSAN FIZYOLOJISI,Duyu Organları,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-insan-fizyolojisi,ayt-biyoloji-insan-fizyolojisi-duyu-organlari
-AYT,Biyoloji,İNSAN FIZYOLOJISI,Destek ve Hareket Sistemi,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-insan-fizyolojisi,ayt-biyoloji-insan-fizyolojisi-destek-ve-hareket-sistemi
-AYT,Biyoloji,İNSAN FIZYOLOJISI,Sindirim Sistemi,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-insan-fizyolojisi,ayt-biyoloji-insan-fizyolojisi-sindirim-sistemi
-AYT,Biyoloji,İNSAN FIZYOLOJISI,Dolaşım Sistemleri,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-insan-fizyolojisi,ayt-biyoloji-insan-fizyolojisi-dolasim-sistemleri
-AYT,Biyoloji,İNSAN FIZYOLOJISI,Bağışıklık Çeşitleri ve Savunma Mekanizmaları,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-insan-fizyolojisi,ayt-biyoloji-insan-fizyolojisi-bagisiklik-cesitleri-ve-savunma-mekanizmalari
-AYT,Biyoloji,İNSAN FIZYOLOJISI,Solunum Sistemi,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-insan-fizyolojisi,ayt-biyoloji-insan-fizyolojisi-solunum-sistemi
-AYT,Biyoloji,İNSAN FIZYOLOJISI,Üriner Sistem,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-insan-fizyolojisi,ayt-biyoloji-insan-fizyolojisi-uriner-sistem
-AYT,Biyoloji,İNSAN FIZYOLOJISI,Üreme Sistemi ve Embriyonik Gelişim,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-insan-fizyolojisi,ayt-biyoloji-insan-fizyolojisi-ureme-sistemi-ve-embriyonik-gelisim
-AYT,Biyoloji,KOMÜNITE VE POPÜLASYON EKOLOJISI,Komünite Ekolojisi,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-komunite-ve-populasyon-ekolojisi,ayt-biyoloji-komunite-ve-populasyon-ekolojisi-komunite-ekolojisi
-AYT,Biyoloji,KOMÜNITE VE POPÜLASYON EKOLOJISI,Popülasyon Ekolojisi,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-komunite-ve-populasyon-ekolojisi,ayt-biyoloji-komunite-ve-populasyon-ekolojisi-populasyon-ekolojisi
-AYT,Biyoloji,GENDEN PROTEINE,Nükleik Asitlerin Keşfi ve Önemi,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-genden-proteine,ayt-biyoloji-genden-proteine-nukleik-asitlerin-kesfi-ve-onemi
-AYT,Biyoloji,GENDEN PROTEINE,Genetik Şifre ve Protein Sentezi,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-genden-proteine,ayt-biyoloji-genden-proteine-genetik-sifre-ve-protein-sentezi
-AYT,Biyoloji,GENDEN PROTEINE,Genetik Mühendisliği ve Biyoteknoloji,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-genden-proteine,ayt-biyoloji-genden-proteine-genetik-muhendisligi-ve-biyoteknoloji
-AYT,Biyoloji,CANLILARDA ENERJI DÖNÜŞÜMLERI,Canlılık ve Enerji - Fotosentez - Kemosentez,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-canlilarda-enerji-donusumleri,ayt-biyoloji-canlilarda-enerji-donusumleri-canlilik-ve-enerji-fotosentez-kemosentez
-AYT,Biyoloji,CANLILARDA ENERJI DÖNÜŞÜMLERI,Hücresel Solunum - Fermantasyon,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-canlilarda-enerji-donusumleri,ayt-biyoloji-canlilarda-enerji-donusumleri-hucresel-solunum-fermantasyon
-AYT,Biyoloji,CANLILARDA ENERJI DÖNÜŞÜMLERI,Fotosentez ve Solunum İlişkisi,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-canlilarda-enerji-donusumleri,ayt-biyoloji-canlilarda-enerji-donusumleri-fotosentez-ve-solunum-iliskisi
-AYT,Biyoloji,BITKI BIYOLOJISI,Bitkilerin Yapısı,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-bitki-biyolojisi,ayt-biyoloji-bitki-biyolojisi-bitkilerin-yapisi
-AYT,Biyoloji,BITKI BIYOLOJISI,Bitkilerde Madde Taşınması,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-bitki-biyolojisi,ayt-biyoloji-bitki-biyolojisi-bitkilerde-madde-tasinmasi
-AYT,Biyoloji,BITKI BIYOLOJISI,Bitkilerde Eşeyli Üreme,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-bitki-biyolojisi,ayt-biyoloji-bitki-biyolojisi-bitkilerde-eseyli-ureme
+TYT,Fizik,FİZİK BİLİMİNE GİRİŞ,Fizik Biliminin Tanımı ve Diğer Disiplinlerle İlişkisi,tyt,tyt-fizik,tyt-fizik-fizik-bilimine-giris,tyt-fizik-fizik-bilimine-giris-fizik-biliminin-tanimi-ve-diger-disiplinlerle-iliskisi
+TYT,Fizik,FİZİK BİLİMİNE GİRİŞ,Fizik Biliminin Alt Dalları,tyt,tyt-fizik,tyt-fizik-fizik-bilimine-giris,tyt-fizik-fizik-bilimine-giris-fizik-biliminin-alt-dallari
+TYT,Fizik,FİZİK BİLİMİNE GİRİŞ,Fiziksel Niceliklerin Sınıflandırılması,tyt,tyt-fizik,tyt-fizik-fizik-bilimine-giris,tyt-fizik-fizik-bilimine-giris-fiziksel-niceliklerin-siniflandirilmasi
+TYT,Fizik,FİZİK BİLİMİNE GİRİŞ,Bilimsel Araştırma Merkezleri ve Bilimsel Etik,tyt,tyt-fizik,tyt-fizik-fizik-bilimine-giris,tyt-fizik-fizik-bilimine-giris-bilimsel-arastirma-merkezleri-ve-bilimsel-etik
+TYT,Fizik,MADDE VE ÖZELLİKLERİ,Kütle - Hacim ve Özkütle,tyt,tyt-fizik,tyt-fizik-madde-ve-ozellikleri,tyt-fizik-madde-ve-ozellikleri-kutle-hacim-ve-ozkutle
+TYT,Fizik,MADDE VE ÖZELLİKLERİ,Katılarda Boyutlar Arası İlişkiler ve Dayanıklılık,tyt,tyt-fizik,tyt-fizik-madde-ve-ozellikleri,tyt-fizik-madde-ve-ozellikleri-katilarda-boyutlar-arasi-iliskiler-ve-dayaniklilik
+TYT,Fizik,MADDE VE ÖZELLİKLERİ,"Adesyon, Kohezyon, Yüzey Gerilimi ve Kılcallık",tyt,tyt-fizik,tyt-fizik-madde-ve-ozellikleri,tyt-fizik-madde-ve-ozellikleri-adesyon-kohezyon-yuzey-gerilimi-ve-kilcallik
+TYT,Fizik,BASINÇ,Katı Basıncı,tyt,tyt-fizik,tyt-fizik-basinc,tyt-fizik-basinc-kati-basinci
+TYT,Fizik,BASINÇ,Sıvı Basıncı,tyt,tyt-fizik,tyt-fizik-basinc,tyt-fizik-basinc-sivi-basinci
+TYT,Fizik,BASINÇ,Gaz Basıncı,tyt,tyt-fizik,tyt-fizik-basinc,tyt-fizik-basinc-gaz-basinci
+TYT,Fizik,BASINÇ,Akışkanlar Mekaniği,tyt,tyt-fizik,tyt-fizik-basinc,tyt-fizik-basinc-akiskanlar-mekanigi
+TYT,Fizik,KALDIRMA KUVVETİ,Sıvıların Kaldırma Kuvveti,tyt,tyt-fizik,tyt-fizik-kaldirma-kuvveti,tyt-fizik-kaldirma-kuvveti-sivilarin-kaldirma-kuvveti
+TYT,Fizik,ISI - SICAKLIK VE GENLEŞME,"Isı, Sıcaklık ve İç Enerji",tyt,tyt-fizik,tyt-fizik-isi-sicaklik-ve-genlesme,tyt-fizik-isi-sicaklik-ve-genlesme-isi-sicaklik-ve-ic-enerji
+TYT,Fizik,ISI - SICAKLIK VE GENLEŞME,Termometreler,tyt,tyt-fizik,tyt-fizik-isi-sicaklik-ve-genlesme,tyt-fizik-isi-sicaklik-ve-genlesme-termometreler
+TYT,Fizik,ISI - SICAKLIK VE GENLEŞME,Isı Alış - Verişi ve Isıl Denge,tyt,tyt-fizik,tyt-fizik-isi-sicaklik-ve-genlesme,tyt-fizik-isi-sicaklik-ve-genlesme-isi-alis-verisi-ve-isil-denge
+TYT,Fizik,ISI - SICAKLIK VE GENLEŞME,Hal Değişimi,tyt,tyt-fizik,tyt-fizik-isi-sicaklik-ve-genlesme,tyt-fizik-isi-sicaklik-ve-genlesme-hal-degisimi
+TYT,Fizik,ISI - SICAKLIK VE GENLEŞME,Isının Yayılma Yolları,tyt,tyt-fizik,tyt-fizik-isi-sicaklik-ve-genlesme,tyt-fizik-isi-sicaklik-ve-genlesme-isinin-yayilma-yollari
+TYT,Fizik,ISI - SICAKLIK VE GENLEŞME,Genleşme,tyt,tyt-fizik,tyt-fizik-isi-sicaklik-ve-genlesme,tyt-fizik-isi-sicaklik-ve-genlesme-genlesme
+TYT,Fizik,ISI - SICAKLIK VE GENLEŞME,Küresel Isınma ve Hissedilen Sıcaklık,tyt,tyt-fizik,tyt-fizik-isi-sicaklik-ve-genlesme,tyt-fizik-isi-sicaklik-ve-genlesme-kuresel-isinma-ve-hissedilen-sicaklik
+TYT,Fizik,HAREKET,Hareket Kavramı ve Çeşitleri,tyt,tyt-fizik,tyt-fizik-hareket,tyt-fizik-hareket-hareket-kavrami-ve-cesitleri
+TYT,Fizik,HAREKET,Temel Hareket Kavramları,tyt,tyt-fizik,tyt-fizik-hareket,tyt-fizik-hareket-temel-hareket-kavramlari
+TYT,Fizik,HAREKET,Düzgün Doğrusal Hareket,tyt,tyt-fizik,tyt-fizik-hareket,tyt-fizik-hareket-duzgun-dogrusal-hareket
+TYT,Fizik,HAREKET,İvme,tyt,tyt-fizik,tyt-fizik-hareket,tyt-fizik-hareket-ivme
+TYT,Fizik,HAREKET,Boyutlu Cisimlerin Hareketi,tyt,tyt-fizik,tyt-fizik-hareket,tyt-fizik-hareket-boyutlu-cisimlerin-hareketi
+TYT,Fizik,NEWTON'UN HAREKET YASALARI,Kuvvetin Özellikleri ve Kuvvet Çeşitleri,tyt,tyt-fizik,tyt-fizik-newtonun-hareket-yasalari,tyt-fizik-newtonun-hareket-yasalari-kuvvetin-ozellikleri-ve-kuvvet-cesitleri
+TYT,Fizik,NEWTON'UN HAREKET YASALARI,Newton'ın Birinci Hareket Yasası : Eylemsizlik,tyt,tyt-fizik,tyt-fizik-newtonun-hareket-yasalari,tyt-fizik-newtonun-hareket-yasalari-newtonin-birinci-hareket-yasasi-eylemsizlik
+TYT,Fizik,NEWTON'UN HAREKET YASALARI,Newton'ın İkinci Hareket Yasası : Kuvvet - İvme İlişkisi,tyt,tyt-fizik,tyt-fizik-newtonun-hareket-yasalari,tyt-fizik-newtonun-hareket-yasalari-newtonin-ikinci-hareket-yasasi-kuvvet-ivme-iliskisi
+TYT,Fizik,NEWTON'UN HAREKET YASALARI,Newton'ın Üçüncü Hareket Yasası : Etki - Tepki Kuvveti,tyt,tyt-fizik,tyt-fizik-newtonun-hareket-yasalari,tyt-fizik-newtonun-hareket-yasalari-newtonin-ucuncu-hareket-yasasi-etki-tepki-kuvveti
+TYT,Fizik,NEWTON'UN HAREKET YASALARI,Sürtünme Kuvveti,tyt,tyt-fizik,tyt-fizik-newtonun-hareket-yasalari,tyt-fizik-newtonun-hareket-yasalari-surtunme-kuvveti
+TYT,Fizik,İŞ - GÜÇ - ENERJİ,İş,tyt,tyt-fizik,tyt-fizik-is-guc-enerji,tyt-fizik-is-guc-enerji-is
+TYT,Fizik,İŞ - GÜÇ - ENERJİ,Güç,tyt,tyt-fizik,tyt-fizik-is-guc-enerji,tyt-fizik-is-guc-enerji-guc
+TYT,Fizik,İŞ - GÜÇ - ENERJİ,Enerji,tyt,tyt-fizik,tyt-fizik-is-guc-enerji,tyt-fizik-is-guc-enerji-enerji
+TYT,Fizik,İŞ - GÜÇ - ENERJİ,Enerjinin Korunumu,tyt,tyt-fizik,tyt-fizik-is-guc-enerji,tyt-fizik-is-guc-enerji-enerjinin-korunumu
+TYT,Fizik,İŞ - GÜÇ - ENERJİ,Enerji Kaynakları,tyt,tyt-fizik,tyt-fizik-is-guc-enerji,tyt-fizik-is-guc-enerji-enerji-kaynaklari
+TYT,Fizik,ELEKTRİK VE MANYETİZMA,Elektrostatik,tyt,tyt-fizik,tyt-fizik-elektrik-ve-manyetizma,tyt-fizik-elektrik-ve-manyetizma-elektrostatik
+TYT,Fizik,ELEKTRİK VE MANYETİZMA,Direnç ve Dirençlerin Bağlanması,tyt,tyt-fizik,tyt-fizik-elektrik-ve-manyetizma,tyt-fizik-elektrik-ve-manyetizma-direnc-ve-direnclerin-baglanmasi
+TYT,Fizik,ELEKTRİK VE MANYETİZMA,Elektrik Akımı ve Potansiyel Fark,tyt,tyt-fizik,tyt-fizik-elektrik-ve-manyetizma,tyt-fizik-elektrik-ve-manyetizma-elektrik-akimi-ve-potansiyel-fark
+TYT,Fizik,ELEKTRİK VE MANYETİZMA,Üreteçler,tyt,tyt-fizik,tyt-fizik-elektrik-ve-manyetizma,tyt-fizik-elektrik-ve-manyetizma-uretecler
+TYT,Fizik,ELEKTRİK VE MANYETİZMA,Elektrik Enerjisi ve Güç,tyt,tyt-fizik,tyt-fizik-elektrik-ve-manyetizma,tyt-fizik-elektrik-ve-manyetizma-elektrik-enerjisi-ve-guc
+TYT,Fizik,ELEKTRİK VE MANYETİZMA,Lambalı Devreler,tyt,tyt-fizik,tyt-fizik-elektrik-ve-manyetizma,tyt-fizik-elektrik-ve-manyetizma-lambali-devreler
+TYT,Fizik,ELEKTRİK VE MANYETİZMA,Mıknatıslar,tyt,tyt-fizik,tyt-fizik-elektrik-ve-manyetizma,tyt-fizik-elektrik-ve-manyetizma-miknatislar
+TYT,Fizik,ELEKTRİK VE MANYETİZMA,Akım - Manyetik Alan İlişkisi,tyt,tyt-fizik,tyt-fizik-elektrik-ve-manyetizma,tyt-fizik-elektrik-ve-manyetizma-akim-manyetik-alan-iliskisi
+TYT,Fizik,OPTİK,Aydınlanma,tyt,tyt-fizik,tyt-fizik-optik,tyt-fizik-optik-aydinlanma
+TYT,Fizik,OPTİK,Gölge Oluşumu,tyt,tyt-fizik,tyt-fizik-optik,tyt-fizik-optik-golge-olusumu
+TYT,Fizik,OPTİK,Düzlem Aynalar,tyt,tyt-fizik,tyt-fizik-optik,tyt-fizik-optik-duzlem-aynalar
+TYT,Fizik,OPTİK,Küresel Aynalar,tyt,tyt-fizik,tyt-fizik-optik,tyt-fizik-optik-kuresel-aynalar
+TYT,Fizik,OPTİK,Kırılma,tyt,tyt-fizik,tyt-fizik-optik,tyt-fizik-optik-kirilma
+TYT,Fizik,OPTİK,Renkler,tyt,tyt-fizik,tyt-fizik-optik,tyt-fizik-optik-renkler
+TYT,Fizik,OPTİK,Mercekler,tyt,tyt-fizik,tyt-fizik-optik,tyt-fizik-optik-mercekler
+TYT,Fizik,DALGALAR,Dalgaların Genel Özellikleri,tyt,tyt-fizik,tyt-fizik-dalgalar,tyt-fizik-dalgalar-dalgalarin-genel-ozellikleri
+TYT,Fizik,DALGALAR,Ses Dalgaları,tyt,tyt-fizik,tyt-fizik-dalgalar,tyt-fizik-dalgalar-ses-dalgalari
+TYT,Fizik,DALGALAR,Yay Dalgaları,tyt,tyt-fizik,tyt-fizik-dalgalar,tyt-fizik-dalgalar-yay-dalgalari
+TYT,Fizik,DALGALAR,Su Dalgaları,tyt,tyt-fizik,tyt-fizik-dalgalar,tyt-fizik-dalgalar-su-dalgalari
+TYT,Kimya,KİMYA BİLİMİ,Simyadan Kimyaya,tyt,tyt-kimya,tyt-kimya-kimya-bilimi,tyt-kimya-kimya-bilimi-simyadan-kimyaya
+TYT,Kimya,KİMYA BİLİMİ,Kimya Disiplinleri ve Kimyacıların Çalışma Alanları,tyt,tyt-kimya,tyt-kimya-kimya-bilimi,tyt-kimya-kimya-bilimi-kimya-disiplinleri-ve-kimyacilarin-calisma-alanlari
+TYT,Kimya,KİMYA BİLİMİ,Kimyanın Sembolik Dili,tyt,tyt-kimya,tyt-kimya-kimya-bilimi,tyt-kimya-kimya-bilimi-kimyanin-sembolik-dili
+TYT,Kimya,KİMYA BİLİMİ,Kimya Uygulamalarında İş Sağlığı ve Güvenliği,tyt,tyt-kimya,tyt-kimya-kimya-bilimi,tyt-kimya-kimya-bilimi-kimya-uygulamalarinda-is-sagligi-ve-guvenligi
+TYT,Kimya,ATOMUN YAPISI VE PERİYODİK SİSTEM,Atom Modelleri,tyt,tyt-kimya,tyt-kimya-atomun-yapisi-ve-periyodik-sistem,tyt-kimya-atomun-yapisi-ve-periyodik-sistem-atom-modelleri
+TYT,Kimya,ATOMUN YAPISI VE PERİYODİK SİSTEM,Atomdaki Temel Tanecikler ve Eşitlikler,tyt,tyt-kimya,tyt-kimya-atomun-yapisi-ve-periyodik-sistem,tyt-kimya-atomun-yapisi-ve-periyodik-sistem-atomdaki-temel-tanecikler-ve-esitlikler
+TYT,Kimya,ATOMUN YAPISI VE PERİYODİK SİSTEM,Periyodik Sistem ve Elektron Dizilimleri,tyt,tyt-kimya,tyt-kimya-atomun-yapisi-ve-periyodik-sistem,tyt-kimya-atomun-yapisi-ve-periyodik-sistem-periyodik-sistem-ve-elektron-dizilimleri
+TYT,Kimya,ATOMUN YAPISI VE PERİYODİK SİSTEM,Periyodik Sistemde Gruplar ve Özellikleri,tyt,tyt-kimya,tyt-kimya-atomun-yapisi-ve-periyodik-sistem,tyt-kimya-atomun-yapisi-ve-periyodik-sistem-periyodik-sistemde-gruplar-ve-ozellikleri
+TYT,Kimya,ATOMUN YAPISI VE PERİYODİK SİSTEM,Periyodik Özelliklerin Değişimi,tyt,tyt-kimya,tyt-kimya-atomun-yapisi-ve-periyodik-sistem,tyt-kimya-atomun-yapisi-ve-periyodik-sistem-periyodik-ozelliklerin-degisimi
+TYT,Kimya,KİMYASAL TÜRLER ARASI ETKİLEŞİMLER,Kimyasal Türler,tyt,tyt-kimya,tyt-kimya-kimyasal-turler-arasi-etkilesimler,tyt-kimya-kimyasal-turler-arasi-etkilesimler-kimyasal-turler
+TYT,Kimya,KİMYASAL TÜRLER ARASI ETKİLEŞİMLER,Atom ve İyonların Lewis Yapısı,tyt,tyt-kimya,tyt-kimya-kimyasal-turler-arasi-etkilesimler,tyt-kimya-kimyasal-turler-arasi-etkilesimler-atom-ve-iyonlarin-lewis-yapisi
+TYT,Kimya,KİMYASAL TÜRLER ARASI ETKİLEŞİMLER,İyonik Bileşiklerin Oluşumu ve Adlandırılması,tyt,tyt-kimya,tyt-kimya-kimyasal-turler-arasi-etkilesimler,tyt-kimya-kimyasal-turler-arasi-etkilesimler-iyonik-bilesiklerin-olusumu-ve-adlandirilmasi
+TYT,Kimya,KİMYASAL TÜRLER ARASI ETKİLEŞİMLER,İyonik Bileşiklerde Çözünme,tyt,tyt-kimya,tyt-kimya-kimyasal-turler-arasi-etkilesimler,tyt-kimya-kimyasal-turler-arasi-etkilesimler-iyonik-bilesiklerde-cozunme
+TYT,Kimya,KİMYASAL TÜRLER ARASI ETKİLEŞİMLER,Kovalent Bağlı Bileşiklerin Oluşumu ve Adlandırılması,tyt,tyt-kimya,tyt-kimya-kimyasal-turler-arasi-etkilesimler,tyt-kimya-kimyasal-turler-arasi-etkilesimler-kovalent-bagli-bilesiklerin-olusumu-ve-adlandirilmasi
+TYT,Kimya,KİMYASAL TÜRLER ARASI ETKİLEŞİMLER,Kovalent Bağlı Moleküllerde Polarlık,tyt,tyt-kimya,tyt-kimya-kimyasal-turler-arasi-etkilesimler,tyt-kimya-kimyasal-turler-arasi-etkilesimler-kovalent-bagli-molekullerde-polarlik
+TYT,Kimya,KİMYASAL TÜRLER ARASI ETKİLEŞİMLER,Metalik Bağ,tyt,tyt-kimya,tyt-kimya-kimyasal-turler-arasi-etkilesimler,tyt-kimya-kimyasal-turler-arasi-etkilesimler-metalik-bag
+TYT,Kimya,KİMYASAL TÜRLER ARASI ETKİLEŞİMLER,Van der Waals Etkileşimleri ve Hidrojen Bağı,tyt,tyt-kimya,tyt-kimya-kimyasal-turler-arasi-etkilesimler,tyt-kimya-kimyasal-turler-arasi-etkilesimler-van-der-waals-etkilesimleri-ve-hidrojen-bagi
+TYT,Kimya,KİMYASAL TÜRLER ARASI ETKİLEŞİMLER,Fiziksel ve Kimyasal Değişimler,tyt,tyt-kimya,tyt-kimya-kimyasal-turler-arasi-etkilesimler,tyt-kimya-kimyasal-turler-arasi-etkilesimler-fiziksel-ve-kimyasal-degisimler
+TYT,Kimya,MADDENİN HALLERİ,Katılar ve Özellikleri,tyt,tyt-kimya,tyt-kimya-maddenin-halleri,tyt-kimya-maddenin-halleri-katilar-ve-ozellikleri
+TYT,Kimya,MADDENİN HALLERİ,Sıvılar ve Özellikleri,tyt,tyt-kimya,tyt-kimya-maddenin-halleri,tyt-kimya-maddenin-halleri-sivilar-ve-ozellikleri
+TYT,Kimya,MADDENİN HALLERİ,Gazlar ve Özellikleri,tyt,tyt-kimya,tyt-kimya-maddenin-halleri,tyt-kimya-maddenin-halleri-gazlar-ve-ozellikleri
+TYT,Kimya,MADDENİN HALLERİ,Saf Maddelerde Hal Değişimi,tyt,tyt-kimya,tyt-kimya-maddenin-halleri,tyt-kimya-maddenin-halleri-saf-maddelerde-hal-degisimi
+TYT,Kimya,DOĞA VE KİMYA,Su ve Hayat,tyt,tyt-kimya,tyt-kimya-doga-ve-kimya,tyt-kimya-doga-ve-kimya-su-ve-hayat
+TYT,Kimya,DOĞA VE KİMYA,Çevre Kimyası,tyt,tyt-kimya,tyt-kimya-doga-ve-kimya,tyt-kimya-doga-ve-kimya-cevre-kimyasi
+TYT,Kimya,KİMYASAL HESAPLAMALAR,Kütlenin Korunumu Kanunu,tyt,tyt-kimya,tyt-kimya-kimyasal-hesaplamalar,tyt-kimya-kimyasal-hesaplamalar-kutlenin-korunumu-kanunu
+TYT,Kimya,KİMYASAL HESAPLAMALAR,Sabit Oranlar Kanunu,tyt,tyt-kimya,tyt-kimya-kimyasal-hesaplamalar,tyt-kimya-kimyasal-hesaplamalar-sabit-oranlar-kanunu
+TYT,Kimya,KİMYASAL HESAPLAMALAR,Katlı Oranlar Kanunu,tyt,tyt-kimya,tyt-kimya-kimyasal-hesaplamalar,tyt-kimya-kimyasal-hesaplamalar-katli-oranlar-kanunu
+TYT,Kimya,KİMYASAL HESAPLAMALAR,Mol Kavramı,tyt,tyt-kimya,tyt-kimya-kimyasal-hesaplamalar,tyt-kimya-kimyasal-hesaplamalar-mol-kavrami
+TYT,Kimya,KİMYASAL HESAPLAMALAR,Tepkime Denklemi ve Tepkime Denkleştirme,tyt,tyt-kimya,tyt-kimya-kimyasal-hesaplamalar,tyt-kimya-kimyasal-hesaplamalar-tepkime-denklemi-ve-tepkime-denklestirme
+TYT,Kimya,KİMYASAL HESAPLAMALAR,Yanma Tepkimeleri,tyt,tyt-kimya,tyt-kimya-kimyasal-hesaplamalar,tyt-kimya-kimyasal-hesaplamalar-yanma-tepkimeleri
+TYT,Kimya,KİMYASAL HESAPLAMALAR,Asit - Baz (Nötralleşme) Tepkimeleri,tyt,tyt-kimya,tyt-kimya-kimyasal-hesaplamalar,tyt-kimya-kimyasal-hesaplamalar-asit-baz-notrallesme-tepkimeleri
+TYT,Kimya,KİMYASAL HESAPLAMALAR,Analiz - Sentez ve Çözünme - Çökelme Tepkimeleri,tyt,tyt-kimya,tyt-kimya-kimyasal-hesaplamalar,tyt-kimya-kimyasal-hesaplamalar-analiz-sentez-ve-cozunme-cokelme-tepkimeleri
+TYT,Kimya,KİMYASAL HESAPLAMALAR,Tepkime Denkleminde Mollü Geçiş Problemleri,tyt,tyt-kimya,tyt-kimya-kimyasal-hesaplamalar,tyt-kimya-kimyasal-hesaplamalar-tepkime-denkleminde-mollu-gecis-problemleri
+TYT,Kimya,KİMYASAL HESAPLAMALAR,Sınırlayıcı Bileşen - Verim ve Artan Madde Problemleri,tyt,tyt-kimya,tyt-kimya-kimyasal-hesaplamalar,tyt-kimya-kimyasal-hesaplamalar-sinirlayici-bilesen-verim-ve-artan-madde-problemleri
+TYT,Kimya,KİMYASAL HESAPLAMALAR,Saflık - Karışım - Formül Bulma Problemleri,tyt,tyt-kimya,tyt-kimya-kimyasal-hesaplamalar,tyt-kimya-kimyasal-hesaplamalar-saflik-karisim-formul-bulma-problemleri
+TYT,Kimya,KARIŞIMLAR,Homojen - Heterojen Karışımlar ve Çözünme Süreci,tyt,tyt-kimya,tyt-kimya-karisimlar,tyt-kimya-karisimlar-homojen-heterojen-karisimlar-ve-cozunme-sureci
+TYT,Kimya,KARIŞIMLAR,Kütlece Yüzde Derişim,tyt,tyt-kimya,tyt-kimya-karisimlar,tyt-kimya-karisimlar-kutlece-yuzde-derisim
+TYT,Kimya,KARIŞIMLAR,Derişim Çeşitleri ve ppm Kavramı,tyt,tyt-kimya,tyt-kimya-karisimlar,tyt-kimya-karisimlar-derisim-cesitleri-ve-ppm-kavrami
+TYT,Kimya,KARIŞIMLAR,Koligatif Özellikler,tyt,tyt-kimya,tyt-kimya-karisimlar,tyt-kimya-karisimlar-koligatif-ozellikler
+TYT,Kimya,KARIŞIMLAR,Tanecik Boyutu Farkıyla Ayırma,tyt,tyt-kimya,tyt-kimya-karisimlar,tyt-kimya-karisimlar-tanecik-boyutu-farkiyla-ayirma
+TYT,Kimya,KARIŞIMLAR,Yoğunluk Farkıyla Ayırma,tyt,tyt-kimya,tyt-kimya-karisimlar,tyt-kimya-karisimlar-yogunluk-farkiyla-ayirma
+TYT,Kimya,KARIŞIMLAR,Çözünürlük Farkıyla Ayırma,tyt,tyt-kimya,tyt-kimya-karisimlar,tyt-kimya-karisimlar-cozunurluk-farkiyla-ayirma
+TYT,Kimya,KARIŞIMLAR,Kaynama Noktası Farkıyla Ayırma,tyt,tyt-kimya,tyt-kimya-karisimlar,tyt-kimya-karisimlar-kaynama-noktasi-farkiyla-ayirma
+TYT,Kimya,"ASİTLER, BAZLAR VE TUZLAR","Asitler, Bazlar ve Özellikleri",tyt,tyt-kimya,tyt-kimya-asitler-bazlar-ve-tuzlar,tyt-kimya-asitler-bazlar-ve-tuzlar-asitler-bazlar-ve-ozellikleri
+TYT,Kimya,"ASİTLER, BAZLAR VE TUZLAR",Nötralleşme Tepkimeleri,tyt,tyt-kimya,tyt-kimya-asitler-bazlar-ve-tuzlar,tyt-kimya-asitler-bazlar-ve-tuzlar-notrallesme-tepkimeleri
+TYT,Kimya,"ASİTLER, BAZLAR VE TUZLAR",pH ve pOH Kavramları - Asit Baz İndikatörleri,tyt,tyt-kimya,tyt-kimya-asitler-bazlar-ve-tuzlar,tyt-kimya-asitler-bazlar-ve-tuzlar-ph-ve-poh-kavramlari-asit-baz-indikatorleri
+TYT,Kimya,"ASİTLER, BAZLAR VE TUZLAR",Asitler ve Bazların Metallerle Tepkimeleri,tyt,tyt-kimya,tyt-kimya-asitler-bazlar-ve-tuzlar,tyt-kimya-asitler-bazlar-ve-tuzlar-asitler-ve-bazlarin-metallerle-tepkimeleri
+TYT,Kimya,"ASİTLER, BAZLAR VE TUZLAR",Yaygın Asit ve Bazların Kullanım Alanları,tyt,tyt-kimya,tyt-kimya-asitler-bazlar-ve-tuzlar,tyt-kimya-asitler-bazlar-ve-tuzlar-yaygin-asit-ve-bazlarin-kullanim-alanlari
+TYT,Kimya,"ASİTLER, BAZLAR VE TUZLAR",Asit ve Bazların Fayda ve Zararları,tyt,tyt-kimya,tyt-kimya-asitler-bazlar-ve-tuzlar,tyt-kimya-asitler-bazlar-ve-tuzlar-asit-ve-bazlarin-fayda-ve-zararlari
+TYT,Kimya,"ASİTLER, BAZLAR VE TUZLAR",Tuzlar,tyt,tyt-kimya,tyt-kimya-asitler-bazlar-ve-tuzlar,tyt-kimya-asitler-bazlar-ve-tuzlar-tuzlar
+TYT,Kimya,KİMYA HER YERDE,Temizlik Malzemeleri,tyt,tyt-kimya,tyt-kimya-kimya-her-yerde,tyt-kimya-kimya-her-yerde-temizlik-malzemeleri
+TYT,Kimya,KİMYA HER YERDE,Polimerler,tyt,tyt-kimya,tyt-kimya-kimya-her-yerde,tyt-kimya-kimya-her-yerde-polimerler
+TYT,Kimya,KİMYA HER YERDE,Kozmetikler ve İlaçlar,tyt,tyt-kimya,tyt-kimya-kimya-her-yerde,tyt-kimya-kimya-her-yerde-kozmetikler-ve-ilaclar
+TYT,Kimya,KİMYA HER YERDE,Hazır Gıdalar,tyt,tyt-kimya,tyt-kimya-kimya-her-yerde,tyt-kimya-kimya-her-yerde-hazir-gidalar
+TYT,Kimya,KİMYA HER YERDE,Yenilebilir Yağ Türleri,tyt,tyt-kimya,tyt-kimya-kimya-her-yerde,tyt-kimya-kimya-her-yerde-yenilebilir-yag-turleri
+TYT,Kimya,BECERİ TEMELLİ YENİ NESİL SORULAR,Beceri Temelli Yeni Nesil Sorular,tyt,tyt-kimya,tyt-kimya-beceri-temelli-yeni-nesil-sorular,tyt-kimya-beceri-temelli-yeni-nesil-sorular-beceri-temelli-yeni-nesil-sorular
+TYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,Temel Kavramlar,tyt,tyt-matematik,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-temel-kavramlar
+TYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,Tek - Çift Sayılar ve İşaret İncelemesi,tyt,tyt-matematik,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-tek-cift-sayilar-ve-isaret-incelemesi
+TYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,Ardışık Sayılar,tyt,tyt-matematik,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-ardisik-sayilar
+TYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,Faktöriyel,tyt,tyt-matematik,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-faktoriyel
+TYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,Sayı Basamakları,tyt,tyt-matematik,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-sayi-basamaklari
+TYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,Asal ve Aralarında Asal Sayılar,tyt,tyt-matematik,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-asal-ve-aralarinda-asal-sayilar
+TYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,Asal Çarpanlara Ayırma ve Bölen Sayısı,tyt,tyt-matematik,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-asal-carpanlara-ayirma-ve-bolen-sayisi
+TYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,Bölme ve Bölünebilme Kuralları,tyt,tyt-matematik,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-bolme-ve-bolunebilme-kurallari
+TYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,EBOB - EKOK,tyt,tyt-matematik,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-ebob-ekok
+TYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,Rasyonel Sayılar,tyt,tyt-matematik,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-rasyonel-sayilar
+TYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,Birinci Dereceden Denklemler,tyt,tyt-matematik,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-birinci-dereceden-denklemler
+TYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,Birinci Dereceden Eşitsizlikler,tyt,tyt-matematik,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-birinci-dereceden-esitsizlikler
+TYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,Mutlak Değer,tyt,tyt-matematik,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-mutlak-deger
+TYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,Üslü Sayılar,tyt,tyt-matematik,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-uslu-sayilar
+TYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,Köklü Sayılar,tyt,tyt-matematik,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-koklu-sayilar
+TYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,Çarpanlara Ayırma,tyt,tyt-matematik,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-carpanlara-ayirma
+TYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,Oran - Orantı,tyt,tyt-matematik,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-oran-oranti
+TYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,Sayı - Kesir Problemleri,tyt,tyt-matematik,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-sayi-kesir-problemleri
+TYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,Yaş Problemleri,tyt,tyt-matematik,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-yas-problemleri
+TYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,İşçi Problemleri,tyt,tyt-matematik,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-isci-problemleri
+TYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,Hız - Hareket Problemleri,tyt,tyt-matematik,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-hiz-hareket-problemleri
+TYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,Yüzde Problemleri,tyt,tyt-matematik,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-yuzde-problemleri
+TYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,Karışım Problemleri,tyt,tyt-matematik,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-karisim-problemleri
+TYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,Sayısal Mantık Problemleri,tyt,tyt-matematik,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-sayisal-mantik-problemleri
+TYT,Matematik,KÜMELER,Kümeler,tyt,tyt-matematik,tyt-matematik-kumeler,tyt-matematik-kumeler-kumeler
+TYT,Matematik,FONKSİYONLAR,Fonksiyonlar,tyt,tyt-matematik,tyt-matematik-fonksiyonlar,tyt-matematik-fonksiyonlar-fonksiyonlar
+TYT,Matematik,VERİ - SAYMA - OLASILIK,"Merkezi Eğilim ve Yayılım Ölçüleri, Grafik Türleri",tyt,tyt-matematik,tyt-matematik-veri-sayma-olasilik,tyt-matematik-veri-sayma-olasilik-merkezi-egilim-ve-yayilim-olculeri-grafik-turleri
+TYT,Matematik,VERİ - SAYMA - OLASILIK,"Sayma, Permütasyon",tyt,tyt-matematik,tyt-matematik-veri-sayma-olasilik,tyt-matematik-veri-sayma-olasilik-sayma-permutasyon
+TYT,Matematik,VERİ - SAYMA - OLASILIK,Kombinasyon,tyt,tyt-matematik,tyt-matematik-veri-sayma-olasilik,tyt-matematik-veri-sayma-olasilik-kombinasyon
+TYT,Matematik,VERİ - SAYMA - OLASILIK,Binom Açılımı,tyt,tyt-matematik,tyt-matematik-veri-sayma-olasilik,tyt-matematik-veri-sayma-olasilik-binom-acilimi
+TYT,Matematik,VERİ - SAYMA - OLASILIK,Olasılık,tyt,tyt-matematik,tyt-matematik-veri-sayma-olasilik,tyt-matematik-veri-sayma-olasilik-olasilik
+TYT,Matematik,İKİNCİ DERECEDEN DENKLEMLER,İkinci Dereceden Denklemler,tyt,tyt-matematik,tyt-matematik-ikinci-dereceden-denklemler,tyt-matematik-ikinci-dereceden-denklemler-ikinci-dereceden-denklemler
+TYT,Matematik,POLİNOMLAR,Polinomlar,tyt,tyt-matematik,tyt-matematik-polinomlar,tyt-matematik-polinomlar-polinomlar
+TYT,Matematik,MANTIK,Mantık,tyt,tyt-matematik,tyt-matematik-mantik,tyt-matematik-mantik-mantik
+TYT,Matematik,ÜÇGENLER,Düzlemde Açı,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-duzlemde-aci
+TYT,Matematik,ÜÇGENLER,Üçgende Açı,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgende-aci
+TYT,Matematik,ÜÇGENLER,Dik Üçgen ve Trigonometri,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-dik-ucgen-ve-trigonometri
+TYT,Matematik,ÜÇGENLER,Üçgende Açı - Kenar Bağıntıları,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgende-aci-kenar-bagintilari
+TYT,Matematik,ÜÇGENLER,İkizkenar Üçgen,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ikizkenar-ucgen
+TYT,Matematik,ÜÇGENLER,Eşkenar Üçgen,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-eskenar-ucgen
+TYT,Matematik,ÜÇGENLER,Üçgende Açıortay,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgende-aciortay
+TYT,Matematik,ÜÇGENLER,Üçgende Kenarortay,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgende-kenarortay
+TYT,Matematik,ÜÇGENLER,Üçgende Merkezler,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgende-merkezler
+TYT,Matematik,ÜÇGENLER,Üçgende Benzerlik,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgende-benzerlik
+TYT,Matematik,ÜÇGENLER,Üçgende Alan,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgende-alan
+TYT,Matematik,DÖRTGENLER VE ÇOKGENLER,Çokgenler,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-cokgenler
+TYT,Matematik,DÖRTGENLER VE ÇOKGENLER,Dörtgenler,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-dortgenler
+TYT,Matematik,DÖRTGENLER VE ÇOKGENLER,Yamuk,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-yamuk
+TYT,Matematik,DÖRTGENLER VE ÇOKGENLER,Paralelkenar,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-paralelkenar
+TYT,Matematik,DÖRTGENLER VE ÇOKGENLER,Eşkenar Dörtgen,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-eskenar-dortgen
+TYT,Matematik,DÖRTGENLER VE ÇOKGENLER,Dikdörtgen,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-dikdortgen
+TYT,Matematik,DÖRTGENLER VE ÇOKGENLER,Kare,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-kare
+TYT,Matematik,DÖRTGENLER VE ÇOKGENLER,Deltoid ve Dörtgenlerin Sınıflandırılması,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-deltoid-ve-dortgenlerin-siniflandirilmasi
+TYT,Matematik,ÇEMBERLER,Çemberde Açılar,tyt,tyt-matematik,tyt-matematik-cemberler,tyt-matematik-cemberler-cemberde-acilar
+TYT,Matematik,ÇEMBERLER,Çemberde Uzunluk,tyt,tyt-matematik,tyt-matematik-cemberler,tyt-matematik-cemberler-cemberde-uzunluk
+TYT,Matematik,ÇEMBERLER,Dairede Alan,tyt,tyt-matematik,tyt-matematik-cemberler,tyt-matematik-cemberler-dairede-alan
+TYT,Matematik,KATI CİSİMLER,Katı Cisimler,tyt,tyt-matematik,tyt-matematik-kati-cisimler,tyt-matematik-kati-cisimler-kati-cisimler
+TYT,Matematik,ANALİTİK GEOMETRİ,Noktanın Analitik İncelenmesi,tyt,tyt-matematik,tyt-matematik-analitik-geometri,tyt-matematik-analitik-geometri-noktanin-analitik-incelenmesi
+TYT,Matematik,ANALİTİK GEOMETRİ,Doğrunun Analitik İncelenmesi,tyt,tyt-matematik,tyt-matematik-analitik-geometri,tyt-matematik-analitik-geometri-dogrunun-analitik-incelenmesi
+TYT,Tarih,TARİH VE ZAMAN,Tarih ve Zaman,tyt,tyt-tarih,tyt-tarih-tarih-ve-zaman,tyt-tarih-tarih-ve-zaman-tarih-ve-zaman
+TYT,Tarih,İNSANLIĞIN İLK DÖNEMLERİ,İnsanlığın İlk Dönemleri,tyt,tyt-tarih,tyt-tarih-insanligin-ilk-donemleri,tyt-tarih-insanligin-ilk-donemleri-insanligin-ilk-donemleri
+TYT,Tarih,ORTA ÇAĞ'DA DÜNYA VE TÜRKLER,Orta Çağ'da Dünya,tyt,tyt-tarih,tyt-tarih-orta-cagda-dunya-ve-turkler,tyt-tarih-orta-cagda-dunya-ve-turkler-orta-cagda-dunya
+TYT,Tarih,ORTA ÇAĞ'DA DÜNYA VE TÜRKLER,İlk ve Orta Çağlarda Türk Dünyası,tyt,tyt-tarih,tyt-tarih-orta-cagda-dunya-ve-turkler,tyt-tarih-orta-cagda-dunya-ve-turkler-ilk-ve-orta-caglarda-turk-dunyasi
+TYT,Tarih,İSLAM MEDENİYETİNİN DOĞUŞU,İslam Medeniyetinin Doğuşu,tyt,tyt-tarih,tyt-tarih-islam-medeniyetinin-dogusu,tyt-tarih-islam-medeniyetinin-dogusu-islam-medeniyetinin-dogusu
+TYT,Tarih,TÜRKLERİN İSLAMİYET'İ KABULÜ VE İLK TÜRK İSLAM DEVLETLERİ,Türklerin İslamiyet'i Kabulü,tyt,tyt-tarih,tyt-tarih-turklerin-islamiyeti-kabulu-ve-ilk-turk-islam-devletleri,tyt-tarih-turklerin-islamiyeti-kabulu-ve-ilk-turk-islam-devletleri-turklerin-islamiyeti-kabulu
+TYT,Tarih,TÜRKLERİN İSLAMİYET'İ KABULÜ VE İLK TÜRK İSLAM DEVLETLERİ,Karahanlılar ve Gazneliler,tyt,tyt-tarih,tyt-tarih-turklerin-islamiyeti-kabulu-ve-ilk-turk-islam-devletleri,tyt-tarih-turklerin-islamiyeti-kabulu-ve-ilk-turk-islam-devletleri-karahanlilar-ve-gazneliler
+TYT,Tarih,TÜRKLERİN İSLAMİYET'İ KABULÜ VE İLK TÜRK İSLAM DEVLETLERİ,Büyük Selçuklular,tyt,tyt-tarih,tyt-tarih-turklerin-islamiyeti-kabulu-ve-ilk-turk-islam-devletleri,tyt-tarih-turklerin-islamiyeti-kabulu-ve-ilk-turk-islam-devletleri-buyuk-selcuklular
+TYT,Tarih,YERLEŞME VE DEVLETLEŞME SÜRECİNDE SELÇUKLU TÜRKİYESİ,Yerleşme ve Devletleşme Sürecinde Selçuklu Türkiyesi,tyt,tyt-tarih,tyt-tarih-yerlesme-ve-devletlesme-surecinde-selcuklu-turkiyesi,tyt-tarih-yerlesme-ve-devletlesme-surecinde-selcuklu-turkiyesi-yerlesme-ve-devletlesme-surecinde-selcuklu-turkiyesi
+TYT,Tarih,BEYLİKTEN DEVLETE OSMANLI,Beylikten Devlete Osmanlı Siyaseti (1302 - 1453),tyt,tyt-tarih,tyt-tarih-beylikten-devlete-osmanli,tyt-tarih-beylikten-devlete-osmanli-beylikten-devlete-osmanli-siyaseti-1302-1453
+TYT,Tarih,BEYLİKTEN DEVLETE OSMANLI,Devletleşme Sürecinde Savaşçılar ve Askerler,tyt,tyt-tarih,tyt-tarih-beylikten-devlete-osmanli,tyt-tarih-beylikten-devlete-osmanli-devletlesme-surecinde-savascilar-ve-askerler
+TYT,Tarih,BEYLİKTEN DEVLETE OSMANLI,Beylikten Devlete Osmanlı Medeniyeti,tyt,tyt-tarih,tyt-tarih-beylikten-devlete-osmanli,tyt-tarih-beylikten-devlete-osmanli-beylikten-devlete-osmanli-medeniyeti
+TYT,Tarih,BEYLİKTEN DEVLETE OSMANLI,Dünya Gücü Osmanlı (1453 - 1595),tyt,tyt-tarih,tyt-tarih-beylikten-devlete-osmanli,tyt-tarih-beylikten-devlete-osmanli-dunya-gucu-osmanli-1453-1595
+TYT,Tarih,BEYLİKTEN DEVLETE OSMANLI,Sultan ve Osmanlı Merkez Teşkilatı,tyt,tyt-tarih,tyt-tarih-beylikten-devlete-osmanli,tyt-tarih-beylikten-devlete-osmanli-sultan-ve-osmanli-merkez-teskilati
+TYT,Tarih,BEYLİKTEN DEVLETE OSMANLI,Klasik Çağda Osmanlı Toplum Düzeni,tyt,tyt-tarih,tyt-tarih-beylikten-devlete-osmanli,tyt-tarih-beylikten-devlete-osmanli-klasik-cagda-osmanli-toplum-duzeni
+TYT,Tarih,DEĞİŞEN DÜNYA DENGELERİ,Değişen Dünya Dengeleri Karşısında Osmanlı Siyaseti (1595 - 1774),tyt,tyt-tarih,tyt-tarih-degisen-dunya-dengeleri,tyt-tarih-degisen-dunya-dengeleri-degisen-dunya-dengeleri-karsisinda-osmanli-siyaseti-1595-1774
+TYT,Tarih,DEĞİŞEN DÜNYA DENGELERİ,Değişim Çağında Avrupa ve Osmanlı,tyt,tyt-tarih,tyt-tarih-degisen-dunya-dengeleri,tyt-tarih-degisen-dunya-dengeleri-degisim-caginda-avrupa-ve-osmanli
+TYT,Tarih,ULUSLARARASI İLİŞKİLERDE DENGE,Devrimler Çağında Değişen Devlet Toplum İlişkileri,tyt,tyt-tarih,tyt-tarih-uluslararasi-iliskilerde-denge,tyt-tarih-uluslararasi-iliskilerde-denge-devrimler-caginda-degisen-devlet-toplum-iliskileri
+TYT,Tarih,ULUSLARARASI İLİŞKİLERDE DENGE,Uluslararası İlişkilerde Denge Stratejisi (1774 - 1914),tyt,tyt-tarih,tyt-tarih-uluslararasi-iliskilerde-denge,tyt-tarih-uluslararasi-iliskilerde-denge-uluslararasi-iliskilerde-denge-stratejisi-1774-1914
+TYT,Tarih,ULUSLARARASI İLİŞKİLERDE DENGE,XIX ve XX. Yüzyılda Değişen Sosyo-Ekonomik Hayat,tyt,tyt-tarih,tyt-tarih-uluslararasi-iliskilerde-denge,tyt-tarih-uluslararasi-iliskilerde-denge-xix-ve-xx-yuzyilda-degisen-sosyo-ekonomik-hayat
+TYT,Tarih,XX. YÜZYIL BAŞLARINDA OSMANLI DEVLETİ VE DÜNYA,1881'den 1919'a Mustafa Kemal,tyt,tyt-tarih,tyt-tarih-xx-yuzyil-baslarinda-osmanli-devleti-ve-dunya,tyt-tarih-xx-yuzyil-baslarinda-osmanli-devleti-ve-dunya-1881den-1919a-mustafa-kemal
+TYT,Tarih,XX. YÜZYIL BAŞLARINDA OSMANLI DEVLETİ VE DÜNYA,I. Dünya Savaşı,tyt,tyt-tarih,tyt-tarih-xx-yuzyil-baslarinda-osmanli-devleti-ve-dunya,tyt-tarih-xx-yuzyil-baslarinda-osmanli-devleti-ve-dunya-i-dunya-savasi
+TYT,Tarih,XX. YÜZYIL BAŞLARINDA OSMANLI DEVLETİ VE DÜNYA,Mondros Ateşkesi,tyt,tyt-tarih,tyt-tarih-xx-yuzyil-baslarinda-osmanli-devleti-ve-dunya,tyt-tarih-xx-yuzyil-baslarinda-osmanli-devleti-ve-dunya-mondros-ateskesi
+TYT,Tarih,MİLLÎ MÜCADELE - I,"İşgallere Tepkiler, Cemiyetler ve Kuvayımilliye",tyt,tyt-tarih,tyt-tarih-mill-mucadele-i,tyt-tarih-mill-mucadele-i-isgallere-tepkiler-cemiyetler-ve-kuvayimilliye
+TYT,Tarih,MİLLÎ MÜCADELE - I,Mustafa Kemal'in Samsun'a Çıkışı ve Havza Genelgesi,tyt,tyt-tarih,tyt-tarih-mill-mucadele-i,tyt-tarih-mill-mucadele-i-mustafa-kemalin-samsuna-cikisi-ve-havza-genelgesi
+TYT,Tarih,MİLLÎ MÜCADELE - I,Amasya Genelgesi,tyt,tyt-tarih,tyt-tarih-mill-mucadele-i,tyt-tarih-mill-mucadele-i-amasya-genelgesi
+TYT,Tarih,MİLLÎ MÜCADELE - I,Erzurum Kongresi,tyt,tyt-tarih,tyt-tarih-mill-mucadele-i,tyt-tarih-mill-mucadele-i-erzurum-kongresi
+TYT,Tarih,MİLLÎ MÜCADELE - I,Sivas Kongresi,tyt,tyt-tarih,tyt-tarih-mill-mucadele-i,tyt-tarih-mill-mucadele-i-sivas-kongresi
+TYT,Tarih,MİLLÎ MÜCADELE - I,Amasya Görüşmeleri ve Misakımilli,tyt,tyt-tarih,tyt-tarih-mill-mucadele-i,tyt-tarih-mill-mucadele-i-amasya-gorusmeleri-ve-misakimilli
+TYT,Tarih,MİLLÎ MÜCADELE - I,I. TBMM,tyt,tyt-tarih,tyt-tarih-mill-mucadele-i,tyt-tarih-mill-mucadele-i-i-tbmm
+TYT,Tarih,MİLLÎ MÜCADELE - I,Sevr Anlaşması,tyt,tyt-tarih,tyt-tarih-mill-mucadele-i,tyt-tarih-mill-mucadele-i-sevr-anlasmasi
+TYT,Tarih,MİLLÎ MÜCADELE - II,Kurtuluş Savaşı,tyt,tyt-tarih,tyt-tarih-mill-mucadele-ii,tyt-tarih-mill-mucadele-ii-kurtulus-savasi
+TYT,Tarih,MİLLÎ MÜCADELE - II,Lozan Antlaşması,tyt,tyt-tarih,tyt-tarih-mill-mucadele-ii,tyt-tarih-mill-mucadele-ii-lozan-antlasmasi
+TYT,Tarih,ATATÜRKÇÜLÜK VE TÜRK İNKILABI,Atatürk İlkeleri,tyt,tyt-tarih,tyt-tarih-ataturkculuk-ve-turk-inkilabi,tyt-tarih-ataturkculuk-ve-turk-inkilabi-ataturk-ilkeleri
+TYT,Tarih,ATATÜRKÇÜLÜK VE TÜRK İNKILABI,Türk İnkılabı,tyt,tyt-tarih,tyt-tarih-ataturkculuk-ve-turk-inkilabi,tyt-tarih-ataturkculuk-ve-turk-inkilabi-turk-inkilabi
+TYT,Tarih,İKİ SAVAŞ ARASI DÖNEMDE TÜRKİYE VE DÜNYA,İki Savaş Arası Dönemde Türkiye ve Dünya,tyt,tyt-tarih,tyt-tarih-iki-savas-arasi-donemde-turkiye-ve-dunya,tyt-tarih-iki-savas-arasi-donemde-turkiye-ve-dunya-iki-savas-arasi-donemde-turkiye-ve-dunya
+TYT,Tarih,II. DÜNYA SAVAŞI SÜRECİNDE VE SONRASINDA TÜRKİYE VE DÜNYA,II. Dünya Savaşı Sürecinde Türkiye ve Dünya,tyt,tyt-tarih,tyt-tarih-ii-dunya-savasi-surecinde-ve-sonrasinda-turkiye-ve-dunya,tyt-tarih-ii-dunya-savasi-surecinde-ve-sonrasinda-turkiye-ve-dunya-ii-dunya-savasi-surecinde-turkiye-ve-dunya
+TYT,Tarih,II. DÜNYA SAVAŞI SÜRECİNDE VE SONRASINDA TÜRKİYE VE DÜNYA,II. Dünya Savaşı Sonrasında Türkiye ve Dünya,tyt,tyt-tarih,tyt-tarih-ii-dunya-savasi-surecinde-ve-sonrasinda-turkiye-ve-dunya,tyt-tarih-ii-dunya-savasi-surecinde-ve-sonrasinda-turkiye-ve-dunya-ii-dunya-savasi-sonrasinda-turkiye-ve-dunya
+TYT,Tarih,II. DÜNYA SAVAŞI SÜRECİNDE VE SONRASINDA TÜRKİYE VE DÜNYA,Toplumsal Devrim Çağında Dünya ve Türkiye,tyt,tyt-tarih,tyt-tarih-ii-dunya-savasi-surecinde-ve-sonrasinda-turkiye-ve-dunya,tyt-tarih-ii-dunya-savasi-surecinde-ve-sonrasinda-turkiye-ve-dunya-toplumsal-devrim-caginda-dunya-ve-turkiye
+TYT,Tarih,II. DÜNYA SAVAŞI SÜRECİNDE VE SONRASINDA TÜRKİYE VE DÜNYA,XXI. Yüzyılın Eşiğinde Türkiye ve Dünya,tyt,tyt-tarih,tyt-tarih-ii-dunya-savasi-surecinde-ve-sonrasinda-turkiye-ve-dunya,tyt-tarih-ii-dunya-savasi-surecinde-ve-sonrasinda-turkiye-ve-dunya-xxi-yuzyilin-esiginde-turkiye-ve-dunya
+TYT,Türkçe,ANLAM BİLGİSİ,Sözcükte Anlam Özelliği,tyt,tyt-turkce,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-sozcukte-anlam-ozelligi
+TYT,Türkçe,ANLAM BİLGİSİ,Sözcükte Anlam İlişkisi,tyt,tyt-turkce,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-sozcukte-anlam-iliskisi
+TYT,Türkçe,ANLAM BİLGİSİ,Sözcükte Anlam Olayları,tyt,tyt-turkce,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-sozcukte-anlam-olaylari
+TYT,Türkçe,ANLAM BİLGİSİ,Deyim - Atasözü - İkileme,tyt,tyt-turkce,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-deyim-atasozu-ikileme
+TYT,Türkçe,ANLAM BİLGİSİ,Söz Öbekleri,tyt,tyt-turkce,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-soz-obekleri
+TYT,Türkçe,ANLAM BİLGİSİ,Cümlede Anlam / Cümleyi Yorumlama,tyt,tyt-turkce,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-cumlede-anlam-cumleyi-yorumlama
+TYT,Türkçe,ANLAM BİLGİSİ,Cümlede Anlam / Anlam İlişkileri - Anlatım,tyt,tyt-turkce,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-cumlede-anlam-anlam-iliskileri-anlatim
+TYT,Türkçe,ANLAM BİLGİSİ,Cümlede Anlam / Kavramlar,tyt,tyt-turkce,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-cumlede-anlam-kavramlar
+TYT,Türkçe,ANLAM BİLGİSİ,Paragrafta Yapı,tyt,tyt-turkce,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-yapi
+TYT,Türkçe,ANLAM BİLGİSİ,Paragrafta Anlam,tyt,tyt-turkce,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-anlam
+TYT,Türkçe,ANLAM BİLGİSİ,Anlatım Biçimleri / Düşünceyi Geliştirme Yolları,tyt,tyt-turkce,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-anlatim-bicimleri-dusunceyi-gelistirme-yollari
+TYT,Türkçe,ANLAM BİLGİSİ,Paragrafta Çoklu Soru,tyt,tyt-turkce,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-coklu-soru
+TYT,Türkçe,DİL BİLGİSİ,Kök Bilgisi,tyt,tyt-turkce,tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-kok-bilgisi
+TYT,Türkçe,DİL BİLGİSİ,Çekim Eki,tyt,tyt-turkce,tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-cekim-eki
+TYT,Türkçe,DİL BİLGİSİ,Yapım Eki,tyt,tyt-turkce,tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-yapim-eki
+TYT,Türkçe,DİL BİLGİSİ,Ekler (Karma),tyt,tyt-turkce,tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-ekler-karma
+TYT,Türkçe,DİL BİLGİSİ,Sözcükte Yapı,tyt,tyt-turkce,tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-sozcukte-yapi
+TYT,Türkçe,DİL BİLGİSİ,İsimler (Adlar),tyt,tyt-turkce,tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-isimler-adlar
+TYT,Türkçe,DİL BİLGİSİ,Sıfatlar (Ön Ad),tyt,tyt-turkce,tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-sifatlar-on-ad
+TYT,Türkçe,DİL BİLGİSİ,Zamir (Adıl),tyt,tyt-turkce,tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-zamir-adil
+TYT,Türkçe,DİL BİLGİSİ,Tamlamalar,tyt,tyt-turkce,tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-tamlamalar
+TYT,Türkçe,DİL BİLGİSİ,Zarf (Belirteç),tyt,tyt-turkce,tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-zarf-belirtec
+TYT,Türkçe,DİL BİLGİSİ,"Edat, Bağlaç, Ünlem",tyt,tyt-turkce,tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-edat-baglac-unlem
+TYT,Türkçe,DİL BİLGİSİ,Eylemler (Fiiller),tyt,tyt-turkce,tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-eylemler-fiiller
+TYT,Türkçe,DİL BİLGİSİ,Ek Eylem (Ek Fiil),tyt,tyt-turkce,tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-ek-eylem-ek-fiil
+TYT,Türkçe,DİL BİLGİSİ,Eylemsi (Fiilimsi),tyt,tyt-turkce,tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-eylemsi-fiilimsi
+TYT,Türkçe,DİL BİLGİSİ,Cümlenin Ögeleri,tyt,tyt-turkce,tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-cumlenin-ogeleri
+TYT,Türkçe,DİL BİLGİSİ,Fiilde Çatı,tyt,tyt-turkce,tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-fiilde-cati
+TYT,Türkçe,DİL BİLGİSİ,Cümle Türleri,tyt,tyt-turkce,tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-cumle-turleri
+TYT,Türkçe,"SES, YAZIM, NOKTALAMA VE ANLATIM BOZUKLUĞU",Ses Bilgisi,tyt,tyt-turkce,tyt-turkce-ses-yazim-noktalama-ve-anlatim-bozuklugu,tyt-turkce-ses-yazim-noktalama-ve-anlatim-bozuklugu-ses-bilgisi
+TYT,Türkçe,"SES, YAZIM, NOKTALAMA VE ANLATIM BOZUKLUĞU",Yazım Kuralları,tyt,tyt-turkce,tyt-turkce-ses-yazim-noktalama-ve-anlatim-bozuklugu,tyt-turkce-ses-yazim-noktalama-ve-anlatim-bozuklugu-yazim-kurallari
+TYT,Türkçe,"SES, YAZIM, NOKTALAMA VE ANLATIM BOZUKLUĞU",Noktalama İşaretleri,tyt,tyt-turkce,tyt-turkce-ses-yazim-noktalama-ve-anlatim-bozuklugu,tyt-turkce-ses-yazim-noktalama-ve-anlatim-bozuklugu-noktalama-isaretleri
+TYT,Türkçe,"SES, YAZIM, NOKTALAMA VE ANLATIM BOZUKLUĞU",Sözcük Düzeyinde Anlatım Bozuklukları,tyt,tyt-turkce,tyt-turkce-ses-yazim-noktalama-ve-anlatim-bozuklugu,tyt-turkce-ses-yazim-noktalama-ve-anlatim-bozuklugu-sozcuk-duzeyinde-anlatim-bozukluklari
+TYT,Türkçe,"SES, YAZIM, NOKTALAMA VE ANLATIM BOZUKLUĞU",Cümle Düzeyinde Anlatım Bozuklukları,tyt,tyt-turkce,tyt-turkce-ses-yazim-noktalama-ve-anlatim-bozuklugu,tyt-turkce-ses-yazim-noktalama-ve-anlatim-bozuklugu-cumle-duzeyinde-anlatim-bozukluklari
+TYT,Türkçe,İLETİŞİM VE METİN BİLGİSİ,İletişim / Dilin İşlevleri - Dilin Kullanımından Doğan Türleri,tyt,tyt-turkce,tyt-turkce-iletisim-ve-metin-bilgisi,tyt-turkce-iletisim-ve-metin-bilgisi-iletisim-dilin-islevleri-dilin-kullanimindan-dogan-turleri
+TYT,Türkçe,İLETİŞİM VE METİN BİLGİSİ,Metin İnceleme,tyt,tyt-turkce,tyt-turkce-iletisim-ve-metin-bilgisi,tyt-turkce-iletisim-ve-metin-bilgisi-metin-inceleme
+TYT,Türkçe,YENİ NESİL SORULAR,Beceri Temelli Yeni Nesil Sorular,tyt,tyt-turkce,tyt-turkce-yeni-nesil-sorular,tyt-turkce-yeni-nesil-sorular-beceri-temelli-yeni-nesil-sorular
+AYT,Biyoloji,İNSAN FİZYOLOJİSİ,"Sinir Sisteminin Yapı, Görev ve İşleyişi",ayt-sayisal,ayt-biyoloji,ayt-biyoloji-insan-fizyolojisi,ayt-biyoloji-insan-fizyolojisi-sinir-sisteminin-yapi-gorev-ve-isleyisi
+AYT,Biyoloji,İNSAN FİZYOLOJİSİ,Endokrin Bezler ve Salgıladıkları Hormonlar,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-insan-fizyolojisi,ayt-biyoloji-insan-fizyolojisi-endokrin-bezler-ve-salgiladiklari-hormonlar
+AYT,Biyoloji,İNSAN FİZYOLOJİSİ,"Duyu Organlarının Yapısı, İşleyişi ve Rahatsızlıkları",ayt-sayisal,ayt-biyoloji,ayt-biyoloji-insan-fizyolojisi,ayt-biyoloji-insan-fizyolojisi-duyu-organlarinin-yapisi-isleyisi-ve-rahatsizliklari
+AYT,Biyoloji,İNSAN FİZYOLOJİSİ,İskelet Sistemi,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-insan-fizyolojisi,ayt-biyoloji-insan-fizyolojisi-iskelet-sistemi
+AYT,Biyoloji,İNSAN FİZYOLOJİSİ,Kas Sistemi,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-insan-fizyolojisi,ayt-biyoloji-insan-fizyolojisi-kas-sistemi
+AYT,Biyoloji,İNSAN FİZYOLOJİSİ,Sindirim Sistemi,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-insan-fizyolojisi,ayt-biyoloji-insan-fizyolojisi-sindirim-sistemi
+AYT,Biyoloji,İNSAN FİZYOLOJİSİ,Dolaşım Sistemleri,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-insan-fizyolojisi,ayt-biyoloji-insan-fizyolojisi-dolasim-sistemleri
+AYT,Biyoloji,İNSAN FİZYOLOJİSİ,Bağışıklık Sistemi,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-insan-fizyolojisi,ayt-biyoloji-insan-fizyolojisi-bagisiklik-sistemi
+AYT,Biyoloji,İNSAN FİZYOLOJİSİ,Solunum Sistemi,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-insan-fizyolojisi,ayt-biyoloji-insan-fizyolojisi-solunum-sistemi
+AYT,Biyoloji,İNSAN FİZYOLOJİSİ,Üriner Sistem,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-insan-fizyolojisi,ayt-biyoloji-insan-fizyolojisi-uriner-sistem
+AYT,Biyoloji,İNSAN FİZYOLOJİSİ,Üreme Sistemi,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-insan-fizyolojisi,ayt-biyoloji-insan-fizyolojisi-ureme-sistemi
+AYT,Biyoloji,İNSAN FİZYOLOJİSİ,Embriyonik Gelişim Süreci,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-insan-fizyolojisi,ayt-biyoloji-insan-fizyolojisi-embriyonik-gelisim-sureci
+AYT,Biyoloji,KOMÜNİTE VE POPÜLASYON EKOLOJİSİ,Komünite Ekolojisi,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-komunite-ve-populasyon-ekolojisi,ayt-biyoloji-komunite-ve-populasyon-ekolojisi-komunite-ekolojisi
+AYT,Biyoloji,KOMÜNİTE VE POPÜLASYON EKOLOJİSİ,Popülasyon Ekolojisi,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-komunite-ve-populasyon-ekolojisi,ayt-biyoloji-komunite-ve-populasyon-ekolojisi-populasyon-ekolojisi
+AYT,Biyoloji,GENDEN PROTEİNE,Nükleik Asitlerin Keşfi ve Önemi,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-genden-proteine,ayt-biyoloji-genden-proteine-nukleik-asitlerin-kesfi-ve-onemi
+AYT,Biyoloji,GENDEN PROTEİNE,Genetik Şifre ve Protein Sentezi,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-genden-proteine,ayt-biyoloji-genden-proteine-genetik-sifre-ve-protein-sentezi
+AYT,Biyoloji,CANLILARDA ENERJİ DÖNÜŞÜMLERİ,Canlılık ve Enerji,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-canlilarda-enerji-donusumleri,ayt-biyoloji-canlilarda-enerji-donusumleri-canlilik-ve-enerji
+AYT,Biyoloji,CANLILARDA ENERJİ DÖNÜŞÜMLERİ,Fotosentez - Kemosentez,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-canlilarda-enerji-donusumleri,ayt-biyoloji-canlilarda-enerji-donusumleri-fotosentez-kemosentez
+AYT,Biyoloji,CANLILARDA ENERJİ DÖNÜŞÜMLERİ,Fermantasyon,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-canlilarda-enerji-donusumleri,ayt-biyoloji-canlilarda-enerji-donusumleri-fermantasyon
+AYT,Biyoloji,CANLILARDA ENERJİ DÖNÜŞÜMLERİ,Hücresel Solunum,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-canlilarda-enerji-donusumleri,ayt-biyoloji-canlilarda-enerji-donusumleri-hucresel-solunum
+AYT,Biyoloji,BİTKİ BİYOLOJİSİ,Bitkilerin Yapısı,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-bitki-biyolojisi,ayt-biyoloji-bitki-biyolojisi-bitkilerin-yapisi
+AYT,Biyoloji,BİTKİ BİYOLOJİSİ,Bitki Hormonları ve Bitkilerde Hareket,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-bitki-biyolojisi,ayt-biyoloji-bitki-biyolojisi-bitki-hormonlari-ve-bitkilerde-hareket
+AYT,Biyoloji,BİTKİ BİYOLOJİSİ,Bitkilerde Madde Taşınması,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-bitki-biyolojisi,ayt-biyoloji-bitki-biyolojisi-bitkilerde-madde-tasinmasi
+AYT,Biyoloji,BİTKİ BİYOLOJİSİ,Bitkilerde Eşeyli Üreme,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-bitki-biyolojisi,ayt-biyoloji-bitki-biyolojisi-bitkilerde-eseyli-ureme
 AYT,Biyoloji,CANLILAR VE ÇEVRE,Canlılar ve Çevre,ayt-sayisal,ayt-biyoloji,ayt-biyoloji-canlilar-ve-cevre,ayt-biyoloji-canlilar-ve-cevre-canlilar-ve-cevre
-AYT,Türk Dili ve Edebiyatı,SÖZCÜKTE ANLAM,,ayt,ayt-tde,ayt-tde,ayt-tde-sozcukte-anlam
-AYT,Türk Dili ve Edebiyatı,CÜMLEDE ANLAM,,ayt,ayt-tde,ayt-tde,ayt-tde-cumlede-anlam
-AYT,Türk Dili ve Edebiyatı,PARAGRAFTA ANLAM,,ayt,ayt-tde,ayt-tde,ayt-tde-paragrafta-anlam
-AYT,Türk Dili ve Edebiyatı,ŞIIR BILGISI,,ayt,ayt-tde,ayt-tde,ayt-tde-siir-bilgisi
-AYT,Türk Dili ve Edebiyatı,SÖZ SANATLARI,,ayt,ayt-tde,ayt-tde,ayt-tde-soz-sanatlari
-AYT,Türk Dili ve Edebiyatı,NESIR BILGISI,,ayt,ayt-tde,ayt-tde,ayt-tde-nesir-bilgisi
-AYT,Türk Dili ve Edebiyatı,İSLAMIYET ÖNCESI TÜRK EDEBIYATI / GEÇIŞ DÖNEMI,,ayt,ayt-tde,ayt-tde,ayt-tde-islamiyet-oncesi-turk-edebiyati-gecis-donemi
-AYT,Türk Dili ve Edebiyatı,TÜRK EDEBIYATI,,ayt,ayt-tde,ayt-tde,ayt-tde-turk-edebiyati
-AYT,Türk Dili ve Edebiyatı,HALK EDEBIYATI,,ayt,ayt-tde,ayt-tde,ayt-tde-halk-edebiyati
-AYT,Türk Dili ve Edebiyatı,DIVAN EDEBIYATI,,ayt,ayt-tde,ayt-tde,ayt-tde-divan-edebiyati
-AYT,Türk Dili ve Edebiyatı,TANZIMAT DÖNEMI TÜRK EDEBIYATI,,ayt,ayt-tde,ayt-tde,ayt-tde-tanzimat-donemi-turk-edebiyati
-AYT,Türk Dili ve Edebiyatı,SERVETIFÜNUN DÖNEMI TÜRK EDEBIYATI/ FECRIÂTI,,ayt,ayt-tde,ayt-tde,ayt-tde-servetifunun-donemi-turk-edebiyati-fecriati
-AYT,Türk Dili ve Edebiyatı,DÖNEMI TÜRK EDEBIYATI,,ayt,ayt-tde,ayt-tde,ayt-tde-donemi-turk-edebiyati
-AYT,Türk Dili ve Edebiyatı,MILLÎ EDEBIYAT DÖNEMI TÜRK EDEBIYATI,,ayt,ayt-tde,ayt-tde,ayt-tde-milli-edebiyat-donemi-turk-edebiyati
-AYT,Türk Dili ve Edebiyatı,CUMHURIYET DÖNEMI TÜRK EDEBIYATI,,ayt,ayt-tde,ayt-tde,ayt-tde-cumhuriyet-donemi-turk-edebiyati
-AYT,Türk Dili ve Edebiyatı,GELENEKSEL TÜRK TIYATROSU,,ayt,ayt-tde,ayt-tde,ayt-tde-geleneksel-turk-tiyatrosu
-AYT,Türk Dili ve Edebiyatı,MASAL/FABL/DESTAN/HALK HIKÂYESI,,ayt,ayt-tde,ayt-tde,ayt-tde-masal-fabl-destan-halk-hikayesi
-AYT,Türk Dili ve Edebiyatı,EDEBÎ AKIMLAR,,ayt,ayt-tde,ayt-tde,ayt-tde-edebi-akimlar
-AYT,Tarih,TARIH VE ZAMAN,İnsanlığın Hafızası Tarih,ayt,ayt-tarih,ayt-tarih-tarih-ve-zaman,ayt-tarih-tarih-ve-zaman-insanligin-hafizasi-tarih
-AYT,Tarih,İNSANLIĞIN İLK DÖNEMLERI,İlk Çağ’da Başlıca Medeniyet Havzaları,ayt,ayt-tarih,ayt-tarih-insanligin-ilk-donemleri,ayt-tarih-insanligin-ilk-donemleri-ilk-cagda-baslica-medeniyet-havzalari
-AYT,Tarih,İNSANLIĞIN İLK DÖNEMLERI,Kanunlar Doğuyor,ayt,ayt-tarih,ayt-tarih-insanligin-ilk-donemleri,ayt-tarih-insanligin-ilk-donemleri-kanunlar-doguyor
-AYT,Tarih,İLK VE ORTA ÇAĞLARDA TÜRK DÜNYASI,Coğrafya ile Oluşan Yaşam Tarzı,ayt,ayt-tarih,ayt-tarih-ilk-ve-orta-caglarda-turk-dunyasi,ayt-tarih-ilk-ve-orta-caglarda-turk-dunyasi-cografya-ile-olusan-yasam-tarzi
-AYT,Tarih,İLK VE ORTA ÇAĞLARDA TÜRK DÜNYASI,Boylardan Devlete,ayt,ayt-tarih,ayt-tarih-ilk-ve-orta-caglarda-turk-dunyasi,ayt-tarih-ilk-ve-orta-caglarda-turk-dunyasi-boylardan-devlete
-AYT,Tarih,İSLAM MEDENIYETININ DOĞUŞU,İslamiyet Yayılıyor,ayt,ayt-tarih,ayt-tarih-islam-medeniyetinin-dogusu,ayt-tarih-islam-medeniyetinin-dogusu-islamiyet-yayiliyor
-AYT,Tarih,İSLAM MEDENIYETININ DOĞUŞU,Abbasi Devleti ve Türkler,ayt,ayt-tarih,ayt-tarih-islam-medeniyetinin-dogusu,ayt-tarih-islam-medeniyetinin-dogusu-abbasi-devleti-ve-turkler
-AYT,Tarih,TÜRKLERIN İSLAMIYET’I KABULÜ VE İLK TÜRK İSLAM DEVLETLERI,İslamiyet’in Türk Devlet ve Toplum Yapısına Etkisi,ayt,ayt-tarih,ayt-tarih-turklerin-islamiyet-i-kabulu-ve-ilk-turk-islam-devletleri,ayt-tarih-turklerin-islamiyetin-kabulu-ve-ilk-turk-islam-devletleri-islamiyetin-turk-devlet-ve-toplum-yapisina-etkisi
-AYT,Tarih,TÜRKLERIN İSLAMIYET’I KABULÜ VE İLK TÜRK İSLAM DEVLETLERI,Büyük Selçuklu Devleti (1040-1157),ayt,ayt-tarih,ayt-tarih-turklerin-islamiyet-i-kabulu-ve-ilk-turk-islam-devletleri,ayt-tarih-turklerin-islamiyetin-kabulu-ve-ilk-turk-islam-devletleri-buyuk-selcuklu-devleti-1040-1157
-AYT,Tarih,TÜRKLERIN İSLAMIYET’I KABULÜ VE İLK TÜRK İSLAM DEVLETLERI,Büyük Selçuklu Devleti’nde Yönetim ve Toplum Yapısı,ayt,ayt-tarih,ayt-tarih-turklerin-islamiyet-i-kabulu-ve-ilk-turk-islam-devletleri,ayt-tarih-turklerin-islamiyetin-kabulu-ve-ilk-turk-islam-devletleri-buyuk-selcuklu-devletinde-yonetim-ve-toplum-yapisi
-AYT,Tarih,YERLEŞME VE DEVLETLEŞME SÜRECINDE SELÇUKLU TÜRKIYESI,Anadolu’nun İlk Türk Siyasi Teşekkülleri,ayt,ayt-tarih,ayt-tarih-yerlesme-ve-devletlesme-surecinde-selcuklu-turkiyesi,ayt-tarih-yerlesme-ve-devletlesme-surecinde-selcuklu-turkiyesi-anadolunun-ilk-turk-siyasi-tesekkulleri
-AYT,Tarih,YERLEŞME VE DEVLETLEŞME SÜRECINDE SELÇUKLU TÜRKIYESI,Hilal ve Haç Mücadelesi,ayt,ayt-tarih,ayt-tarih-yerlesme-ve-devletlesme-surecinde-selcuklu-turkiyesi,ayt-tarih-yerlesme-ve-devletlesme-surecinde-selcuklu-turkiyesi-hilal-ve-hac-mucadelesi
-AYT,Tarih,BEYLIKTEN DEVLETE OSMANLI SIYASETI (1302-1453),Devletleşme Sürecinde Osmanlı-Bizans İlişkileri,ayt,ayt-tarih,ayt-tarih-beylikten-devlete-osmanli-siyaseti,ayt-tarih-beylikten-devlete-osmanli-siyaseti-devletlesme-surecinde-osmanli-bizans-iliskileri
-AYT,Tarih,BEYLIKTEN DEVLETE OSMANLI SIYASETI (1302-1453),Osmanlı Devleti’nin Rumeli’deki İskân ve İstimâlet Politikası,ayt,ayt-tarih,ayt-tarih-beylikten-devlete-osmanli-siyaseti,ayt-tarih-beylikten-devlete-osmanli-siyaseti-osmanli-devletinin-rumelideki-iskan-ve-istimalet-politikasi
-AYT,Tarih,DEVLETLEŞME SÜRECINDE SAVAŞÇILAR VE ASKERLER,Osmanlı Devleti’nde Tımar Sistemi,ayt,ayt-tarih,ayt-tarih-devletlesme-surecinde-savascilar-ve-askerler,ayt-tarih-devletlesme-surecinde-savascilar-ve-askerler-osmanli-devletinde-timar-sistemi
-AYT,Tarih,DEVLETLEŞME SÜRECINDE SAVAŞÇILAR VE ASKERLER,Devşirme Sistemi ve Yeniçeri Ocağı,ayt,ayt-tarih,ayt-tarih-devletlesme-surecinde-savascilar-ve-askerler,ayt-tarih-devletlesme-surecinde-savascilar-ve-askerler-devsirme-sistemi-ve-yeniceri-ocagi
-AYT,Tarih,DÜNYA GÜCÜ OSMANLI (1453-1595),İstanbul’un Fethi ve Fethin Sonuçları,ayt,ayt-tarih,ayt-tarih-dunya-gucu-osmanli-1453-1595,ayt-tarih-dunya-gucu-osmanli-1453-1595-istanbulun-fethi-ve-fethin-sonuclari
-AYT,Tarih,SULTAN VE OSMANLI MERKEZ TEŞKILATI,Tek Hanedan Anlayışı ve Gelenekler Işığında Devlet İdarecisi,ayt,ayt-tarih,ayt-tarih-sultan-ve-osmanli-merkez-teskilati,ayt-tarih-sultan-ve-osmanli-merkez-teskilati-tek-hanedan-anlayisi-ve-gelenekler-isiginda-devlet-idarecisi
-AYT,Tarih,DEĞIŞIM ÇAĞINDA AVRUPA VE OSMANLI,Osmanlı Devleti’nde İsyanlar ve Düzeni Koruma Çabaları,ayt,ayt-tarih,ayt-tarih-degisim-caginda-avrupa-ve-osmanli,ayt-tarih-degisim-caginda-avrupa-ve-osmanli-osmanli-devletinde-isyanlar-ve-duzeni-koruma-cabalari
-AYT,Tarih,DEVRIMLER ÇAĞINDA DEĞIŞEN DEVLET-TOPLUM İLIŞKILERI,Osmanlı Devleti’nde Modern Orduya Geçiş,ayt,ayt-tarih,ayt-tarih-devrimler-caginda-degisen-devlet-toplum-iliskileri,ayt-tarih-devrimler-caginda-degisen-devlet-toplum-iliskileri-osmanli-devletinde-modern-orduya-gecis
-AYT,Tarih,ULUSLARARASI İLIŞKILERDE DENGE STRATEJISI (1774-1914),Osmanlı Devleti’ne Yönelik Tehditler,ayt,ayt-tarih,ayt-tarih-uluslararasi-iliskilerde-denge-stratejisi,ayt-tarih-uluslararasi-iliskilerde-denge-stratejisi-osmanli-devletine-yonelik-tehditler
-AYT,Tarih,ULUSLARARASI İLIŞKILERDE DENGE STRATEJISI (1774-1914),Osmanlı Devleti’nde Demokratikleşme Hareketleri,ayt,ayt-tarih,ayt-tarih-uluslararasi-iliskilerde-denge-stratejisi,ayt-tarih-uluslararasi-iliskilerde-denge-stratejisi-osmanli-devletinde-demokratiklesme-hareketleri
-AYT,Tarih,XIX VE XX. YÜZYILDA DEĞIŞEN SOSYOEKONOMIK HAYAT,Osmanlı Devleti’nde Sanayileşme Çabaları,ayt,ayt-tarih,ayt-tarih-xix-ve-xx-yuzyilda-degisen-sosyoekonomik-hayat,ayt-tarih-xix-ve-xx-yuzyilda-degisen-sosyoekonomik-hayat-osmanli-devletinde-sanayilesme-cabalari
-AYT,Tarih,20. YÜZYIL BAŞLARINDA OSMANLI DEVLETI VE DÜNYA,Mustafa Kemal’in Lider Olarak Yetişmesinde Etkili Koşullar,ayt,ayt-tarih,ayt-tarih-20-yuzyil-baslarinda-osmanli-devleti-ve-dunya,ayt-tarih-20-yuzyil-baslarinda-osmanli-devleti-ve-dunya-mustafa-kemalin-lider-olarak-yetismesinde-etkili-kosullar
-AYT,Tarih,20. YÜZYIL BAŞLARINDA OSMANLI DEVLETI VE DÜNYA,I. Dünya Savaşı Sürecinde Osmanlı Devleti,ayt,ayt-tarih,ayt-tarih-20-yuzyil-baslarinda-osmanli-devleti-ve-dunya,ayt-tarih-20-yuzyil-baslarinda-osmanli-devleti-ve-dunya-1-dunya-savasi-surecinde-osmanli-devleti
-AYT,Tarih,20. YÜZYIL BAŞLARINDA OSMANLI DEVLETI VE DÜNYA,I. Dünya Savaşı’nın Sonuçları,ayt,ayt-tarih,ayt-tarih-20-yuzyil-baslarinda-osmanli-devleti-ve-dunya,ayt-tarih-20-yuzyil-baslarinda-osmanli-devleti-ve-dunya-1-dunya-savasinin-sonuclari
-AYT,Tarih,MILLÎ MÜCADELE,Millî Mücadele’ye Hazırlık Dönemi,ayt,ayt-tarih,ayt-tarih-milli-mucadele,ayt-tarih-milli-mucadele-milli-mucadeleye-hazirlik-donemi
-AYT,Tarih,MILLÎ MÜCADELE,Doğu ve Güney Cepheleri ile Bu Cephelerde Öne Çıkan Şahsiyetler,ayt,ayt-tarih,ayt-tarih-milli-mucadele,ayt-tarih-milli-mucadele-dogu-ve-guney-cepheleri-ile-bu-cephelerde-one-cikan-sahsiyetler
-AYT,Tarih,MILLÎ MÜCADELE,Batı Cephesi ve Bu Cephede Öne Çıkan Şahsiyetler,ayt,ayt-tarih,ayt-tarih-milli-mucadele,ayt-tarih-milli-mucadele-bati-cephesi-ve-bu-cephede-one-cikan-sahsiyetler
-AYT,Tarih,MILLÎ MÜCADELE,Millî Mücadele’nin Sona Ermesi ve Lozan Barış Antlaşması,ayt,ayt-tarih,ayt-tarih-milli-mucadele,ayt-tarih-milli-mucadele-milli-mucadelenin-sona-ermesi-ve-lozan-baris-antlasmasi
-AYT,Tarih,ATATÜRKÇÜLÜK VE TÜRK İNKILABI,Atatürk İlkeleri,ayt,ayt-tarih,ayt-tarih-ataturkculuk-ve-turk-inkilabi,ayt-tarih-ataturkculuk-ve-turk-inkilabi-ataturk-ilkeleri
-AYT,Tarih,ATATÜRKÇÜLÜK VE TÜRK İNKILABI,Siyasi Alandaki Gelişmeler,ayt,ayt-tarih,ayt-tarih-ataturkculuk-ve-turk-inkilabi,ayt-tarih-ataturkculuk-ve-turk-inkilabi-siyasi-alandaki-gelismeler
-AYT,Tarih,ATATÜRKÇÜLÜK VE TÜRK İNKILABI,Toplumsal Alandaki İnkılaplar,ayt,ayt-tarih,ayt-tarih-ataturkculuk-ve-turk-inkilabi,ayt-tarih-ataturkculuk-ve-turk-inkilabi-toplumsal-alandaki-inkilaplar
-AYT,Tarih,İKI SAVAŞ ARASINDAKI DÖNEMDE TÜRKIYE VE DÜNYA,Atatürk Dönemi Türk Dış Politikası,ayt,ayt-tarih,ayt-tarih-iki-savas-arasindaki-donemde-turkiye-ve-dunya,ayt-tarih-iki-savas-arasindaki-donemde-turkiye-ve-dunya-ataturk-donemi-turk-dis-politikasi
-AYT,Tarih,II. DÜNYA SAVAŞI SÜRECINDE TÜRKIYE VE DÜNYA,II. Dünya Savaşı Sürecinde Türkiye,ayt,ayt-tarih,ayt-tarih-ii-dunya-savasi-surecinde-turkiye-ve-dunya,ayt-tarih-dunya-savasi-surecinde-turkiye-ve-dunya-2-dunya-savasi-surecinde-turkiye
-AYT,Tarih,TOPLUMSAL DEVRIM ÇAĞINDA DÜNYA VE TÜRKIYE,1960 Sonrasında Türk Dış Politikası,ayt,ayt-tarih,ayt-tarih-toplumsal-devrim-caginda-dunya-ve-turkiye,ayt-tarih-toplumsal-devrim-caginda-dunya-ve-turkiye-1960-sonrasinda-turk-dis-politikasi
-AYT,Tarih,21. YÜZYILIN EŞIĞINDE TÜRKIYE VE DÜNYA,1990 Sonrasında Türkiye,ayt,ayt-tarih,ayt-tarih-21-yuzyilin-esiginde-turkiye-ve-dunya,ayt-tarih-21-yuzyilin-esiginde-turkiye-ve-dunya-1990-sonrasinda-turkiye
 AYT,Coğrafya,DOĞAL SİSTEMLER,Ekosistemlerin Özellikleri ve İşleyişi,ayt,ayt-cografya,ayt-cografya-dogal-sistemler,ayt-cografya-dogal-sistemler-ekosistemlerin-ozellikleri-ve-isleyisi
 AYT,Coğrafya,DOĞAL SİSTEMLER,Ekstrem Doğa Olayları,ayt,ayt-cografya,ayt-cografya-dogal-sistemler,ayt-cografya-dogal-sistemler-ekstrem-doga-olaylari
 AYT,Coğrafya,DOĞAL SİSTEMLER,Küresel İklim Değişikliği ve Doğa Olaylarının Geleceği,ayt,ayt-cografya,ayt-cografya-dogal-sistemler,ayt-cografya-dogal-sistemler-kuresel-iklim-degisikligi-ve-doga-olaylarinin-gelecegi
@@ -329,6 +430,191 @@ AYT,Felsefe,MS 15.YÜZYIL - MS 17.YÜZYIL FELSEFESİ,15- 17. Yüzyıl Felsefesin
 AYT,Felsefe,MS 18.YÜZYIL - MS 19.YÜZYIL FELSEFESİ,18-19. Yüzyıl Felsefesinde Öne Çıkan Problemler ve Görüşler,ayt,ayt-felsefe,ayt-felsefe-18-yuzyil-19-yuzyil-felsefesi,ayt-felsefe-18-yuzyil-19-yuzyil-felsefesi-18-19-yuzyil-felsefesinde-one-cikan-problemler-ve-gorusler
 AYT,Felsefe,20. YÜZYIL FELSEFESİ,20. Yüzyıl Felsefesinde Bazı Ana Akımlar,ayt,ayt-felsefe,ayt-felsefe-20-yuzyil-felsefesi,ayt-felsefe-20-yuzyil-felsefesi-20-yuzyil-felsefesinde-bazi-ana-akimlar
 AYT,Felsefe,20. YÜZYIL FELSEFESİ,20. Yüzyıl Filozoflarının Görüşleri,ayt,ayt-felsefe,ayt-felsefe-20-yuzyil-felsefesi,ayt-felsefe-20-yuzyil-felsefesi-20-yuzyil-filozoflarinin-gorusleri
+AYT,Fizik,KUVVET VE DENGE,Vektörler,ayt-sayisal,ayt-fizik,ayt-fizik-kuvvet-ve-denge,ayt-fizik-kuvvet-ve-denge-vektorler
+AYT,Fizik,KUVVET VE DENGE,Kuvvet ve Denge,ayt-sayisal,ayt-fizik,ayt-fizik-kuvvet-ve-denge,ayt-fizik-kuvvet-ve-denge-kuvvet-ve-denge
+AYT,Fizik,KUVVET VE DENGE,Tork ve Denge,ayt-sayisal,ayt-fizik,ayt-fizik-kuvvet-ve-denge,ayt-fizik-kuvvet-ve-denge-tork-ve-denge
+AYT,Fizik,KUVVET VE DENGE,Ağırlık Merkezi,ayt-sayisal,ayt-fizik,ayt-fizik-kuvvet-ve-denge,ayt-fizik-kuvvet-ve-denge-agirlik-merkezi
+AYT,Fizik,KUVVET VE DENGE,Basit Makineler,ayt-sayisal,ayt-fizik,ayt-fizik-kuvvet-ve-denge,ayt-fizik-kuvvet-ve-denge-basit-makineler
+AYT,Fizik,KUVVET VE DENGE,Gündelik Hayatta Fizik,ayt-sayisal,ayt-fizik,ayt-fizik-kuvvet-ve-denge,ayt-fizik-kuvvet-ve-denge-gundelik-hayatta-fizik
+AYT,Fizik,HAREKET,Doğrusal Hareket,ayt-sayisal,ayt-fizik,ayt-fizik-hareket,ayt-fizik-hareket-dogrusal-hareket
+AYT,Fizik,HAREKET,Sabit Hızlı İki Cismin Birbirine Göre Hareketi,ayt-sayisal,ayt-fizik,ayt-fizik-hareket,ayt-fizik-hareket-sabit-hizli-iki-cismin-birbirine-gore-hareketi
+AYT,Fizik,HAREKET,Hareketli Bir Ortamdaki Sabit Hızlı Cisimlerin Bileşke ve Bağıl Hareketleri,ayt-sayisal,ayt-fizik,ayt-fizik-hareket,ayt-fizik-hareket-hareketli-bir-ortamdaki-sabit-hizli-cisimlerin-bileske-ve-bagil-hareketleri
+AYT,Fizik,HAREKET,Düşey Doğrultuda Atış Hareketleri,ayt-sayisal,ayt-fizik,ayt-fizik-hareket,ayt-fizik-hareket-dusey-dogrultuda-atis-hareketleri
+AYT,Fizik,HAREKET,Hava Direnci ve Bağıl Hız,ayt-sayisal,ayt-fizik,ayt-fizik-hareket,ayt-fizik-hareket-hava-direnci-ve-bagil-hiz
+AYT,Fizik,HAREKET,İki Boyutta Atış Hareketleri,ayt-sayisal,ayt-fizik,ayt-fizik-hareket,ayt-fizik-hareket-iki-boyutta-atis-hareketleri
+AYT,Fizik,HAREKET,Atış Hareketleri (Karma),ayt-sayisal,ayt-fizik,ayt-fizik-hareket,ayt-fizik-hareket-atis-hareketleri-karma
+AYT,Fizik,DİNAMİK VE ENERJİ,Newton'un Hareket Yasaları,ayt-sayisal,ayt-fizik,ayt-fizik-dinamik-ve-enerji,ayt-fizik-dinamik-ve-enerji-newtonun-hareket-yasalari
+AYT,Fizik,DİNAMİK VE ENERJİ,"İş, Güç ve Enerji Kavramları",ayt-sayisal,ayt-fizik,ayt-fizik-dinamik-ve-enerji,ayt-fizik-dinamik-ve-enerji-is-guc-ve-enerji-kavramlari
+AYT,Fizik,DİNAMİK VE ENERJİ,Mekanik Enerji Korunumu,ayt-sayisal,ayt-fizik,ayt-fizik-dinamik-ve-enerji,ayt-fizik-dinamik-ve-enerji-mekanik-enerji-korunumu
+AYT,Fizik,DİNAMİK VE ENERJİ,Mekanik Enerjisi Korunmayan Sistemler,ayt-sayisal,ayt-fizik,ayt-fizik-dinamik-ve-enerji,ayt-fizik-dinamik-ve-enerji-mekanik-enerjisi-korunmayan-sistemler
+AYT,Fizik,DİNAMİK VE ENERJİ,Yayda Depolanan Enerji,ayt-sayisal,ayt-fizik,ayt-fizik-dinamik-ve-enerji,ayt-fizik-dinamik-ve-enerji-yayda-depolanan-enerji
+AYT,Fizik,DİNAMİK VE ENERJİ,İtme ve Çizgisel Momentum,ayt-sayisal,ayt-fizik,ayt-fizik-dinamik-ve-enerji,ayt-fizik-dinamik-ve-enerji-itme-ve-cizgisel-momentum
+AYT,Fizik,ÇEMBERSEL VE HARMONİK HAREKET,Düzgün Çembersel Hareket,ayt-sayisal,ayt-fizik,ayt-fizik-cembersel-ve-harmonik-hareket,ayt-fizik-cembersel-ve-harmonik-hareket-duzgun-cembersel-hareket
+AYT,Fizik,ÇEMBERSEL VE HARMONİK HAREKET,Açısal Momentum,ayt-sayisal,ayt-fizik,ayt-fizik-cembersel-ve-harmonik-hareket,ayt-fizik-cembersel-ve-harmonik-hareket-acisal-momentum
+AYT,Fizik,ÇEMBERSEL VE HARMONİK HAREKET,Kütle Çekim Kuvveti ve Kepler Yasaları,ayt-sayisal,ayt-fizik,ayt-fizik-cembersel-ve-harmonik-hareket,ayt-fizik-cembersel-ve-harmonik-hareket-kutle-cekim-kuvveti-ve-kepler-yasalari
+AYT,Fizik,ÇEMBERSEL VE HARMONİK HAREKET,Basit Harmonik Hareket,ayt-sayisal,ayt-fizik,ayt-fizik-cembersel-ve-harmonik-hareket,ayt-fizik-cembersel-ve-harmonik-hareket-basit-harmonik-hareket
+AYT,Fizik,ELEKTRİKSEL ALAN VE POTANSİYEL,Elektriksel Kuvvet ve Elektriksel Alan,ayt-sayisal,ayt-fizik,ayt-fizik-elektriksel-alan-ve-potansiyel,ayt-fizik-elektriksel-alan-ve-potansiyel-elektriksel-kuvvet-ve-elektriksel-alan
+AYT,Fizik,ELEKTRİKSEL ALAN VE POTANSİYEL,Elektriksel Potansiyel Enerji,ayt-sayisal,ayt-fizik,ayt-fizik-elektriksel-alan-ve-potansiyel,ayt-fizik-elektriksel-alan-ve-potansiyel-elektriksel-potansiyel-enerji
+AYT,Fizik,ELEKTRİKSEL ALAN VE POTANSİYEL,Elektriksel Potansiyel,ayt-sayisal,ayt-fizik,ayt-fizik-elektriksel-alan-ve-potansiyel,ayt-fizik-elektriksel-alan-ve-potansiyel-elektriksel-potansiyel
+AYT,Fizik,ELEKTRİKSEL ALAN VE POTANSİYEL,Paralel Levhalar,ayt-sayisal,ayt-fizik,ayt-fizik-elektriksel-alan-ve-potansiyel,ayt-fizik-elektriksel-alan-ve-potansiyel-paralel-levhalar
+AYT,Fizik,ELEKTRİKSEL ALAN VE POTANSİYEL,Sığaçlar,ayt-sayisal,ayt-fizik,ayt-fizik-elektriksel-alan-ve-potansiyel,ayt-fizik-elektriksel-alan-ve-potansiyel-sigaclar
+AYT,Fizik,ELEKTRİKSEL ALAN VE POTANSİYEL,Elektrik (Karma),ayt-sayisal,ayt-fizik,ayt-fizik-elektriksel-alan-ve-potansiyel,ayt-fizik-elektriksel-alan-ve-potansiyel-elektrik-karma
+AYT,Fizik,MANYETİZMA VE İNDÜKSİYON,Manyetik Alan,ayt-sayisal,ayt-fizik,ayt-fizik-manyetizma-ve-induksiyon,ayt-fizik-manyetizma-ve-induksiyon-manyetik-alan
+AYT,Fizik,MANYETİZMA VE İNDÜKSİYON,Manyetik Kuvvet,ayt-sayisal,ayt-fizik,ayt-fizik-manyetizma-ve-induksiyon,ayt-fizik-manyetizma-ve-induksiyon-manyetik-kuvvet
+AYT,Fizik,MANYETİZMA VE İNDÜKSİYON,Yüklü Parçacıkların Manyetik Alandaki Hareketi,ayt-sayisal,ayt-fizik,ayt-fizik-manyetizma-ve-induksiyon,ayt-fizik-manyetizma-ve-induksiyon-yuklu-parcaciklarin-manyetik-alandaki-hareketi
+AYT,Fizik,MANYETİZMA VE İNDÜKSİYON,Elektromanyetik İndüksiyon,ayt-sayisal,ayt-fizik,ayt-fizik-manyetizma-ve-induksiyon,ayt-fizik-manyetizma-ve-induksiyon-elektromanyetik-induksiyon
+AYT,Fizik,MANYETİZMA VE İNDÜKSİYON,Alternatif Akım,ayt-sayisal,ayt-fizik,ayt-fizik-manyetizma-ve-induksiyon,ayt-fizik-manyetizma-ve-induksiyon-alternatif-akim
+AYT,Fizik,MANYETİZMA VE İNDÜKSİYON,Transformatörler,ayt-sayisal,ayt-fizik,ayt-fizik-manyetizma-ve-induksiyon,ayt-fizik-manyetizma-ve-induksiyon-transformatorler
+AYT,Fizik,DALGA MEKANİĞİ,Su Dalgalarında Kırınım,ayt-sayisal,ayt-fizik,ayt-fizik-dalga-mekanigi,ayt-fizik-dalga-mekanigi-su-dalgalarinda-kirinim
+AYT,Fizik,DALGA MEKANİĞİ,Su Dalgalarında Girişim,ayt-sayisal,ayt-fizik,ayt-fizik-dalga-mekanigi,ayt-fizik-dalga-mekanigi-su-dalgalarinda-girisim
+AYT,Fizik,DALGA MEKANİĞİ,Işığın Tek Yarıkta Kırınımı ve Çift Yarıkta Girişimi,ayt-sayisal,ayt-fizik,ayt-fizik-dalga-mekanigi,ayt-fizik-dalga-mekanigi-isigin-tek-yarikta-kirinimi-ve-cift-yarikta-girisimi
+AYT,Fizik,DALGA MEKANİĞİ,Doppler Olayı,ayt-sayisal,ayt-fizik,ayt-fizik-dalga-mekanigi,ayt-fizik-dalga-mekanigi-doppler-olayi
+AYT,Fizik,DALGA MEKANİĞİ,Elektromanyetik Dalgalar,ayt-sayisal,ayt-fizik,ayt-fizik-dalga-mekanigi,ayt-fizik-dalga-mekanigi-elektromanyetik-dalgalar
+AYT,Fizik,ATOM FİZİĞİNE GİRİŞ VE RADYOAKTİVİTE,Thomson ve Rutherford Atom Modelleri,ayt-sayisal,ayt-fizik,ayt-fizik-atom-fizigine-giris-ve-radyoaktivite,ayt-fizik-atom-fizigine-giris-ve-radyoaktivite-thomson-ve-rutherford-atom-modelleri
+AYT,Fizik,ATOM FİZİĞİNE GİRİŞ VE RADYOAKTİVİTE,Bohr Atom Modeli'nin Temel Kavramları,ayt-sayisal,ayt-fizik,ayt-fizik-atom-fizigine-giris-ve-radyoaktivite,ayt-fizik-atom-fizigine-giris-ve-radyoaktivite-bohr-atom-modelinin-temel-kavramlari
+AYT,Fizik,ATOM FİZİĞİNE GİRİŞ VE RADYOAKTİVİTE,Atomun Uyarılması,ayt-sayisal,ayt-fizik,ayt-fizik-atom-fizigine-giris-ve-radyoaktivite,ayt-fizik-atom-fizigine-giris-ve-radyoaktivite-atomun-uyarilmasi
+AYT,Fizik,ATOM FİZİĞİNE GİRİŞ VE RADYOAKTİVİTE,Modern Atom Teorisine Giriş,ayt-sayisal,ayt-fizik,ayt-fizik-atom-fizigine-giris-ve-radyoaktivite,ayt-fizik-atom-fizigine-giris-ve-radyoaktivite-modern-atom-teorisine-giris
+AYT,Fizik,ATOM FİZİĞİNE GİRİŞ VE RADYOAKTİVİTE,Büyük Patlama Teorisi (Big - Bang) ve Evrenin Oluşumu,ayt-sayisal,ayt-fizik,ayt-fizik-atom-fizigine-giris-ve-radyoaktivite,ayt-fizik-atom-fizigine-giris-ve-radyoaktivite-buyuk-patlama-teorisi-big-bang-ve-evrenin-olusumu
+AYT,Fizik,ATOM FİZİĞİNE GİRİŞ VE RADYOAKTİVİTE,Atomaltı Parçacıklar,ayt-sayisal,ayt-fizik,ayt-fizik-atom-fizigine-giris-ve-radyoaktivite,ayt-fizik-atom-fizigine-giris-ve-radyoaktivite-atomalti-parcaciklar
+AYT,Fizik,ATOM FİZİĞİNE GİRİŞ VE RADYOAKTİVİTE,Radyoaktivite,ayt-sayisal,ayt-fizik,ayt-fizik-atom-fizigine-giris-ve-radyoaktivite,ayt-fizik-atom-fizigine-giris-ve-radyoaktivite-radyoaktivite
+AYT,Fizik,MODERN FİZİK,Özel Görelilik Kuramı,ayt-sayisal,ayt-fizik,ayt-fizik-modern-fizik,ayt-fizik-modern-fizik-ozel-gorelilik-kurami
+AYT,Fizik,MODERN FİZİK,Siyah Cisim Işıması,ayt-sayisal,ayt-fizik,ayt-fizik-modern-fizik,ayt-fizik-modern-fizik-siyah-cisim-isimasi
+AYT,Fizik,MODERN FİZİK,Fotoelektrik Olay,ayt-sayisal,ayt-fizik,ayt-fizik-modern-fizik,ayt-fizik-modern-fizik-fotoelektrik-olay
+AYT,Fizik,MODERN FİZİK,Compton Saçılması,ayt-sayisal,ayt-fizik,ayt-fizik-modern-fizik,ayt-fizik-modern-fizik-compton-sacilmasi
+AYT,Fizik,MODERN FİZİK,"Işığın İkili Yapısı, Fotonların Özellikleri ve De Boglie Hipotezi",ayt-sayisal,ayt-fizik,ayt-fizik-modern-fizik,ayt-fizik-modern-fizik-isigin-ikili-yapisi-fotonlarin-ozellikleri-ve-de-boglie-hipotezi
+AYT,Fizik,GÖRÜNTÜLEME VE YARI İLETKEN TEKNOLOJİLERİ,Görüntüleme Cihazları,ayt-sayisal,ayt-fizik,ayt-fizik-goruntuleme-ve-yari-iletken-teknolojileri,ayt-fizik-goruntuleme-ve-yari-iletken-teknolojileri-goruntuleme-cihazlari
+AYT,Fizik,GÖRÜNTÜLEME VE YARI İLETKEN TEKNOLOJİLERİ,Yarı İletken Teknolojisi,ayt-sayisal,ayt-fizik,ayt-fizik-goruntuleme-ve-yari-iletken-teknolojileri,ayt-fizik-goruntuleme-ve-yari-iletken-teknolojileri-yari-iletken-teknolojisi
+AYT,Fizik,GÖRÜNTÜLEME VE YARI İLETKEN TEKNOLOJİLERİ,Süperiletkenlik,ayt-sayisal,ayt-fizik,ayt-fizik-goruntuleme-ve-yari-iletken-teknolojileri,ayt-fizik-goruntuleme-ve-yari-iletken-teknolojileri-superiletkenlik
+AYT,Fizik,GÖRÜNTÜLEME VE YARI İLETKEN TEKNOLOJİLERİ,Nanoteknoloji,ayt-sayisal,ayt-fizik,ayt-fizik-goruntuleme-ve-yari-iletken-teknolojileri,ayt-fizik-goruntuleme-ve-yari-iletken-teknolojileri-nanoteknoloji
+AYT,Fizik,GÖRÜNTÜLEME VE YARI İLETKEN TEKNOLOJİLERİ,Lazer Işınları,ayt-sayisal,ayt-fizik,ayt-fizik-goruntuleme-ve-yari-iletken-teknolojileri,ayt-fizik-goruntuleme-ve-yari-iletken-teknolojileri-lazer-isinlari
+AYT,Fizik,GÖRÜNTÜLEME VE YARI İLETKEN TEKNOLOJİLERİ,Modern Fiziğin Teknolojideki Uygulamaları - Karma,ayt-sayisal,ayt-fizik,ayt-fizik-goruntuleme-ve-yari-iletken-teknolojileri,ayt-fizik-goruntuleme-ve-yari-iletken-teknolojileri-modern-fizigin-teknolojideki-uygulamalari-karma
+AYT,Kimya,MODERN ATOM TEORİSİ,Atom Modelleri,ayt-sayisal,ayt-kimya,ayt-kimya-modern-atom-teorisi,ayt-kimya-modern-atom-teorisi-atom-modelleri
+AYT,Kimya,MODERN ATOM TEORİSİ,Kuantum Dalga Mekaniği ve Kuantum Sayıları,ayt-sayisal,ayt-kimya,ayt-kimya-modern-atom-teorisi,ayt-kimya-modern-atom-teorisi-kuantum-dalga-mekanigi-ve-kuantum-sayilari
+AYT,Kimya,MODERN ATOM TEORİSİ,Kuantum Sayıları ve Orbitaller,ayt-sayisal,ayt-kimya,ayt-kimya-modern-atom-teorisi,ayt-kimya-modern-atom-teorisi-kuantum-sayilari-ve-orbitaller
+AYT,Kimya,MODERN ATOM TEORİSİ,Küresel Simetri ve Uyarılmış Atom,ayt-sayisal,ayt-kimya,ayt-kimya-modern-atom-teorisi,ayt-kimya-modern-atom-teorisi-kuresel-simetri-ve-uyarilmis-atom
+AYT,Kimya,MODERN ATOM TEORİSİ,Periyodik Sistemde Yer Bulma,ayt-sayisal,ayt-kimya,ayt-kimya-modern-atom-teorisi,ayt-kimya-modern-atom-teorisi-periyodik-sistemde-yer-bulma
+AYT,Kimya,MODERN ATOM TEORİSİ,Periyodik Özellikler,ayt-sayisal,ayt-kimya,ayt-kimya-modern-atom-teorisi,ayt-kimya-modern-atom-teorisi-periyodik-ozellikler
+AYT,Kimya,MODERN ATOM TEORİSİ,Elementlerin Özellikleri,ayt-sayisal,ayt-kimya,ayt-kimya-modern-atom-teorisi,ayt-kimya-modern-atom-teorisi-elementlerin-ozellikleri
+AYT,Kimya,MODERN ATOM TEORİSİ,İyon Yükleri ve Yükseltgenme Basamakları,ayt-sayisal,ayt-kimya,ayt-kimya-modern-atom-teorisi,ayt-kimya-modern-atom-teorisi-iyon-yukleri-ve-yukseltgenme-basamaklari
+AYT,Kimya,MODERN ATOM TEORİSİ,İyonik ve Kovalent Bileşiklerde Adlandırma,ayt-sayisal,ayt-kimya,ayt-kimya-modern-atom-teorisi,ayt-kimya-modern-atom-teorisi-iyonik-ve-kovalent-bilesiklerde-adlandirma
+AYT,Kimya,GAZLAR,Gazların Genel Özellikleri ve Kinetik Teori,ayt-sayisal,ayt-kimya,ayt-kimya-gazlar,ayt-kimya-gazlar-gazlarin-genel-ozellikleri-ve-kinetik-teori
+AYT,Kimya,GAZLAR,Gaz Yasaları / Boyle - Mariotte Yasası (Basınç - Hacim),ayt-sayisal,ayt-kimya,ayt-kimya-gazlar,ayt-kimya-gazlar-gaz-yasalari-boyle-mariotte-yasasi-basinc-hacim
+AYT,Kimya,GAZLAR,Charles Yasası (Hacim - Sıcaklık) - Guy Lussac Yasası (Basınç - Sıcaklık),ayt-sayisal,ayt-kimya,ayt-kimya-gazlar,ayt-kimya-gazlar-charles-yasasi-hacim-sicaklik-guy-lussac-yasasi-basinc-sicaklik
+AYT,Kimya,GAZLAR,Dalton Kısmi Basınç Yasası (Basınç - Mol) - Avogadro Yasası (Hacim - Mol),ayt-sayisal,ayt-kimya,ayt-kimya-gazlar,ayt-kimya-gazlar-dalton-kismi-basinc-yasasi-basinc-mol-avogadro-yasasi-hacim-mol
+AYT,Kimya,GAZLAR,İdeal Gaz Yasası,ayt-sayisal,ayt-kimya,ayt-kimya-gazlar,ayt-kimya-gazlar-ideal-gaz-yasasi
+AYT,Kimya,GAZLAR,Gaz Karışımları ve Gazların Su Üstünde Toplanması,ayt-sayisal,ayt-kimya,ayt-kimya-gazlar,ayt-kimya-gazlar-gaz-karisimlari-ve-gazlarin-su-ustunde-toplanmasi
+AYT,Kimya,GAZLAR,"Gerçek Gazlar, Joule - Thomson Olayı, Faz Diyagramları",ayt-sayisal,ayt-kimya,ayt-kimya-gazlar,ayt-kimya-gazlar-gercek-gazlar-joule-thomson-olayi-faz-diyagramlari
+AYT,Kimya,SIVI ÇÖZELTİLER,Sıvı Ortamda Çözünme Olayı,ayt-sayisal,ayt-kimya,ayt-kimya-sivi-cozeltiler,ayt-kimya-sivi-cozeltiler-sivi-ortamda-cozunme-olayi
+AYT,Kimya,SIVI ÇÖZELTİLER,Çözelti Derişimleri İle İlgili Hesaplamalar,ayt-sayisal,ayt-kimya,ayt-kimya-sivi-cozeltiler,ayt-kimya-sivi-cozeltiler-cozelti-derisimleri-ile-ilgili-hesaplamalar
+AYT,Kimya,SIVI ÇÖZELTİLER,Koligatif Özellikler,ayt-sayisal,ayt-kimya,ayt-kimya-sivi-cozeltiler,ayt-kimya-sivi-cozeltiler-koligatif-ozellikler
+AYT,Kimya,SIVI ÇÖZELTİLER,Çözünürlük ve Çözünürlüğü Etkileyen Faktörler,ayt-sayisal,ayt-kimya,ayt-kimya-sivi-cozeltiler,ayt-kimya-sivi-cozeltiler-cozunurluk-ve-cozunurlugu-etkileyen-faktorler
+AYT,Kimya,KİMYA VE ENERJİ,Entalpi Değişimi ve Oluşum Entalpisi,ayt-sayisal,ayt-kimya,ayt-kimya-kimya-ve-enerji,ayt-kimya-kimya-ve-enerji-entalpi-degisimi-ve-olusum-entalpisi
+AYT,Kimya,KİMYA VE ENERJİ,Tepkime Entalpisi,ayt-sayisal,ayt-kimya,ayt-kimya-kimya-ve-enerji,ayt-kimya-kimya-ve-enerji-tepkime-entalpisi
+AYT,Kimya,KİMYASAL TEPKİMELERDE HIZ,Tepkime Hızının Ölçülmesi,ayt-sayisal,ayt-kimya,ayt-kimya-kimyasal-tepkimelerde-hiz,ayt-kimya-kimyasal-tepkimelerde-hiz-tepkime-hizinin-olculmesi
+AYT,Kimya,KİMYASAL TEPKİMELERDE HIZ,Reaksiyon Mekanizması ve Hız Bağıntısı,ayt-sayisal,ayt-kimya,ayt-kimya-kimyasal-tepkimelerde-hiz,ayt-kimya-kimyasal-tepkimelerde-hiz-reaksiyon-mekanizmasi-ve-hiz-bagintisi
+AYT,Kimya,KİMYASAL TEPKİMELERDE HIZ,Tepkime Hızının Bağlı Olduğu Faktörler,ayt-sayisal,ayt-kimya,ayt-kimya-kimyasal-tepkimelerde-hiz,ayt-kimya-kimyasal-tepkimelerde-hiz-tepkime-hizinin-bagli-oldugu-faktorler
+AYT,Kimya,KİMYASAL TEPKİMELERDE DENGE,Denge Kavramı ve Denge Bağıntısı,ayt-sayisal,ayt-kimya,ayt-kimya-kimyasal-tepkimelerde-denge,ayt-kimya-kimyasal-tepkimelerde-denge-denge-kavrami-ve-denge-bagintisi
+AYT,Kimya,KİMYASAL TEPKİMELERDE DENGE,Dengeye Etki Eden Faktörler,ayt-sayisal,ayt-kimya,ayt-kimya-kimyasal-tepkimelerde-denge,ayt-kimya-kimyasal-tepkimelerde-denge-dengeye-etki-eden-faktorler
+AYT,Kimya,KİMYASAL TEPKİMELERDE DENGE,Denge Anı ve Hesaplamaları,ayt-sayisal,ayt-kimya,ayt-kimya-kimyasal-tepkimelerde-denge,ayt-kimya-kimyasal-tepkimelerde-denge-denge-ani-ve-hesaplamalari
+AYT,Kimya,KİMYASAL TEPKİMELERDE DENGE,Asit - Baz Tanımları ve Genel Özellikleri,ayt-sayisal,ayt-kimya,ayt-kimya-kimyasal-tepkimelerde-denge,ayt-kimya-kimyasal-tepkimelerde-denge-asit-baz-tanimlari-ve-genel-ozellikleri
+AYT,Kimya,KİMYASAL TEPKİMELERDE DENGE,Suyun Otoiyonizasyonu / pH ve pOH Kavramları,ayt-sayisal,ayt-kimya,ayt-kimya-kimyasal-tepkimelerde-denge,ayt-kimya-kimyasal-tepkimelerde-denge-suyun-otoiyonizasyonu-ph-ve-poh-kavramlari
+AYT,Kimya,KİMYASAL TEPKİMELERDE DENGE,Nötralleşme ve Titrasyon,ayt-sayisal,ayt-kimya,ayt-kimya-kimyasal-tepkimelerde-denge,ayt-kimya-kimyasal-tepkimelerde-denge-notrallesme-ve-titrasyon
+AYT,Kimya,KİMYASAL TEPKİMELERDE DENGE,Zayıf Asit ve Bazlar,ayt-sayisal,ayt-kimya,ayt-kimya-kimyasal-tepkimelerde-denge,ayt-kimya-kimyasal-tepkimelerde-denge-zayif-asit-ve-bazlar
+AYT,Kimya,KİMYASAL TEPKİMELERDE DENGE,Tampon Çözeltiler ve Hidroliz,ayt-sayisal,ayt-kimya,ayt-kimya-kimyasal-tepkimelerde-denge,ayt-kimya-kimyasal-tepkimelerde-denge-tampon-cozeltiler-ve-hidroliz
+AYT,Kimya,KİMYASAL TEPKİMELERDE DENGE,Çözünürlük Çarpımı (Kçç),ayt-sayisal,ayt-kimya,ayt-kimya-kimyasal-tepkimelerde-denge,ayt-kimya-kimyasal-tepkimelerde-denge-cozunurluk-carpimi-kcc
+AYT,Kimya,KİMYASAL TEPKİMELERDE DENGE,Çözünürlüğü Etkileyen Faktörler,ayt-sayisal,ayt-kimya,ayt-kimya-kimyasal-tepkimelerde-denge,ayt-kimya-kimyasal-tepkimelerde-denge-cozunurlugu-etkileyen-faktorler
+AYT,Kimya,KİMYA VE ELEKTRİK,Redoks Tepkimeleri,ayt-sayisal,ayt-kimya,ayt-kimya-kimya-ve-elektrik,ayt-kimya-kimya-ve-elektrik-redoks-tepkimeleri
+AYT,Kimya,KİMYA VE ELEKTRİK,Redoks Tepkimeleri ve Aktiflik,ayt-sayisal,ayt-kimya,ayt-kimya-kimya-ve-elektrik,ayt-kimya-kimya-ve-elektrik-redoks-tepkimeleri-ve-aktiflik
+AYT,Kimya,KİMYA VE ELEKTRİK,Yarı Pil Potansiyelleri ve Aktiflik,ayt-sayisal,ayt-kimya,ayt-kimya-kimya-ve-elektrik,ayt-kimya-kimya-ve-elektrik-yari-pil-potansiyelleri-ve-aktiflik
+AYT,Kimya,KİMYA VE ELEKTRİK,Elektrokimyasal Piller,ayt-sayisal,ayt-kimya,ayt-kimya-kimya-ve-elektrik,ayt-kimya-kimya-ve-elektrik-elektrokimyasal-piller
+AYT,Kimya,KİMYA VE ELEKTRİK,Elektroliz ve Faraday Kanunları,ayt-sayisal,ayt-kimya,ayt-kimya-kimya-ve-elektrik,ayt-kimya-kimya-ve-elektrik-elektroliz-ve-faraday-kanunlari
+AYT,Kimya,KARBON KİMYASINA GİRİŞ,Organik Bileşikler ve Formül Bulma,ayt-sayisal,ayt-kimya,ayt-kimya-karbon-kimyasina-giris,ayt-kimya-karbon-kimyasina-giris-organik-bilesikler-ve-formul-bulma
+AYT,Kimya,KARBON KİMYASINA GİRİŞ,Doğada Karbon,ayt-sayisal,ayt-kimya,ayt-kimya-karbon-kimyasina-giris,ayt-kimya-karbon-kimyasina-giris-dogada-karbon
+AYT,Kimya,KARBON KİMYASINA GİRİŞ,Kovalent Türlerde Lewis Formülleri,ayt-sayisal,ayt-kimya,ayt-kimya-karbon-kimyasina-giris,ayt-kimya-karbon-kimyasina-giris-kovalent-turlerde-lewis-formulleri
+AYT,Kimya,KARBON KİMYASINA GİRİŞ,Hibritleşme ve Molekül Geometrileri,ayt-sayisal,ayt-kimya,ayt-kimya-karbon-kimyasina-giris,ayt-kimya-karbon-kimyasina-giris-hibritlesme-ve-molekul-geometrileri
+AYT,Kimya,ORGANİK BİLEŞİKLER,Organik Bileşiklerin Sınıflandırılması,ayt-sayisal,ayt-kimya,ayt-kimya-organik-bilesikler,ayt-kimya-organik-bilesikler-organik-bilesiklerin-siniflandirilmasi
+AYT,Kimya,ORGANİK BİLEŞİKLER,Alkanların Adlandırılması,ayt-sayisal,ayt-kimya,ayt-kimya-organik-bilesikler,ayt-kimya-organik-bilesikler-alkanlarin-adlandirilmasi
+AYT,Kimya,ORGANİK BİLEŞİKLER,Alkanların Özellikleri ve Kullanım Alanları,ayt-sayisal,ayt-kimya,ayt-kimya-organik-bilesikler,ayt-kimya-organik-bilesikler-alkanlarin-ozellikleri-ve-kullanim-alanlari
+AYT,Kimya,ORGANİK BİLEŞİKLER,Alkenlerin Adlandırılması ve Özellikleri,ayt-sayisal,ayt-kimya,ayt-kimya-organik-bilesikler,ayt-kimya-organik-bilesikler-alkenlerin-adlandirilmasi-ve-ozellikleri
+AYT,Kimya,ORGANİK BİLEŞİKLER,Alkenlerin Fiziksel ve Kimyasal Özellikleri,ayt-sayisal,ayt-kimya,ayt-kimya-organik-bilesikler,ayt-kimya-organik-bilesikler-alkenlerin-fiziksel-ve-kimyasal-ozellikleri
+AYT,Kimya,ORGANİK BİLEŞİKLER,Alkinler,ayt-sayisal,ayt-kimya,ayt-kimya-organik-bilesikler,ayt-kimya-organik-bilesikler-alkinler
+AYT,Kimya,ORGANİK BİLEŞİKLER,Asetilen ve Kullanım Alanları,ayt-sayisal,ayt-kimya,ayt-kimya-organik-bilesikler,ayt-kimya-organik-bilesikler-asetilen-ve-kullanim-alanlari
+AYT,Kimya,ORGANİK BİLEŞİKLER,Hidrokarbonlarda İzomerlik,ayt-sayisal,ayt-kimya,ayt-kimya-organik-bilesikler,ayt-kimya-organik-bilesikler-hidrokarbonlarda-izomerlik
+AYT,Kimya,ORGANİK BİLEŞİKLER,Aromatik Bileşiklerin Adlandırılması ve Özellikleri,ayt-sayisal,ayt-kimya,ayt-kimya-organik-bilesikler,ayt-kimya-organik-bilesikler-aromatik-bilesiklerin-adlandirilmasi-ve-ozellikleri
+AYT,Kimya,ORGANİK BİLEŞİKLER,Alkollerin Sınıflandırılması ve Adlandırılması,ayt-sayisal,ayt-kimya,ayt-kimya-organik-bilesikler,ayt-kimya-organik-bilesikler-alkollerin-siniflandirilmasi-ve-adlandirilmasi
+AYT,Kimya,ORGANİK BİLEŞİKLER,Alkollerin Özellikleri ve Etanol Eldesi,ayt-sayisal,ayt-kimya,ayt-kimya-organik-bilesikler,ayt-kimya-organik-bilesikler-alkollerin-ozellikleri-ve-etanol-eldesi
+AYT,Kimya,ORGANİK BİLEŞİKLER,Eterlerin Sınıflandırılması ve Adlandırılması,ayt-sayisal,ayt-kimya,ayt-kimya-organik-bilesikler,ayt-kimya-organik-bilesikler-eterlerin-siniflandirilmasi-ve-adlandirilmasi
+AYT,Kimya,ORGANİK BİLEŞİKLER,Eterlerin Özellikleri,ayt-sayisal,ayt-kimya,ayt-kimya-organik-bilesikler,ayt-kimya-organik-bilesikler-eterlerin-ozellikleri
+AYT,Kimya,ORGANİK BİLEŞİKLER,Karbonilli Bileşikler,ayt-sayisal,ayt-kimya,ayt-kimya-organik-bilesikler,ayt-kimya-organik-bilesikler-karbonilli-bilesikler
+AYT,Kimya,ORGANİK BİLEŞİKLER,Karbonil Bileşiklerinin Özellikleri,ayt-sayisal,ayt-kimya,ayt-kimya-organik-bilesikler,ayt-kimya-organik-bilesikler-karbonil-bilesiklerinin-ozellikleri
+AYT,Kimya,ORGANİK BİLEŞİKLER,Karboksilik Asitler,ayt-sayisal,ayt-kimya,ayt-kimya-organik-bilesikler,ayt-kimya-organik-bilesikler-karboksilik-asitler
+AYT,Kimya,ORGANİK BİLEŞİKLER,Esterler,ayt-sayisal,ayt-kimya,ayt-kimya-organik-bilesikler,ayt-kimya-organik-bilesikler-esterler
+AYT,Kimya,ORGANİK BİLEŞİKLER,Fonksiyonel Gruplarda İzomerlik,ayt-sayisal,ayt-kimya,ayt-kimya-organik-bilesikler,ayt-kimya-organik-bilesikler-fonksiyonel-gruplarda-izomerlik
+AYT,Kimya,ENERJİ KAYNAKLARI VE BİLİMSEL GELİŞMELER,Fosil Yakıtlar,ayt-sayisal,ayt-kimya,ayt-kimya-enerji-kaynaklari-ve-bilimsel-gelismeler,ayt-kimya-enerji-kaynaklari-ve-bilimsel-gelismeler-fosil-yakitlar
+AYT,Kimya,ENERJİ KAYNAKLARI VE BİLİMSEL GELİŞMELER,Alternatif Enerji Kaynakları,ayt-sayisal,ayt-kimya,ayt-kimya-enerji-kaynaklari-ve-bilimsel-gelismeler,ayt-kimya-enerji-kaynaklari-ve-bilimsel-gelismeler-alternatif-enerji-kaynaklari
+AYT,Kimya,ENERJİ KAYNAKLARI VE BİLİMSEL GELİŞMELER,Sürdürülebilirlik ve Nanoteknoloji,ayt-sayisal,ayt-kimya,ayt-kimya-enerji-kaynaklari-ve-bilimsel-gelismeler,ayt-kimya-enerji-kaynaklari-ve-bilimsel-gelismeler-surdurulebilirlik-ve-nanoteknoloji
+AYT,Mantık,MANTIĞA GİRİŞ,Doğru Düşünme-Temel Kavramlar,ayt,ayt-mantik,ayt-mantik-mantiga-giris,ayt-mantik-mantiga-giris-dogru-dusunme-temel-kavramlar
+AYT,Mantık,MANTIĞA GİRİŞ,Akıl İlkeleri,ayt,ayt-mantik,ayt-mantik-mantiga-giris,ayt-mantik-mantiga-giris-akil-ilkeleri
+AYT,Mantık,MANTIĞA GİRİŞ,Akıl Yürütme Yöntemleri,ayt,ayt-mantik,ayt-mantik-mantiga-giris,ayt-mantik-mantiga-giris-akil-yurutme-yontemleri
+AYT,Mantık,MANTIĞA GİRİŞ,Mantığın Uygulama Alanları,ayt,ayt-mantik,ayt-mantik-mantiga-giris,ayt-mantik-mantiga-giris-mantigin-uygulama-alanlari
+AYT,Mantık,KLASİK MANTIK,Kavram ve Terim,ayt,ayt-mantik,ayt-mantik-klasik-mantik,ayt-mantik-klasik-mantik-kavram-ve-terim
+AYT,Mantık,KLASİK MANTIK,"Nelik, Gerçeklik, Kimlik-İçlem ve Kaplam",ayt,ayt-mantik,ayt-mantik-klasik-mantik,ayt-mantik-klasik-mantik-nelik-gerceklik-kimlik-iclem-ve-kaplam
+AYT,Mantık,KLASİK MANTIK,Kavram Çeşitleri,ayt,ayt-mantik,ayt-mantik-klasik-mantik,ayt-mantik-klasik-mantik-kavram-cesitleri
+AYT,Mantık,KLASİK MANTIK,Beş Tümel,ayt,ayt-mantik,ayt-mantik-klasik-mantik,ayt-mantik-klasik-mantik-bes-tumel
+AYT,Mantık,KLASİK MANTIK,Tanım,ayt,ayt-mantik,ayt-mantik-klasik-mantik,ayt-mantik-klasik-mantik-tanim
+AYT,Mantık,KLASİK MANTIK,Önerme ve Çeşitleri,ayt,ayt-mantik,ayt-mantik-klasik-mantik,ayt-mantik-klasik-mantik-onerme-ve-cesitleri
+AYT,Mantık,KLASİK MANTIK,Çıkarım,ayt,ayt-mantik,ayt-mantik-klasik-mantik,ayt-mantik-klasik-mantik-cikarim
+AYT,Mantık,KLASİK MANTIK,Eşdeğerlik Çıkarımları,ayt,ayt-mantik,ayt-mantik-klasik-mantik,ayt-mantik-klasik-mantik-esdegerlik-cikarimlari
+AYT,Mantık,KLASİK MANTIK,Kıyas,ayt,ayt-mantik,ayt-mantik-klasik-mantik,ayt-mantik-klasik-mantik-kiyas
+AYT,Mantık,MANTIK VE DİL,Dilin Görevleri,ayt,ayt-mantik,ayt-mantik-mantik-ve-dil,ayt-mantik-mantik-ve-dil-dilin-gorevleri
+AYT,Mantık,MANTIK VE DİL,Bilgi Aktarma ve Dil-Anlama ve Tanımlama,ayt,ayt-mantik,ayt-mantik-mantik-ve-dil,ayt-mantik-mantik-ve-dil-bilgi-aktarma-ve-dil-anlama-ve-tanimlama
+AYT,Mantık,SEMBOLİK MANTIK,Önerme ve Yapısı-Basit ve Bileşik Önermeler,ayt,ayt-mantik,ayt-mantik-sembolik-mantik,ayt-mantik-sembolik-mantik-onerme-ve-yapisi-basit-ve-bilesik-onermeler
+AYT,Mantık,SEMBOLİK MANTIK,Çıkarım,ayt,ayt-mantik,ayt-mantik-sembolik-mantik,ayt-mantik-sembolik-mantik-cikarim
+AYT,Mantık,SEMBOLİK MANTIK,Sembolleştirme,ayt,ayt-mantik,ayt-mantik-sembolik-mantik,ayt-mantik-sembolik-mantik-sembollestirme
+AYT,Mantık,SEMBOLİK MANTIK,Önermelerin Doğruluk Değerleri,ayt,ayt-mantik,ayt-mantik-sembolik-mantik,ayt-mantik-sembolik-mantik-onermelerin-dogruluk-degerleri
+AYT,Mantık,SEMBOLİK MANTIK,"Tutarlılık, Geçerlilik, Eşdeğerlik Denetlemesi",ayt,ayt-mantik,ayt-mantik-sembolik-mantik,ayt-mantik-sembolik-mantik-tutarlilik-gecerlilik-esdegerlik-denetlemesi
+AYT,Mantık,SEMBOLİK MANTIK,Çözümleyici Çizelge,ayt,ayt-mantik,ayt-mantik-sembolik-mantik,ayt-mantik-sembolik-mantik-cozumleyici-cizelge
+AYT,Mantık,SEMBOLİK MANTIK,Niceleme Mantığı,ayt,ayt-mantik,ayt-mantik-sembolik-mantik,ayt-mantik-sembolik-mantik-niceleme-mantigi
+AYT,Mantık,SEMBOLİK MANTIK,Çok Değerli Mantık,ayt,ayt-mantik,ayt-mantik-sembolik-mantik,ayt-mantik-sembolik-mantik-cok-degerli-mantik
+AYT,Matematik,POLİNOMLAR,Polinomlar,ayt,ayt-matematik,ayt-matematik-polinomlar,ayt-matematik-polinomlar-polinomlar
+AYT,Matematik,II. DERECEDEN DENKLEMLER,II. Dereceden Denklemler,ayt,ayt-matematik,ayt-matematik-ii-dereceden-denklemler,ayt-matematik-ii-dereceden-denklemler-ii-dereceden-denklemler
+AYT,Matematik,II. DERECEDEN FONKSİYONLARIN GRAFİKLERİ,II. Dereceden Fonksiyonların Grafikleri,ayt,ayt-matematik,ayt-matematik-ii-dereceden-fonksiyonlarin-grafikleri,ayt-matematik-ii-dereceden-fonksiyonlarin-grafikleri-ii-dereceden-fonksiyonlarin-grafikleri
+AYT,Matematik,DENKLEM VE EŞİTSİZLİK SİSTEMLERİ,Denklem ve Eşitsizlik Sistemleri,ayt,ayt-matematik,ayt-matematik-denklem-ve-esitsizlik-sistemleri,ayt-matematik-denklem-ve-esitsizlik-sistemleri-denklem-ve-esitsizlik-sistemleri
+AYT,Matematik,FONKSİYONLAR,Fonksiyonlar,ayt,ayt-matematik,ayt-matematik-fonksiyonlar,ayt-matematik-fonksiyonlar-fonksiyonlar
+AYT,Matematik,TRİGONOMETRİ,Trigonometri,ayt,ayt-matematik,ayt-matematik-trigonometri,ayt-matematik-trigonometri-trigonometri
+AYT,Matematik,LOGARİTMA,Logaritma,ayt,ayt-matematik,ayt-matematik-logaritma,ayt-matematik-logaritma-logaritma
+AYT,Matematik,DİZİLER,Diziler,ayt,ayt-matematik,ayt-matematik-diziler,ayt-matematik-diziler-diziler
+AYT,Matematik,LİMİT VE SÜREKLİLİK,Limit ve Süreklilik,ayt,ayt-matematik,ayt-matematik-limit-ve-sureklilik,ayt-matematik-limit-ve-sureklilik-limit-ve-sureklilik
+AYT,Matematik,TÜREV,Türev,ayt,ayt-matematik,ayt-matematik-turev,ayt-matematik-turev-turev
+AYT,Matematik,İNTEGRAL,İntegral,ayt,ayt-matematik,ayt-matematik-integral,ayt-matematik-integral-integral
+AYT,Matematik,SAYMA VE OLASILIK,Sayma ve Olasılık,ayt,ayt-matematik,ayt-matematik-sayma-ve-olasilik,ayt-matematik-sayma-ve-olasilik-sayma-ve-olasilik
+AYT,Matematik,ÜÇGENLER,Düzlemde Açı,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-duzlemde-aci
+AYT,Matematik,ÜÇGENLER,Üçgende Açı,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-ucgende-aci
+AYT,Matematik,ÜÇGENLER,Dik Üçgen ve Trigonometri,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-dik-ucgen-ve-trigonometri
+AYT,Matematik,ÜÇGENLER,Üçgende Açı - Kenar Bağıntıları,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-ucgende-aci-kenar-bagintilari
+AYT,Matematik,ÜÇGENLER,İkizkenar Üçgen,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-ikizkenar-ucgen
+AYT,Matematik,ÜÇGENLER,Eşkenar Üçgen,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-eskenar-ucgen
+AYT,Matematik,ÜÇGENLER,Üçgende Açıortay,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-ucgende-aciortay
+AYT,Matematik,ÜÇGENLER,Üçgende Kenarortay,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-ucgende-kenarortay
+AYT,Matematik,ÜÇGENLER,Üçgende Merkezler,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-ucgende-merkezler
+AYT,Matematik,ÜÇGENLER,Üçgende Benzerlik,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-ucgende-benzerlik
+AYT,Matematik,ÜÇGENLER,Üçgende Alan,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-ucgende-alan
+AYT,Matematik,ÇOKGENLER VE DÖRTGENLER,Çokgenler,ayt,ayt-matematik,ayt-matematik-cokgenler-ve-dortgenler,ayt-matematik-cokgenler-ve-dortgenler-cokgenler
+AYT,Matematik,ÇOKGENLER VE DÖRTGENLER,Dörtgenler,ayt,ayt-matematik,ayt-matematik-cokgenler-ve-dortgenler,ayt-matematik-cokgenler-ve-dortgenler-dortgenler
+AYT,Matematik,ÇOKGENLER VE DÖRTGENLER,Yamuk,ayt,ayt-matematik,ayt-matematik-cokgenler-ve-dortgenler,ayt-matematik-cokgenler-ve-dortgenler-yamuk
+AYT,Matematik,ÇOKGENLER VE DÖRTGENLER,Paralelkenar,ayt,ayt-matematik,ayt-matematik-cokgenler-ve-dortgenler,ayt-matematik-cokgenler-ve-dortgenler-paralelkenar
+AYT,Matematik,ÇOKGENLER VE DÖRTGENLER,Eşkenar Dörtgen,ayt,ayt-matematik,ayt-matematik-cokgenler-ve-dortgenler,ayt-matematik-cokgenler-ve-dortgenler-eskenar-dortgen
+AYT,Matematik,ÇOKGENLER VE DÖRTGENLER,Dikdörtgen,ayt,ayt-matematik,ayt-matematik-cokgenler-ve-dortgenler,ayt-matematik-cokgenler-ve-dortgenler-dikdortgen
+AYT,Matematik,ÇOKGENLER VE DÖRTGENLER,Kare,ayt,ayt-matematik,ayt-matematik-cokgenler-ve-dortgenler,ayt-matematik-cokgenler-ve-dortgenler-kare
+AYT,Matematik,ÇOKGENLER VE DÖRTGENLER,Deltoid ve Dörtgenlerin Sınıflandırılması,ayt,ayt-matematik,ayt-matematik-cokgenler-ve-dortgenler,ayt-matematik-cokgenler-ve-dortgenler-deltoid-ve-dortgenlerin-siniflandirilmasi
+AYT,Matematik,ÇEMBERLER,Çemberde Açı,ayt,ayt-matematik,ayt-matematik-cemberler,ayt-matematik-cemberler-cemberde-aci
+AYT,Matematik,ÇEMBERLER,Çemberde Uzunluk,ayt,ayt-matematik,ayt-matematik-cemberler,ayt-matematik-cemberler-cemberde-uzunluk
+AYT,Matematik,ÇEMBERLER,Dairede Alan,ayt,ayt-matematik,ayt-matematik-cemberler,ayt-matematik-cemberler-dairede-alan
+AYT,Matematik,ANALİTİK GEOMETRİ,Noktanın Analitik İncelenmesi,ayt,ayt-matematik,ayt-matematik-analitik-geometri,ayt-matematik-analitik-geometri-noktanin-analitik-incelenmesi
+AYT,Matematik,ANALİTİK GEOMETRİ,Doğrunun Analitik İncelenmesi,ayt,ayt-matematik,ayt-matematik-analitik-geometri,ayt-matematik-analitik-geometri-dogrunun-analitik-incelenmesi
+AYT,Matematik,ANALİTİK GEOMETRİ,Dönüşümlerle Geoemetri,ayt,ayt-matematik,ayt-matematik-analitik-geometri,ayt-matematik-analitik-geometri-donusumlerle-geoemetri
+AYT,Matematik,ANALİTİK GEOMETRİ,Çemberin Analitik İncelenmesi,ayt,ayt-matematik,ayt-matematik-analitik-geometri,ayt-matematik-analitik-geometri-cemberin-analitik-incelenmesi
+AYT,Matematik,UZAY GEOMETRİSİ VE KATI CİSİMLER,Uzay Geometrisi ve Katı Cisimler,ayt,ayt-matematik,ayt-matematik-uzay-geometrisi-ve-kati-cisimler,ayt-matematik-uzay-geometrisi-ve-kati-cisimler-uzay-geometrisi-ve-kati-cisimler
 AYT,Psikoloji,PSİKOLOJİ BİLİMİNİ TANIYALIM,Psikolojinin Konusu-Bir Bilim Dalı Olma Süreci,ayt,ayt-psikoloji,ayt-psikoloji-psikoloji-bilimini-taniyalim,ayt-psikoloji-psikoloji-bilimini-taniyalim-psikolojinin-konusu-bir-bilim-dali-olma-sureci
 AYT,Psikoloji,PSİKOLOJİ BİLİMİNİ TANIYALIM,Psikolojideki Yaklaşımlar,ayt,ayt-psikoloji,ayt-psikoloji-psikoloji-bilimini-taniyalim,ayt-psikoloji-psikoloji-bilimini-taniyalim-psikolojideki-yaklasimlar
 AYT,Psikoloji,PSİKOLOJİ BİLİMİNİ TANIYALIM,"Psikolojinin Bilim Dalı Olarak Ölçütleri, Amaçları-Araştırmalarda Uyulması Gereken Etik Kurallar",ayt,ayt-psikoloji,ayt-psikoloji-psikoloji-bilimini-taniyalim,ayt-psikoloji-psikoloji-bilimini-taniyalim-psikolojinin-bilim-dali-olarak-olcutleri-amaclari-arastirmalarda-uyulmasi-gereken-etik-kurallar
@@ -383,26 +669,147 @@ AYT,Sosyoloji,TOPLUMSAL KURUMLAR,"Eğitim Kurumu, Önemi ve İşlevleri",ayt,ayt
 AYT,Sosyoloji,TOPLUMSAL KURUMLAR,"Din Kurumu, Önemi ve İşlevleri",ayt,ayt-sosyoloji,ayt-sosyoloji-toplumsal-kurumlar,ayt-sosyoloji-toplumsal-kurumlar-din-kurumu-onemi-ve-islevleri
 AYT,Sosyoloji,TOPLUMSAL KURUMLAR,"Ekonomi Kurumu, Önemi ve İşlevleri",ayt,ayt-sosyoloji,ayt-sosyoloji-toplumsal-kurumlar,ayt-sosyoloji-toplumsal-kurumlar-ekonomi-kurumu-onemi-ve-islevleri
 AYT,Sosyoloji,TOPLUMSAL KURUMLAR,Siyasal Yönetim Biçimleri,ayt,ayt-sosyoloji,ayt-sosyoloji-toplumsal-kurumlar,ayt-sosyoloji-toplumsal-kurumlar-siyasal-yonetim-bicimleri
-AYT,Mantık,MANTIĞA GİRİŞ,Doğru Düşünme-Temel Kavramlar,ayt,ayt-mantik,ayt-mantik-mantiga-giris,ayt-mantik-mantiga-giris-dogru-dusunme-temel-kavramlar
-AYT,Mantık,MANTIĞA GİRİŞ,Akıl İlkeleri,ayt,ayt-mantik,ayt-mantik-mantiga-giris,ayt-mantik-mantiga-giris-akil-ilkeleri
-AYT,Mantık,MANTIĞA GİRİŞ,Akıl Yürütme Yöntemleri,ayt,ayt-mantik,ayt-mantik-mantiga-giris,ayt-mantik-mantiga-giris-akil-yurutme-yontemleri
-AYT,Mantık,MANTIĞA GİRİŞ,Mantığın Uygulama Alanları,ayt,ayt-mantik,ayt-mantik-mantiga-giris,ayt-mantik-mantiga-giris-mantigin-uygulama-alanlari
-AYT,Mantık,KLASİK MANTIK,Kavram ve Terim,ayt,ayt-mantik,ayt-mantik-klasik-mantik,ayt-mantik-klasik-mantik-kavram-ve-terim
-AYT,Mantık,KLASİK MANTIK,"Nelik, Gerçeklik, Kimlik-İçlem ve Kaplam",ayt,ayt-mantik,ayt-mantik-klasik-mantik,ayt-mantik-klasik-mantik-nelik-gerceklik-kimlik-iclem-ve-kaplam
-AYT,Mantık,KLASİK MANTIK,Kavram Çeşitleri,ayt,ayt-mantik,ayt-mantik-klasik-mantik,ayt-mantik-klasik-mantik-kavram-cesitleri
-AYT,Mantık,KLASİK MANTIK,Beş Tümel,ayt,ayt-mantik,ayt-mantik-klasik-mantik,ayt-mantik-klasik-mantik-bes-tumel
-AYT,Mantık,KLASİK MANTIK,Tanım,ayt,ayt-mantik,ayt-mantik-klasik-mantik,ayt-mantik-klasik-mantik-tanim
-AYT,Mantık,KLASİK MANTIK,Önerme ve Çeşitleri,ayt,ayt-mantik,ayt-mantik-klasik-mantik,ayt-mantik-klasik-mantik-onerme-ve-cesitleri
-AYT,Mantık,KLASİK MANTIK,Çıkarım,ayt,ayt-mantik,ayt-mantik-klasik-mantik,ayt-mantik-klasik-mantik-cikarim
-AYT,Mantık,KLASİK MANTIK,Eşdeğerlik Çıkarımları,ayt,ayt-mantik,ayt-mantik-klasik-mantik,ayt-mantik-klasik-mantik-esdegerlik-cikarimlari
-AYT,Mantık,KLASİK MANTIK,Kıyas,ayt,ayt-mantik,ayt-mantik-klasik-mantik,ayt-mantik-klasik-mantik-kiyas
-AYT,Mantık,MANTIK VE DİL,Dilin Görevleri,ayt,ayt-mantik,ayt-mantik-mantik-ve-dil,ayt-mantik-mantik-ve-dil-dilin-gorevleri
-AYT,Mantık,MANTIK VE DİL,Bilgi Aktarma ve Dil-Anlama ve Tanımlama,ayt,ayt-mantik,ayt-mantik-mantik-ve-dil,ayt-mantik-mantik-ve-dil-bilgi-aktarma-ve-dil-anlama-ve-tanimlama
-AYT,Mantık,SEMBOLİK MANTIK,Önerme ve Yapısı-Basit ve Bileşik Önermeler,ayt,ayt-mantik,ayt-mantik-sembolik-mantik,ayt-mantik-sembolik-mantik-onerme-ve-yapisi-basit-ve-bilesik-onermeler
-AYT,Mantık,SEMBOLİK MANTIK,Çıkarım,ayt,ayt-mantik,ayt-mantik-sembolik-mantik,ayt-mantik-sembolik-mantik-cikarim
-AYT,Mantık,SEMBOLİK MANTIK,Sembolleştirme,ayt,ayt-mantik,ayt-mantik-sembolik-mantik,ayt-mantik-sembolik-mantik-sembollestirme
-AYT,Mantık,SEMBOLİK MANTIK,Önermelerin Doğruluk Değerleri,ayt,ayt-mantik,ayt-mantik-sembolik-mantik,ayt-mantik-sembolik-mantik-onermelerin-dogruluk-degerleri
-AYT,Mantık,SEMBOLİK MANTIK,"Tutarlılık, Geçerlilik, Eşdeğerlik Denetlemesi",ayt,ayt-mantik,ayt-mantik-sembolik-mantik,ayt-mantik-sembolik-mantik-tutarlilik-gecerlilik-esdegerlik-denetlemesi
-AYT,Mantık,SEMBOLİK MANTIK,Çözümleyici Çizelge,ayt,ayt-mantik,ayt-mantik-sembolik-mantik,ayt-mantik-sembolik-mantik-cozumleyici-cizelge
-AYT,Mantık,SEMBOLİK MANTIK,Niceleme Mantığı,ayt,ayt-mantik,ayt-mantik-sembolik-mantik,ayt-mantik-sembolik-mantik-niceleme-mantigi
-AYT,Mantık,SEMBOLİK MANTIK,Çok Değerli Mantık,ayt,ayt-mantik,ayt-mantik-sembolik-mantik,ayt-mantik-sembolik-mantik-cok-degerli-mantik
+AYT,Tarih,TARİH VE ZAMAN,Tarih ve Zaman,ayt,ayt-tarih,ayt-tarih-tarih-ve-zaman,ayt-tarih-tarih-ve-zaman-tarih-ve-zaman
+AYT,Tarih,İNSANLIĞIN İLK DÖNEMLERİ,İnsanlığın İlk İzleri,ayt,ayt-tarih,ayt-tarih-insanligin-ilk-donemleri,ayt-tarih-insanligin-ilk-donemleri-insanligin-ilk-izleri
+AYT,Tarih,İNSANLIĞIN İLK DÖNEMLERİ,Mezopotamya ve Mısır Uygarlığı,ayt,ayt-tarih,ayt-tarih-insanligin-ilk-donemleri,ayt-tarih-insanligin-ilk-donemleri-mezopotamya-ve-misir-uygarligi
+AYT,Tarih,İNSANLIĞIN İLK DÖNEMLERİ,Anadolu Uygarlıkları,ayt,ayt-tarih,ayt-tarih-insanligin-ilk-donemleri,ayt-tarih-insanligin-ilk-donemleri-anadolu-uygarliklari
+AYT,Tarih,İNSANLIĞIN İLK DÖNEMLERİ,"İran, Hint, Çin, Ege ve Akdeniz Uygarlıkları",ayt,ayt-tarih,ayt-tarih-insanligin-ilk-donemleri,ayt-tarih-insanligin-ilk-donemleri-iran-hint-cin-ege-ve-akdeniz-uygarliklari
+AYT,Tarih,ORTA ÇAĞ'DA DÜNYA,Orta Çağ'da Dünya,ayt,ayt-tarih,ayt-tarih-orta-cagda-dunya,ayt-tarih-orta-cagda-dunya-orta-cagda-dunya
+AYT,Tarih,İLK VE ORTA ÇAĞLARDA TÜRK DÜNYASI,Türklerin Tarih Sahnesine Çıkışı,ayt,ayt-tarih,ayt-tarih-ilk-ve-orta-caglarda-turk-dunyasi,ayt-tarih-ilk-ve-orta-caglarda-turk-dunyasi-turklerin-tarih-sahnesine-cikisi
+AYT,Tarih,İLK VE ORTA ÇAĞLARDA TÜRK DÜNYASI,Hunlar ve Kavimler Göçü,ayt,ayt-tarih,ayt-tarih-ilk-ve-orta-caglarda-turk-dunyasi,ayt-tarih-ilk-ve-orta-caglarda-turk-dunyasi-hunlar-ve-kavimler-gocu
+AYT,Tarih,İLK VE ORTA ÇAĞLARDA TÜRK DÜNYASI,Köktürkler ve Uygurlar,ayt,ayt-tarih,ayt-tarih-ilk-ve-orta-caglarda-turk-dunyasi,ayt-tarih-ilk-ve-orta-caglarda-turk-dunyasi-kokturkler-ve-uygurlar
+AYT,Tarih,İLK VE ORTA ÇAĞLARDA TÜRK DÜNYASI,Diğer Türk Devletleri ve Toplulukları,ayt,ayt-tarih,ayt-tarih-ilk-ve-orta-caglarda-turk-dunyasi,ayt-tarih-ilk-ve-orta-caglarda-turk-dunyasi-diger-turk-devletleri-ve-topluluklari
+AYT,Tarih,İLK VE ORTA ÇAĞLARDA TÜRK DÜNYASI,İlk Türk Devletlerinde Kültür ve Uygarlık,ayt,ayt-tarih,ayt-tarih-ilk-ve-orta-caglarda-turk-dunyasi,ayt-tarih-ilk-ve-orta-caglarda-turk-dunyasi-ilk-turk-devletlerinde-kultur-ve-uygarlik
+AYT,Tarih,İSLAM MEDENİYETİNİN DOĞUŞU,Siyasi Olaylar,ayt,ayt-tarih,ayt-tarih-islam-medeniyetinin-dogusu,ayt-tarih-islam-medeniyetinin-dogusu-siyasi-olaylar
+AYT,Tarih,İSLAM MEDENİYETİNİN DOĞUŞU,İslam Kültür ve Uygarlığı,ayt,ayt-tarih,ayt-tarih-islam-medeniyetinin-dogusu,ayt-tarih-islam-medeniyetinin-dogusu-islam-kultur-ve-uygarligi
+AYT,Tarih,İLK TÜRK İSLAM DEVLETLERİ,Türklerin ve Diğer Milletlerin İslamiyet'i Kabulü,ayt,ayt-tarih,ayt-tarih-ilk-turk-islam-devletleri,ayt-tarih-ilk-turk-islam-devletleri-turklerin-ve-diger-milletlerin-islamiyeti-kabulu
+AYT,Tarih,İLK TÜRK İSLAM DEVLETLERİ,Karahanlılar ve Gazneliler,ayt,ayt-tarih,ayt-tarih-ilk-turk-islam-devletleri,ayt-tarih-ilk-turk-islam-devletleri-karahanlilar-ve-gazneliler
+AYT,Tarih,İLK TÜRK İSLAM DEVLETLERİ,Büyük Selçuklu Devleti,ayt,ayt-tarih,ayt-tarih-ilk-turk-islam-devletleri,ayt-tarih-ilk-turk-islam-devletleri-buyuk-selcuklu-devleti
+AYT,Tarih,İLK TÜRK İSLAM DEVLETLERİ,Türk-İslam Kültür ve Uygarlığı,ayt,ayt-tarih,ayt-tarih-ilk-turk-islam-devletleri,ayt-tarih-ilk-turk-islam-devletleri-turk-islam-kultur-ve-uygarligi
+AYT,Tarih,YERLEŞME VE DEVLETLEŞME SÜRECİNDE SELÇUKLU TÜRKİYESİ,Anadolu Beylikleri,ayt,ayt-tarih,ayt-tarih-yerlesme-ve-devletlesme-surecinde-selcuklu-turkiyesi,ayt-tarih-yerlesme-ve-devletlesme-surecinde-selcuklu-turkiyesi-anadolu-beylikleri
+AYT,Tarih,YERLEŞME VE DEVLETLEŞME SÜRECİNDE SELÇUKLU TÜRKİYESİ,Selçuklular Döneminde Anadolu,ayt,ayt-tarih,ayt-tarih-yerlesme-ve-devletlesme-surecinde-selcuklu-turkiyesi,ayt-tarih-yerlesme-ve-devletlesme-surecinde-selcuklu-turkiyesi-selcuklular-doneminde-anadolu
+AYT,Tarih,OSMANLI DEVLETİ'NİN KURULUŞU,Beylikten Devlete Osmanlı Siyaseti (1302 - 1453),ayt,ayt-tarih,ayt-tarih-osmanli-devletinin-kurulusu,ayt-tarih-osmanli-devletinin-kurulusu-beylikten-devlete-osmanli-siyaseti-1302-1453
+AYT,Tarih,OSMANLI DEVLETİ'NİN KURULUŞU,Kuruluş Dönemi Teşkilatlanma Çalışmaları,ayt,ayt-tarih,ayt-tarih-osmanli-devletinin-kurulusu,ayt-tarih-osmanli-devletinin-kurulusu-kurulus-donemi-teskilatlanma-calismalari
+AYT,Tarih,OSMANLI DEVLETİ'NİN KURULUŞU,Devletleşme Sürecinde Savaşçılar ve Askerler,ayt,ayt-tarih,ayt-tarih-osmanli-devletinin-kurulusu,ayt-tarih-osmanli-devletinin-kurulusu-devletlesme-surecinde-savascilar-ve-askerler
+AYT,Tarih,OSMANLI DEVLETİ'NİN KURULUŞU,Beylikten Devlete Osmanlı Medeniyeti,ayt,ayt-tarih,ayt-tarih-osmanli-devletinin-kurulusu,ayt-tarih-osmanli-devletinin-kurulusu-beylikten-devlete-osmanli-medeniyeti
+AYT,Tarih,DÜNYA GÜCÜ OSMANLI (1453 - 1595),Fatih Devri,ayt,ayt-tarih,ayt-tarih-dunya-gucu-osmanli-1453-1595,ayt-tarih-dunya-gucu-osmanli-1453-1595-fatih-devri
+AYT,Tarih,DÜNYA GÜCÜ OSMANLI (1453 - 1595),II. Bayezit ve I. Selim (Yavuz) Devirleri,ayt,ayt-tarih,ayt-tarih-dunya-gucu-osmanli-1453-1595,ayt-tarih-dunya-gucu-osmanli-1453-1595-ii-bayezit-ve-i-selim-yavuz-devirleri
+AYT,Tarih,DÜNYA GÜCÜ OSMANLI (1453 - 1595),I. Süleyman (Kanuni) Devri,ayt,ayt-tarih,ayt-tarih-dunya-gucu-osmanli-1453-1595,ayt-tarih-dunya-gucu-osmanli-1453-1595-i-suleyman-kanuni-devri
+AYT,Tarih,OSMANLI MEDENİYETİ,Sultan ve Osmanlı Merkez Teşkilatı,ayt,ayt-tarih,ayt-tarih-osmanli-medeniyeti,ayt-tarih-osmanli-medeniyeti-sultan-ve-osmanli-merkez-teskilati
+AYT,Tarih,OSMANLI MEDENİYETİ,Klasik Çağda Osmanlı Toplum Düzeni,ayt,ayt-tarih,ayt-tarih-osmanli-medeniyeti,ayt-tarih-osmanli-medeniyeti-klasik-cagda-osmanli-toplum-duzeni
+AYT,Tarih,XVII VE XVIII. YÜZYILLARDA OSMANLI DEVLETİ VE DÜNYA,Değişen Dünya Dengeleri Karşısında Osmanlı Siyaseti (1595 - 1774),ayt,ayt-tarih,ayt-tarih-xvii-ve-xviii-yuzyillarda-osmanli-devleti-ve-dunya,ayt-tarih-xvii-ve-xviii-yuzyillarda-osmanli-devleti-ve-dunya-degisen-dunya-dengeleri-karsisinda-osmanli-siyaseti-1595-1774
+AYT,Tarih,XVII VE XVIII. YÜZYILLARDA OSMANLI DEVLETİ VE DÜNYA,Değişim Çağında Avrupa ve Osmanlı,ayt,ayt-tarih,ayt-tarih-xvii-ve-xviii-yuzyillarda-osmanli-devleti-ve-dunya,ayt-tarih-xvii-ve-xviii-yuzyillarda-osmanli-devleti-ve-dunya-degisim-caginda-avrupa-ve-osmanli
+AYT,Tarih,XIX VE XX. YÜZYILLARDA OSMANLI DEVLETİ VE DÜNYA,Devrimler Çağında Değişen Devlet - Toplum İlişkileri,ayt,ayt-tarih,ayt-tarih-xix-ve-xx-yuzyillarda-osmanli-devleti-ve-dunya,ayt-tarih-xix-ve-xx-yuzyillarda-osmanli-devleti-ve-dunya-devrimler-caginda-degisen-devlet-toplum-iliskileri
+AYT,Tarih,XIX VE XX. YÜZYILLARDA OSMANLI DEVLETİ VE DÜNYA,Uluslararası İlişkilerde Denge Stratejisi (1774 - 1914),ayt,ayt-tarih,ayt-tarih-xix-ve-xx-yuzyillarda-osmanli-devleti-ve-dunya,ayt-tarih-xix-ve-xx-yuzyillarda-osmanli-devleti-ve-dunya-uluslararasi-iliskilerde-denge-stratejisi-1774-1914
+AYT,Tarih,XIX VE XX. YÜZYILLARDA OSMANLI DEVLETİ VE DÜNYA,Osmanlı Devleti Demokratikleşme Hareketleri,ayt,ayt-tarih,ayt-tarih-xix-ve-xx-yuzyillarda-osmanli-devleti-ve-dunya,ayt-tarih-xix-ve-xx-yuzyillarda-osmanli-devleti-ve-dunya-osmanli-devleti-demokratiklesme-hareketleri
+AYT,Tarih,XIX VE XX. YÜZYILLARDA OSMANLI DEVLETİ VE DÜNYA,XIX ve XX. Yüzyılda Değişen Gündelik Hayat,ayt,ayt-tarih,ayt-tarih-xix-ve-xx-yuzyillarda-osmanli-devleti-ve-dunya,ayt-tarih-xix-ve-xx-yuzyillarda-osmanli-devleti-ve-dunya-xix-ve-xx-yuzyilda-degisen-gundelik-hayat
+AYT,Tarih,TÜRK KÜLTÜR VE UYGARLIĞI,Türklerde Devlet Teşkilatı,ayt,ayt-tarih,ayt-tarih-turk-kultur-ve-uygarligi,ayt-tarih-turk-kultur-ve-uygarligi-turklerde-devlet-teskilati
+AYT,Tarih,TÜRK KÜLTÜR VE UYGARLIĞI,Türklerde Toplum Yapısı,ayt,ayt-tarih,ayt-tarih-turk-kultur-ve-uygarligi,ayt-tarih-turk-kultur-ve-uygarligi-turklerde-toplum-yapisi
+AYT,Tarih,TÜRK KÜLTÜR VE UYGARLIĞI,Türklerde Hukuk,ayt,ayt-tarih,ayt-tarih-turk-kultur-ve-uygarligi,ayt-tarih-turk-kultur-ve-uygarligi-turklerde-hukuk
+AYT,Tarih,TÜRK KÜLTÜR VE UYGARLIĞI,Türklerde Ekonomi,ayt,ayt-tarih,ayt-tarih-turk-kultur-ve-uygarligi,ayt-tarih-turk-kultur-ve-uygarligi-turklerde-ekonomi
+AYT,Tarih,TÜRK KÜLTÜR VE UYGARLIĞI,Türklerde Eğitim ve Bilim,ayt,ayt-tarih,ayt-tarih-turk-kultur-ve-uygarligi,ayt-tarih-turk-kultur-ve-uygarligi-turklerde-egitim-ve-bilim
+AYT,Tarih,TÜRK KÜLTÜR VE UYGARLIĞI,Türklerde Sanat,ayt,ayt-tarih,ayt-tarih-turk-kultur-ve-uygarligi,ayt-tarih-turk-kultur-ve-uygarligi-turklerde-sanat
+AYT,Tarih,TÜRK KÜLTÜR VE UYGARLIĞI,Türklerde Spor,ayt,ayt-tarih,ayt-tarih-turk-kultur-ve-uygarligi,ayt-tarih-turk-kultur-ve-uygarligi-turklerde-spor
+AYT,Tarih,XX. YÜZYIL BAŞLARINDA OSMANLI DEVLETİ VE DÜNYA,1881'den 1919'a Mustafa Kemal,ayt,ayt-tarih,ayt-tarih-xx-yuzyil-baslarinda-osmanli-devleti-ve-dunya,ayt-tarih-xx-yuzyil-baslarinda-osmanli-devleti-ve-dunya-1881den-1919a-mustafa-kemal
+AYT,Tarih,XX. YÜZYIL BAŞLARINDA OSMANLI DEVLETİ VE DÜNYA,I. Dünya Savaşı,ayt,ayt-tarih,ayt-tarih-xx-yuzyil-baslarinda-osmanli-devleti-ve-dunya,ayt-tarih-xx-yuzyil-baslarinda-osmanli-devleti-ve-dunya-i-dunya-savasi
+AYT,Tarih,XX. YÜZYIL BAŞLARINDA OSMANLI DEVLETİ VE DÜNYA,Milli Mücadele - I / Mondros Ateşkesi ve Sonuçları,ayt,ayt-tarih,ayt-tarih-xx-yuzyil-baslarinda-osmanli-devleti-ve-dunya,ayt-tarih-xx-yuzyil-baslarinda-osmanli-devleti-ve-dunya-milli-mucadele-i-mondros-ateskesi-ve-sonuclari
+AYT,Tarih,XX. YÜZYIL BAŞLARINDA OSMANLI DEVLETİ VE DÜNYA,Mustafa Kemal'in Samsun'a Çıkışı ve Genelgeler,ayt,ayt-tarih,ayt-tarih-xx-yuzyil-baslarinda-osmanli-devleti-ve-dunya,ayt-tarih-xx-yuzyil-baslarinda-osmanli-devleti-ve-dunya-mustafa-kemalin-samsuna-cikisi-ve-genelgeler
+AYT,Tarih,XX. YÜZYIL BAŞLARINDA OSMANLI DEVLETİ VE DÜNYA,Kongreler,ayt,ayt-tarih,ayt-tarih-xx-yuzyil-baslarinda-osmanli-devleti-ve-dunya,ayt-tarih-xx-yuzyil-baslarinda-osmanli-devleti-ve-dunya-kongreler
+AYT,Tarih,XX. YÜZYIL BAŞLARINDA OSMANLI DEVLETİ VE DÜNYA,Amasya Görüşmeleri ve Misakımilli,ayt,ayt-tarih,ayt-tarih-xx-yuzyil-baslarinda-osmanli-devleti-ve-dunya,ayt-tarih-xx-yuzyil-baslarinda-osmanli-devleti-ve-dunya-amasya-gorusmeleri-ve-misakimilli
+AYT,Tarih,XX. YÜZYIL BAŞLARINDA OSMANLI DEVLETİ VE DÜNYA,I. TBMM Dönemi,ayt,ayt-tarih,ayt-tarih-xx-yuzyil-baslarinda-osmanli-devleti-ve-dunya,ayt-tarih-xx-yuzyil-baslarinda-osmanli-devleti-ve-dunya-i-tbmm-donemi
+AYT,Tarih,MİLLÎ MÜCADELE - II,Doğu ve Güney Cepheleri,ayt,ayt-tarih,ayt-tarih-mill-mucadele-ii,ayt-tarih-mill-mucadele-ii-dogu-ve-guney-cepheleri
+AYT,Tarih,MİLLÎ MÜCADELE - II,Batı Cephesi Muharebeleri ve Mudanya Ateşkesi,ayt,ayt-tarih,ayt-tarih-mill-mucadele-ii,ayt-tarih-mill-mucadele-ii-bati-cephesi-muharebeleri-ve-mudanya-ateskesi
+AYT,Tarih,MİLLÎ MÜCADELE - II,Lozan Antlaşması,ayt,ayt-tarih,ayt-tarih-mill-mucadele-ii,ayt-tarih-mill-mucadele-ii-lozan-antlasmasi
+AYT,Tarih,ATATÜRKÇÜLÜK VE TÜRK İNKILABI,Atatürkçü Düşünce Sistemi ve Özellikleri,ayt,ayt-tarih,ayt-tarih-ataturkculuk-ve-turk-inkilabi,ayt-tarih-ataturkculuk-ve-turk-inkilabi-ataturkcu-dusunce-sistemi-ve-ozellikleri
+AYT,Tarih,ATATÜRKÇÜLÜK VE TÜRK İNKILABI,Atatürk İlkeleri,ayt,ayt-tarih,ayt-tarih-ataturkculuk-ve-turk-inkilabi,ayt-tarih-ataturkculuk-ve-turk-inkilabi-ataturk-ilkeleri
+AYT,Tarih,ATATÜRKÇÜLÜK VE TÜRK İNKILABI,Bütünleyici İlkeler ve Milli Güç Unsurları,ayt,ayt-tarih,ayt-tarih-ataturkculuk-ve-turk-inkilabi,ayt-tarih-ataturkculuk-ve-turk-inkilabi-butunleyici-ilkeler-ve-milli-guc-unsurlari
+AYT,Tarih,ATATÜRKÇÜLÜK VE TÜRK İNKILABI,Türk İnkılabının Genel Özellikleri,ayt,ayt-tarih,ayt-tarih-ataturkculuk-ve-turk-inkilabi,ayt-tarih-ataturkculuk-ve-turk-inkilabi-turk-inkilabinin-genel-ozellikleri
+AYT,Tarih,ATATÜRKÇÜLÜK VE TÜRK İNKILABI,Siyasi Alanda Yapılan İnkılaplar,ayt,ayt-tarih,ayt-tarih-ataturkculuk-ve-turk-inkilabi,ayt-tarih-ataturkculuk-ve-turk-inkilabi-siyasi-alanda-yapilan-inkilaplar
+AYT,Tarih,ATATÜRKÇÜLÜK VE TÜRK İNKILABI,Eğitim - Kültür ve Hukuk Alanlarında Yapılan İnkılaplar,ayt,ayt-tarih,ayt-tarih-ataturkculuk-ve-turk-inkilabi,ayt-tarih-ataturkculuk-ve-turk-inkilabi-egitim-kultur-ve-hukuk-alanlarinda-yapilan-inkilaplar
+AYT,Tarih,ATATÜRKÇÜLÜK VE TÜRK İNKILABI,Toplum ve Ekonomi Alanlarında Yapılan İnkılaplar,ayt,ayt-tarih,ayt-tarih-ataturkculuk-ve-turk-inkilabi,ayt-tarih-ataturkculuk-ve-turk-inkilabi-toplum-ve-ekonomi-alanlarinda-yapilan-inkilaplar
+AYT,Tarih,İKİ SAVAŞ ARASI DÖNEMDE TÜRKİYE VE DÜNYA,Atatürk Dönemi İç Politika,ayt,ayt-tarih,ayt-tarih-iki-savas-arasi-donemde-turkiye-ve-dunya,ayt-tarih-iki-savas-arasi-donemde-turkiye-ve-dunya-ataturk-donemi-ic-politika
+AYT,Tarih,İKİ SAVAŞ ARASI DÖNEMDE TÜRKİYE VE DÜNYA,1923 - 1932 Arası Türk Dış Politikası,ayt,ayt-tarih,ayt-tarih-iki-savas-arasi-donemde-turkiye-ve-dunya,ayt-tarih-iki-savas-arasi-donemde-turkiye-ve-dunya-1923-1932-arasi-turk-dis-politikasi
+AYT,Tarih,İKİ SAVAŞ ARASI DÖNEMDE TÜRKİYE VE DÜNYA,1932 - 1939 Arası Türk Dış Politikası,ayt,ayt-tarih,ayt-tarih-iki-savas-arasi-donemde-turkiye-ve-dunya,ayt-tarih-iki-savas-arasi-donemde-turkiye-ve-dunya-1932-1939-arasi-turk-dis-politikasi
+AYT,Tarih,İKİ SAVAŞ ARASI DÖNEMDE TÜRKİYE VE DÜNYA,"I. Dünya Savaşı, Orta Doğu SSCB ve Orta Asya",ayt,ayt-tarih,ayt-tarih-iki-savas-arasi-donemde-turkiye-ve-dunya,ayt-tarih-iki-savas-arasi-donemde-turkiye-ve-dunya-i-dunya-savasi-orta-dogu-sscb-ve-orta-asya
+AYT,Tarih,İKİ SAVAŞ ARASI DÖNEMDE TÜRKİYE VE DÜNYA,"Uzak Doğu, ABD ve Avrupa",ayt,ayt-tarih,ayt-tarih-iki-savas-arasi-donemde-turkiye-ve-dunya,ayt-tarih-iki-savas-arasi-donemde-turkiye-ve-dunya-uzak-dogu-abd-ve-avrupa
+AYT,Tarih,II. DÜNYA SAVAŞI SÜRECİNDE TÜRKİYE VE DÜNYA,Savaş Öncesi Gelişmeler,ayt,ayt-tarih,ayt-tarih-ii-dunya-savasi-surecinde-turkiye-ve-dunya,ayt-tarih-ii-dunya-savasi-surecinde-turkiye-ve-dunya-savas-oncesi-gelismeler
+AYT,Tarih,II. DÜNYA SAVAŞI SÜRECİNDE TÜRKİYE VE DÜNYA,Savaş Yılları ve Savaşın Sonuçları,ayt,ayt-tarih,ayt-tarih-ii-dunya-savasi-surecinde-turkiye-ve-dunya,ayt-tarih-ii-dunya-savasi-surecinde-turkiye-ve-dunya-savas-yillari-ve-savasin-sonuclari
+AYT,Tarih,II. DÜNYA SAVAŞI SÜRECİNDE TÜRKİYE VE DÜNYA,Savaş Yıllarında Türkiye,ayt,ayt-tarih,ayt-tarih-ii-dunya-savasi-surecinde-turkiye-ve-dunya,ayt-tarih-ii-dunya-savasi-surecinde-turkiye-ve-dunya-savas-yillarinda-turkiye
+AYT,Tarih,II. DÜNYA SAVAŞI SONRASINDA TÜRKİYE VE DÜNYA,Blokların Kuruluşu,ayt,ayt-tarih,ayt-tarih-ii-dunya-savasi-sonrasinda-turkiye-ve-dunya,ayt-tarih-ii-dunya-savasi-sonrasinda-turkiye-ve-dunya-bloklarin-kurulusu
+AYT,Tarih,II. DÜNYA SAVAŞI SONRASINDA TÜRKİYE VE DÜNYA,Soğuk Savaş Döneminde Dünya,ayt,ayt-tarih,ayt-tarih-ii-dunya-savasi-sonrasinda-turkiye-ve-dunya,ayt-tarih-ii-dunya-savasi-sonrasinda-turkiye-ve-dunya-soguk-savas-doneminde-dunya
+AYT,Tarih,II. DÜNYA SAVAŞI SONRASINDA TÜRKİYE VE DÜNYA,Soğuk Savaş Döneminde Türkiye,ayt,ayt-tarih,ayt-tarih-ii-dunya-savasi-sonrasinda-turkiye-ve-dunya,ayt-tarih-ii-dunya-savasi-sonrasinda-turkiye-ve-dunya-soguk-savas-doneminde-turkiye
+AYT,Tarih,II. DÜNYA SAVAŞI SONRASINDA TÜRKİYE VE DÜNYA,Uluslararası İlişkilerde Değişim Süreci,ayt,ayt-tarih,ayt-tarih-ii-dunya-savasi-sonrasinda-turkiye-ve-dunya,ayt-tarih-ii-dunya-savasi-sonrasinda-turkiye-ve-dunya-uluslararasi-iliskilerde-degisim-sureci
+AYT,Tarih,II. DÜNYA SAVAŞI SONRASINDA TÜRKİYE VE DÜNYA,Yumuşama Dönemi Siyasi Gelişmeleri,ayt,ayt-tarih,ayt-tarih-ii-dunya-savasi-sonrasinda-turkiye-ve-dunya,ayt-tarih-ii-dunya-savasi-sonrasinda-turkiye-ve-dunya-yumusama-donemi-siyasi-gelismeleri
+AYT,Tarih,II. DÜNYA SAVAŞI SONRASINDA TÜRKİYE VE DÜNYA,Arap - İsrail Savaşları,ayt,ayt-tarih,ayt-tarih-ii-dunya-savasi-sonrasinda-turkiye-ve-dunya,ayt-tarih-ii-dunya-savasi-sonrasinda-turkiye-ve-dunya-arap-israil-savaslari
+AYT,Tarih,II. DÜNYA SAVAŞI SONRASINDA TÜRKİYE VE DÜNYA,Türkiye'de Bunalımlı Yıllar,ayt,ayt-tarih,ayt-tarih-ii-dunya-savasi-sonrasinda-turkiye-ve-dunya,ayt-tarih-ii-dunya-savasi-sonrasinda-turkiye-ve-dunya-turkiyede-bunalimli-yillar
+AYT,Tarih,II. DÜNYA SAVAŞI SONRASINDA TÜRKİYE VE DÜNYA,Türkiye'nin Sorunları,ayt,ayt-tarih,ayt-tarih-ii-dunya-savasi-sonrasinda-turkiye-ve-dunya,ayt-tarih-ii-dunya-savasi-sonrasinda-turkiye-ve-dunya-turkiyenin-sorunlari
+AYT,Tarih,21.YÜZYILIN EŞİĞİNDE TÜRKİYE VE DÜNYA,SSCB'nin Dağılması ve Etkileri,ayt,ayt-tarih,ayt-tarih-21yuzyilin-esiginde-turkiye-ve-dunya,ayt-tarih-21yuzyilin-esiginde-turkiye-ve-dunya-sscbnin-dagilmasi-ve-etkileri
+AYT,Tarih,21.YÜZYILIN EŞİĞİNDE TÜRKİYE VE DÜNYA,Avrupa Birliği,ayt,ayt-tarih,ayt-tarih-21yuzyilin-esiginde-turkiye-ve-dunya,ayt-tarih-21yuzyilin-esiginde-turkiye-ve-dunya-avrupa-birligi
+AYT,Tarih,21.YÜZYILIN EŞİĞİNDE TÜRKİYE VE DÜNYA,"XX. Yüzyılda Bilim, Sanat, Edebiyat, Kültür",ayt,ayt-tarih,ayt-tarih-21yuzyilin-esiginde-turkiye-ve-dunya,ayt-tarih-21yuzyilin-esiginde-turkiye-ve-dunya-xx-yuzyilda-bilim-sanat-edebiyat-kultur
+AYT,Türk Dili ve Edebiyatı,EDEBİYATA GİRİŞ,"Edebiyatın Toplum, Bilim ve Güzel Sanatlarla İlişkisi",ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-edebiyata-giris,ayt-turk-dili-ve-edebiyati-edebiyata-giris-edebiyatin-toplum-bilim-ve-guzel-sanatlarla-iliskisi
+AYT,Türk Dili ve Edebiyatı,EDEBİYATA GİRİŞ,Türk Edebiyatının Dönemleri / Türkçenin Tarihî Gelişimi / Sözlükler,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-edebiyata-giris,ayt-turk-dili-ve-edebiyati-edebiyata-giris-turk-edebiyatinin-donemleri-turkcenin-tarih-gelisimi-sozlukler
+AYT,Türk Dili ve Edebiyatı,EDEBİYATA GİRİŞ,Türk Edebiyatının İlk Yazılı Ürünleri / Dil ve Sözlü İletişim,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-edebiyata-giris,ayt-turk-dili-ve-edebiyati-edebiyata-giris-turk-edebiyatinin-ilk-yazili-urunleri-dil-ve-sozlu-iletisim
+AYT,Türk Dili ve Edebiyatı,EDEBİYATA GİRİŞ,Metinlerin Sınıflandırılması (Edebî ve Öğretici Metinler),ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-edebiyata-giris,ayt-turk-dili-ve-edebiyati-edebiyata-giris-metinlerin-siniflandirilmasi-edeb-ve-ogretici-metinler
+AYT,Türk Dili ve Edebiyatı,ÖĞRETİCİ METİNLER,Kişisel Yaşamı Konu Edinen Metinler,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-ogretici-metinler,ayt-turk-dili-ve-edebiyati-ogretici-metinler-kisisel-yasami-konu-edinen-metinler
+AYT,Türk Dili ve Edebiyatı,ÖĞRETİCİ METİNLER,Gazete Çevresinde Gelişen Öğretici Metinler,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-ogretici-metinler,ayt-turk-dili-ve-edebiyati-ogretici-metinler-gazete-cevresinde-gelisen-ogretici-metinler
+AYT,Türk Dili ve Edebiyatı,ÖĞRETİCİ METİNLER,Sözlü Anlatım Türleri / Sunum - Açık Oturum - Münazara,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-ogretici-metinler,ayt-turk-dili-ve-edebiyati-ogretici-metinler-sozlu-anlatim-turleri-sunum-acik-oturum-munazara
+AYT,Türk Dili ve Edebiyatı,ÖĞRETİCİ METİNLER,Divan Edebiyatı Öğretici Metinler,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-ogretici-metinler,ayt-turk-dili-ve-edebiyati-ogretici-metinler-divan-edebiyati-ogretici-metinler
+AYT,Türk Dili ve Edebiyatı,ÖĞRETİCİ METİNLER,Tanzimat Dönemi'nde Öğretici Metinler / Eserler / Sanatçılar,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-ogretici-metinler,ayt-turk-dili-ve-edebiyati-ogretici-metinler-tanzimat-doneminde-ogretici-metinler-eserler-sanatcilar
+AYT,Türk Dili ve Edebiyatı,ÖĞRETİCİ METİNLER,Servetifünun Dönemi'nde Öğretici Metinler / Eserler / Sanatçılar,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-ogretici-metinler,ayt-turk-dili-ve-edebiyati-ogretici-metinler-servetifunun-doneminde-ogretici-metinler-eserler-sanatcilar
+AYT,Türk Dili ve Edebiyatı,ÖĞRETİCİ METİNLER,Millî Edebiyat Dönemi'nde Öğretici Metinler / Eserler / Sanatçılar,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-ogretici-metinler,ayt-turk-dili-ve-edebiyati-ogretici-metinler-mill-edebiyat-doneminde-ogretici-metinler-eserler-sanatcilar
+AYT,Türk Dili ve Edebiyatı,ÖĞRETİCİ METİNLER,Cumhuriyet Dönemi'nde Öğretici Metinler / Eserler / Sanatçılar,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-ogretici-metinler,ayt-turk-dili-ve-edebiyati-ogretici-metinler-cumhuriyet-doneminde-ogretici-metinler-eserler-sanatcilar
+AYT,Türk Dili ve Edebiyatı,ŞİİR,Şiirde Ahenk Unsurları,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-siirde-ahenk-unsurlari
+AYT,Türk Dili ve Edebiyatı,ŞİİR,Şiirde Söz Sanatları ve İmge,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-siirde-soz-sanatlari-ve-imge
+AYT,Türk Dili ve Edebiyatı,ŞİİR,Şiirde Yapı,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-siirde-yapi
+AYT,Türk Dili ve Edebiyatı,ŞİİR,Şiirde İçerik - Gelenek ve Gerçeklik,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-siirde-icerik-gelenek-ve-gerceklik
+AYT,Türk Dili ve Edebiyatı,ŞİİR,Şiir Türleri,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-siir-turleri
+AYT,Türk Dili ve Edebiyatı,ŞİİR,Manzume ve Şiir / Şiir İnceleme,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-manzume-ve-siir-siir-inceleme
+AYT,Türk Dili ve Edebiyatı,ŞİİR,İslamiyet Öncesi Türk Şiiri / Sözlü ve Yazılı Edebiyat,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-islamiyet-oncesi-turk-siiri-sozlu-ve-yazili-edebiyat
+AYT,Türk Dili ve Edebiyatı,ŞİİR,Geçiş Dönemi Şiiri,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-gecis-donemi-siiri
+AYT,Türk Dili ve Edebiyatı,ŞİİR,Halk Edebiyatı Nazım Şekilleri ve Türleri,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-halk-edebiyati-nazim-sekilleri-ve-turleri
+AYT,Türk Dili ve Edebiyatı,ŞİİR,Halk Edebiyatı Genel Özellikler / Eserler / Sanatçılar,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-halk-edebiyati-genel-ozellikler-eserler-sanatcilar
+AYT,Türk Dili ve Edebiyatı,ŞİİR,Divan Edebiyatı Nazım Şekilleri ve Türleri,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-divan-edebiyati-nazim-sekilleri-ve-turleri
+AYT,Türk Dili ve Edebiyatı,ŞİİR,Divan Edebiyatı Genel Özellikler - Eserler - Sanatçılar,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-divan-edebiyati-genel-ozellikler-eserler-sanatcilar
+AYT,Türk Dili ve Edebiyatı,ŞİİR,Divan Edebiyatı'nda Nesir (Düzyazı),ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-divan-edebiyatinda-nesir-duzyazi
+AYT,Türk Dili ve Edebiyatı,ŞİİR,Tanzimat Dönemi'nde Şiir,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-tanzimat-doneminde-siir
+AYT,Türk Dili ve Edebiyatı,ŞİİR,Servetifünun Dönemi'nde Şiir,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-servetifunun-doneminde-siir
+AYT,Türk Dili ve Edebiyatı,ŞİİR,Fecriati Topluluğu,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-fecriati-toplulugu
+AYT,Türk Dili ve Edebiyatı,ŞİİR,Millî Edebiyat Dönemi'nde Şiir / Bağımsızlar / Öz Şiir / Hececiler,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-mill-edebiyat-doneminde-siir-bagimsizlar-oz-siir-hececiler
+AYT,Türk Dili ve Edebiyatı,ŞİİR,Cumhuriyet Dönemi / Saf Şiir Anlayışı / Yedi Meşaleciler,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-cumhuriyet-donemi-saf-siir-anlayisi-yedi-mesaleciler
+AYT,Türk Dili ve Edebiyatı,ŞİİR,Cumhuriyet Dönemi / Toplumcu Eğilimleri Yansıtan Şiir (1923 - 1960),ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-cumhuriyet-donemi-toplumcu-egilimleri-yansitan-siir-1923-1960
+AYT,Türk Dili ve Edebiyatı,ŞİİR,Cumhuriyet Dönemi / Millî Edebiyat Anlayışını Yansıtan Şiir,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-cumhuriyet-donemi-mill-edebiyat-anlayisini-yansitan-siir
+AYT,Türk Dili ve Edebiyatı,ŞİİR,Cumhuriyet Dönemi / Garip Hareketi (I. Yeni),ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-cumhuriyet-donemi-garip-hareketi-i-yeni
+AYT,Türk Dili ve Edebiyatı,ŞİİR,Cumhuriyet Dönemi / II. Yeni Şiiri,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-cumhuriyet-donemi-ii-yeni-siiri
+AYT,Türk Dili ve Edebiyatı,ŞİİR,"Cumhuriyet Dönemi Dinî Değerleri, Geleneğe Duyarlığı ve Metafizik Anlayışı Yansıtan Modern Şiir",ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-cumhuriyet-donemi-din-degerleri-gelenege-duyarligi-ve-metafizik-anlayisi-yansitan-modern-siir
+AYT,Türk Dili ve Edebiyatı,ŞİİR,Cumhuriyet Dönemi / 1960 Sonrası Toplumcu Eğilimleri Yansıtan Şiir,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-cumhuriyet-donemi-1960-sonrasi-toplumcu-egilimleri-yansitan-siir
+AYT,Türk Dili ve Edebiyatı,ŞİİR,Cumhuriyet Dönemi / 1980 Sonrası Şiir,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-cumhuriyet-donemi-1980-sonrasi-siir
+AYT,Türk Dili ve Edebiyatı,ŞİİR,Cumhuriyet Dönemi / Halk Şiiri,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-siir,ayt-turk-dili-ve-edebiyati-siir-cumhuriyet-donemi-halk-siiri
+AYT,Türk Dili ve Edebiyatı,MASAL-FABL-EFSANE,Masal / Fabl / Efsane,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-masal-fabl-efsane,ayt-turk-dili-ve-edebiyati-masal-fabl-efsane-masal-fabl-efsane
+AYT,Türk Dili ve Edebiyatı,MASAL-FABL-EFSANE,Destan,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-masal-fabl-efsane,ayt-turk-dili-ve-edebiyati-masal-fabl-efsane-destan
+AYT,Türk Dili ve Edebiyatı,HİKÂYE,Özellikler - Yapı - Tür,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-hikye,ayt-turk-dili-ve-edebiyati-hikye-ozellikler-yapi-tur
+AYT,Türk Dili ve Edebiyatı,HİKÂYE,Hikâye Anlatım Teknikleri,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-hikye,ayt-turk-dili-ve-edebiyati-hikye-hikye-anlatim-teknikleri
+AYT,Türk Dili ve Edebiyatı,HİKÂYE,Geçiş Dönemi / Halk Edebiyatında Hikâye (Dede Korkut Hikâyeleri - Halk Hikâyeleri - Cenkname),ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-hikye,ayt-turk-dili-ve-edebiyati-hikye-gecis-donemi-halk-edebiyatinda-hikye-dede-korkut-hikyeleri-halk-hikyeleri-cenkname
+AYT,Türk Dili ve Edebiyatı,HİKÂYE,Divan Edebiyatında Hikâye / Mesnevi,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-hikye,ayt-turk-dili-ve-edebiyati-hikye-divan-edebiyatinda-hikye-mesnevi
+AYT,Türk Dili ve Edebiyatı,HİKÂYE,Tanzimat Dönemi'nde Hikâye,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-hikye,ayt-turk-dili-ve-edebiyati-hikye-tanzimat-doneminde-hikye
+AYT,Türk Dili ve Edebiyatı,HİKÂYE,Servetifünun Dönemi'nde Hikâye,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-hikye,ayt-turk-dili-ve-edebiyati-hikye-servetifunun-doneminde-hikye
+AYT,Türk Dili ve Edebiyatı,HİKÂYE,Millî Edebiyat Dönemi'nde Hikâye,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-hikye,ayt-turk-dili-ve-edebiyati-hikye-mill-edebiyat-doneminde-hikye
+AYT,Türk Dili ve Edebiyatı,HİKÂYE,Cumhuriyet Dönemi'nde Hikâye / Millî ve Dinî Duyarlılığı Yansıtan Hikâyeler,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-hikye,ayt-turk-dili-ve-edebiyati-hikye-cumhuriyet-doneminde-hikye-mill-ve-din-duyarliligi-yansitan-hikyeler
+AYT,Türk Dili ve Edebiyatı,HİKÂYE,Cumhuriyet Dönemi'nde Hikâye / Bireyin İç Dünyasını Yansıtan Hikâyeler,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-hikye,ayt-turk-dili-ve-edebiyati-hikye-cumhuriyet-doneminde-hikye-bireyin-ic-dunyasini-yansitan-hikyeler
+AYT,Türk Dili ve Edebiyatı,HİKÂYE,Cumhuriyet Dönemi'nde Hikâye / Toplumcu Gerçekçi Hikâyeler,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-hikye,ayt-turk-dili-ve-edebiyati-hikye-cumhuriyet-doneminde-hikye-toplumcu-gercekci-hikyeler
+AYT,Türk Dili ve Edebiyatı,HİKÂYE,Cumhuriyet Dönemi'nde Hikâye / Modernist ve Postmodernist Hikâyeler,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-hikye,ayt-turk-dili-ve-edebiyati-hikye-cumhuriyet-doneminde-hikye-modernist-ve-postmodernist-hikyeler
+AYT,Türk Dili ve Edebiyatı,ROMAN,Özellikler - Yapı - Tür,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-roman,ayt-turk-dili-ve-edebiyati-roman-ozellikler-yapi-tur
+AYT,Türk Dili ve Edebiyatı,ROMAN,Romanda Anlatım Teknikleri,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-roman,ayt-turk-dili-ve-edebiyati-roman-romanda-anlatim-teknikleri
+AYT,Türk Dili ve Edebiyatı,ROMAN,Tanzimat Dönemi'nde Roman,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-roman,ayt-turk-dili-ve-edebiyati-roman-tanzimat-doneminde-roman
+AYT,Türk Dili ve Edebiyatı,ROMAN,Servetifünun Dönemi'nde Roman,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-roman,ayt-turk-dili-ve-edebiyati-roman-servetifunun-doneminde-roman
+AYT,Türk Dili ve Edebiyatı,ROMAN,Millî Edebiyat Dönemi'nde Roman,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-roman,ayt-turk-dili-ve-edebiyati-roman-mill-edebiyat-doneminde-roman
+AYT,Türk Dili ve Edebiyatı,ROMAN,Cumhuriyet Dönemi'nde Roman / Millî ve Dinî Duyarlılığı Yansıtan Romanlar,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-roman,ayt-turk-dili-ve-edebiyati-roman-cumhuriyet-doneminde-roman-mill-ve-din-duyarliligi-yansitan-romanlar
+AYT,Türk Dili ve Edebiyatı,ROMAN,Cumhuriyet Dönemi'nde Roman / Bireyin İç Dünyasını Esas Alan Romanlar,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-roman,ayt-turk-dili-ve-edebiyati-roman-cumhuriyet-doneminde-roman-bireyin-ic-dunyasini-esas-alan-romanlar
+AYT,Türk Dili ve Edebiyatı,ROMAN,Cumhuriyet Dönemi'nde Roman / Toplumcu Gerçekçi Eserler,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-roman,ayt-turk-dili-ve-edebiyati-roman-cumhuriyet-doneminde-roman-toplumcu-gercekci-eserler
+AYT,Türk Dili ve Edebiyatı,ROMAN,Cumhuriyet Dönemi'nde Roman / Modernizmi ve Postmodernizmi Esas Alan Romanlar,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-roman,ayt-turk-dili-ve-edebiyati-roman-cumhuriyet-doneminde-roman-modernizmi-ve-postmodernizmi-esas-alan-romanlar
+AYT,Türk Dili ve Edebiyatı,ROMAN,Cumhuriyet Dönemi'nde Roman - Karma,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-roman,ayt-turk-dili-ve-edebiyati-roman-cumhuriyet-doneminde-roman-karma
+AYT,Türk Dili ve Edebiyatı,TİYATRO,Yapı Unsurları - Çeşitleri,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-tiyatro,ayt-turk-dili-ve-edebiyati-tiyatro-yapi-unsurlari-cesitleri
+AYT,Türk Dili ve Edebiyatı,TİYATRO,Geleneksel ve Modern Türk Tiyatrosu,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-tiyatro,ayt-turk-dili-ve-edebiyati-tiyatro-geleneksel-ve-modern-turk-tiyatrosu
+AYT,Türk Dili ve Edebiyatı,TİYATRO,Tanzimat'tan Cumhuriyet'e Türk Tiyatrosu,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-tiyatro,ayt-turk-dili-ve-edebiyati-tiyatro-tanzimattan-cumhuriyete-turk-tiyatrosu
+AYT,Türk Dili ve Edebiyatı,TİYATRO,Cumhuriyet Dönemi'nde Tiyatro,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-tiyatro,ayt-turk-dili-ve-edebiyati-tiyatro-cumhuriyet-doneminde-tiyatro
+AYT,Türk Dili ve Edebiyatı,EDEBİYAT AKIMLARI,Edebiyat Akımları,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-edebiyat-akimlari,ayt-turk-dili-ve-edebiyati-edebiyat-akimlari-edebiyat-akimlari
+AYT,Türk Dili ve Edebiyatı,TÜRK DÜNYASI VE DÜNYA EDEBİYATI,Türk Dünyası ve Dünya Edebiyatı,ayt,ayt-turk-dili-ve-edebiyati,ayt-turk-dili-ve-edebiyati-turk-dunyasi-ve-dunya-edebiyati,ayt-turk-dili-ve-edebiyati-turk-dunyasi-ve-dunya-edebiyati-turk-dunyasi-ve-dunya-edebiyati
