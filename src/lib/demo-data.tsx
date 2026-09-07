@@ -588,9 +588,9 @@ export function examsForStudent(all: Exam[], student: Student, studyLogs: any[] 
             date: l.date,
             source: l.source,
             kind: l.kind,
-            solved: l.total_questions,
-            wrong: l.wrong_answers,
-            blank: l.blank_answers,
+            solved: l.solved,
+            wrong: l.wrong,
+            blank: l.blank,
           }));
 
           return {
@@ -603,9 +603,9 @@ export function examsForStudent(all: Exam[], student: Student, studyLogs: any[] 
               date: l.date,
               source: l.source,
               kind: l.kind,
-              solved: l.total_questions,
-              wrong: l.wrong_answers,
-              blank: l.blank_answers,
+              solved: l.solved,
+              wrong: l.wrong,
+              blank: l.blank,
             }));
 
             let totalQ = 0;

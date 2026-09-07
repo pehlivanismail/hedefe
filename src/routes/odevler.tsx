@@ -543,7 +543,8 @@ function Odevler() {
               <div className="space-y-2">
                 <Label>Kaynak</Label>
                 <Input
-                  value={res.source}
+                  disabled={active.done}
+                  value={active.done && active.result?.source ? active.result.source : res.source}
                   placeholder="Ör: Apotemi Türev Fasikülü"
                   onChange={(e) => setRes({ ...res, source: e.target.value })}
                 />
@@ -557,7 +558,8 @@ function Odevler() {
                     <Input
                       type="number"
                       min={0}
-                      value={res[k]}
+                      disabled={active.done}
+                      value={active.done && active.result ? (active.result as any)[k] : res[k]}
                       onChange={(e) => setRes({ ...res, [k]: e.target.value })}
                     />
                   </div>
@@ -565,6 +567,7 @@ function Odevler() {
               </div>
               <Button
                 className="w-full rounded-xl"
+                disabled={active.done}
                 onClick={() => {
                   const solved = Number(res.solved);
                   if (!solved) {
@@ -589,7 +592,7 @@ function Odevler() {
                   toast.success("Soru çözümü kaydedildi");
                 }}
               >
-                Sonucu kaydet
+                {active.done ? "Zaten tamamlandı" : "Sonucu kaydet"}
               </Button>
             </div>
           )}
