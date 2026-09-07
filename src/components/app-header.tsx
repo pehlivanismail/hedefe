@@ -8,7 +8,6 @@ const links = [
   { to: "/konu-agaci", label: "📚 Konu Ağacı" },
   { to: "/odevler", label: "📝 Ödevler ve Hedefler" },
   { to: "/denemeler", label: "🎯 Denemeler" },
-  { to: "/ayarlar", label: "⚙️ Ayarlar" },
 ] as const;
 
 export function AppHeader() {
@@ -16,7 +15,7 @@ export function AppHeader() {
   const navigate = useNavigate();
   const isStudent = role === "student";
   const isCoach = role === "coach";
-  const email = student?.email ?? coach?.email ?? user?.email;
+  const name = student?.name || coach?.name || user?.email;
   const session = user;
 
   const handleSignOut = async () => {
@@ -59,33 +58,27 @@ export function AppHeader() {
 
         <div className="ml-auto flex items-center gap-2">
           {isCoach && (
-            <>
-              <Link
-                to="/ayarlar"
-                className="rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
-                activeProps={{ className: "bg-brand-deep text-primary-foreground" }}
-              >
-                Ayarlar
-              </Link>
-              <Link
-                to="/koc"
-                className="rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
-                activeProps={{ className: "bg-brand-deep text-primary-foreground" }}
-              >
-                Koç Paneli
-              </Link>
-            </>
+            <Link
+              to="/koc"
+              className="rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+              activeProps={{ className: "bg-brand-deep text-primary-foreground" }}
+            >
+              Koç Paneli
+            </Link>
           )}
           {session ? (
             <>
-              <div className="flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5">
+              <Link 
+                to="/ayarlar" 
+                className="flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 transition-colors hover:bg-accent"
+              >
                 <span className="flex size-6 items-center justify-center rounded-full bg-brand-soft text-brand-deep">
                   <UserRound className="size-3.5" />
                 </span>
                 <span className="hidden text-xs font-medium text-muted-foreground sm:inline">
-                  {email}
+                  {name}
                 </span>
-              </div>
+              </Link>
               <button
                 onClick={() => void handleSignOut()}
                 className="flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"

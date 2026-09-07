@@ -21,12 +21,18 @@ function AyarlarSayfasi() {
   const navigate = useNavigate();
 
   const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
   const [loading, setLoading] = useState(false);
   const [target, setTarget] = useState(student?.target || "");
+  const [deleteConfirmation, setDeleteConfirmation] = useState("");
 
   const handlePasswordChange = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!password) return;
+    if (password !== passwordConfirm) {
+      toast.error("Şifreler eşleşmiyor.");
+      return;
+    }
     setLoading(true);
     const { error } = await supabase.auth.updateUser({ password });
     setLoading(false);
@@ -35,6 +41,7 @@ function AyarlarSayfasi() {
     } else {
       toast.success("Şifreniz başarıyla güncellendi.");
       setPassword("");
+      setPasswordConfirm("");
     }
   };
 
@@ -68,6 +75,21 @@ function AyarlarSayfasi() {
     }
   };
 
+  const handleDeleteAccount = async () => {
+    if (deleteConfirmation !== "Hesabimi sil") return;
+    setLoading(true);
+    try {
+      const { error } = await supabase.rpc('delete_user');
+      if (error) throw error;
+      toast.success("Hesabınız silindi.");
+      await signOut();
+      navigate({ to: "/" });
+    } catch (e: any) {
+      toast.error("Hesap silinirken hata oluştu: " + e.message);
+      setLoading(false);
+    }
+  };
+
   if (!user) return null;
 
   return (
@@ -89,6 +111,17 @@ function AyarlarSayfasi() {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  placeholder="En az 6 karakter"
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="passwordConfirm">Yeni Şifre (Tekrar)</Label>
+                <Input
+                  id="passwordConfirm"
+                  type="password"
+                  value={passwordConfirm}
+                  onChange={(e) => setPasswordConfirm(e.target.value)}
                   placeholder="En az 6 karakter"
                   required
                 />
@@ -121,7 +154,7 @@ function AyarlarSayfasi() {
 
           <Button 
             variant="destructive" 
-            className="w-full rounded-full"
+            className="w-full rounded-full bg-destructive/10 text-destructive hover:bg-destructive/20 hover:text-destructive"
             onClick={() => {
               signOut();
               navigate({ to: "/" });
@@ -129,6 +162,29 @@ function AyarlarSayfasi() {
           >
             <LogOut className="mr-2 h-4 w-4" /> Çıkış Yap
           </Button>
+
+          <Card className="p-6 rounded-3xl border-destructive/20 bg-destructive/5 shadow-soft">
+            <h2 className="font-display text-lg font-bold text-destructive mb-4">Hesabımı Sil</h2>
+            <div className="space-y-4">
+              <p className="text-sm text-destructive/80">
+                Bu işlem geri alınamaz ve tüm verileriniz kalıcı olarak silinir. Onaylamak için aşağıdaki alana <strong>Hesabimi sil</strong> yazın.
+              </p>
+              <Input
+                value={deleteConfirmation}
+                onChange={(e) => setDeleteConfirmation(e.target.value)}
+                placeholder="Hesabimi sil"
+                className="border-destructive/30 focus-visible:ring-destructive/50"
+              />
+              <Button 
+                variant="destructive" 
+                disabled={deleteConfirmation !== "Hesabimi sil" || loading}
+                className="w-full rounded-full"
+                onClick={handleDeleteAccount}
+              >
+                Hesabımı Kalıcı Olarak Sil
+              </Button>
+            </div>
+          </Card>
         </div>
 
         <div className="space-y-6">

@@ -113,19 +113,19 @@ export function PairInvites({ role }: Props) {
         {targetLabel} e-postasını yaz; karşı taraf onaylayınca eşleşme kurulur.
       </p>
 
-      <div className="mt-4 flex flex-wrap gap-2">
+      <div className="mt-4 flex flex-col sm:flex-row gap-2">
         <Input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder={`${targetLabel.toLowerCase()}@ornek.com`}
-          className="min-w-56 flex-1"
+          className="flex-1"
           type="email"
         />
-        <Button onClick={invite} disabled={busy} className="rounded-full">
+        <Button onClick={invite} disabled={busy} className="rounded-full shrink-0">
           {busy ? (
-            <Loader2 className="size-4 animate-spin" />
+            <Loader2 className="size-4 animate-spin mr-2" />
           ) : (
-            <Mail className="size-4" />
+            <Mail className="size-4 mr-2" />
           )}
           Davet Gönder
         </Button>
