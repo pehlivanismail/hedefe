@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AyarlarRouteImport } from './routes/ayarlar'
 import { Route as DenemelerRouteImport } from './routes/denemeler'
 import { Route as GirisRouteImport } from './routes/giris'
+import { Route as Index_newRouteImport } from './routes/index_new'
 import { Route as KocRouteImport } from './routes/koc'
 import { Route as KocGirisRouteImport } from './routes/koc-giris'
 import { Route as KonuAgaciRouteImport } from './routes/konu-agaci'
@@ -36,6 +37,11 @@ const DenemelerRoute = DenemelerRouteImport.update({
 const GirisRoute = GirisRouteImport.update({
   id: '/giris',
   path: '/giris',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Index_newRoute = Index_newRouteImport.update({
+  id: '/index_new',
+  path: '/index_new',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KocRoute = KocRouteImport.update({
@@ -64,6 +70,7 @@ export interface FileRoutesByFullPath {
   '/ayarlar': typeof AyarlarRoute
   '/denemeler': typeof DenemelerRoute
   '/giris': typeof GirisRoute
+  '/index_new': typeof Index_newRoute
   '/koc': typeof KocRoute
   '/koc-giris': typeof KocGirisRoute
   '/konu-agaci': typeof KonuAgaciRoute
@@ -74,6 +81,7 @@ export interface FileRoutesByTo {
   '/ayarlar': typeof AyarlarRoute
   '/denemeler': typeof DenemelerRoute
   '/giris': typeof GirisRoute
+  '/index_new': typeof Index_newRoute
   '/koc': typeof KocRoute
   '/koc-giris': typeof KocGirisRoute
   '/konu-agaci': typeof KonuAgaciRoute
@@ -85,6 +93,7 @@ export interface FileRoutesById {
   '/ayarlar': typeof AyarlarRoute
   '/denemeler': typeof DenemelerRoute
   '/giris': typeof GirisRoute
+  '/index_new': typeof Index_newRoute
   '/koc': typeof KocRoute
   '/koc-giris': typeof KocGirisRoute
   '/konu-agaci': typeof KonuAgaciRoute
@@ -97,6 +106,7 @@ export interface FileRouteTypes {
     | '/ayarlar'
     | '/denemeler'
     | '/giris'
+    | '/index_new'
     | '/koc'
     | '/koc-giris'
     | '/konu-agaci'
@@ -107,6 +117,7 @@ export interface FileRouteTypes {
     | '/ayarlar'
     | '/denemeler'
     | '/giris'
+    | '/index_new'
     | '/koc'
     | '/koc-giris'
     | '/konu-agaci'
@@ -117,6 +128,7 @@ export interface FileRouteTypes {
     | '/ayarlar'
     | '/denemeler'
     | '/giris'
+    | '/index_new'
     | '/koc'
     | '/koc-giris'
     | '/konu-agaci'
@@ -128,6 +140,7 @@ export interface RootRouteChildren {
   AyarlarRoute: typeof AyarlarRoute
   DenemelerRoute: typeof DenemelerRoute
   GirisRoute: typeof GirisRoute
+  Index_newRoute: typeof Index_newRoute
   KocRoute: typeof KocRoute
   KocGirisRoute: typeof KocGirisRoute
   KonuAgaciRoute: typeof KonuAgaciRoute
@@ -162,6 +175,13 @@ declare module '@tanstack/react-router' {
       path: '/giris'
       fullPath: '/giris'
       preLoaderRoute: typeof GirisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/index_new': {
+      id: '/index_new'
+      path: '/index_new'
+      fullPath: '/index_new'
+      preLoaderRoute: typeof Index_newRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/koc': {
@@ -200,6 +220,7 @@ const rootRouteChildren: RootRouteChildren = {
   AyarlarRoute: AyarlarRoute,
   DenemelerRoute: DenemelerRoute,
   GirisRoute: GirisRoute,
+  Index_newRoute: Index_newRoute,
   KocRoute: KocRoute,
   KocGirisRoute: KocGirisRoute,
   KonuAgaciRoute: KonuAgaciRoute,
