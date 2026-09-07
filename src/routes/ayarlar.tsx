@@ -95,26 +95,14 @@ function AccountPage() {
             <ProfileSection />
             {role === "student" && <TargetSection />}
             <PasswordSection />
-            {role === "student" ? (
+            {role === "student" && (
                 <CoachSection coachName={myCoach?.name} onDisconnect={async () => {
                     await setCoach(null);
                     await refresh();
                     toast.success("Koç bağlantısı kaldırıldı.");
                 }} />
-            ) : (
-                <Card className="rounded-3xl border-border p-6 shadow-soft">
-                    <SectionTitle icon={<GraduationCap className="size-4" />} title="Öğrenci Bağlantıları" />
-                    <p className="mt-1 text-sm text-muted-foreground">
-                        Öğrenci bağlantısı öğrenci tarafından yönetilir. Yeni öğrenci davetlerini koç panelinden gönderebilirsin.
-                    </p>
-                    <Link to="/koc">
-                        <Button variant="outline" className="mt-4 rounded-full">
-                            Koç Paneline Git
-                        </Button>
-                    </Link>
-                </Card>
             )}
-            {role === "student" && <PairInvites role="student" />}
+            <PairInvites role={role as "student" | "coach"} />
             <DangerSection
                 onDelete={async () => {
                     await supabase.rpc("delete_user");

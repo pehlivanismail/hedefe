@@ -204,6 +204,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
               .from("coach_connections")
               .insert({ student_id: user.id, coach_id: coachId, status: "approved" });
         }
+        
+        await supabase.from("profiles").update({ coach_id: coachId }).eq("id", user.id);
+        
         await load(user.id);
       },
       signOut: async () => {
