@@ -6,6 +6,13 @@ import {
   UserRound,
   GraduationCap,
   ArrowRight,
+  BookOpenCheck,
+  CalendarCheck,
+  ChartLine,
+  Users,
+  ClipboardList,
+  NotebookPen,
+  CheckCircle2,
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
@@ -81,57 +88,201 @@ function Index() {
   return <Ozet student={currentStudent} />;
 }
 
+
+const studentFeatures = [
+  {
+    icon: BookOpenCheck,
+    title: "Konu Ağacı",
+    text: "Sınav → ders → alan → konu kırılımında her konunun hakimiyetini 5 kademeli göstergeyle izle; eksiklerin asla kaybolmaz.",
+  },
+  {
+    icon: CalendarCheck,
+    title: "Haftalık Ödev Planı",
+    text: "Pazartesi–Pazar tahtanda ödevlerini sürükle-bırakla planla; koçunun verdiği ödevler külah ikonuyla işaretlenir.",
+  },
+  {
+    icon: ChartLine,
+    title: "Deneme Analizi",
+    text: "TYT (120 soru) ve AYT (80 soru) net ilerlemen grafiklerle; ders bazında yanlış ve boşların otomatik nete çevrilir.",
+  },
+  {
+    icon: TriangleAlert,
+    title: "Öğrenme Borcu",
+    text: "Her yanlış ve boş soru 'borç' olarak birikir; neyi telafi etmen gerektiğini tek sayıda görürsün.",
+  },
+];
+
+const coachFeatures = [
+  {
+    icon: Users,
+    title: "Tüm Öğrenciler Tek Panelde",
+    text: "Öğrencilerinin hedeflerini, geri sayımlarını ve bekleyen görevlerini soldaki listeden anında gör.",
+  },
+  {
+    icon: ClipboardList,
+    title: "Ödev ve Deneme Atama",
+    text: "Konu çalışması, soru çözümü veya TYT/AYT branş denemesi ata; alan seçimiyle ödevi tam isabet hedefe ver.",
+  },
+  {
+    icon: NotebookPen,
+    title: "Çalışma Günlüğü",
+    text: "Öğrencinin hangi gün, hangi kaynaktan, kaç soru çözdüğünü; doğru-yanlış-boş dağılımıyla günlük ve haftalık izle.",
+  },
+];
+
+const steps = [
+  {
+    n: "1",
+    title: "Hesabını aç",
+    text: "Öğrenci veya koç olarak kaydol; hedefini ve alanını (Sayısal / Sözel / Eşit Ağırlık) belirle.",
+  },
+  {
+    n: "2",
+    title: "Koçunla eşleş",
+    text: "Öğrenci koçunu, koç öğrencisini e-postayla davet eder. Karşı taraf onaylayınca bağlantı kurulur.",
+  },
+  {
+    n: "3",
+    title: "Birlikte takip et",
+    text: "Çalışmalar kaydedilir, ödevler tamamlanır, denemeler analiz edilir — iki taraf da aynı tabloyu görür.",
+  },
+];
+
 function Landing() {
+  const { user, role } = useAuth();
+  const panelLink = role === "coach" ? "/koc" : "/ozet";
+
   return (
-    <div className="space-y-10">
-      <section className="relative overflow-hidden rounded-3xl bg-brand-deep px-6 py-14 text-primary-foreground sm:px-12 sm:py-20">
+    <div className="space-y-16">
+      {/* Hero */}
+      <section className="relative overflow-hidden rounded-3xl bg-brand-deep px-6 py-16 text-primary-foreground sm:px-12 sm:py-24">
         <div className="absolute -right-24 -top-24 size-80 rounded-full bg-primary/25 blur-3xl" />
-        <div className="relative max-w-2xl">
+        <div className="absolute -bottom-32 -left-16 size-72 rounded-full bg-primary/15 blur-3xl" />
+        <div className="relative max-w-3xl">
           <span className="inline-flex items-center gap-2 rounded-full bg-primary/20 px-3 py-1 text-xs font-semibold uppercase tracking-widest">
-            <Target className="size-3.5" /> YKS 2027
+            <Target className="size-3.5" /> YKS 2027 Takip Paneli
           </span>
-          <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight sm:text-6xl">
-            Hedefine giden yolu <span className="text-primary">planla</span>
+          <h1 className="mt-5 font-display text-4xl font-extrabold tracking-tight sm:text-6xl">
+            Hedefine giden yolu <span className="text-primary">birlikte planla</span>
           </h1>
-          <p className="mt-4 text-base opacity-80 sm:text-lg">
-            Konu takibi, haftalık ödevler, deneme analizleri ve koçunla ortak
-            çalışma paneli — hepsi tek yerde.
+          <p className="mt-5 max-w-2xl text-base opacity-85 sm:text-lg">
+            Hedefe.net, YKS öğrencileri ile eğitim koçlarını aynı çalışma masasına oturtur. Konu hakimiyeti, haftalık ödev planı, deneme analizleri ve öğrenme borcu — hepsi tek ekranda, iki taraf için de görünür.
           </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            {user ? (
+              <Link
+                to={panelLink}
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5"
+              >
+                Paneline Git <ArrowRight className="size-4" />
+              </Link>
+            ) : (
+              <>
+                <Link
+                  to="/giris"
+                  className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5"
+                >
+                  Öğrenci olarak başla <ArrowRight className="size-4" />
+                </Link>
+                <Link
+                  to="/koc-giris"
+                  className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 px-7 py-3.5 text-sm font-semibold transition-colors hover:bg-primary-foreground/10"
+                >
+                  Koç olarak başla
+                </Link>
+              </>
+            )}
+          </div>
         </div>
       </section>
 
-      <section className="grid gap-6 lg:grid-cols-2">
-        <Card className="rounded-3xl border-border p-8 shadow-soft">
-          <div className="flex items-center gap-2 font-display text-xl font-bold text-brand-deep">
-            <UserRound className="size-5 text-primary" /> Öğrenci Girişi
-          </div>
-          <p className="mt-2 text-sm text-muted-foreground">
-            E-posta ve şifrenle giriş yap; hedefini, alanını ve haftalık
-            planını tek panelde takip et.
-          </p>
-          <Link
-            to="/giris"
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5"
-          >
-            Öğrenci olarak devam et <ArrowRight className="size-4" />
-          </Link>
-        </Card>
+      {/* Neden Hedefe.net */}
+      <section aria-labelledby="neden">
+        <h2 id="neden" className="font-display text-3xl font-bold tracking-tight text-brand-deep">
+          Neden Hedefe.net?
+        </h2>
+        <p className="mt-3 max-w-3xl text-muted-foreground">
+          YKS hazırlığı bir maraton; çoğu öğrenci neyi bilmediğini, çoğu koç öğrencisinin o hafta ne yaptığını tam göremez. Hedefe.net bu iki kör noktayı kapatır: çalışma verisi öğrenciden gelir, yön koçtan — tablo ikisine de açıktır.
+        </p>
+      </section>
 
-        <Card className="rounded-3xl border-border p-8 shadow-soft">
-          <div className="flex items-center gap-2 font-display text-xl font-bold text-brand-deep">
-            <GraduationCap className="size-5 text-primary" /> Koç Girişi
-          </div>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Koçlar kendi hesaplarıyla girer ve yalnızca kendilerini koç olarak
-            seçen öğrencileri görür.
+      {/* Öğrenciler için */}
+      <section aria-labelledby="ogrenci">
+        <div className="flex items-center gap-3">
+          <span className="flex size-10 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
+            <UserRound className="size-5" />
+          </span>
+          <h2 id="ogrenci" className="font-display text-2xl font-bold text-brand-deep sm:text-3xl">
+            Öğrenciler için
+          </h2>
+        </div>
+        <div className="mt-6 grid gap-5 sm:grid-cols-2">
+          {studentFeatures.map((f) => (
+            <Card key={f.title} className="rounded-3xl border-border p-6 shadow-soft transition-transform hover:-translate-y-0.5">
+              <f.icon className="size-6 text-primary" />
+              <h3 className="mt-3 font-display text-lg font-semibold text-brand-deep">{f.title}</h3>
+              <p className="mt-1.5 text-sm text-muted-foreground">{f.text}</p>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Koçlar için */}
+      <section aria-labelledby="koc">
+        <div className="flex items-center gap-3">
+          <span className="flex size-10 items-center justify-center rounded-2xl bg-brand-deep text-primary-foreground">
+            <GraduationCap className="size-5" />
+          </span>
+          <h2 id="koc" className="font-display text-2xl font-bold text-brand-deep sm:text-3xl">
+            Koçlar için
+          </h2>
+        </div>
+        <div className="mt-6 grid gap-5 sm:grid-cols-3">
+          {coachFeatures.map((f) => (
+            <Card key={f.title} className="rounded-3xl border-border p-6 shadow-soft transition-transform hover:-translate-y-0.5">
+              <f.icon className="size-6 text-primary" />
+              <h3 className="mt-3 font-display text-lg font-semibold text-brand-deep">{f.title}</h3>
+              <p className="mt-1.5 text-sm text-muted-foreground">{f.text}</p>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Nasıl çalışır */}
+      <section aria-labelledby="nasil" className="rounded-3xl bg-brand-soft px-6 py-12 sm:px-12">
+        <h2 id="nasil" className="font-display text-2xl font-bold text-brand-deep sm:text-3xl">
+          Nasıl çalışır?
+        </h2>
+        <ol className="mt-8 grid gap-6 sm:grid-cols-3">
+          {steps.map((s) => (
+            <li key={s.n} className="relative">
+              <span className="flex size-10 items-center justify-center rounded-full bg-primary font-display text-lg font-bold text-primary-foreground">{s.n}</span>
+              <h3 className="mt-4 font-display text-lg font-semibold text-brand-deep">{s.title}</h3>
+              <p className="mt-1.5 text-sm text-muted-foreground">{s.text}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      {/* Son CTA */}
+      <section className="relative overflow-hidden rounded-3xl bg-brand-deep px-6 py-14 text-center text-primary-foreground sm:px-12">
+        <div className="absolute -left-20 -top-20 size-64 rounded-full bg-primary/20 blur-3xl" />
+        <div className="relative">
+          <CheckCircle2 className="mx-auto size-10 text-primary" />
+          <h2 className="mt-4 font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
+            Hedefin belli, planın burada.
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-sm opacity-85 sm:text-base">
+            Bugün başla; ilk haftanı planla, ilk denemeni işle, koçunla aynı sayfada buluş.
           </p>
-          <Link
-            to="/koc-giris"
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-deep px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5"
-          >
-            Koç olarak devam et <ArrowRight className="size-4" />
-          </Link>
-        </Card>
+          {!user && (
+            <div className="mt-7 flex flex-wrap justify-center gap-3">
+              <Link to="/giris" className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5">
+                Ücretsiz Başla <ArrowRight className="size-4" />
+              </Link>
+            </div>
+          )}
+        </div>
       </section>
     </div>
   );
