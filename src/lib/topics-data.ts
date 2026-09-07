@@ -168,7 +168,7 @@ export const realExams: Exam[] = [
           },
           {
             "id": "ayt-matematik-ucgenler",
-            "name": "ÜÇGENLER",
+            "name": "GEOMETRİ-ÜÇGENLER",
             "topics": [
               {
                 "id": "ayt-matematik-ucgenler-duzlemde-aci",
@@ -251,7 +251,7 @@ export const realExams: Exam[] = [
           },
           {
             "id": "ayt-matematik-cokgenler-ve-dortgenler",
-            "name": "ÇOKGENLER VE DÖRTGENLER",
+            "name": "GEOMETRİ-DÖRTGENLER VE ÇOKGENLER",
             "topics": [
               {
                 "id": "ayt-matematik-cokgenler-ve-dortgenler-cokgenler",
@@ -313,7 +313,7 @@ export const realExams: Exam[] = [
           },
           {
             "id": "ayt-matematik-cemberler",
-            "name": "ÇEMBERLER",
+            "name": "GEOMETRİ-ÇEMBERLER",
             "topics": [
               {
                 "id": "ayt-matematik-cemberler-cemberde-aci",
@@ -340,7 +340,7 @@ export const realExams: Exam[] = [
           },
           {
             "id": "ayt-matematik-analitik-geometri",
-            "name": "ANALİTİK GEOMETRİ",
+            "name": "GEOMETRİ-ANALİTİK GEOMETRİ",
             "topics": [
               {
                 "id": "ayt-matematik-analitik-geometri-noktanin-analitik-incelenmesi",
@@ -374,7 +374,7 @@ export const realExams: Exam[] = [
           },
           {
             "id": "ayt-matematik-uzay-geometrisi-ve-kati-cisimler",
-            "name": "UZAY GEOMETRİSİ VE KATI CİSİMLER",
+            "name": "GEOMETRİ-UZAY GEOMETRİSİ VE KATI CİSİMLER",
             "topics": [
               {
                 "id": "ayt-matematik-uzay-geometrisi-ve-kati-cisimler-uzay-geometrisi-ve-kati-cisimler",
@@ -1766,7 +1766,7 @@ export const realExams: Exam[] = [
           },
           {
             "id": "ayt-matematik-ucgenler",
-            "name": "ÜÇGENLER",
+            "name": "GEOMETRİ-ÜÇGENLER",
             "topics": [
               {
                 "id": "ayt-matematik-ucgenler-duzlemde-aci",
@@ -1849,7 +1849,7 @@ export const realExams: Exam[] = [
           },
           {
             "id": "ayt-matematik-cokgenler-ve-dortgenler",
-            "name": "ÇOKGENLER VE DÖRTGENLER",
+            "name": "GEOMETRİ-DÖRTGENLER VE ÇOKGENLER",
             "topics": [
               {
                 "id": "ayt-matematik-cokgenler-ve-dortgenler-cokgenler",
@@ -1911,7 +1911,7 @@ export const realExams: Exam[] = [
           },
           {
             "id": "ayt-matematik-cemberler",
-            "name": "ÇEMBERLER",
+            "name": "GEOMETRİ-ÇEMBERLER",
             "topics": [
               {
                 "id": "ayt-matematik-cemberler-cemberde-aci",
@@ -1938,7 +1938,7 @@ export const realExams: Exam[] = [
           },
           {
             "id": "ayt-matematik-analitik-geometri",
-            "name": "ANALİTİK GEOMETRİ",
+            "name": "GEOMETRİ-ANALİTİK GEOMETRİ",
             "topics": [
               {
                 "id": "ayt-matematik-analitik-geometri-noktanin-analitik-incelenmesi",
@@ -1972,7 +1972,7 @@ export const realExams: Exam[] = [
           },
           {
             "id": "ayt-matematik-uzay-geometrisi-ve-kati-cisimler",
-            "name": "UZAY GEOMETRİSİ VE KATI CİSİMLER",
+            "name": "GEOMETRİ-UZAY GEOMETRİSİ VE KATI CİSİMLER",
             "topics": [
               {
                 "id": "ayt-matematik-uzay-geometrisi-ve-kati-cisimler-uzay-geometrisi-ve-kati-cisimler",
@@ -5875,7 +5875,7 @@ export const realExams: Exam[] = [
           },
           {
             "id": "tyt-matematik-ucgenler",
-            "name": "ÜÇGENLER",
+            "name": "GEOMETRİ-ÜÇGENLER",
             "topics": [
               {
                 "id": "tyt-matematik-ucgenler-duzlemde-aci",
@@ -5958,7 +5958,7 @@ export const realExams: Exam[] = [
           },
           {
             "id": "tyt-matematik-dortgenler-ve-cokgenler",
-            "name": "DÖRTGENLER VE ÇOKGENLER",
+            "name": "GEOMETRİ-DÖRTGENLER VE ÇOKGENLER",
             "topics": [
               {
                 "id": "tyt-matematik-dortgenler-ve-cokgenler-cokgenler",
@@ -6020,7 +6020,7 @@ export const realExams: Exam[] = [
           },
           {
             "id": "tyt-matematik-cemberler",
-            "name": "ÇEMBERLER",
+            "name": "GEOMETRİ-ÇEMBERLER",
             "topics": [
               {
                 "id": "tyt-matematik-cemberler-cemberde-acilar",
@@ -6047,7 +6047,7 @@ export const realExams: Exam[] = [
           },
           {
             "id": "tyt-matematik-kati-cisimler",
-            "name": "KATI CİSİMLER",
+            "name": "GEOMETRİ-KATI CİSİMLER",
             "topics": [
               {
                 "id": "tyt-matematik-kati-cisimler-kati-cisimler",
@@ -6060,7 +6060,7 @@ export const realExams: Exam[] = [
           },
           {
             "id": "tyt-matematik-analitik-geometri",
-            "name": "ANALİTİK GEOMETRİ",
+            "name": "GEOMETRİ-ANALİTİK GEOMETRİ",
             "topics": [
               {
                 "id": "tyt-matematik-analitik-geometri-noktanin-analitik-incelenmesi",

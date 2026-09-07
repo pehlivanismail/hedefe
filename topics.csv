@@ -258,31 +258,31 @@ TYT,Matematik,VERİ - SAYMA - OLASILIK,Olasılık,tyt,tyt-matematik,tyt-matemati
 TYT,Matematik,İKİNCİ DERECEDEN DENKLEMLER,İkinci Dereceden Denklemler,tyt,tyt-matematik,tyt-matematik-ikinci-dereceden-denklemler,tyt-matematik-ikinci-dereceden-denklemler-ikinci-dereceden-denklemler
 TYT,Matematik,POLİNOMLAR,Polinomlar,tyt,tyt-matematik,tyt-matematik-polinomlar,tyt-matematik-polinomlar-polinomlar
 TYT,Matematik,MANTIK,Mantık,tyt,tyt-matematik,tyt-matematik-mantik,tyt-matematik-mantik-mantik
-TYT,Matematik,ÜÇGENLER,Düzlemde Açı,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-duzlemde-aci
-TYT,Matematik,ÜÇGENLER,Üçgende Açı,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgende-aci
-TYT,Matematik,ÜÇGENLER,Dik Üçgen ve Trigonometri,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-dik-ucgen-ve-trigonometri
-TYT,Matematik,ÜÇGENLER,Üçgende Açı - Kenar Bağıntıları,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgende-aci-kenar-bagintilari
-TYT,Matematik,ÜÇGENLER,İkizkenar Üçgen,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ikizkenar-ucgen
-TYT,Matematik,ÜÇGENLER,Eşkenar Üçgen,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-eskenar-ucgen
-TYT,Matematik,ÜÇGENLER,Üçgende Açıortay,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgende-aciortay
-TYT,Matematik,ÜÇGENLER,Üçgende Kenarortay,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgende-kenarortay
-TYT,Matematik,ÜÇGENLER,Üçgende Merkezler,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgende-merkezler
-TYT,Matematik,ÜÇGENLER,Üçgende Benzerlik,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgende-benzerlik
-TYT,Matematik,ÜÇGENLER,Üçgende Alan,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgende-alan
-TYT,Matematik,DÖRTGENLER VE ÇOKGENLER,Çokgenler,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-cokgenler
-TYT,Matematik,DÖRTGENLER VE ÇOKGENLER,Dörtgenler,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-dortgenler
-TYT,Matematik,DÖRTGENLER VE ÇOKGENLER,Yamuk,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-yamuk
-TYT,Matematik,DÖRTGENLER VE ÇOKGENLER,Paralelkenar,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-paralelkenar
-TYT,Matematik,DÖRTGENLER VE ÇOKGENLER,Eşkenar Dörtgen,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-eskenar-dortgen
-TYT,Matematik,DÖRTGENLER VE ÇOKGENLER,Dikdörtgen,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-dikdortgen
-TYT,Matematik,DÖRTGENLER VE ÇOKGENLER,Kare,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-kare
-TYT,Matematik,DÖRTGENLER VE ÇOKGENLER,Deltoid ve Dörtgenlerin Sınıflandırılması,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-deltoid-ve-dortgenlerin-siniflandirilmasi
-TYT,Matematik,ÇEMBERLER,Çemberde Açılar,tyt,tyt-matematik,tyt-matematik-cemberler,tyt-matematik-cemberler-cemberde-acilar
-TYT,Matematik,ÇEMBERLER,Çemberde Uzunluk,tyt,tyt-matematik,tyt-matematik-cemberler,tyt-matematik-cemberler-cemberde-uzunluk
-TYT,Matematik,ÇEMBERLER,Dairede Alan,tyt,tyt-matematik,tyt-matematik-cemberler,tyt-matematik-cemberler-dairede-alan
-TYT,Matematik,KATI CİSİMLER,Katı Cisimler,tyt,tyt-matematik,tyt-matematik-kati-cisimler,tyt-matematik-kati-cisimler-kati-cisimler
-TYT,Matematik,ANALİTİK GEOMETRİ,Noktanın Analitik İncelenmesi,tyt,tyt-matematik,tyt-matematik-analitik-geometri,tyt-matematik-analitik-geometri-noktanin-analitik-incelenmesi
-TYT,Matematik,ANALİTİK GEOMETRİ,Doğrunun Analitik İncelenmesi,tyt,tyt-matematik,tyt-matematik-analitik-geometri,tyt-matematik-analitik-geometri-dogrunun-analitik-incelenmesi
+TYT,Matematik,GEOMETRİ-ÜÇGENLER,Düzlemde Açı,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-duzlemde-aci
+TYT,Matematik,GEOMETRİ-ÜÇGENLER,Üçgende Açı,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgende-aci
+TYT,Matematik,GEOMETRİ-ÜÇGENLER,Dik Üçgen ve Trigonometri,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-dik-ucgen-ve-trigonometri
+TYT,Matematik,GEOMETRİ-ÜÇGENLER,Üçgende Açı - Kenar Bağıntıları,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgende-aci-kenar-bagintilari
+TYT,Matematik,GEOMETRİ-ÜÇGENLER,İkizkenar Üçgen,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ikizkenar-ucgen
+TYT,Matematik,GEOMETRİ-ÜÇGENLER,Eşkenar Üçgen,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-eskenar-ucgen
+TYT,Matematik,GEOMETRİ-ÜÇGENLER,Üçgende Açıortay,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgende-aciortay
+TYT,Matematik,GEOMETRİ-ÜÇGENLER,Üçgende Kenarortay,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgende-kenarortay
+TYT,Matematik,GEOMETRİ-ÜÇGENLER,Üçgende Merkezler,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgende-merkezler
+TYT,Matematik,GEOMETRİ-ÜÇGENLER,Üçgende Benzerlik,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgende-benzerlik
+TYT,Matematik,GEOMETRİ-ÜÇGENLER,Üçgende Alan,tyt,tyt-matematik,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgende-alan
+TYT,Matematik,GEOMETRİ-DÖRTGENLER VE ÇOKGENLER,Çokgenler,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-cokgenler
+TYT,Matematik,GEOMETRİ-DÖRTGENLER VE ÇOKGENLER,Dörtgenler,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-dortgenler
+TYT,Matematik,GEOMETRİ-DÖRTGENLER VE ÇOKGENLER,Yamuk,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-yamuk
+TYT,Matematik,GEOMETRİ-DÖRTGENLER VE ÇOKGENLER,Paralelkenar,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-paralelkenar
+TYT,Matematik,GEOMETRİ-DÖRTGENLER VE ÇOKGENLER,Eşkenar Dörtgen,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-eskenar-dortgen
+TYT,Matematik,GEOMETRİ-DÖRTGENLER VE ÇOKGENLER,Dikdörtgen,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-dikdortgen
+TYT,Matematik,GEOMETRİ-DÖRTGENLER VE ÇOKGENLER,Kare,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-kare
+TYT,Matematik,GEOMETRİ-DÖRTGENLER VE ÇOKGENLER,Deltoid ve Dörtgenlerin Sınıflandırılması,tyt,tyt-matematik,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-deltoid-ve-dortgenlerin-siniflandirilmasi
+TYT,Matematik,GEOMETRİ-ÇEMBERLER,Çemberde Açılar,tyt,tyt-matematik,tyt-matematik-cemberler,tyt-matematik-cemberler-cemberde-acilar
+TYT,Matematik,GEOMETRİ-ÇEMBERLER,Çemberde Uzunluk,tyt,tyt-matematik,tyt-matematik-cemberler,tyt-matematik-cemberler-cemberde-uzunluk
+TYT,Matematik,GEOMETRİ-ÇEMBERLER,Dairede Alan,tyt,tyt-matematik,tyt-matematik-cemberler,tyt-matematik-cemberler-dairede-alan
+TYT,Matematik,GEOMETRİ-KATI CİSİMLER,Katı Cisimler,tyt,tyt-matematik,tyt-matematik-kati-cisimler,tyt-matematik-kati-cisimler-kati-cisimler
+TYT,Matematik,GEOMETRİ-ANALİTİK GEOMETRİ,Noktanın Analitik İncelenmesi,tyt,tyt-matematik,tyt-matematik-analitik-geometri,tyt-matematik-analitik-geometri-noktanin-analitik-incelenmesi
+TYT,Matematik,GEOMETRİ-ANALİTİK GEOMETRİ,Doğrunun Analitik İncelenmesi,tyt,tyt-matematik,tyt-matematik-analitik-geometri,tyt-matematik-analitik-geometri-dogrunun-analitik-incelenmesi
 TYT,Tarih,TARİH VE ZAMAN,Tarih ve Zaman,tyt,tyt-tarih,tyt-tarih-tarih-ve-zaman,tyt-tarih-tarih-ve-zaman-tarih-ve-zaman
 TYT,Tarih,İNSANLIĞIN İLK DÖNEMLERİ,İnsanlığın İlk Dönemleri,tyt,tyt-tarih,tyt-tarih-insanligin-ilk-donemleri,tyt-tarih-insanligin-ilk-donemleri-insanligin-ilk-donemleri
 TYT,Tarih,ORTA ÇAĞ'DA DÜNYA VE TÜRKLER,Orta Çağ'da Dünya,tyt,tyt-tarih,tyt-tarih-orta-cagda-dunya-ve-turkler,tyt-tarih-orta-cagda-dunya-ve-turkler-orta-cagda-dunya
@@ -588,33 +588,33 @@ AYT,Matematik,LİMİT VE SÜREKLİLİK,Limit ve Süreklilik,ayt,ayt-matematik,ay
 AYT,Matematik,TÜREV,Türev,ayt,ayt-matematik,ayt-matematik-turev,ayt-matematik-turev-turev
 AYT,Matematik,İNTEGRAL,İntegral,ayt,ayt-matematik,ayt-matematik-integral,ayt-matematik-integral-integral
 AYT,Matematik,SAYMA VE OLASILIK,Sayma ve Olasılık,ayt,ayt-matematik,ayt-matematik-sayma-ve-olasilik,ayt-matematik-sayma-ve-olasilik-sayma-ve-olasilik
-AYT,Matematik,ÜÇGENLER,Düzlemde Açı,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-duzlemde-aci
-AYT,Matematik,ÜÇGENLER,Üçgende Açı,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-ucgende-aci
-AYT,Matematik,ÜÇGENLER,Dik Üçgen ve Trigonometri,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-dik-ucgen-ve-trigonometri
-AYT,Matematik,ÜÇGENLER,Üçgende Açı - Kenar Bağıntıları,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-ucgende-aci-kenar-bagintilari
-AYT,Matematik,ÜÇGENLER,İkizkenar Üçgen,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-ikizkenar-ucgen
-AYT,Matematik,ÜÇGENLER,Eşkenar Üçgen,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-eskenar-ucgen
-AYT,Matematik,ÜÇGENLER,Üçgende Açıortay,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-ucgende-aciortay
-AYT,Matematik,ÜÇGENLER,Üçgende Kenarortay,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-ucgende-kenarortay
-AYT,Matematik,ÜÇGENLER,Üçgende Merkezler,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-ucgende-merkezler
-AYT,Matematik,ÜÇGENLER,Üçgende Benzerlik,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-ucgende-benzerlik
-AYT,Matematik,ÜÇGENLER,Üçgende Alan,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-ucgende-alan
-AYT,Matematik,ÇOKGENLER VE DÖRTGENLER,Çokgenler,ayt,ayt-matematik,ayt-matematik-cokgenler-ve-dortgenler,ayt-matematik-cokgenler-ve-dortgenler-cokgenler
-AYT,Matematik,ÇOKGENLER VE DÖRTGENLER,Dörtgenler,ayt,ayt-matematik,ayt-matematik-cokgenler-ve-dortgenler,ayt-matematik-cokgenler-ve-dortgenler-dortgenler
-AYT,Matematik,ÇOKGENLER VE DÖRTGENLER,Yamuk,ayt,ayt-matematik,ayt-matematik-cokgenler-ve-dortgenler,ayt-matematik-cokgenler-ve-dortgenler-yamuk
-AYT,Matematik,ÇOKGENLER VE DÖRTGENLER,Paralelkenar,ayt,ayt-matematik,ayt-matematik-cokgenler-ve-dortgenler,ayt-matematik-cokgenler-ve-dortgenler-paralelkenar
-AYT,Matematik,ÇOKGENLER VE DÖRTGENLER,Eşkenar Dörtgen,ayt,ayt-matematik,ayt-matematik-cokgenler-ve-dortgenler,ayt-matematik-cokgenler-ve-dortgenler-eskenar-dortgen
-AYT,Matematik,ÇOKGENLER VE DÖRTGENLER,Dikdörtgen,ayt,ayt-matematik,ayt-matematik-cokgenler-ve-dortgenler,ayt-matematik-cokgenler-ve-dortgenler-dikdortgen
-AYT,Matematik,ÇOKGENLER VE DÖRTGENLER,Kare,ayt,ayt-matematik,ayt-matematik-cokgenler-ve-dortgenler,ayt-matematik-cokgenler-ve-dortgenler-kare
-AYT,Matematik,ÇOKGENLER VE DÖRTGENLER,Deltoid ve Dörtgenlerin Sınıflandırılması,ayt,ayt-matematik,ayt-matematik-cokgenler-ve-dortgenler,ayt-matematik-cokgenler-ve-dortgenler-deltoid-ve-dortgenlerin-siniflandirilmasi
-AYT,Matematik,ÇEMBERLER,Çemberde Açı,ayt,ayt-matematik,ayt-matematik-cemberler,ayt-matematik-cemberler-cemberde-aci
-AYT,Matematik,ÇEMBERLER,Çemberde Uzunluk,ayt,ayt-matematik,ayt-matematik-cemberler,ayt-matematik-cemberler-cemberde-uzunluk
-AYT,Matematik,ÇEMBERLER,Dairede Alan,ayt,ayt-matematik,ayt-matematik-cemberler,ayt-matematik-cemberler-dairede-alan
-AYT,Matematik,ANALİTİK GEOMETRİ,Noktanın Analitik İncelenmesi,ayt,ayt-matematik,ayt-matematik-analitik-geometri,ayt-matematik-analitik-geometri-noktanin-analitik-incelenmesi
-AYT,Matematik,ANALİTİK GEOMETRİ,Doğrunun Analitik İncelenmesi,ayt,ayt-matematik,ayt-matematik-analitik-geometri,ayt-matematik-analitik-geometri-dogrunun-analitik-incelenmesi
-AYT,Matematik,ANALİTİK GEOMETRİ,Dönüşümlerle Geoemetri,ayt,ayt-matematik,ayt-matematik-analitik-geometri,ayt-matematik-analitik-geometri-donusumlerle-geoemetri
-AYT,Matematik,ANALİTİK GEOMETRİ,Çemberin Analitik İncelenmesi,ayt,ayt-matematik,ayt-matematik-analitik-geometri,ayt-matematik-analitik-geometri-cemberin-analitik-incelenmesi
-AYT,Matematik,UZAY GEOMETRİSİ VE KATI CİSİMLER,Uzay Geometrisi ve Katı Cisimler,ayt,ayt-matematik,ayt-matematik-uzay-geometrisi-ve-kati-cisimler,ayt-matematik-uzay-geometrisi-ve-kati-cisimler-uzay-geometrisi-ve-kati-cisimler
+AYT,Matematik,GEOMETRİ-ÜÇGENLER,Düzlemde Açı,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-duzlemde-aci
+AYT,Matematik,GEOMETRİ-ÜÇGENLER,Üçgende Açı,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-ucgende-aci
+AYT,Matematik,GEOMETRİ-ÜÇGENLER,Dik Üçgen ve Trigonometri,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-dik-ucgen-ve-trigonometri
+AYT,Matematik,GEOMETRİ-ÜÇGENLER,Üçgende Açı - Kenar Bağıntıları,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-ucgende-aci-kenar-bagintilari
+AYT,Matematik,GEOMETRİ-ÜÇGENLER,İkizkenar Üçgen,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-ikizkenar-ucgen
+AYT,Matematik,GEOMETRİ-ÜÇGENLER,Eşkenar Üçgen,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-eskenar-ucgen
+AYT,Matematik,GEOMETRİ-ÜÇGENLER,Üçgende Açıortay,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-ucgende-aciortay
+AYT,Matematik,GEOMETRİ-ÜÇGENLER,Üçgende Kenarortay,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-ucgende-kenarortay
+AYT,Matematik,GEOMETRİ-ÜÇGENLER,Üçgende Merkezler,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-ucgende-merkezler
+AYT,Matematik,GEOMETRİ-ÜÇGENLER,Üçgende Benzerlik,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-ucgende-benzerlik
+AYT,Matematik,GEOMETRİ-ÜÇGENLER,Üçgende Alan,ayt,ayt-matematik,ayt-matematik-ucgenler,ayt-matematik-ucgenler-ucgende-alan
+AYT,Matematik,GEOMETRİ-DÖRTGENLER VE ÇOKGENLER,Çokgenler,ayt,ayt-matematik,ayt-matematik-cokgenler-ve-dortgenler,ayt-matematik-cokgenler-ve-dortgenler-cokgenler
+AYT,Matematik,GEOMETRİ-DÖRTGENLER VE ÇOKGENLER,Dörtgenler,ayt,ayt-matematik,ayt-matematik-cokgenler-ve-dortgenler,ayt-matematik-cokgenler-ve-dortgenler-dortgenler
+AYT,Matematik,GEOMETRİ-ÇOKGENLER VE DÖRTGENLER,Yamuk,ayt,ayt-matematik,ayt-matematik-cokgenler-ve-dortgenler,ayt-matematik-cokgenler-ve-dortgenler-yamuk
+AYT,Matematik,GEOMETRİ-DÖRTGENLER VE ÇOKGENLER,Paralelkenar,ayt,ayt-matematik,ayt-matematik-cokgenler-ve-dortgenler,ayt-matematik-cokgenler-ve-dortgenler-paralelkenar
+AYT,Matematik,GEOMETRİ-ÇOKGENLER VE DÖRTGENLER,Eşkenar Dörtgen,ayt,ayt-matematik,ayt-matematik-cokgenler-ve-dortgenler,ayt-matematik-cokgenler-ve-dortgenler-eskenar-dortgen
+AYT,Matematik,GEOMETRİ-ÇOKGENLER VE DÖRTGENLER,Dikdörtgen,ayt,ayt-matematik,ayt-matematik-cokgenler-ve-dortgenler,ayt-matematik-cokgenler-ve-dortgenler-dikdortgen
+AYT,Matematik,GEOMETRİ-ÇOKGENLER VE DÖRTGENLER,Kare,ayt,ayt-matematik,ayt-matematik-cokgenler-ve-dortgenler,ayt-matematik-cokgenler-ve-dortgenler-kare
+AYT,Matematik,GEOMETRİ-ÇOKGENLER VE DÖRTGENLER,Deltoid ve Dörtgenlerin Sınıflandırılması,ayt,ayt-matematik,ayt-matematik-cokgenler-ve-dortgenler,ayt-matematik-cokgenler-ve-dortgenler-deltoid-ve-dortgenlerin-siniflandirilmasi
+AYT,Matematik,GEOMETRİ-ÇEMBERLER,Çemberde Açı,ayt,ayt-matematik,ayt-matematik-cemberler,ayt-matematik-cemberler-cemberde-aci
+AYT,Matematik,GEOMETRİ-ÇEMBERLER,Çemberde Uzunluk,ayt,ayt-matematik,ayt-matematik-cemberler,ayt-matematik-cemberler-cemberde-uzunluk
+AYT,Matematik,GEOMETRİ-ÇEMBERLER,Dairede Alan,ayt,ayt-matematik,ayt-matematik-cemberler,ayt-matematik-cemberler-dairede-alan
+AYT,Matematik,GEOMETRİ-ANALİTİK GEOMETRİ,Noktanın Analitik İncelenmesi,ayt,ayt-matematik,ayt-matematik-analitik-geometri,ayt-matematik-analitik-geometri-noktanin-analitik-incelenmesi
+AYT,Matematik,GEOMETRİ-ANALİTİK GEOMETRİ,Doğrunun Analitik İncelenmesi,ayt,ayt-matematik,ayt-matematik-analitik-geometri,ayt-matematik-analitik-geometri-dogrunun-analitik-incelenmesi
+AYT,Matematik,GEOMETRİ-ANALİTİK GEOMETRİ,Dönüşümlerle Geoemetri,ayt,ayt-matematik,ayt-matematik-analitik-geometri,ayt-matematik-analitik-geometri-donusumlerle-geoemetri
+AYT,Matematik,GEOMETRİ-ANALİTİK GEOMETRİ,Çemberin Analitik İncelenmesi,ayt,ayt-matematik,ayt-matematik-analitik-geometri,ayt-matematik-analitik-geometri-cemberin-analitik-incelenmesi
+AYT,Matematik,GEOMETRİ-UZAY GEOMETRİSİ VE KATI CİSİMLER,Uzay Geometrisi ve Katı Cisimler,ayt,ayt-matematik,ayt-matematik-uzay-geometrisi-ve-kati-cisimler,ayt-matematik-uzay-geometrisi-ve-kati-cisimler-uzay-geometrisi-ve-kati-cisimler
 AYT,Psikoloji,PSİKOLOJİ BİLİMİNİ TANIYALIM,Psikolojinin Konusu-Bir Bilim Dalı Olma Süreci,ayt,ayt-psikoloji,ayt-psikoloji-psikoloji-bilimini-taniyalim,ayt-psikoloji-psikoloji-bilimini-taniyalim-psikolojinin-konusu-bir-bilim-dali-olma-sureci
 AYT,Psikoloji,PSİKOLOJİ BİLİMİNİ TANIYALIM,Psikolojideki Yaklaşımlar,ayt,ayt-psikoloji,ayt-psikoloji-psikoloji-bilimini-taniyalim,ayt-psikoloji-psikoloji-bilimini-taniyalim-psikolojideki-yaklasimlar
 AYT,Psikoloji,PSİKOLOJİ BİLİMİNİ TANIYALIM,"Psikolojinin Bilim Dalı Olarak Ölçütleri, Amaçları-Araştırmalarda Uyulması Gereken Etik Kurallar",ayt,ayt-psikoloji,ayt-psikoloji-psikoloji-bilimini-taniyalim,ayt-psikoloji-psikoloji-bilimini-taniyalim-psikolojinin-bilim-dali-olarak-olcutleri-amaclari-arastirmalarda-uyulmasi-gereken-etik-kurallar
