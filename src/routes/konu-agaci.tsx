@@ -202,18 +202,20 @@ function KonuAgaci() {
                               </div>
                             </AccordionTrigger>
                             <AccordionContent className="px-2 pb-2">
-                              <div className="px-2 pb-2">
-                                <Button
-                                  variant="outline"
-                                  size="sm"
-                                  className="w-full rounded-lg"
-                                  onClick={() =>
-                                    setActive({ kind: "area", id: area.id })
-                                  }
-                                >
-                                  <Plus className="size-3.5" /> Alan çalışması ({area.name})
-                                </Button>
-                              </div>
+                              {area.topics.length > 1 && (
+                                <div className="px-2 pb-2">
+                                  <Button
+                                    variant="outline"
+                                    size="sm"
+                                    className="w-full rounded-lg"
+                                    onClick={() =>
+                                      setActive({ kind: "area", id: area.id })
+                                    }
+                                  >
+                                    <Plus className="size-3.5" /> Alan çalışması ({area.name})
+                                  </Button>
+                                </div>
+                              )}
                               <ul className="space-y-1">
                                 {area.topics.map((t) => (
                                   <li key={t.id}>
