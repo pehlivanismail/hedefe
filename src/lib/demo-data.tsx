@@ -687,8 +687,8 @@ export function examsForStudent(all: Exam[], student: Student, studyLogs: any[] 
             let totalQ = 0;
             let correct = 0;
             for (const l of topicLogsRaw) {
-               totalQ += l.total_questions;
-               correct += l.correct_answers;
+               totalQ += l.solved || 0;
+               correct += Math.max(0, (l.solved || 0) - (l.wrong || 0) - (l.blank || 0));
             }
             const mastery = totalQ > 0 ? Math.max(1, Math.min(5, Math.round((correct / totalQ) * 5))) : 0;
 

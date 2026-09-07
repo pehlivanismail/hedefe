@@ -336,30 +336,51 @@ function KonuAgaci() {
                 </div>
               ))}
             </div>
-            <Button
-              className="w-full rounded-xl"
-              onClick={() => {
-                if (!active) return;
-                const solved = Number(form.solved);
-                if (!solved) {
-                  toast.error("Çözülen soru sayısı gerekli");
-                  return;
-                }
-                const log = {
-                  date: new Date().toLocaleDateString("tr-TR"),
-                  source: form.source.trim() || "Çalışma",
-                  solved,
-                  wrong: Number(form.wrong) || 0,
-                  blank: Number(form.blank) || 0,
-                };
-                if (active.kind === "area") addAreaLog(active.id, log);
-                else addLog(active.id, log);
-                setForm({ source: "", solved: "", wrong: "", blank: "" });
-                toast.success("Yeni çalışma eklendi");
-              }}
-            >
-              <Plus className="size-4" /> Yeni Çalışma Ekle
-            </Button>
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                className="w-full rounded-xl"
+                onClick={() => {
+                  if (!active) return;
+                  const log = {
+                    date: new Date().toLocaleDateString("tr-TR"),
+                    source: form.source.trim() || "Çalışma",
+                    kind: "konu" as const,
+                  };
+                  if (active.kind === "area") addAreaLog(active.id, log);
+                  else addLog(active.id, log);
+                  setForm({ source: "", solved: "", wrong: "", blank: "" });
+                  toast.success("Konu çalışması kaydedildi");
+                }}
+              >
+                Konu Çalışması
+              </Button>
+              <Button
+                className="w-full rounded-xl"
+                onClick={() => {
+                  if (!active) return;
+                  const solved = Number(form.solved);
+                  if (!solved) {
+                    toast.error("Çözülen soru sayısı gerekli");
+                    return;
+                  }
+                  const log = {
+                    date: new Date().toLocaleDateString("tr-TR"),
+                    source: form.source.trim() || "Çalışma",
+                    solved,
+                    wrong: Number(form.wrong) || 0,
+                    blank: Number(form.blank) || 0,
+                    kind: "soru" as const,
+                  };
+                  if (active.kind === "area") addAreaLog(active.id, log);
+                  else addLog(active.id, log);
+                  setForm({ source: "", solved: "", wrong: "", blank: "" });
+                  toast.success("Soru çözümü eklendi");
+                }}
+              >
+                <Plus className="size-4" /> Soru Çözümü
+              </Button>
+            </div>
 
           </div>
         </DialogContent>
