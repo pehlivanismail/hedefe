@@ -145,3 +145,4 @@ CREATE POLICY "Anyone can read coach connections" ON public.coach_connections FO
 CREATE POLICY "Users can insert coach connections" ON public.coach_connections FOR INSERT WITH CHECK (auth.role() = 'authenticated');
 CREATE POLICY "Users can update their coach connections" ON public.coach_connections FOR UPDATE USING (auth.role() = 'authenticated');
 CREATE POLICY "Users can delete their coach connections" ON public.coach_connections FOR DELETE USING (auth.role() = 'authenticated');
+DROP POLICY IF EXISTS "Coaches can view all roles" ON public.user_roles;
