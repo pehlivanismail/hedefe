@@ -669,17 +669,6 @@ export function examsForStudent(all: Exam[], student: Student, studyLogs: any[] 
             blank: l.blank,
           }));
 
-          const areaLogsRaw = studyLogs.filter((l) => l.subTopic === a.id);
-          const areaLogs = areaLogsRaw.map((l) => ({
-            id: l.id,
-            date: l.date,
-            source: l.source,
-            kind: l.kind,
-            solved: l.solved,
-            wrong: l.wrong,
-            blank: l.blank,
-          }));
-
           let areaTotalQ = 0;
           let areaCorrect = 0;
           for (const l of areaLogsRaw) {
