@@ -269,6 +269,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
         topicId: row.topic_id,
         areaId: row.area_id,
         areaName: row.area_name,
+        topicName: row.topic_name,
         assignedBy: row.assigned_by,
         result: row.result as TaskResult | undefined,
       }));
@@ -299,7 +300,15 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
         .select("*")
         .eq("user_id", targetStudentId);
       if (error) throw error;
-      return data;
+      return (data || []).map((row: any): StudyLog => ({
+        id: row.id,
+        date: row.date,
+        source: row.source,
+        kind: row.kind,
+        solved: row.total_questions,
+        wrong: row.wrong,
+        blank: row.blank,
+      }));
     },
     enabled: !!targetStudentId,
   });
@@ -320,6 +329,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
           topic_id: t.topicId || null,
           area_id: t.areaId || null,
           area_name: t.areaName || null,
+          topic_name: t.topicName || null,
           assigned_by: assignedBy,
         })
         .select()
@@ -427,10 +437,11 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
           area: "Bilinmiyor", 
           sub_topic: topicId,
           source: log.source,
-          total_questions: log.solved,
-          correct: Math.max(0, log.solved - log.wrong - log.blank),
-          wrong: log.wrong,
-          blank: log.blank,
+          kind: log.kind,
+          total_questions: log.solved ?? 0,
+          correct: Math.max(0, (log.solved ?? 0) - (log.wrong ?? 0) - (log.blank ?? 0)),
+          wrong: log.wrong ?? 0,
+          blank: log.blank ?? 0,
         })
         .select()
         .single();
