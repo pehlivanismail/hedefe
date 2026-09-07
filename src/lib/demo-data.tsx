@@ -220,6 +220,7 @@ export const SUBJECT_OPTIONS = [
 type Store = {
   tasks: Task[];
   addTask: (t: Omit<Task, "id" | "done" | "kind"> & { kind?: TaskKind }) => void;
+  removeTask: (id: string) => void;
   completeTask: (id: string, result?: TaskResult) => void;
   mockExamList: MockExam[];
   addMockExam: (e: Omit<MockExam, "id">) => string;
@@ -339,6 +340,18 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       
       if (error) throw error;
       return data;
+    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["tasks"] }),
+  });
+
+  const removeTaskMutation = useMutation({
+    mutationFn: async (id: string) => {
+      const { error } = await supabase
+        .from("tasks")
+        .delete()
+        .eq("id", id);
+      if (error) throw error;
+      return id;
     },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["tasks"] }),
   });
@@ -468,6 +481,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       },
 
       addTask: (t) => addTaskMutation.mutate(t),
+      removeTask: (id) => removeTaskMutation.mutate(id),
       completeTask: (id, result) => completeTaskMutation.mutate({ id, result }),
       mockExamList: mockExamsData || [],
       addMockExam: (e) => {

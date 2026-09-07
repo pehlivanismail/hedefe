@@ -9,6 +9,7 @@ import {
   GripVertical,
   ListChecks,
   Plus,
+  Trash2,
 } from "lucide-react";
 import { addDays, addWeeks, endOfWeek, format, startOfWeek } from "date-fns";
 import { tr } from "date-fns/locale";
@@ -71,6 +72,7 @@ function Odevler() {
   const {
     tasks,
     addTask,
+    removeTask,
     completeTask,
     moveTask,
     currentStudent,
@@ -490,8 +492,22 @@ function Odevler() {
       <Dialog open={active !== null} onOpenChange={(o) => !o && setActive(null)}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle className="font-display text-brand-deep">
-              {active ? TASK_KIND_LABELS[active.kind] : ""} — {active?.title}
+            <DialogTitle className="font-display text-brand-deep flex justify-between items-center pr-6">
+              <span>{active ? TASK_KIND_LABELS[active.kind] : ""} — {active?.title}</span>
+              {active && (
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-7 w-7 text-muted-foreground hover:text-destructive"
+                  onClick={() => {
+                    removeTask(active.id);
+                    setActive(null);
+                    toast.success("Görev silindi");
+                  }}
+                >
+                  <Trash2 className="size-4" />
+                </Button>
+              )}
             </DialogTitle>
             {active && (active.areaName || active.topicName) && (
               <DialogDescription>
