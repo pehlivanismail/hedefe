@@ -346,6 +346,22 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
 
   const removeTaskMutation = useMutation({
     mutationFn: async (id: string) => {
+      const task = (tasksData || []).find((t: any) => t.id === id);
+      if (task && task.done && task.result && task.studentId) {
+        const subTopic = task.topicId || task.areaId;
+        if (subTopic) {
+          const matchParams: any = {
+            user_id: task.studentId,
+            sub_topic: subTopic,
+            kind: task.kind,
+          };
+          if (task.result.source) {
+            matchParams.source = task.result.source;
+          }
+          await supabase.from("study_logs").delete().match(matchParams);
+        }
+      }
+
       const { error } = await supabase
         .from("tasks")
         .delete()
@@ -353,7 +369,10 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       if (error) throw error;
       return id;
     },
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["tasks"] }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["tasks"] });
+      queryClient.invalidateQueries({ queryKey: ["studyLogs"] });
+    },
   });
 
   const completeTaskMutation = useMutation({
