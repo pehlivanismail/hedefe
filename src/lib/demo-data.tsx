@@ -714,7 +714,7 @@ export function examsForStudent(all: Exam[], student: Student, studyLogs: any[] 
           return {
             ...a,
             logs: areaLogs,
-            mastery: areaMastery,
+            ...(areaMastery !== undefined ? { mastery: areaMastery } : {}),
             topics: processedTopics,
           };
         }),
