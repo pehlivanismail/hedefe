@@ -10,6 +10,7 @@ import {
   ListChecks,
   Plus,
   Trash2,
+  Pencil,
 } from "lucide-react";
 import { addDays, addWeeks, endOfWeek, format, startOfWeek } from "date-fns";
 import { tr } from "date-fns/locale";
@@ -72,6 +73,7 @@ function Odevler() {
   const {
     tasks,
     addTask,
+    updateTask,
     removeTask,
     completeTask,
     moveTask,
@@ -86,6 +88,7 @@ function Odevler() {
   const [weekOffset, setWeekOffset] = useState(0);
   const [dragId, setDragId] = useState<string | null>(null);
   const [addKind, setAddKind] = useState<TaskKind | null>(null);
+  const [editingTaskId, setEditingTaskId] = useState<string | null>(null);
   const [active, setActive] = useState<Task | null>(null);
 
   const subjects = useMemo(() => {
@@ -135,6 +138,7 @@ function Odevler() {
     const jsDay = new Date().getDay();
     const currentAppDay = jsDay === 0 ? 6 : jsDay - 1;
 
+    setEditingTaskId(null);
     setSubjectId("");
     setAreaId("");
     setTopicId("");
@@ -142,6 +146,23 @@ function Odevler() {
     setNote("");
     setDay(currentAppDay.toString());
     setAddKind(kind);
+  };
+
+  const openEdit = (task: Task) => {
+    setEditingTaskId(task.id);
+    const s = subjects.find(
+      (sub) => `${sub.examName.startsWith("AYT") ? "AYT" : "TYT"} ${sub.name}` === task.subject
+    );
+    setSubjectId(s?.id || "");
+    setAreaId(task.areaId || "");
+    setTopicId(task.topicId || "");
+    if (task.kind === "deneme") {
+      setExamScope(task.subject);
+    }
+    setNote(task.title === task.topicName || task.title === task.areaName ? "" : task.title);
+    setDay(task.day.toString());
+    setActive(null);
+    setAddKind(task.kind);
   };
 
 
@@ -165,18 +186,33 @@ function Odevler() {
             ? "AYT Denemesi"
             : (denemeSubjects.find((d) => d.value === examScope)?.label ??
               `${examScope} Branş Denemesi`);
-      addTask({
-        kind: "deneme",
-        subject: examScope,
-        title: note.trim() || label,
-        topicId: null,
-        areaId: null,
-        day: Number(day),
-        weekOffset,
-        studentId: currentStudent.id,
-      });
+      if (editingTaskId) {
+        updateTask({
+          id: editingTaskId,
+          kind: "deneme",
+          subject: examScope,
+          title: note.trim() || label,
+          topicId: null,
+          areaId: null,
+          day: Number(day),
+          weekOffset,
+        });
+        toast.success("Görev güncellendi");
+      } else {
+        addTask({
+          kind: "deneme",
+          subject: examScope,
+          title: note.trim() || label,
+          topicId: null,
+          areaId: null,
+          day: Number(day),
+          weekOffset,
+          studentId: currentStudent.id,
+        });
+        toast.success("Deneme eklendi");
+      }
       setAddKind(null);
-      toast.success("Deneme eklendi");
+      setEditingTaskId(null);
       return;
     }
     if (!subject) {
@@ -187,21 +223,38 @@ function Odevler() {
       toast.error("Lütfen bir alan seç");
       return;
     }
-    addTask({
-      kind: addKind ?? "konu",
-      subject: `${subject.examName.startsWith("AYT") ? "AYT" : "TYT"} ${subject.name}`,
-      areaName: area.name,
-      topicName: topic?.name,
-      title: note.trim() || topic?.name || area.name,
-      topicId: topic ? topic.id : null,
-      areaId: topic ? null : area.id,
-      day: Number(day),
-      weekOffset,
-      studentId: currentStudent.id,
-    });
+    if (editingTaskId) {
+      updateTask({
+        id: editingTaskId,
+        kind: addKind ?? "konu",
+        subject: `${subject.examName.startsWith("AYT") ? "AYT" : "TYT"} ${subject.name}`,
+        areaName: area.name,
+        topicName: topic?.name,
+        title: note.trim() || topic?.name || area.name,
+        topicId: topic ? topic.id : null,
+        areaId: topic ? null : area.id,
+        day: Number(day),
+        weekOffset,
+      });
+      toast.success("Görev güncellendi");
+    } else {
+      addTask({
+        kind: addKind ?? "konu",
+        subject: `${subject.examName.startsWith("AYT") ? "AYT" : "TYT"} ${subject.name}`,
+        areaName: area.name,
+        topicName: topic?.name,
+        title: note.trim() || topic?.name || area.name,
+        topicId: topic ? topic.id : null,
+        areaId: topic ? null : area.id,
+        day: Number(day),
+        weekOffset,
+        studentId: currentStudent.id,
+      });
+      toast.success(`${TASK_KIND_LABELS[addKind ?? "konu"]} eklendi`);
+    }
 
     setAddKind(null);
-    toast.success(`${TASK_KIND_LABELS[addKind ?? "konu"]} eklendi`);
+    setEditingTaskId(null);
   };
 
 
@@ -359,7 +412,7 @@ function Odevler() {
         <DialogContent>
           <DialogHeader>
             <DialogTitle className="font-display text-brand-deep">
-              {addKind ? TASK_KIND_LABELS[addKind] : ""} Ekle
+              {editingTaskId ? "Görevi Düzenle" : (addKind && `Yeni ${TASK_KIND_LABELS[addKind]} Planla`)}
             </DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
@@ -495,18 +548,30 @@ function Odevler() {
             <DialogTitle className="font-display text-brand-deep flex justify-between items-center pr-6">
               <span>{active ? TASK_KIND_LABELS[active.kind] : ""} — {active?.title}</span>
               {active && (
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-7 w-7 text-muted-foreground hover:text-destructive"
-                  onClick={() => {
-                    removeTask(active.id);
-                    setActive(null);
-                    toast.success("Görev silindi");
-                  }}
-                >
-                  <Trash2 className="size-4" />
-                </Button>
+                <div className="flex items-center gap-1">
+                  {!active.done && (
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-7 w-7 text-muted-foreground hover:text-primary"
+                      onClick={() => openEdit(active)}
+                    >
+                      <Pencil className="size-4" />
+                    </Button>
+                  )}
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="h-7 w-7 text-muted-foreground hover:text-destructive"
+                    onClick={() => {
+                      removeTask(active.id);
+                      setActive(null);
+                      toast.success("Görev silindi");
+                    }}
+                  >
+                    <Trash2 className="size-4" />
+                  </Button>
+                </div>
               )}
             </DialogTitle>
             {active && (active.areaName || active.topicName) && (

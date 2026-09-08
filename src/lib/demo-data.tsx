@@ -220,6 +220,7 @@ export const SUBJECT_OPTIONS = [
 type Store = {
   tasks: Task[];
   addTask: (t: Omit<Task, "id" | "done" | "kind"> & { kind?: TaskKind }) => void;
+  updateTask: (t: Partial<Omit<Task, "id">> & { id: string }) => void;
   removeTask: (id: string) => void;
   completeTask: (id: string, result?: TaskResult) => void;
   mockExamList: MockExam[];
@@ -363,6 +364,32 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
           area_name: t.areaName || null,
           assigned_by: assignedBy,
         })
+        .select()
+        .single();
+      
+      if (error) throw error;
+      return data;
+    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["tasks"] }),
+  });
+
+  const updateTaskMutation = useMutation({
+    mutationFn: async (t: Partial<Omit<Task, "id">> & { id: string }) => {
+      const { id, ...updates } = t;
+      const payload: any = {};
+      if (updates.kind !== undefined) payload.kind = updates.kind;
+      if (updates.subject !== undefined) payload.subject = updates.subject;
+      if (updates.title !== undefined) payload.title = updates.title;
+      if (updates.day !== undefined) payload.day = updates.day;
+      if (updates.weekOffset !== undefined) payload.week_offset = updates.weekOffset;
+      if (updates.topicId !== undefined) payload.topic_id = updates.topicId || null;
+      if (updates.areaId !== undefined) payload.area_id = updates.areaId || null;
+      if (updates.areaName !== undefined) payload.area_name = updates.areaName || null;
+
+      const { data, error } = await supabase
+        .from("tasks")
+        .update(payload)
+        .eq("id", id)
         .select()
         .single();
       
@@ -539,6 +566,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       },
 
       addTask: (t) => addTaskMutation.mutate(t),
+      updateTask: (t) => updateTaskMutation.mutate(t),
       removeTask: (id) => removeTaskMutation.mutate(id),
       completeTask: (id, result) => completeTaskMutation.mutate({ id, result }),
       mockExamList: mockExamsData || [],
@@ -569,6 +597,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       coachList,
       auth,
       addTaskMutation,
+      updateTaskMutation,
       completeTaskMutation,
       toggleTaskMutation,
       moveTaskMutation,
