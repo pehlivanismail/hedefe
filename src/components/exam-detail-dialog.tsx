@@ -1,7 +1,6 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { type MockExam } from "@/lib/demo-data";
 import { EXAM_TEMPLATES } from "@/lib/exam-templates";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { CheckCircle2, XCircle } from "lucide-react";
 import { realExams } from "@/lib/topics-data";
 import { useMemo } from "react";
@@ -45,7 +44,7 @@ export function ExamDetailDialog({
           </DialogTitle>
         </DialogHeader>
 
-        <ScrollArea className="flex-1 p-6">
+        <div className="flex-1 overflow-y-auto p-6">
           {!template || !exam.detailedLogs ? (
             <div className="text-center py-12 text-muted-foreground">
               <p>Bu deneme için detaylı soru analizi bulunmuyor.</p>
@@ -145,7 +144,7 @@ export function ExamDetailDialog({
               })}
             </div>
           )}
-        </ScrollArea>
+        </div>
       </DialogContent>
     </Dialog>
   );
