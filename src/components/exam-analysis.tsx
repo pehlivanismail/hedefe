@@ -39,8 +39,10 @@ export function ExamAnalysis() {
     // Konulara göre grupla
     const grouped = new Map<string, typeof examLogs>();
     for (const log of examLogs) {
-      if (!grouped.has(log.topicId)) grouped.set(log.topicId, []);
-      grouped.get(log.topicId)!.push(log);
+      const topicId = log.subTopic;
+      if (!topicId) continue;
+      if (!grouped.has(topicId)) grouped.set(topicId, []);
+      grouped.get(topicId)!.push(log);
     }
 
     const aggregated = [];
