@@ -123,8 +123,8 @@ export function ExamDetailDialog({
                           <ul className="space-y-1.5">
                             {Array.from(weakTopicIds).map(id => {
                               const errors = exam.detailedLogs!.filter(l => l.topicId === id);
-                              const wrong = errors.filter(e => e.isWrong).length;
-                              const blank = errors.filter(e => !e.isWrong).length;
+                              const wrong = errors.filter(e => e.status === "wrong").length;
+                              const blank = errors.filter(e => e.status === "blank").length;
                               return (
                                 <li key={id} className="text-sm text-brand-deep font-medium flex justify-between">
                                   <span>• {topicNames.get(id) || id}</span>

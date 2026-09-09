@@ -4,12 +4,12 @@ import { realExams } from "@/lib/topics-data";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Plus } from "lucide-react";
+import { Plus, Trash2, AlertTriangle } from "lucide-react";
 import { toast } from "sonner";
 import { addDays } from "date-fns";
 
 export function ExamAnalysis() {
-  const { studyLogs, addTask, currentStudent } = useDemoData();
+  const { studyLogs, addTask, removeTopicDenemeLogs, currentStudent } = useDemoData();
   const [filterSubject, setFilterSubject] = useState<string>("all");
 
   const topicMap = useMemo(() => {
@@ -33,34 +33,59 @@ export function ExamAnalysis() {
   }, []);
 
   const analysisData = useMemo(() => {
-    const topicErrors = new Map<string, { wrong: number; blank: number }>();
-    
-    // Yalnızca deneme hatalarını bul ("Deneme" source'unda geçenler)
-    const examLogs = studyLogs.filter(
-      (log) => log.source?.includes("Deneme") && (log.wrong || log.blank)
-    );
+    // Tüm deneme loglarını al (doğru veya yanlış fark etmez)
+    const examLogs = studyLogs.filter((log) => log.source?.includes("Deneme"));
 
+    // Konulara göre grupla
+    const grouped = new Map<string, typeof examLogs>();
     for (const log of examLogs) {
-      const current = topicErrors.get(log.topicId) || { wrong: 0, blank: 0 };
-      topicErrors.set(log.topicId, {
-        wrong: current.wrong + (log.wrong || 0),
-        blank: current.blank + (log.blank || 0),
-      });
+      if (!grouped.has(log.topicId)) grouped.set(log.topicId, []);
+      grouped.get(log.topicId)!.push(log);
     }
 
-    const aggregated = Array.from(topicErrors.entries()).map(([topicId, errors]) => {
+    const aggregated = [];
+
+    for (const [topicId, logs] of grouped.entries()) {
+      // Logları tarihe göre yeniden eskiye sırala
+      const sorted = logs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      
+      const latest = sorted[0];
+      const isLatestCorrect = (latest.wrong || 0) === 0 && (latest.blank || 0) === 0;
+      
+      // Eğer en son denemede doğru yapıldıysa bu konuyu atla (Başarıldı kabul et)
+      if (isLatestCorrect) continue;
+
+      // Toplam kaç yanlış/boş var? Ardışık kaç yanlış var?
+      let totalWrong = 0;
+      let totalBlank = 0;
+      let consecutiveFails = 0;
+
+      for (let i = 0; i < sorted.length; i++) {
+        const log = sorted[i];
+        const isFail = (log.wrong || 0) > 0 || (log.blank || 0) > 0;
+        if (isFail) {
+          totalWrong += (log.wrong || 0);
+          totalBlank += (log.blank || 0);
+          if (consecutiveFails === i) {
+            consecutiveFails++; // zinciri bozmadan artıyor
+          }
+        }
+      }
+
       const info = topicMap.get(topicId);
-      return {
+      aggregated.push({
         topicId,
-        ...errors,
-        totalMissed: errors.wrong + errors.blank,
+        wrong: totalWrong,
+        blank: totalBlank,
+        consecutiveFails,
+        totalMissed: totalWrong + totalBlank,
         topicName: info?.topicName || "Bilinmeyen Konu",
         areaName: info?.areaName || "Bilinmeyen Ünite",
         subjectName: info?.subjectName || "Bilinmeyen Ders",
         examName: info?.examName || "",
         areaId: info?.areaId || "",
-      };
-    });
+      });
+    }
 
     aggregated.sort((a, b) => b.totalMissed - a.totalMissed);
     return aggregated;
@@ -95,8 +120,8 @@ export function ExamAnalysis() {
   if (analysisData.length === 0) {
     return (
       <Card className="p-8 text-center text-muted-foreground rounded-3xl shadow-soft">
-        <p>Henüz deneme analiz verisi bulunmuyor.</p>
-        <p className="text-sm mt-2">Detaylı deneme sonuçları girdikçe eksik konularınız burada listelenecektir.</p>
+        <p>Henüz deneme analiz verisi bulunmuyor veya mevcut eksikler başarıyla kapatılmış.</p>
+        <p className="text-sm mt-2">Detaylı deneme sonuçları girdikçe güncel eksik konularınız burada listelenecektir.</p>
       </Card>
     );
   }
@@ -120,22 +145,43 @@ export function ExamAnalysis() {
 
       <div className="grid gap-3">
         {filteredData.map((item) => (
-          <Card key={item.topicId} className="flex items-center justify-between p-4 rounded-2xl shadow-soft border border-border">
+          <Card 
+            key={item.topicId} 
+            className={`flex items-center justify-between p-4 rounded-2xl shadow-soft border ${item.consecutiveFails >= 2 ? 'border-destructive/50 bg-destructive/5' : 'border-border'}`}
+          >
             <div>
               <p className="text-xs font-semibold text-muted-foreground tracking-wide uppercase">
                 {item.subjectName} &gt; {item.areaName}
               </p>
-              <h3 className="font-display font-bold text-brand-deep text-base mt-0.5">
-                {item.topicName}
-              </h3>
+              <div className="flex items-center gap-2 mt-0.5">
+                <h3 className="font-display font-bold text-brand-deep text-base">
+                  {item.topicName}
+                </h3>
+                {item.consecutiveFails >= 2 && (
+                  <span className="flex items-center gap-1 text-[10px] font-bold bg-destructive/10 text-destructive px-2 py-0.5 rounded-full uppercase tracking-wider">
+                    <AlertTriangle className="size-3" />
+                    Son {item.consecutiveFails} Denemede Yanlış
+                  </span>
+                )}
+              </div>
               <div className="flex gap-3 mt-2 text-sm">
                 <span className="text-destructive font-medium">{item.wrong} Yanlış</span>
                 <span className="text-muted-foreground">{item.blank} Boş</span>
               </div>
             </div>
-            <Button variant="outline" size="sm" className="shrink-0 rounded-xl" onClick={() => handleAddTask(item)}>
-              <Plus className="size-4 mr-1" /> Görev Ekle
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-destructive shrink-0" onClick={() => {
+                if (window.confirm("Bu konuya ait deneme analiz verilerini temizlemek istiyor musunuz?")) {
+                  removeTopicDenemeLogs(item.topicId);
+                  toast.success("Konu analizi temizlendi");
+                }
+              }}>
+                <Trash2 className="size-4" />
+              </Button>
+              <Button variant="outline" size="sm" className="shrink-0 rounded-xl" onClick={() => handleAddTask(item)}>
+                <Plus className="size-4 mr-1" /> Görev Ekle
+              </Button>
+            </div>
           </Card>
         ))}
         {filteredData.length === 0 && (

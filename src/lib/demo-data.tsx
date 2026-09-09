@@ -121,7 +121,7 @@ export type MockExam = {
   fen: number;
   studentId?: string | undefined;
   templateId?: string | undefined;
-  detailedLogs?: { topicId: string; isWrong: boolean }[] | undefined;
+  detailedLogs?: { topicId: string; status: "correct" | "wrong" | "blank" }[] | undefined;
 };
 
 export type Student = {
@@ -228,6 +228,7 @@ type Store = {
   mockExamList: MockExam[];
   addMockExam: (e: Omit<MockExam, "id">) => string;
   removeMockExam: (id: string) => void;
+  removeTopicDenemeLogs: (topicId: string) => void;
   toggleTask: (id: string) => void;
   moveTask: (id: string, day: number) => void;
   examData: Exam[];
@@ -319,7 +320,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
           sosyal: Number(r["sosyal"] ?? 0),
           fen: Number(r["fen"] ?? 0),
           templateId: r["templateId"] as string | undefined,
-          detailedLogs: r["detailedLogs"] as { topicId: string; isWrong: boolean }[] | undefined,
+          detailedLogs: r["detailedLogs"] as { topicId: string; status: "correct" | "wrong" | "blank" }[] | undefined,
           studentId: row.user_id,
         };
       });
@@ -524,6 +525,20 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["mock_exams"] }),
   });
 
+  const removeTopicDenemeLogsMutation = useMutation({
+    mutationFn: async (topicId: string) => {
+      if (!targetStudentId) throw new Error("No user");
+      const { error } = await supabase
+        .from("study_logs")
+        .delete()
+        .eq("user_id", targetStudentId)
+        .eq("sub_topic", topicId)
+        .ilike("source", "%Deneme%");
+      if (error) throw error;
+    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["study_logs"] }),
+  });
+
   const currentStudent = auth.student;
   const currentCoach = auth.coach;
   const studentList = auth.myStudents;
@@ -599,6 +614,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       moveTask: (id, day) => moveTaskMutation.mutate({ id, day }),
       addLog: (topicId, log) => addLogMutation.mutate({ topicId, log }),
       addAreaLog: (areaId, log) => addLogMutation.mutate({ topicId: areaId, log, isArea: true }),
+      removeTopicDenemeLogs: (topicId: string) => removeTopicDenemeLogsMutation.mutate(topicId),
       studyLogs: studyLogsData || [],
       viewStudentId,
       setViewStudentId,
@@ -623,7 +639,8 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       toggleTaskMutation,
       moveTaskMutation,
       addMockExamMutation,
-      removeMockExamMutation
+      removeMockExamMutation,
+      removeTopicDenemeLogsMutation
     ],
   );
 

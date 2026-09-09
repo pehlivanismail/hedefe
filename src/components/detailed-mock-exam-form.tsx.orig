@@ -55,29 +55,17 @@ export function DetailedMockExamForm({
       fen: { correct: 20, wrong: 0, blank: 0 },
     };
 
-    const logs: { topicId: string, status: "correct" | "wrong" | "blank" }[] = [];
+    const logs: { topicId: string, isWrong: boolean }[] = [];
 
     // Her domain (test) için kontrolleri ve hesaplamaları yap
     const domains = Array.from(new Set(template.questions.map(q => q.domain)));
 
-    for (const domain of domains) {
+    const logs: { topicId: string, status: "correct" | "wrong" | "blank" }[] = [];
+
+    for (const domain of Array.from(new Set(template.questions.map(q => q.domain)))) {
+      const domainQuestions = template.questions.filter(q => q.domain === domain);
       const wrongList = parseQuestions(wrongQ[domain] || "");
       const blankList = parseQuestions(blankQ[domain] || "");
-
-      const intersection = wrongList.filter(x => blankList.includes(x));
-      if (intersection.length > 0) {
-        toast.error(`${domain} testinde soru hem yanlış hem boş olamaz: ${intersection.join(', ')}`);
-        return;
-      }
-
-      const domainQuestions = template.questions.filter(q => q.domain === domain);
-      const maxQ = domainQuestions.length;
-
-      const outOfBounds = [...wrongList, ...blankList].filter(q => q < 1 || q > maxQ);
-      if (outOfBounds.length > 0) {
-        toast.error(`${domain} testi için geçersiz soru numaraları (Maks ${maxQ}): ${outOfBounds.join(', ')}`);
-        return;
-      }
       
       const internalDomain = DOMAIN_MAP[domain];
       if (!internalDomain) continue;

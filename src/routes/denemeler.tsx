@@ -250,8 +250,8 @@ function Denemeler() {
                         source: e.publisher + " Deneme",
                         kind: "soru",
                         solved: 1,
-                        wrong: log.isWrong ? 1 : 0,
-                        blank: log.isWrong ? 0 : 1,
+                        wrong: log.status === "wrong" ? 1 : 0,
+                        blank: log.status === "blank" ? 1 : 0,
                       });
                     }
                     setOpen(false);
