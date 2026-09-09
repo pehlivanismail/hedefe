@@ -44,6 +44,7 @@ import {
 } from "@/components/ui/table";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
+import { ExamDetailDialog } from "@/components/exam-detail-dialog";
 import {
   DAYS,
   TASK_KIND_LABELS,
@@ -960,6 +961,8 @@ const netTotal = (e: MockExam) => e.turkce + e.matematik + e.sosyal + e.fen;
 
 export function StudentMockExams({ student }: { student: Student }) {
   const { mockExamList } = useDemoData();
+  const [selectedExam, setSelectedExam] = useState<MockExam | null>(null);
+
   const rows = mockExamList.filter(
     (e) => e.studentId === student.id,
   );
@@ -973,11 +976,12 @@ export function StudentMockExams({ student }: { student: Student }) {
   }
 
   return (
-    <Card className="overflow-hidden rounded-3xl border-border p-0 shadow-soft">
-      <Table>
-        <TableHeader>
-          <TableRow className="bg-secondary/60">
-            <TableHead>Tarih</TableHead>
+    <>
+      <Card className="overflow-hidden rounded-3xl border-border p-0 shadow-soft">
+        <Table>
+          <TableHeader>
+            <TableRow className="bg-secondary/60">
+              <TableHead>Tarih</TableHead>
             <TableHead>Kurum</TableHead>
             <TableHead>Tür</TableHead>
             <TableHead className="text-right">Türkçe</TableHead>
@@ -987,10 +991,14 @@ export function StudentMockExams({ student }: { student: Student }) {
             <TableHead className="text-right">Toplam Net</TableHead>
           </TableRow>
         </TableHeader>
-        <TableBody>
-          {rows.map((e, i) => (
-            <TableRow key={e.id} className={cn(i % 2 === 1 && "bg-secondary/30")}>
-              <TableCell>{e.date}</TableCell>
+          <TableBody>
+            {rows.map((e, i) => (
+              <TableRow 
+                key={e.id} 
+                className={cn("cursor-pointer transition-colors hover:bg-muted/50", i % 2 === 1 && "bg-secondary/30")}
+                onClick={() => setSelectedExam(e)}
+              >
+                <TableCell>{e.date}</TableCell>
               <TableCell className="font-medium">{e.publisher}</TableCell>
               <TableCell className="text-muted-foreground">{e.type}</TableCell>
               <TableCell className="text-right">{e.turkce}</TableCell>
@@ -1007,6 +1015,8 @@ export function StudentMockExams({ student }: { student: Student }) {
         </TableBody>
       </Table>
     </Card>
+    <ExamDetailDialog exam={selectedExam} open={!!selectedExam} onOpenChange={(o) => !o && setSelectedExam(null)} />
+    </>
   );
 }
 
