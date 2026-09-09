@@ -29,6 +29,7 @@ import {
 } from "@/components/ui/dialog";
 import { MockExamForm } from "@/components/mock-exam-form";
 import { DetailedMockExamForm } from "@/components/detailed-mock-exam-form";
+import { ExamAnalysis } from "@/components/exam-analysis";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import { useDemoData, type MockExam } from "@/lib/demo-data";
@@ -200,68 +201,80 @@ function Denemeler() {
         </Dialog>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-2">
-        <NetChart
-          id="tytGrad"
-          title="TYT Net İlerlemesi"
-          data={tyt}
-          color="oklch(0.7 0.157 159.5)"
-          maxQuestions={EXAM_QUESTION_COUNTS.TYT}
-        />
-        <NetChart
-          id="aytGrad"
-          title="AYT Net İlerlemesi"
-          data={ayt}
-          color="oklch(0.45 0.09 220)"
-          maxQuestions={EXAM_QUESTION_COUNTS.AYT}
-        />
-      </div>
+      <Tabs defaultValue="gecmis" className="space-y-6">
+        <TabsList>
+          <TabsTrigger value="gecmis">Geçmiş Denemeler</TabsTrigger>
+          <TabsTrigger value="analiz">Eksik Konu Analizi</TabsTrigger>
+        </TabsList>
+        <TabsContent value="gecmis" className="space-y-6">
+          <div className="grid gap-6 lg:grid-cols-2">
+            <NetChart
+              id="tytGrad"
+              title="TYT Net İlerlemesi"
+              data={tyt}
+              color="oklch(0.7 0.157 159.5)"
+              maxQuestions={EXAM_QUESTION_COUNTS.TYT}
+            />
 
-      <Card className="overflow-hidden rounded-3xl border-border p-0 shadow-soft">
-        <Table>
-          <TableHeader>
-            <TableRow className="bg-secondary/60">
-              <TableHead>Tarih</TableHead>
-              <TableHead>Kurum</TableHead>
-              <TableHead>Tür</TableHead>
-              <TableHead className="text-right">Türkçe</TableHead>
-              <TableHead className="text-right">Matematik</TableHead>
-              <TableHead className="text-right">Sosyal</TableHead>
-              <TableHead className="text-right">Fen</TableHead>
-              <TableHead className="text-right">Toplam Net</TableHead>
-              <TableHead className="text-right">Başarı %</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {rows.map((e, i) => (
-              <TableRow key={e.id} className={cn(i % 2 === 1 && "bg-secondary/30")}>
-                <TableCell>{e.date}</TableCell>
-                <TableCell className="font-medium">{e.publisher}</TableCell>
-                <TableCell className="text-muted-foreground">{e.type}</TableCell>
-                <TableCell className="text-right">{e.turkce}</TableCell>
-                <TableCell className="text-right">{e.matematik}</TableCell>
-                <TableCell className="text-right">{e.sosyal}</TableCell>
-                <TableCell className="text-right">{e.fen}</TableCell>
-                <TableCell className="text-right">
-                  <span className="rounded-full bg-brand-soft px-3 py-1 font-display text-sm font-bold text-brand-deep">
-                    {total(e).toFixed(1)}
-                  </span>
-                </TableCell>
-                <TableCell className="text-right">
-                  <span className="text-sm font-medium text-muted-foreground">
-                    {(
-                      (total(e) /
-                        EXAM_QUESTION_COUNTS[e.type === "AYT" ? "AYT" : "TYT"]) *
-                      100
-                    ).toFixed(1)}
-                    %
-                  </span>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </Card>
+            <NetChart
+              id="aytGrad"
+              title="AYT Net İlerlemesi"
+              data={ayt}
+              color="oklch(0.45 0.09 220)"
+              maxQuestions={EXAM_QUESTION_COUNTS.AYT}
+            />
+          </div>
+
+          <Card className="overflow-hidden rounded-3xl border-border p-0 shadow-soft">
+            <Table>
+              <TableHeader>
+                <TableRow className="bg-secondary/60">
+                  <TableHead>Tarih</TableHead>
+                  <TableHead>Kurum</TableHead>
+                  <TableHead>Tür</TableHead>
+                  <TableHead className="text-right">Türkçe</TableHead>
+                  <TableHead className="text-right">Matematik</TableHead>
+                  <TableHead className="text-right">Sosyal</TableHead>
+                  <TableHead className="text-right">Fen</TableHead>
+                  <TableHead className="text-right">Toplam Net</TableHead>
+                  <TableHead className="text-right">Başarı %</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {rows.map((e, i) => (
+                  <TableRow key={e.id} className={cn(i % 2 === 1 && "bg-secondary/30")}>
+                    <TableCell>{e.date}</TableCell>
+                    <TableCell className="font-medium">{e.publisher}</TableCell>
+                    <TableCell className="text-muted-foreground">{e.type}</TableCell>
+                    <TableCell className="text-right">{e.turkce}</TableCell>
+                    <TableCell className="text-right">{e.matematik}</TableCell>
+                    <TableCell className="text-right">{e.sosyal}</TableCell>
+                    <TableCell className="text-right">{e.fen}</TableCell>
+                    <TableCell className="text-right">
+                      <span className="rounded-full bg-brand-soft px-3 py-1 font-display text-sm font-bold text-brand-deep">
+                        {total(e).toFixed(1)}
+                      </span>
+                    </TableCell>
+                    <TableCell className="text-right">
+                      <span className="text-sm font-medium text-muted-foreground">
+                        {(
+                          (total(e) /
+                            EXAM_QUESTION_COUNTS[e.type === "AYT" ? "AYT" : "TYT"]) *
+                          100
+                        ).toFixed(1)}
+                        %
+                      </span>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </Card>
+        </TabsContent>
+        <TabsContent value="analiz">
+          <ExamAnalysis />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 }

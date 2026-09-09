@@ -15,6 +15,13 @@ import { EXAM_TEMPLATES } from "@/lib/exam-templates";
 import { type MockExam } from "@/lib/demo-data";
 import { netOf } from "@/lib/exam-config";
 
+const DOMAIN_MAP: Record<string, "turkce" | "sosyal" | "matematik" | "fen"> = {
+  "Türkçe": "turkce",
+  "Sosyal Bilimler": "sosyal",
+  "Temel Matematik": "matematik",
+  "Fen Bilimleri": "fen",
+};
+
 export function DetailedMockExamForm({
   onSave,
   submitLabel = "Kaydet",
@@ -26,12 +33,13 @@ export function DetailedMockExamForm({
   const [publisher, setPublisher] = useState("");
   const [date, setDate] = useState(() => new Date().toISOString().slice(0, 10));
   
-  const [wrongQ, setWrongQ] = useState("");
-  const [blankQ, setBlankQ] = useState("");
+  const [wrongQ, setWrongQ] = useState<Record<string, string>>({});
+  const [blankQ, setBlankQ] = useState<Record<string, string>>({});
 
   const template = EXAM_TEMPLATES.find(t => t.id === templateId);
 
   const parseQuestions = (input: string) => {
+    if (!input) return [];
     return input.split(',').map(s => parseInt(s.trim(), 10)).filter(n => !isNaN(n));
   };
 
@@ -45,21 +53,6 @@ export function DetailedMockExamForm({
       return;
     }
 
-    const wrongList = parseQuestions(wrongQ);
-    const blankList = parseQuestions(blankQ);
-
-    const intersection = wrongList.filter(x => blankList.includes(x));
-    if (intersection.length > 0) {
-      toast.error(`Soru hem yanlış hem boş olamaz: ${intersection.join(', ')}`);
-      return;
-    }
-
-    const outOfBounds = [...wrongList, ...blankList].filter(q => q < 1 || q > template.questions.length);
-    if (outOfBounds.length > 0) {
-      toast.error(`Geçersiz soru numaraları: ${outOfBounds.join(', ')}`);
-      return;
-    }
-
     const totals = {
       turkce: { correct: 40, wrong: 0, blank: 0 },
       sosyal: { correct: 20, wrong: 0, blank: 0 },
@@ -69,33 +62,53 @@ export function DetailedMockExamForm({
 
     const logs: { topicId: string, isWrong: boolean }[] = [];
 
-    for (const q of wrongList) {
-      const qData = template.questions.find(x => x.qNum === q);
-      if (!qData) continue;
-      
-      const domain = qData.domain.toLowerCase() as keyof typeof totals;
-      if (totals[domain]) {
-        totals[domain].correct--;
-        totals[domain].wrong++;
-      }
-      
-      if (qData.topicId) {
-        logs.push({ topicId: qData.topicId, isWrong: true });
-      }
-    }
+    // Her domain (test) için kontrolleri ve hesaplamaları yap
+    const domains = Array.from(new Set(template.questions.map(q => q.domain)));
 
-    for (const q of blankList) {
-      const qData = template.questions.find(x => x.qNum === q);
-      if (!qData) continue;
-      
-      const domain = qData.domain.toLowerCase() as keyof typeof totals;
-      if (totals[domain]) {
-        totals[domain].correct--;
-        totals[domain].blank++;
+    for (const domain of domains) {
+      const wrongList = parseQuestions(wrongQ[domain] || "");
+      const blankList = parseQuestions(blankQ[domain] || "");
+
+      const intersection = wrongList.filter(x => blankList.includes(x));
+      if (intersection.length > 0) {
+        toast.error(`${domain} testinde soru hem yanlış hem boş olamaz: ${intersection.join(', ')}`);
+        return;
       }
-      
-      if (qData.topicId) {
-        logs.push({ topicId: qData.topicId, isWrong: false });
+
+      const domainQuestions = template.questions.filter(q => q.domain === domain);
+      const maxQ = domainQuestions.length;
+
+      const outOfBounds = [...wrongList, ...blankList].filter(q => q < 1 || q > maxQ);
+      if (outOfBounds.length > 0) {
+        toast.error(`${domain} testi için geçersiz soru numaraları (Maks ${maxQ}): ${outOfBounds.join(', ')}`);
+        return;
+      }
+
+      const internalDomain = DOMAIN_MAP[domain];
+      if (!internalDomain) continue;
+
+      for (const q of wrongList) {
+        const qData = domainQuestions.find(x => x.qNum === q);
+        if (!qData) continue;
+        
+        totals[internalDomain].correct--;
+        totals[internalDomain].wrong++;
+        
+        if (qData.topicId) {
+          logs.push({ topicId: qData.topicId, isWrong: true });
+        }
+      }
+
+      for (const q of blankList) {
+        const qData = domainQuestions.find(x => x.qNum === q);
+        if (!qData) continue;
+        
+        totals[internalDomain].correct--;
+        totals[internalDomain].blank++;
+        
+        if (qData.topicId) {
+          logs.push({ topicId: qData.topicId, isWrong: false });
+        }
       }
     }
 
@@ -111,6 +124,8 @@ export function DetailedMockExamForm({
 
     onSave(examData, logs);
   };
+
+  const domains = template ? Array.from(new Set(template.questions.map(q => q.domain))) : [];
 
   return (
     <div className="space-y-4">
@@ -147,23 +162,38 @@ export function DetailedMockExamForm({
         </div>
       </div>
 
-      <div className="space-y-2">
-        <Label>Yanlış Yapılan Sorular (Virgülle ayırın)</Label>
-        <Input
-          value={wrongQ}
-          placeholder="Ör: 5, 12, 17, 42"
-          onChange={(e) => setWrongQ(e.target.value)}
-        />
-      </div>
-
-      <div className="space-y-2">
-        <Label>Boş Bırakılan Sorular (Virgülle ayırın)</Label>
-        <Input
-          value={blankQ}
-          placeholder="Ör: 20, 115"
-          onChange={(e) => setBlankQ(e.target.value)}
-        />
-      </div>
+      {template && (
+        <div className="space-y-6 pt-4 border-t border-border">
+          {domains.map((domain) => {
+            const domainCount = template.questions.filter(q => q.domain === domain).length;
+            return (
+              <div key={domain} className="space-y-3">
+                <h4 className="font-semibold text-brand-deep text-sm">{domain} <span className="font-normal text-muted-foreground">({domainCount} Soru)</span></h4>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-1.5">
+                    <Label className="text-xs">Yanlış Sorular</Label>
+                    <Input
+                      value={wrongQ[domain] || ""}
+                      placeholder="Ör: 5, 12, 17"
+                      onChange={(e) => setWrongQ(prev => ({ ...prev, [domain]: e.target.value }))}
+                      className="text-sm"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label className="text-xs">Boş Sorular</Label>
+                    <Input
+                      value={blankQ[domain] || ""}
+                      placeholder="Ör: 20"
+                      onChange={(e) => setBlankQ(prev => ({ ...prev, [domain]: e.target.value }))}
+                      className="text-sm"
+                    />
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
 
       {template && (
         <div className="flex items-center gap-2 rounded-xl bg-secondary/60 px-3 py-2 text-xs text-muted-foreground">
