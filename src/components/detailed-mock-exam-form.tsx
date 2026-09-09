@@ -30,7 +30,6 @@ export function DetailedMockExamForm({
   submitLabel?: string;
 }) {
   const [templateId, setTemplateId] = useState<string>("");
-  const [publisher, setPublisher] = useState("");
   const [date, setDate] = useState(() => new Date().toISOString().slice(0, 10));
   
   const [wrongQ, setWrongQ] = useState<Record<string, string>>({});
@@ -46,10 +45,6 @@ export function DetailedMockExamForm({
   const handleSave = () => {
     if (!template) {
       toast.error("Lütfen bir sınav şablonu seçin");
-      return;
-    }
-    if (!publisher.trim()) {
-      toast.error("Kurum/Yayın adı gerekli");
       return;
     }
 
@@ -114,7 +109,7 @@ export function DetailedMockExamForm({
 
     const examData: Omit<MockExam, "id"> = {
       date: new Date(date).toLocaleDateString("tr-TR"),
-      publisher: publisher.trim(),
+      publisher: template.name,
       type: template.examScope as "TYT" | "AYT",
       turkce: netOf(40, totals.turkce.wrong, totals.turkce.blank),
       matematik: netOf(40, totals.matematik.wrong, totals.matematik.blank),
@@ -145,23 +140,13 @@ export function DetailedMockExamForm({
         </Select>
       </div>
 
-      <div className="grid grid-cols-2 gap-3">
-        <div className="space-y-2">
-          <Label>Tarih</Label>
-          <Input
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-          />
-        </div>
-        <div className="space-y-2">
-          <Label>Kurum / Yayın</Label>
-          <Input
-            value={publisher}
-            placeholder="Ör: Endemik Yayınları"
-            onChange={(e) => setPublisher(e.target.value)}
-          />
-        </div>
+      <div className="space-y-2">
+        <Label>Tarih</Label>
+        <Input
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+        />
       </div>
 
       {template && (
