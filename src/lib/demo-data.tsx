@@ -227,7 +227,7 @@ type Store = {
   completeTask: (id: string, result?: TaskResult) => void;
   mockExamList: MockExam[];
   addMockExam: (e: Omit<MockExam, "id">) => string;
-  removeMockExam: (id: string) => void;
+  removeMockExam: (args: { id: string, date: string, publisher: string }) => void;
   removeTopicDenemeLogs: (topicId: string) => void;
   toggleTask: (id: string) => void;
   moveTask: (id: string, day: number) => void;
@@ -518,11 +518,31 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
   });
 
   const removeMockExamMutation = useMutation({
-    mutationFn: async (id: string) => {
-      const { error } = await supabase.from("mock_exams").delete().eq("id", id);
-      if (error) throw error;
+    mutationFn: async ({ id, date, publisher }: { id: string, date: string, publisher: string }) => {
+      // 1. Delete the exam
+      const { error: examError } = await supabase.from("mock_exams").delete().eq("id", id);
+      if (examError) throw examError;
+
+      // 2. Delete the associated study_logs
+      if (targetStudentId) {
+        const isoDate = (() => {
+          const m = /^(\d{2})[./](\d{2})[./](\d{4})$/.exec(date);
+          if (m) return `${m[3]}-${m[2]}-${m[1]}`;
+          return date; // fallback
+        })();
+        
+        await supabase
+          .from("study_logs")
+          .delete()
+          .eq("user_id", targetStudentId)
+          .eq("date", isoDate)
+          .eq("source", `${publisher} Deneme`);
+      }
     },
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["mock_exams"] }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["mock_exams"] });
+      queryClient.invalidateQueries({ queryKey: ["study_logs"] });
+    },
   });
 
   const removeTopicDenemeLogsMutation = useMutation({
@@ -605,7 +625,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       removeTask: (id) => removeTaskMutation.mutate(id),
       completeTask: (id, result) => completeTaskMutation.mutate({ id, result }),
       mockExamList: mockExamsData || [],
-      removeMockExam: (id) => removeMockExamMutation.mutate(id),
+      removeMockExam: (args) => removeMockExamMutation.mutate(args),
       addMockExam: (e) => {
         addMockExamMutation.mutate(e);
         return "temp-id";

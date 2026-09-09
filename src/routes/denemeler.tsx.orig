@@ -125,10 +125,10 @@ function Denemeler() {
   const tyt = tytRows.map((e) => ({ date: e.date.slice(0, 5), net: total(e) }));
   const ayt = aytRows.map((e) => ({ date: e.date.slice(0, 5), net: total(e) }));
 
-  const handleDelete = (e: React.MouseEvent, exam: MockExam) => {
+  const handleDelete = (e: React.MouseEvent, id: string) => {
     e.stopPropagation();
     if (window.confirm("Bu denemeyi silmek istediğinize emin misiniz?")) {
-      removeMockExam({ id: exam.id, date: exam.date, publisher: exam.publisher });
+      removeMockExam(id);
       toast.success("Deneme silindi");
     }
   };
@@ -189,7 +189,7 @@ function Denemeler() {
                     variant="ghost"
                     size="icon"
                     className="h-8 w-8 text-muted-foreground hover:text-destructive"
-                    onClick={(ev) => handleDelete(ev, e)}
+                    onClick={(ev) => handleDelete(ev, e.id)}
                   >
                     <Trash2 className="h-4 w-4" />
                   </Button>
