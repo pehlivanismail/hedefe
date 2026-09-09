@@ -1,0 +1,1261 @@
+{
+  "templates": [
+    {
+      "id": "tyt_1",
+      "name": "TYT Deneme 1",
+      "examScope": "TYT",
+      "questions": [
+        {
+          "qNum": 1,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Sözcükte Anlam Özelliği",
+          "topicId": "tyt-turkce-anlam-bilgisi-sozcukte-anlam-ozelligi",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 2,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Söz Öbekleri",
+          "topicId": "tyt-turkce-anlam-bilgisi-soz-obekleri",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 3,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Deyim - Atasözü - İkileme",
+          "topicId": "tyt-turkce-anlam-bilgisi-deyim-atasozu-ikileme",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 4,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Sözcükte Anlam Özelliği",
+          "topicId": "tyt-turkce-anlam-bilgisi-sozcukte-anlam-ozelligi",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 5,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Cümlede Anlam / Anlam İlişkileri - Anlatım",
+          "topicId": "tyt-turkce-anlam-bilgisi-cumlede-anlam-anlam-iliskileri-anlatim",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 6,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Cümlede Anlam / Cümleyi Yorumlama",
+          "topicId": "tyt-turkce-anlam-bilgisi-cumlede-anlam-cumleyi-yorumlama",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 7,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Cümlede Anlam / Anlam İlişkileri - Anlatım",
+          "topicId": "tyt-turkce-anlam-bilgisi-cumlede-anlam-anlam-iliskileri-anlatim",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 8,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Cümlede Anlam / Anlam İlişkileri - Anlatım",
+          "topicId": "tyt-turkce-anlam-bilgisi-cumlede-anlam-anlam-iliskileri-anlatim",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 9,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "SES, YAZIM, NOKTALAMA VE ANLATIM BOZUKLUĞU",
+          "topic": "Ses Bilgisi",
+          "topicId": "tyt-turkce-ses-yazim-noktalama-ve-anlatim-bozuklugu-ses-bilgisi",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 10,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "DİL BİLGİSİ",
+          "topic": "Sözcükte Yapı",
+          "topicId": "tyt-turkce-dil-bilgisi-sozcukte-yapi",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 11,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "DİL BİLGİSİ",
+          "topic": "Edat, Bağlaç, Ünlem",
+          "topicId": "tyt-turkce-dil-bilgisi-edat-baglac-unlem",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 12,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "DİL BİLGİSİ",
+          "topic": "Cümle Türleri",
+          "topicId": "tyt-turkce-dil-bilgisi-cumle-turleri",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 13,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "SES, YAZIM, NOKTALAMA VE ANLATIM BOZUKLUĞU",
+          "topic": "Yazım Kuralları",
+          "topicId": "tyt-turkce-ses-yazim-noktalama-ve-anlatim-bozuklugu-yazim-kurallari",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 14,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "SES, YAZIM, NOKTALAMA VE ANLATIM BOZUKLUĞU",
+          "topic": "Yazım Kuralları",
+          "topicId": "tyt-turkce-ses-yazim-noktalama-ve-anlatim-bozuklugu-yazim-kurallari",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 15,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "SES, YAZIM, NOKTALAMA VE ANLATIM BOZUKLUĞU",
+          "topic": "Noktalama İşaretleri",
+          "topicId": "tyt-turkce-ses-yazim-noktalama-ve-anlatim-bozuklugu-noktalama-isaretleri",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 16,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "SES, YAZIM, NOKTALAMA VE ANLATIM BOZUKLUĞU",
+          "topic": "Noktalama İşaretleri",
+          "topicId": "tyt-turkce-ses-yazim-noktalama-ve-anlatim-bozuklugu-noktalama-isaretleri",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 17,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Paragrafta Anlam",
+          "topicId": "tyt-turkce-anlam-bilgisi-paragrafta-anlam",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 18,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Paragrafta Anlam",
+          "topicId": "tyt-turkce-anlam-bilgisi-paragrafta-anlam",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 19,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Paragrafta Anlam",
+          "topicId": "tyt-turkce-anlam-bilgisi-paragrafta-anlam",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 20,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Paragrafta Yapı",
+          "topicId": "tyt-turkce-anlam-bilgisi-paragrafta-yapi",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 21,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Paragrafta Yapı",
+          "topicId": "tyt-turkce-anlam-bilgisi-paragrafta-yapi",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 22,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Paragrafta Anlam",
+          "topicId": "tyt-turkce-anlam-bilgisi-paragrafta-anlam",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 23,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Paragrafta Anlam",
+          "topicId": "tyt-turkce-anlam-bilgisi-paragrafta-anlam",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 24,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Paragrafta Yapı",
+          "topicId": "tyt-turkce-anlam-bilgisi-paragrafta-yapi",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 25,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Paragrafta Yapı",
+          "topicId": "tyt-turkce-anlam-bilgisi-paragrafta-yapi",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 26,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Paragrafta Anlam",
+          "topicId": "tyt-turkce-anlam-bilgisi-paragrafta-anlam",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 27,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Paragrafta Anlam",
+          "topicId": "tyt-turkce-anlam-bilgisi-paragrafta-anlam",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 28,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Paragrafta Anlam",
+          "topicId": "tyt-turkce-anlam-bilgisi-paragrafta-anlam",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 29,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Paragrafta Anlam",
+          "topicId": "tyt-turkce-anlam-bilgisi-paragrafta-anlam",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 30,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Paragrafta Anlam",
+          "topicId": "tyt-turkce-anlam-bilgisi-paragrafta-anlam",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 31,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Anlatım Biçimleri / Düşünceyi Geliştirme Yolları",
+          "topicId": "tyt-turkce-anlam-bilgisi-anlatim-bicimleri-dusunceyi-gelistirme-yollari",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 32,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Paragrafta Anlam",
+          "topicId": "tyt-turkce-anlam-bilgisi-paragrafta-anlam",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 33,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Paragrafta Anlam",
+          "topicId": "tyt-turkce-anlam-bilgisi-paragrafta-anlam",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 34,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Paragrafta Anlam",
+          "topicId": "tyt-turkce-anlam-bilgisi-paragrafta-anlam",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 35,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Paragrafta Yapı",
+          "topicId": "tyt-turkce-anlam-bilgisi-paragrafta-yapi",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 36,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Paragrafta Anlam",
+          "topicId": "tyt-turkce-anlam-bilgisi-paragrafta-anlam",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 37,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Paragrafta Çoklu Soru",
+          "topicId": "tyt-turkce-anlam-bilgisi-paragrafta-coklu-soru",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 38,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Paragrafta Çoklu Soru",
+          "topicId": "tyt-turkce-anlam-bilgisi-paragrafta-coklu-soru",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 39,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Paragrafta Çoklu Soru",
+          "topicId": "tyt-turkce-anlam-bilgisi-paragrafta-coklu-soru",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 40,
+          "domain": "Türkçe",
+          "subject": "Türkçe",
+          "area": "ANLAM BİLGİSİ",
+          "topic": "Paragrafta Çoklu Soru",
+          "topicId": "tyt-turkce-anlam-bilgisi-paragrafta-coklu-soru",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 1,
+          "domain": "Sosyal Bilimler",
+          "subject": "Tarih",
+          "area": "TARİH VE ZAMAN",
+          "topic": "Tarih ve Zaman",
+          "topicId": "tyt-tarih-tarih-ve-zaman-tarih-ve-zaman",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 2,
+          "domain": "Sosyal Bilimler",
+          "subject": "Tarih",
+          "area": "ORTA ÇAĞ'DA DÜNYA VE TÜRKLER",
+          "topic": "İlk ve Orta Çağlarda Türk Dünyası",
+          "topicId": "tyt-tarih-orta-cagda-dunya-ve-turkler-ilk-ve-orta-caglarda-turk-dunyasi",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 3,
+          "domain": "Sosyal Bilimler",
+          "subject": "Tarih",
+          "area": "BEYLİKTEN DEVLETE OSMANLI",
+          "topic": "Dünya Gücü Osmanlı (1453 - 1595)",
+          "topicId": "tyt-tarih-beylikten-devlete-osmanli-dunya-gucu-osmanli-1453-1595",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 4,
+          "domain": "Sosyal Bilimler",
+          "subject": "Tarih",
+          "area": "MİLLÎ MÜCADELE - II",
+          "topic": "Kurtuluş Savaşı",
+          "topicId": "tyt-tarih-mill-mucadele-ii-kurtulus-savasi",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 5,
+          "domain": "Sosyal Bilimler",
+          "subject": "Tarih",
+          "area": "ATATÜRKÇÜLÜK VE TÜRK İNKILABI",
+          "topic": "Atatürk İlkeleri",
+          "topicId": "tyt-tarih-ataturkculuk-ve-turk-inkilabi-ataturk-ilkeleri",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 6,
+          "domain": "Sosyal Bilimler",
+          "subject": "Coğrafya",
+          "area": "DOĞA VE İNSAN",
+          "topic": "İnsan, Doğa ve Coğrafya",
+          "topicId": "tyt-cografya-doga-ve-insan-insan-doga-ve-cografya",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 7,
+          "domain": "Sosyal Bilimler",
+          "subject": "Coğrafya",
+          "area": "İKLİM BİLGİSİ (ATMOSFER VE SICAKLIK)",
+          "topic": "İklim - Hava Durumu - Atmosfer",
+          "topicId": "tyt-cografya-iklim-bilgisi-atmosfer-ve-sicaklik-iklim-hava-durumu-atmosfer",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 8,
+          "domain": "Sosyal Bilimler",
+          "subject": "Coğrafya",
+          "area": "ÇEVRE VE TOPLUM",
+          "topic": "Doğal Afetler",
+          "topicId": "tyt-cografya-cevre-ve-toplum-dogal-afetler",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 9,
+          "domain": "Sosyal Bilimler",
+          "subject": "Coğrafya",
+          "area": "HARİTA BİLGİSİ",
+          "topic": "Harita Bilgisi",
+          "topicId": "tyt-cografya-harita-bilgisi-harita-bilgisi",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 10,
+          "domain": "Sosyal Bilimler",
+          "subject": "Coğrafya",
+          "area": "NÜFUSUN GELİŞİMİ, DAĞILIŞI VE NİTELİKLERİ",
+          "topic": "Yerleşme Tipleri ve Özellikleri",
+          "topicId": "tyt-cografya-nufusun-gelisimi-dagilisi-ve-nitelikleri-yerlesme-tipleri-ve-ozellikleri",
+          "difficulty": "Orta",
+          "note": "Soru yerleşim alanı seçimini sorguluyor; konu taksonomisindeki en yakın başlık bu."
+        },
+        {
+          "qNum": 11,
+          "domain": "Sosyal Bilimler",
+          "subject": "Felsefe",
+          "area": "FELSEFEYE GIRIŞ",
+          "topic": "Felsefeye Giriş",
+          "topicId": "tyt-felsefe-felsefeye-giris-felsefeye-giris",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 12,
+          "domain": "Sosyal Bilimler",
+          "subject": "Felsefe",
+          "area": "FELSEFI DISIPLINLER",
+          "topic": "Ahlak Felsefesi",
+          "topicId": "tyt-felsefe-felsefi-disiplinler-ahlak-felsefesi",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 13,
+          "domain": "Sosyal Bilimler",
+          "subject": "Felsefe",
+          "area": "FELSEFE TARIHI",
+          "topic": "15-17. Yüzyıl'da Felsefe",
+          "topicId": "tyt-felsefe-felsefe-tarihi-15-17-yuzyilda-felsefe",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 14,
+          "domain": "Sosyal Bilimler",
+          "subject": "Felsefe",
+          "area": "FELSEFE TARIHI",
+          "topic": "18-19. Yüzyıl'da Felsefe",
+          "topicId": "tyt-felsefe-felsefe-tarihi-18-19-yuzyilda-felsefe",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 15,
+          "domain": "Sosyal Bilimler",
+          "subject": "Felsefe",
+          "area": "FELSEFI DISIPLINLER",
+          "topic": "Bilgi Felsefesi",
+          "topicId": "tyt-felsefe-felsefi-disiplinler-bilgi-felsefesi",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 16,
+          "domain": "Sosyal Bilimler",
+          "subject": "Din Kültürü ve Ahlak Bilgisi",
+          "area": "İNSAN VE İNANÇ",
+          "topic": "Bilgi ve İnanç",
+          "topicId": "tyt-din-kulturu-ve-ahlak-bilgisi-insan-ve-inanc-bilgi-ve-inanc",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 17,
+          "domain": "Sosyal Bilimler",
+          "subject": "Din Kültürü ve Ahlak Bilgisi",
+          "area": "İNSAN VE İNANÇ",
+          "topic": "Bilgi ve İnanç",
+          "topicId": "tyt-din-kulturu-ve-ahlak-bilgisi-insan-ve-inanc-bilgi-ve-inanc",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 18,
+          "domain": "Sosyal Bilimler",
+          "subject": "Din Kültürü ve Ahlak Bilgisi",
+          "area": "İNSAN VE İNANÇ",
+          "topic": "Bilgi ve İnanç",
+          "topicId": "tyt-din-kulturu-ve-ahlak-bilgisi-insan-ve-inanc-bilgi-ve-inanc",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 19,
+          "domain": "Sosyal Bilimler",
+          "subject": "Din Kültürü ve Ahlak Bilgisi",
+          "area": "İNSAN VE İNANÇ",
+          "topic": "Bilgi ve İnanç",
+          "topicId": "tyt-din-kulturu-ve-ahlak-bilgisi-insan-ve-inanc-bilgi-ve-inanc",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 20,
+          "domain": "Sosyal Bilimler",
+          "subject": "Din Kültürü ve Ahlak Bilgisi",
+          "area": "İNSAN VE İNANÇ",
+          "topic": "Bilgi ve İnanç",
+          "topicId": "tyt-din-kulturu-ve-ahlak-bilgisi-insan-ve-inanc-bilgi-ve-inanc",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 21,
+          "domain": "Sosyal Bilimler",
+          "subject": "Felsefe",
+          "area": "FELSEFI DISIPLINLER",
+          "topic": "Din Felsefesi",
+          "topicId": "tyt-felsefe-felsefi-disiplinler-din-felsefesi",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 22,
+          "domain": "Sosyal Bilimler",
+          "subject": "Felsefe",
+          "area": "FELSEFEYE GIRIŞ",
+          "topic": "Düşünme ve Akıl Yürütme",
+          "topicId": "tyt-felsefe-felsefeye-giris-dusunme-ve-akil-yurutme",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 23,
+          "domain": "Sosyal Bilimler",
+          "subject": "Felsefe",
+          "area": "FELSEFE TARIHI",
+          "topic": "MÖ 6. Yüzyıl-MS 2. Yüzyıl'da Felsefe",
+          "topicId": "tyt-felsefe-felsefe-tarihi-mo-6-yuzyil-ms-2-yuzyilda-felsefe",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 24,
+          "domain": "Sosyal Bilimler",
+          "subject": "Felsefe",
+          "area": "FELSEFEYE GIRIŞ",
+          "topic": "Felsefeye Giriş",
+          "topicId": "tyt-felsefe-felsefeye-giris-felsefeye-giris",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 25,
+          "domain": "Sosyal Bilimler",
+          "subject": "Felsefe",
+          "area": "FELSEFE TARIHI",
+          "topic": "MS 2. Yüzyıl-15. Yüzyıl'da Felsefe -1",
+          "topicId": "tyt-felsefe-felsefe-tarihi-ms-2-yuzyil-15-yuzyilda-felsefe",
+          "difficulty": "Orta",
+          "note": "Hristiyan/Skolastik felsefe olduğu için Orta Çağ felsefesi altındaki -1 başlığına eşlendi; -1/-2 ayrımının editoryal tanımı CSV içinde ayrıca açıklanmıyor."
+        },
+        {
+          "qNum": 1,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "Temel Kavramlar",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-temel-kavramlar",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 2,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "Ardışık Sayılar",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-ardisik-sayilar",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 3,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "Temel Kavramlar",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-temel-kavramlar",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 4,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "Sayı Basamakları",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-sayi-basamaklari",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 5,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "Rasyonel Sayılar",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-rasyonel-sayilar",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 6,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "Bölme ve Bölünebilme Kuralları",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-bolme-ve-bolunebilme-kurallari",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 7,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "Rasyonel Sayılar",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-rasyonel-sayilar",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 8,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "Sayısal Mantık Problemleri",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-sayisal-mantik-problemleri",
+          "difficulty": "Orta",
+          "note": "Sayı doğrusu üzerinde hareket ve oran ilişkisi birlikte kullanılıyor."
+        },
+        {
+          "qNum": 9,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "Mutlak Değer",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-mutlak-deger",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 10,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "Üslü Sayılar",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-uslu-sayilar",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 11,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "Sayısal Mantık Problemleri",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-sayisal-mantik-problemleri",
+          "difficulty": "Orta",
+          "note": "Ürünlerin fiyatlarına göre sıralanması; belirli bir klasik konu başlığına tam oturmuyor."
+        },
+        {
+          "qNum": 12,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "Yüzde Problemleri",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-yuzde-problemleri",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 13,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "Oran - Orantı",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-oran-oranti",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 14,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "Oran - Orantı",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-oran-oranti",
+          "difficulty": "Orta",
+          "note": "Puf/damla doz dönüşümü orantı temelli."
+        },
+        {
+          "qNum": 15,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "Sayısal Mantık Problemleri",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-sayisal-mantik-problemleri",
+          "difficulty": "Orta",
+          "note": "5 günlük artan sayfa koşullarıyla kısıt çözümü."
+        },
+        {
+          "qNum": 16,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "Sayısal Mantık Problemleri",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-sayisal-mantik-problemleri",
+          "difficulty": "Orta",
+          "note": "Sınıf/öğrenci sayıları üzerinden çok aşamalı kurgu."
+        },
+        {
+          "qNum": 17,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "Sayısal Mantık Problemleri",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-sayisal-mantik-problemleri",
+          "difficulty": "Orta",
+          "note": "Fiyat seçenekleri ve toplam maliyet üzerinden olası durum taraması."
+        },
+        {
+          "qNum": 18,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "Sayı - Kesir Problemleri",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-sayi-kesir-problemleri",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 19,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "Yaş Problemleri",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-yas-problemleri",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 20,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "İşçi Problemleri",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-isci-problemleri",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 21,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "Yüzde Problemleri",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-yuzde-problemleri",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 22,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "Sayı - Kesir Problemleri",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-sayi-kesir-problemleri",
+          "difficulty": "Orta",
+          "note": "Uzunlukların başlangıç/gerilmiş oranı üzerinden yüzde değişim."
+        },
+        {
+          "qNum": 23,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "Yüzde Problemleri",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-yuzde-problemleri",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 24,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "Hız - Hareket Problemleri",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-hiz-hareket-problemleri",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 25,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "DENKLEM VE EŞİTSİZLİKLER",
+          "topic": "Birinci Dereceden Denklemler",
+          "topicId": "tyt-matematik-denklem-ve-esitsizlikler-birinci-dereceden-denklemler",
+          "difficulty": "Orta",
+          "note": "Manzara/portre ve teknik türleri arasındaki doğrusal denklem sistemi."
+        },
+        {
+          "qNum": 26,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "MANTIK",
+          "topic": "Mantık",
+          "topicId": "tyt-matematik-mantik-mantik",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 27,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "FONKSİYONLAR",
+          "topic": "Fonksiyonlar",
+          "topicId": "tyt-matematik-fonksiyonlar-fonksiyonlar",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 28,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "FONKSİYONLAR",
+          "topic": "Fonksiyonlar",
+          "topicId": "tyt-matematik-fonksiyonlar-fonksiyonlar",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 29,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "VERİ - SAYMA - OLASILIK",
+          "topic": "Sayma, Permütasyon",
+          "topicId": "tyt-matematik-veri-sayma-olasilik-sayma-permutasyon",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 30,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "VERİ - SAYMA - OLASILIK",
+          "topic": "Olasılık",
+          "topicId": "tyt-matematik-veri-sayma-olasilik-olasilik",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 31,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "GEOMETRİ-ÜÇGENLER",
+          "topic": "Üçgende Açıortay",
+          "topicId": "tyt-matematik-ucgenler-ucgende-aciortay",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 32,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "GEOMETRİ-DÖRTGENLER VE ÇOKGENLER",
+          "topic": "Çokgenler",
+          "topicId": "tyt-matematik-dortgenler-ve-cokgenler-cokgenler",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 33,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "GEOMETRİ-ÜÇGENLER",
+          "topic": "Üçgende Açı",
+          "topicId": "tyt-matematik-ucgenler-ucgende-aci",
+          "difficulty": "Orta",
+          "note": "Üçgen eşliği ve açı ilişkisi soruluyor; taksonomide ayrı bir \"üçgende eşlik\" başlığı yok."
+        },
+        {
+          "qNum": 34,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "GEOMETRİ-KATI CİSİMLER",
+          "topic": "Katı Cisimler",
+          "topicId": "tyt-matematik-kati-cisimler-kati-cisimler",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 35,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "GEOMETRİ-ÜÇGENLER",
+          "topic": "Düzlemde Açı",
+          "topicId": "tyt-matematik-ucgenler-duzlemde-aci",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 36,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "GEOMETRİ-ÜÇGENLER",
+          "topic": "Düzlemde Açı",
+          "topicId": "tyt-matematik-ucgenler-duzlemde-aci",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 37,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "GEOMETRİ-DÖRTGENLER VE ÇOKGENLER",
+          "topic": "Dörtgenler",
+          "topicId": "tyt-matematik-dortgenler-ve-cokgenler-dortgenler",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 38,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "GEOMETRİ-ÜÇGENLER",
+          "topic": "Üçgende Alan",
+          "topicId": "tyt-matematik-ucgenler-ucgende-alan",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 39,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "GEOMETRİ-KATI CİSİMLER",
+          "topic": "Katı Cisimler",
+          "topicId": "tyt-matematik-kati-cisimler-kati-cisimler",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 40,
+          "domain": "Temel Matematik",
+          "subject": "Matematik",
+          "area": "GEOMETRİ-DÖRTGENLER VE ÇOKGENLER",
+          "topic": "Yamuk",
+          "topicId": "tyt-matematik-dortgenler-ve-cokgenler-yamuk",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 1,
+          "domain": "Fen Bilimleri",
+          "subject": "Fizik",
+          "area": "FİZİK BİLİMİNE GİRİŞ",
+          "topic": "Fizik Biliminin Tanımı ve Diğer Disiplinlerle İlişkisi",
+          "topicId": "tyt-fizik-fizik-bilimine-giris-fizik-biliminin-tanimi-ve-diger-disiplinlerle-iliskisi",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 2,
+          "domain": "Fen Bilimleri",
+          "subject": "Fizik",
+          "area": "ISI - SICAKLIK VE GENLEŞME",
+          "topic": "Genleşme",
+          "topicId": "tyt-fizik-isi-sicaklik-ve-genlesme-genlesme",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 3,
+          "domain": "Fen Bilimleri",
+          "subject": "Fizik",
+          "area": "ELEKTRİK VE MANYETİZMA",
+          "topic": "Elektrostatik",
+          "topicId": "tyt-fizik-elektrik-ve-manyetizma-elektrostatik",
+          "difficulty": "Orta",
+          "note": "Elektrik yükleri arasındaki etkileşim ile hareket birlikte sorgulanıyor; temel fiziksel konu elektrostatik."
+        },
+        {
+          "qNum": 4,
+          "domain": "Fen Bilimleri",
+          "subject": "Fizik",
+          "area": "BASINÇ",
+          "topic": "Sıvı Basıncı",
+          "topicId": "tyt-fizik-basinc-sivi-basinci",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 5,
+          "domain": "Fen Bilimleri",
+          "subject": "Fizik",
+          "area": "KALDIRMA KUVVETİ",
+          "topic": "Sıvıların Kaldırma Kuvveti",
+          "topicId": "tyt-fizik-kaldirma-kuvveti-sivilarin-kaldirma-kuvveti",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 6,
+          "domain": "Fen Bilimleri",
+          "subject": "Fizik",
+          "area": "ELEKTRİK VE MANYETİZMA",
+          "topic": "Direnç ve Dirençlerin Bağlanması",
+          "topicId": "tyt-fizik-elektrik-ve-manyetizma-direnc-ve-direnclerin-baglanmasi",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 7,
+          "domain": "Fen Bilimleri",
+          "subject": "Fizik",
+          "area": "OPTİK",
+          "topic": "Renkler",
+          "topicId": "tyt-fizik-optik-renkler",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 8,
+          "domain": "Fen Bilimleri",
+          "subject": "Kimya",
+          "area": "KİMYA BİLİMİ",
+          "topic": "Kimya Disiplinleri ve Kimyacıların Çalışma Alanları",
+          "topicId": "tyt-kimya-kimya-bilimi-kimya-disiplinleri-ve-kimyacilarin-calisma-alanlari",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 9,
+          "domain": "Fen Bilimleri",
+          "subject": "Kimya",
+          "area": "ATOMUN YAPISI VE PERİYODİK SİSTEM",
+          "topic": "Periyodik Sistem ve Elektron Dizilimleri",
+          "topicId": "tyt-kimya-atomun-yapisi-ve-periyodik-sistem-periyodik-sistem-ve-elektron-dizilimleri",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 10,
+          "domain": "Fen Bilimleri",
+          "subject": "Kimya",
+          "area": "KİMYASAL TÜRLER ARASI ETKİLEŞİMLER",
+          "topic": "Metalik Bağ",
+          "topicId": "tyt-kimya-kimyasal-turler-arasi-etkilesimler-metalik-bag",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 11,
+          "domain": "Fen Bilimleri",
+          "subject": "Kimya",
+          "area": "MADDENİN HALLERİ",
+          "topic": "Sıvılar ve Özellikleri",
+          "topicId": "tyt-kimya-maddenin-halleri-sivilar-ve-ozellikleri",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 12,
+          "domain": "Fen Bilimleri",
+          "subject": "Kimya",
+          "area": "KİMYASAL HESAPLAMALAR",
+          "topic": "Mol Kavramı",
+          "topicId": "tyt-kimya-kimyasal-hesaplamalar-mol-kavrami",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 13,
+          "domain": "Fen Bilimleri",
+          "subject": "Kimya",
+          "area": "KARIŞIMLAR",
+          "topic": "Çözünürlük Farkıyla Ayırma",
+          "topicId": "tyt-kimya-karisimlar-cozunurluk-farkiyla-ayirma",
+          "difficulty": "Orta",
+          "note": "Uygulanan özütleme yöntemi, karışım bileşenlerinin çözünürlük farkına dayanıyor."
+        },
+        {
+          "qNum": 14,
+          "domain": "Fen Bilimleri",
+          "subject": "Kimya",
+          "area": "DOĞA VE KİMYA",
+          "topic": "Çevre Kimyası",
+          "topicId": "tyt-kimya-doga-ve-kimya-cevre-kimyasi",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 15,
+          "domain": "Fen Bilimleri",
+          "subject": "Biyoloji",
+          "area": "YAŞAM BİLİMİ BİYOLOJİ",
+          "topic": "Organik Bileşikler",
+          "topicId": "tyt-biyoloji-yasam-bilimi-biyoloji-organik-bilesikler",
+          "difficulty": "Orta",
+          "note": "Proteinlerin yapı/farklılığı soruluyor; taksonomide proteinler organik bileşikler altında."
+        },
+        {
+          "qNum": 16,
+          "domain": "Fen Bilimleri",
+          "subject": "Biyoloji",
+          "area": "HÜCRE",
+          "topic": "Sitoplazma ve Organeller",
+          "topicId": "tyt-biyoloji-hucre-sitoplazma-ve-organeller",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 17,
+          "domain": "Fen Bilimleri",
+          "subject": "Biyoloji",
+          "area": "EKOSİSTEM EKOLOJİSİ VE GÜNCEL ÇEVRE SORUNLARI",
+          "topic": "Madde Döngüleri ve Hayatın Sürdürülebilirliği",
+          "topicId": "tyt-biyoloji-ekosistem-ekolojisi-ve-guncel-cevre-sorunlari-madde-donguleri-ve-hayatin-surdurulebilirligi",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 18,
+          "domain": "Fen Bilimleri",
+          "subject": "Biyoloji",
+          "area": "CANLILAR DÜNYASI",
+          "topic": "Canlı Âlemleri ve Özellikleri",
+          "topicId": "tyt-biyoloji-canlilar-dunyasi-canli-lemleri-ve-ozellikleri",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 19,
+          "domain": "Fen Bilimleri",
+          "subject": "Biyoloji",
+          "area": "KALITIMIN VE BİYOLOJİK ÇEŞİTLİLİK",
+          "topic": "Eşeye Bağlı Kalıtım",
+          "topicId": "tyt-biyoloji-kalitimin-ve-biyolojik-cesitlilik-eseye-bagli-kalitim",
+          "difficulty": "Yüksek",
+          "note": ""
+        },
+        {
+          "qNum": 20,
+          "domain": "Fen Bilimleri",
+          "subject": "Biyoloji",
+          "area": "HÜCRE",
+          "topic": "Hücre Zarı",
+          "topicId": "tyt-biyoloji-hucre-hucre-zari",
+          "difficulty": "Yüksek",
+          "note": ""
+        }
+      ]
+    }
+  ]
+}

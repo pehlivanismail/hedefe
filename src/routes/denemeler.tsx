@@ -28,6 +28,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { MockExamForm } from "@/components/mock-exam-form";
+import { DetailedMockExamForm } from "@/components/detailed-mock-exam-form";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import { useDemoData, type MockExam } from "@/lib/demo-data";
 import { cn } from "@/lib/utils";
@@ -125,7 +127,7 @@ function NetChart({
 }
 
 function Denemeler() {
-  const { mockExamList, addMockExam, currentStudent } = useDemoData();
+  const { mockExamList, addMockExam, addLog, currentStudent } = useDemoData();
   const rows = mockExamList;
   const [open, setOpen] = useState(false);
 
@@ -159,14 +161,41 @@ function Denemeler() {
                 Yeni Deneme Sonucu
               </DialogTitle>
             </DialogHeader>
-            <MockExamForm
-              track={currentStudent?.track ?? "sayisal"}
-              onSave={(e) => {
-                addMockExam(e);
-                setOpen(false);
-                toast.success("Deneme sonucu eklendi");
-              }}
-            />
+            <Tabs defaultValue="quick" className="w-full">
+              <TabsList className="grid w-full grid-cols-2 mb-4">
+                <TabsTrigger value="quick">Hızlı Giriş</TabsTrigger>
+                <TabsTrigger value="detailed">Detaylı Analiz</TabsTrigger>
+              </TabsList>
+              <TabsContent value="quick">
+                <MockExamForm
+                  track={currentStudent?.track ?? "sayisal"}
+                  onSave={(e) => {
+                    addMockExam(e);
+                    setOpen(false);
+                    toast.success("Deneme sonucu eklendi");
+                  }}
+                />
+              </TabsContent>
+              <TabsContent value="detailed">
+                <DetailedMockExamForm
+                  onSave={(e, logs) => {
+                    addMockExam(e);
+                    for (const log of logs) {
+                      addLog(log.topicId, {
+                        date: e.date,
+                        source: e.publisher + " Deneme",
+                        kind: "soru",
+                        solved: 1,
+                        wrong: log.isWrong ? 1 : 0,
+                        blank: log.isWrong ? 0 : 1,
+                      });
+                    }
+                    setOpen(false);
+                    toast.success("Detaylı deneme sonucu eklendi ve konu analizine yansıtıldı!");
+                  }}
+                />
+              </TabsContent>
+            </Tabs>
           </DialogContent>
         </Dialog>
       </div>

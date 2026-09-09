@@ -22,6 +22,7 @@ AYT_Icindekiler/
 tyt-icindekiler/
 cikmis_sorular/
 .dev.vars
+docs/
 
 # Editor directories and files
 .vscode/*
