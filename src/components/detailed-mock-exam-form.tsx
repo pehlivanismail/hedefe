@@ -120,6 +120,8 @@ export function DetailedMockExamForm({
       matematik: netOf(40, totals.matematik.wrong, totals.matematik.blank),
       sosyal: netOf(20, totals.sosyal.wrong, totals.sosyal.blank),
       fen: netOf(20, totals.fen.wrong, totals.fen.blank),
+      templateId: template.id,
+      detailedLogs: logs,
     };
 
     onSave(examData, logs);

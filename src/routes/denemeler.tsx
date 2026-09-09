@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Plus } from "lucide-react";
+import { Plus, Trash2 } from "lucide-react";
 import {
   Area,
   AreaChart,
@@ -30,6 +30,7 @@ import {
 import { MockExamForm } from "@/components/mock-exam-form";
 import { DetailedMockExamForm } from "@/components/detailed-mock-exam-form";
 import { ExamAnalysis } from "@/components/exam-analysis";
+import { ExamDetailDialog } from "@/components/exam-detail-dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import { useDemoData, type MockExam } from "@/lib/demo-data";
@@ -37,37 +38,22 @@ import { cn } from "@/lib/utils";
 import { EXAM_QUESTION_COUNTS } from "@/lib/exam-config";
 
 export const Route = createFileRoute("/denemeler")({
-  head: () => ({
-    meta: [
-      { title: "Denemeler — Hedefe.net" },
-      {
-        name: "description",
-        content:
-          "TYT ve AYT deneme netlerinin grafiği ve geçmiş deneme sonuçları tablosu.",
-      },
-      { property: "og:title", content: "Denemeler — Hedefe.net" },
-      {
-        property: "og:description",
-        content: "TYT ve AYT net ilerlemeni takip et.",
-      },
-    ],
-  }),
   component: Denemeler,
 });
 
 const total = (e: MockExam) => e.turkce + e.matematik + e.sosyal + e.fen;
 
 function NetChart({
+  id,
   title,
   data,
   color,
-  id,
   maxQuestions,
 }: {
+  id: string;
   title: string;
   data: { date: string; net: number }[];
   color: string;
-  id: string;
   maxQuestions: number;
 }) {
   return (
@@ -128,16 +114,93 @@ function NetChart({
 }
 
 function Denemeler() {
-  const { mockExamList, addMockExam, addLog, currentStudent } = useDemoData();
+  const { mockExamList, addMockExam, removeMockExam, addLog, currentStudent } = useDemoData();
   const rows = mockExamList;
   const [open, setOpen] = useState(false);
+  const [selectedExam, setSelectedExam] = useState<MockExam | null>(null);
 
-  const tyt = rows
-    .filter((e) => e.type === "TYT")
-    .map((e) => ({ date: e.date.slice(0, 5), net: total(e) }));
-  const ayt = rows
-    .filter((e) => e.type === "AYT")
-    .map((e) => ({ date: e.date.slice(0, 5), net: total(e) }));
+  const tytRows = rows.filter((e) => e.type === "TYT");
+  const aytRows = rows.filter((e) => e.type === "AYT");
+
+  const tyt = tytRows.map((e) => ({ date: e.date.slice(0, 5), net: total(e) }));
+  const ayt = aytRows.map((e) => ({ date: e.date.slice(0, 5), net: total(e) }));
+
+  const handleDelete = (e: React.MouseEvent, id: string) => {
+    e.stopPropagation();
+    if (window.confirm("Bu denemeyi silmek istediğinize emin misiniz?")) {
+      removeMockExam(id);
+      toast.success("Deneme silindi");
+    }
+  };
+
+  const renderTable = (examRows: MockExam[], type: "TYT" | "AYT") => (
+    <Card className="overflow-hidden rounded-3xl border-border p-0 shadow-soft mt-4">
+      <Table>
+        <TableHeader>
+          <TableRow className="bg-secondary/60">
+            <TableHead>Tarih</TableHead>
+            <TableHead>Kurum</TableHead>
+            <TableHead>Tür</TableHead>
+            <TableHead className="text-right">Türkçe</TableHead>
+            <TableHead className="text-right">Matematik</TableHead>
+            <TableHead className="text-right">Sosyal</TableHead>
+            <TableHead className="text-right">Fen</TableHead>
+            <TableHead className="text-right">Toplam Net</TableHead>
+            <TableHead className="text-right">Başarı %</TableHead>
+            <TableHead className="w-12 text-center"></TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {examRows.length === 0 ? (
+            <TableRow>
+              <TableCell colSpan={10} className="text-center py-8 text-muted-foreground">
+                Henüz {type} denemesi bulunmuyor.
+              </TableCell>
+            </TableRow>
+          ) : (
+            examRows.map((e, i) => (
+              <TableRow 
+                key={e.id} 
+                className={cn(i % 2 === 1 && "bg-secondary/30", "cursor-pointer hover:bg-muted/50")}
+                onClick={() => setSelectedExam(e)}
+              >
+                <TableCell>{e.date}</TableCell>
+                <TableCell className="font-medium">{e.publisher}</TableCell>
+                <TableCell className="text-muted-foreground">{e.type}</TableCell>
+                <TableCell className="text-right">{e.turkce}</TableCell>
+                <TableCell className="text-right">{e.matematik}</TableCell>
+                <TableCell className="text-right">{e.sosyal}</TableCell>
+                <TableCell className="text-right">{e.fen}</TableCell>
+                <TableCell className="text-right">
+                  <span className="rounded-full bg-brand-soft px-3 py-1 font-display text-sm font-bold text-brand-deep">
+                    {total(e).toFixed(1)}
+                  </span>
+                </TableCell>
+                <TableCell className="text-right">
+                  <span className="text-sm font-medium text-muted-foreground">
+                    {(
+                      (total(e) / EXAM_QUESTION_COUNTS[type]) * 100
+                    ).toFixed(1)}
+                    %
+                  </span>
+                </TableCell>
+                <TableCell className="text-center">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="h-8 w-8 text-muted-foreground hover:text-destructive"
+                    onClick={(ev) => handleDelete(ev, e.id)}
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))
+          )}
+        </TableBody>
+      </Table>
+    </Card>
+  );
 
   return (
     <div className="space-y-8">
@@ -225,56 +288,25 @@ function Denemeler() {
             />
           </div>
 
-          <Card className="overflow-hidden rounded-3xl border-border p-0 shadow-soft">
-            <Table>
-              <TableHeader>
-                <TableRow className="bg-secondary/60">
-                  <TableHead>Tarih</TableHead>
-                  <TableHead>Kurum</TableHead>
-                  <TableHead>Tür</TableHead>
-                  <TableHead className="text-right">Türkçe</TableHead>
-                  <TableHead className="text-right">Matematik</TableHead>
-                  <TableHead className="text-right">Sosyal</TableHead>
-                  <TableHead className="text-right">Fen</TableHead>
-                  <TableHead className="text-right">Toplam Net</TableHead>
-                  <TableHead className="text-right">Başarı %</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {rows.map((e, i) => (
-                  <TableRow key={e.id} className={cn(i % 2 === 1 && "bg-secondary/30")}>
-                    <TableCell>{e.date}</TableCell>
-                    <TableCell className="font-medium">{e.publisher}</TableCell>
-                    <TableCell className="text-muted-foreground">{e.type}</TableCell>
-                    <TableCell className="text-right">{e.turkce}</TableCell>
-                    <TableCell className="text-right">{e.matematik}</TableCell>
-                    <TableCell className="text-right">{e.sosyal}</TableCell>
-                    <TableCell className="text-right">{e.fen}</TableCell>
-                    <TableCell className="text-right">
-                      <span className="rounded-full bg-brand-soft px-3 py-1 font-display text-sm font-bold text-brand-deep">
-                        {total(e).toFixed(1)}
-                      </span>
-                    </TableCell>
-                    <TableCell className="text-right">
-                      <span className="text-sm font-medium text-muted-foreground">
-                        {(
-                          (total(e) /
-                            EXAM_QUESTION_COUNTS[e.type === "AYT" ? "AYT" : "TYT"]) *
-                          100
-                        ).toFixed(1)}
-                        %
-                      </span>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </Card>
+          <Tabs defaultValue="tyt" className="w-full mt-8">
+            <TabsList className="w-full max-w-sm grid grid-cols-2">
+              <TabsTrigger value="tyt">TYT Denemeleri</TabsTrigger>
+              <TabsTrigger value="ayt">AYT Denemeleri</TabsTrigger>
+            </TabsList>
+            <TabsContent value="tyt">
+              {renderTable(tytRows, "TYT")}
+            </TabsContent>
+            <TabsContent value="ayt">
+              {renderTable(aytRows, "AYT")}
+            </TabsContent>
+          </Tabs>
+
         </TabsContent>
         <TabsContent value="analiz">
           <ExamAnalysis />
         </TabsContent>
       </Tabs>
+      <ExamDetailDialog exam={selectedExam} open={!!selectedExam} onOpenChange={(o) => !o && setSelectedExam(null)} />
     </div>
   );
 }

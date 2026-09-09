@@ -120,6 +120,8 @@ export type MockExam = {
   sosyal: number;
   fen: number;
   studentId?: string | undefined;
+  templateId?: string | undefined;
+  detailedLogs?: { topicId: string; isWrong: boolean }[] | undefined;
 };
 
 export type Student = {
@@ -225,6 +227,7 @@ type Store = {
   completeTask: (id: string, result?: TaskResult) => void;
   mockExamList: MockExam[];
   addMockExam: (e: Omit<MockExam, "id">) => string;
+  removeMockExam: (id: string) => void;
   toggleTask: (id: string) => void;
   moveTask: (id: string, day: number) => void;
   examData: Exam[];
@@ -305,7 +308,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
         .order("date", { ascending: true });
       if (error) throw error;
       return (data || []).map((row: any): MockExam => {
-        const r = (row.results_data ?? {}) as Record<string, number>;
+        const r = (row.results_data ?? {}) as Record<string, any>;
         return {
           id: row.id,
           date: row.date,
@@ -315,6 +318,8 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
           matematik: Number(r["matematik"] ?? 0),
           sosyal: Number(r["sosyal"] ?? 0),
           fen: Number(r["fen"] ?? 0),
+          templateId: r["templateId"] as string | undefined,
+          detailedLogs: r["detailedLogs"] as { topicId: string; isWrong: boolean }[] | undefined,
           studentId: row.user_id,
         };
       });
@@ -491,7 +496,14 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
           date: e.date,
           exam_type: e.type,
           title: e.publisher,
-          results_data: { turkce: e.turkce, matematik: e.matematik, sosyal: e.sosyal, fen: e.fen },
+          results_data: { 
+            turkce: e.turkce, 
+            matematik: e.matematik, 
+            sosyal: e.sosyal, 
+            fen: e.fen,
+            templateId: e.templateId,
+            detailedLogs: e.detailedLogs
+          },
           net_score: e.turkce + e.matematik + e.sosyal + e.fen,
           total_questions: e.type === "TYT" ? 120 : 160
         })
@@ -500,6 +512,14 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       
       if (error) throw error;
       return data.id;
+    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["mock_exams"] }),
+  });
+
+  const removeMockExamMutation = useMutation({
+    mutationFn: async (id: string) => {
+      const { error } = await supabase.from("mock_exams").delete().eq("id", id);
+      if (error) throw error;
     },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["mock_exams"] }),
   });
@@ -570,6 +590,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       removeTask: (id) => removeTaskMutation.mutate(id),
       completeTask: (id, result) => completeTaskMutation.mutate({ id, result }),
       mockExamList: mockExamsData || [],
+      removeMockExam: (id) => removeMockExamMutation.mutate(id),
       addMockExam: (e) => {
         addMockExamMutation.mutate(e);
         return "temp-id";
@@ -601,7 +622,8 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       completeTaskMutation,
       toggleTaskMutation,
       moveTaskMutation,
-      addMockExamMutation
+      addMockExamMutation,
+      removeMockExamMutation
     ],
   );
 
