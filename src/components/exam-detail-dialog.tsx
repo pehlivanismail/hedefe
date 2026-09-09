@@ -75,7 +75,14 @@ export function ExamDetailDialog({
                 
                 const weakTopicIds = new Set(
                   exam.detailedLogs!
-                    .filter(log => domainQuestions.some(q => q.topicId === log.topicId))
+                    .filter(log => {
+                      const isWeak = log.status === "wrong" || log.status === "blank" || (log as any).isWrong !== undefined;
+                      // if isWrong is false, it meant blank in the old schema, so it's a weak topic too!
+                      // old schema: isWrong: true (wrong), isWrong: false (blank). 
+                      // correct questions were NOT logged at all in the old schema.
+                      const isError = log.status ? (log.status !== "correct") : true; 
+                      return isError && domainQuestions.some(q => q.topicId === log.topicId);
+                    })
                     .map(l => l.topicId)
                 );
                 
@@ -123,8 +130,8 @@ export function ExamDetailDialog({
                           <ul className="space-y-1.5">
                             {Array.from(weakTopicIds).map(id => {
                               const errors = exam.detailedLogs!.filter(l => l.topicId === id);
-                              const wrong = errors.filter(e => e.status === "wrong").length;
-                              const blank = errors.filter(e => e.status === "blank").length;
+                              const wrong = errors.filter(e => e.status === "wrong" || (e as any).isWrong === true).length;
+                              const blank = errors.filter(e => e.status === "blank" || (e as any).isWrong === false).length;
                               return (
                                 <li key={id} className="text-sm text-brand-deep font-medium flex justify-between">
                                   <span>• {topicNames.get(id) || id}</span>
