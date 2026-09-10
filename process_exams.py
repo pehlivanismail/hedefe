@@ -54,7 +54,7 @@ pdf_dosyalari = []
 # Klasör içindeki tüm PDF'leri bul (Alt klasörler dahil)
 for root, dirs, files in os.walk(ana_klasor):
     for file in files:
-        if file.lower().endswith(".pdf") and "tyt-1." not in file.lower():
+        if file.lower().endswith(".pdf"):
             pdf_dosyalari.append(os.path.join(root, file))
 
 # İsimlerine göre sıralayalım
