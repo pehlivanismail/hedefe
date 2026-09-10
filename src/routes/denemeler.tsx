@@ -219,7 +219,7 @@ function Denemeler() {
               <Plus className="size-4" /> Yeni Deneme Ekle
             </Button>
           </DialogTrigger>
-          <DialogContent>
+          <DialogContent className="max-h-[85vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle className="font-display text-brand-deep">
                 Yeni Deneme Sonucu
