@@ -96,9 +96,11 @@ def main():
                 "questions": questions
             })
             
-    # Sort templates by category, then name
+    # Sort templates by category, then natural sort on name
+    import re
     def sort_key(t):
-        return (t["category"], t["name"])
+        name_parts = [int(x) if x.isdigit() else x for x in re.split(r'(\d+)', t["name"])]
+        return (t["category"], name_parts)
         
     templates.sort(key=sort_key)
     
