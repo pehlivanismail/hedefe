@@ -34,6 +34,13 @@ const DOMAIN_MAP: Record<string, "turkce" | "sosyal" | "matematik" | "fen"> = {
   "Türk Dili ve Edebiyatı": "turkce",
 };
 
+const BUCKET_LABELS: Record<string, string> = {
+  turkce: "Türkçe / Edebiyat",
+  sosyal: "Sosyal Bilimler",
+  matematik: "Matematik",
+  fen: "Fen Bilimleri",
+};
+
 export function DetailedMockExamForm({
   onSave,
   submitLabel = "Kaydet",
@@ -72,35 +79,33 @@ export function DetailedMockExamForm({
 
     const logs: { topicId: string, status: "correct" | "wrong" | "blank" }[] = [];
 
-    // Her domain (test) için kontrolleri ve hesaplamaları yap
-    const domains = Array.from(new Set(template.questions.map(q => q.domain)));
+    // Her bucket (bölüm) için kontrolleri ve hesaplamaları yap
+    const buckets = Array.from(new Set(template.questions.map(q => DOMAIN_MAP[q.domain]).filter(Boolean))) as ("turkce" | "sosyal" | "matematik" | "fen")[];
 
-    for (const domain of domains) {
-      const wrongList = parseQuestions(wrongQ[domain] || "");
-      const blankList = parseQuestions(blankQ[domain] || "");
+    for (const bucket of buckets) {
+      const wrongList = parseQuestions(wrongQ[bucket] || "");
+      const blankList = parseQuestions(blankQ[bucket] || "");
 
       const intersection = wrongList.filter(x => blankList.includes(x));
       if (intersection.length > 0) {
-        toast.error(`${domain} testinde soru hem yanlış hem boş olamaz: ${intersection.join(', ')}`);
+        toast.error(`${BUCKET_LABELS[bucket]} testinde soru hem yanlış hem boş olamaz: ${intersection.join(', ')}`);
         return;
       }
 
-      const domainQuestions = template.questions.filter(q => q.domain === domain);
-      const maxQ = domainQuestions.length;
+      const bucketQuestions = template.questions.filter(q => DOMAIN_MAP[q.domain] === bucket);
+      
+      const maxQ = Math.max(...bucketQuestions.map(q => q.qNum));
+      const minQ = Math.min(...bucketQuestions.map(q => q.qNum));
 
-      const outOfBounds = [...wrongList, ...blankList].filter(q => q < 1 || q > maxQ);
+      const outOfBounds = [...wrongList, ...blankList].filter(q => q < minQ || q > maxQ);
       if (outOfBounds.length > 0) {
-        toast.error(`${domain} testi için geçersiz soru numaraları (Maks ${maxQ}): ${outOfBounds.join(', ')}`);
+        toast.error(`${BUCKET_LABELS[bucket]} testi için geçersiz soru numaraları (${minQ}-${maxQ} arası olmalı): ${outOfBounds.join(', ')}`);
         return;
       }
       
-      const internalDomain = DOMAIN_MAP[domain];
-      if (!internalDomain) {
-        toast.error(`Bilinmeyen ders kategorisi: ${domain}`);
-        continue;
-      }
+      const internalDomain = bucket;
 
-      for (const qData of domainQuestions) {
+      for (const qData of bucketQuestions) {
         if (!qData.topicId) continue;
         
         totals[internalDomain].total++;
@@ -184,27 +189,30 @@ export function DetailedMockExamForm({
 
       {template && (
         <div className="space-y-6 pt-4 border-t border-border">
-          {domains.map((domain) => {
-            const domainCount = template.questions.filter(q => q.domain === domain).length;
+          {(Array.from(new Set(template.questions.map(q => DOMAIN_MAP[q.domain]).filter(Boolean))) as ("turkce" | "sosyal" | "matematik" | "fen")[]).map((bucket) => {
+            const bucketQuestions = template.questions.filter(q => DOMAIN_MAP[q.domain] === bucket);
+            const bucketCount = bucketQuestions.length;
+            const minQ = Math.min(...bucketQuestions.map(q => q.qNum));
+            const maxQ = Math.max(...bucketQuestions.map(q => q.qNum));
             return (
-              <div key={domain} className="space-y-3">
-                <h4 className="font-semibold text-brand-deep text-sm">{domain} <span className="font-normal text-muted-foreground">({domainCount} Soru)</span></h4>
+              <div key={bucket} className="space-y-3">
+                <h4 className="font-semibold text-brand-deep text-sm">{BUCKET_LABELS[bucket]} <span className="font-normal text-muted-foreground">({bucketCount} Soru, No: {minQ}-{maxQ})</span></h4>
                 <div className="grid grid-cols-2 gap-3">
                   <div className="space-y-1.5">
                     <Label className="text-xs">Yanlış Sorular</Label>
                     <Input
-                      value={wrongQ[domain] || ""}
+                      value={wrongQ[bucket] || ""}
                       placeholder="Ör: 5, 12, 17"
-                      onChange={(e) => setWrongQ(prev => ({ ...prev, [domain]: e.target.value }))}
+                      onChange={(e) => setWrongQ(prev => ({ ...prev, [bucket]: e.target.value }))}
                       className="text-sm"
                     />
                   </div>
                   <div className="space-y-1.5">
                     <Label className="text-xs">Boş Sorular</Label>
                     <Input
-                      value={blankQ[domain] || ""}
+                      value={blankQ[bucket] || ""}
                       placeholder="Ör: 20"
-                      onChange={(e) => setBlankQ(prev => ({ ...prev, [domain]: e.target.value }))}
+                      onChange={(e) => setBlankQ(prev => ({ ...prev, [bucket]: e.target.value }))}
                       className="text-sm"
                     />
                   </div>
