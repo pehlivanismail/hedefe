@@ -14,6 +14,7 @@ export type ExamQuestion = {
 export type ExamTemplate = {
   id: string;
   name: string;
+  category: string;
   examScope: string;
   questions: ExamQuestion[];
 };

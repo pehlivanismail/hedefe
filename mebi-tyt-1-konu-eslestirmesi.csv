@@ -1,0 +1,126 @@
+Ders,Soru No,Alan,Konu,AlanID,KonuID
+Türkçe,1,Sözcükte Anlam,Söz Öbeklerinde Anlam,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-soz-obekleri
+Türkçe,2,Sözcükte Anlam,Sözcüğün Anlamı ve Yorumu,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-sozcukte-anlam-ozelligi
+Türkçe,3,Sözcükte Anlam,Söz Öbeklerinde Anlam,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-soz-obekleri
+Türkçe,4,Sözcükte Anlam,Sözcüğün Anlamı ve Yorumu,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-sozcukte-anlam-ozelligi
+Türkçe,5,Cümlede Anlam,Cümleler Arasındaki Anlam İlişkileri,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-cumlede-anlam-anlam-iliskileri-anlatim
+Türkçe,6,Cümlede Anlam,Cümlenin Yorumu,tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-cumlenin-ogeleri
+Türkçe,7,Cümlede Anlam,Cümlenin Yorumu,tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-cumlenin-ogeleri
+Türkçe,8,Cümlede Anlam,Cümlenin Anlamı,tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-cumlenin-ogeleri
+Türkçe,9,Cümlenin Ögeleri,Cümlenin Ögeleri,tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-cumlenin-ogeleri
+Türkçe,10,Sözcük Türleri,İsim Tamlamaları,tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-tamlamalar
+Türkçe,11,Sözcükte Yapı,Kökler ve Ekler,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-soz-obekleri
+Türkçe,12,Yazım Kuralları,Büyük Harflerin Yazımı,tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-ekler-karma
+Türkçe,13,Yazım Kuralları,Bitişik ve Ayrı Yazılan Sözcükler,tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-isimler-adlar
+Türkçe,14,Noktalama İşaretleri,Noktalama İşaretleri,tyt-turkce-ses-yazim-noktalama-ve-anlatim-bozuklugu,tyt-turkce-ses-yazim-noktalama-ve-anlatim-bozuklugu-noktalama-isaretleri
+Türkçe,15,Noktalama İşaretleri,Noktalama İşaretleri,tyt-turkce-ses-yazim-noktalama-ve-anlatim-bozuklugu,tyt-turkce-ses-yazim-noktalama-ve-anlatim-bozuklugu-noktalama-isaretleri
+Türkçe,16,Paragrafta Yapı,Paragrafı İkiye Bölme,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-yapi
+Türkçe,17,Paragrafta Yapı,Düşüncenin Akışını Bozan Cümle,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-deyim-atasozu-ikileme
+Türkçe,18,Paragrafta Anlam,Ana Düşünce (Ana Fikir),tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-yapim-eki
+Türkçe,19,Paragrafta Anlam,Paragrafta Soru-Cevap,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-yapi
+Türkçe,20,Paragrafta Anlam,Paragrafta Yardımcı Düşünceler,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-yapi
+Türkçe,21,Paragrafta Anlam,Paragrafta Yardımcı Düşünceler,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-yapi
+Türkçe,22,Paragrafta Anlam,Paragrafta Yardımcı Düşünceler,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-yapi
+Türkçe,23,Paragrafta Anlam,Paragrafta Yardımcı Düşünceler,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-yapi
+Türkçe,24,Paragrafta Anlam,Paragrafta Soru-Cevap,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-yapi
+Türkçe,25,Paragrafta Anlam,Ana Düşünce (Ana Fikir),tyt-turkce-dil-bilgisi,tyt-turkce-dil-bilgisi-yapim-eki
+Türkçe,26,Paragrafta Anlam,Paragrafta Yardımcı Düşünceler,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-yapi
+Türkçe,27,Paragrafta Anlam,Paragrafta Yardımcı Düşünceler,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-yapi
+Türkçe,28,Paragrafta Anlam,Paragrafta Yardımcı Düşünceler,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-yapi
+Türkçe,29,Paragrafta Anlam,Paragrafta Yardımcı Düşünceler,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-yapi
+Türkçe,30,Paragrafta Anlam,Paragrafta Yardımcı Düşünceler,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-yapi
+Türkçe,31,Paragrafta Anlam,Paragrafta Yardımcı Düşünceler,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-yapi
+Türkçe,32,Paragrafta Anlam,Paragrafta Yardımcı Düşünceler,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-yapi
+Türkçe,33,Paragrafta Anlam,Paragrafta Yardımcı Düşünceler,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-yapi
+Türkçe,34,Paragrafta Anlam,Paragrafta Yardımcı Düşünceler,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-yapi
+Türkçe,35,Paragrafta Anlam,Paragrafta Yardımcı Düşünceler,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-yapi
+Türkçe,36,Paragrafta Anlam,Paragrafta Yardımcı Düşünceler,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-yapi
+Türkçe,37,Paragrafta Anlam,Paragrafta Yardımcı Düşünceler,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-yapi
+Türkçe,38,Paragrafta Anlam,Paragrafta Yardımcı Düşünceler,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-yapi
+Türkçe,39,Paragrafta Anlam,Paragrafta Yardımcı Düşünceler,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-yapi
+Türkçe,40,Paragrafta Anlam,Paragrafta Yardımcı Düşünceler,tyt-turkce-anlam-bilgisi,tyt-turkce-anlam-bilgisi-paragrafta-yapi
+Tarih,1,Tarih ve Zaman,Tarih Bilimine Giriş,tyt-tarih-tarih-ve-zaman,tyt-tarih-tarih-ve-zaman-tarih-ve-zaman
+Tarih,2,Yerleşme ve Devletleşme Sürecinde Selçuklu Türkiyesi,Beylikten Devlete Osmanlı Siyaseti,tyt-tarih-beylikten-devlete-osmanli,tyt-tarih-beylikten-devlete-osmanli-beylikten-devlete-osmanli-medeniyeti
+Tarih,3,Değişen Dünya Dengeleri Karşısında Osmanlı Siyaseti (1595-1774),Arayış Yılları,tyt-tarih-ataturkculuk-ve-turk-inkilabi,tyt-tarih-ataturkculuk-ve-turk-inkilabi-turk-inkilabi
+Tarih,4,Milli Mücadele,Doğu ve Güney Cepheleri,tyt-tarih-ataturkculuk-ve-turk-inkilabi,tyt-tarih-ataturkculuk-ve-turk-inkilabi-ataturk-ilkeleri
+Tarih,5,Atatürkçülük ve Türk İnkılabı,Toplumsal Alanda Yapılan İnkılaplar,tyt-tarih-ii-dunya-savasi-surecinde-ve-sonrasinda-turkiye-ve-dunya,tyt-tarih-ii-dunya-savasi-surecinde-ve-sonrasinda-turkiye-ve-dunya-toplumsal-devrim-caginda-dunya-ve-turkiye
+Coğrafya,6,Doğa ve İnsan,Doğa ve İnsan Etkileşimi,tyt-cografya-cevre-ve-toplum,tyt-cografya-cevre-ve-toplum-dogal-afetler
+Coğrafya,7,Bölgeler ve Ülkeler,Bölge Türleri ve Sınırları,tyt-cografya-kuresel-ortam-bolgeler-ve-ulkeler,tyt-cografya-kuresel-ortam-bolgeler-ve-ulkeler-bolge-kavrami-ve-turleri
+Coğrafya,8,Yer Şekilleri,Dış Kuvvetler,tyt-cografya-cevre-ve-toplum,tyt-cografya-cevre-ve-toplum-dogal-afetler
+Coğrafya,9,Ekonomik Faaliyetler,Ekonomik Faaliyetlerin Sınıflandırılması,tyt-cografya-nufusun-gelisimi-dagilisi-ve-nitelikleri,tyt-cografya-nufusun-gelisimi-dagilisi-ve-nitelikleri-ekonomik-faaliyetlerin-siniflandirilmasi
+Coğrafya,10,Nüfus ve Yerleşme,Nüfus Piramitleri,tyt-cografya-iklim-bilgisi-buyuk-iklim-tipleri,tyt-cografya-iklim-bilgisi-buyuk-iklim-tipleri-buyuk-iklim-tipleri
+Felsefe,11,Varlık Felsefesi (Ontoloji),Varlığın Mahiyeti ve Problemleri,tyt-felsefe-felsefi-disiplinler,tyt-felsefe-felsefi-disiplinler-varlik-felsefesi
+Felsefe,12,Din Felsefesi,Din Felsefesinin Konusu ve Problemleri,tyt-felsefe-felsefi-disiplinler,tyt-felsefe-felsefi-disiplinler-din-felsefesi
+Felsefe,13,Siyaset Felsefesi,Siyaset Felsefesinin Temel Kavramları,tyt-felsefe-felsefi-disiplinler,tyt-felsefe-felsefi-disiplinler-siyaset-felsefesi
+Felsefe,14,Sanat Felsefesi (Estetik),Sanat ve Estetik Kuramları,tyt-felsefe-felsefi-disiplinler,tyt-felsefe-felsefi-disiplinler-sanat-felsefesi
+Felsefe,15,Bilgi Felsefesi (Epistemoloji),Doğru Bilginin İmkânı ve Ölçütleri,tyt-felsefe-felsefi-disiplinler,tyt-felsefe-felsefi-disiplinler-bilgi-felsefesi
+Din Kültürü ve Ahlak Bilgisi,16,İnanç,İslam'da Bilgi ve Akıl,tyt-din-kulturu-ve-ahlak-bilgisi-islam-ve-hayat,tyt-din-kulturu-ve-ahlak-bilgisi-islam-ve-hayat-islam-ve-bilim
+Din Kültürü ve Ahlak Bilgisi,17,İbadet,Dua ve İbadet,tyt-din-kulturu-ve-ahlak-bilgisi-islam-ve-hayat,tyt-din-kulturu-ve-ahlak-bilgisi-islam-ve-hayat-islam-ve-ibadet
+Din Kültürü ve Ahlak Bilgisi,18,İnanç,İman ve Esasları,tyt-din-kulturu-ve-ahlak-bilgisi-insan-ve-inanc,tyt-din-kulturu-ve-ahlak-bilgisi-insan-ve-inanc-din-ve-islam
+Din Kültürü ve Ahlak Bilgisi,19,İnanç,Allah'ın Sıfatları,tyt-din-kulturu-ve-ahlak-bilgisi-insan-ve-inanc,tyt-din-kulturu-ve-ahlak-bilgisi-insan-ve-inanc-din-ve-islam
+Din Kültürü ve Ahlak Bilgisi,20,Din, Kültür ve Medeniyet,tyt-din-kulturu-ve-ahlak-bilgisi-insan-ve-inanc,tyt-din-kulturu-ve-ahlak-bilgisi-insan-ve-inanc-bilgi-ve-inanc
+Felsefe,21,Felsefeyi Tanıma,Felsefenin Anlamı ve Özellikleri,tyt-felsefe-felsefi-disiplinler,tyt-felsefe-felsefi-disiplinler-felsefi-metin-analizi
+Felsefe,22,Felsefi Okuma ve Yazma,Felsefi Akıl Yürütme ve Önerme,tyt-felsefe-felsefeye-giris,tyt-felsefe-felsefeye-giris-dusunme-ve-akil-yurutme
+Felsefe,23,Bilim Felsefesi,Bilim ve Felsefe İlişkisi,tyt-felsefe-felsefi-disiplinler,tyt-felsefe-felsefi-disiplinler-bilim-felsefesi
+Felsefe,24,17. Yüzyıl - 18. Yüzyıl Felsefesi,Akıl Çağı ve Düalizm,tyt-felsefe-felsefi-disiplinler,tyt-felsefe-felsefi-disiplinler-ahlak-felsefesi
+Felsefe,25,15. Yüzyıl - 17. Yüzyıl Felsefesi,Rönesans Felsefesi ve Bilim,tyt-felsefe-felsefi-disiplinler,tyt-felsefe-felsefi-disiplinler-sanat-felsefesi
+Temel Matematik,1,Rasyonel Sayılar,Rasyonel Sayılarda İşlemler,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-rasyonel-sayilar
+Temel Matematik,2,Temel Kavramlar,Dört İşlem Yeteneği,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-dortgenler
+Temel Matematik,3,Ondalık Sayılar,Ondalık Sayılarda İşlemler,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-ardisik-sayilar
+Temel Matematik,4,Üslü İfadeler,Üslü Sayılarda Denklem ve İşlemler,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-sayisal-mantik-problemleri
+Temel Matematik,5,Köklü İfadeler,Köklü Sayılarda İşlemler,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-koklu-sayilar
+Temel Matematik,6,Temel Kavramlar,Tek ve Çift Sayılar,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-koklu-sayilar
+Temel Matematik,7,Basit Eşitsizlikler,Eşitsizlik Problemleri,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-isci-problemleri
+Temel Matematik,8,Mutlak Değer,Mutlak Değerli Denklemler,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-mutlak-deger
+Temel Matematik,9,Faktöriyel,Faktöriyel Kavramı ve Basamak Analizi,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-sayi-basamaklari
+Temel Matematik,10,Basit Eşitsizlikler,Sıralama ve Eşitsizlik,tyt-matematik-veri-sayma-olasilik,tyt-matematik-veri-sayma-olasilik-sayma-permutasyon
+Temel Matematik,11,Temel Kavramlar,Ardışık Sayılar,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-ardisik-sayilar
+Temel Matematik,12,Bölme ve Bölünebilme,Bölme İşlemi,tyt-matematik-kumeler,tyt-matematik-kumeler-kumeler
+Temel Matematik,13,Kümeler,Kümelerde Kesişim ve Birleşim,tyt-matematik-kumeler,tyt-matematik-kumeler-kumeler
+Temel Matematik,14,İstatistik,Merkezi Yayılım Ölçüleri (Açıklık),tyt-matematik-veri-sayma-olasilik,tyt-matematik-veri-sayma-olasilik-merkezi-egilim-ve-yayilim-olculeri-grafik-turleri
+Temel Matematik,15,Mantık,Bileşik Önermeler,tyt-matematik-kumeler,tyt-matematik-kumeler-kumeler
+Temel Matematik,16,Fonksiyonlar,Fonksiyon Grafiği ve Ters Fonksiyon,tyt-matematik-fonksiyonlar,tyt-matematik-fonksiyonlar-fonksiyonlar
+Temel Matematik,17,Problemler,Grafik Problemleri,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-yas-problemleri
+Temel Matematik,18,Problemler,Yüzde Problemleri,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-yuzde-problemleri
+Temel Matematik,19,Problemler,İşçi ve Üretim Problemleri,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-isci-problemleri
+Temel Matematik,20,Problemler,Denklem Kurma Problemleri,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-sayi-kesir-problemleri
+Temel Matematik,21,Oran-Orantı,Oran ve Orantı Özellikleri,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-oran-oranti
+Temel Matematik,22,Problemler,Yaş Problemleri,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-yas-problemleri
+Temel Matematik,23,Problemler,Karışım Problemleri,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-karisim-problemleri
+Temel Matematik,24,Problemler,Kâr-Zarar Problemleri,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-karisim-problemleri
+Temel Matematik,25,Bölünebilme ve Periyodik Durumlar,Periyodik Tekrar Eden Durumlar,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-birinci-dereceden-denklemler
+Temel Matematik,26,Problemler,Hız ve Hareket Problemleri,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-hiz-hareket-problemleri
+Temel Matematik,27,Problemler,Sayı ve Kesir Problemleri,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-sayi-kesir-problemleri
+Temel Matematik,28,Problemler,İşçi Problemleri,tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-isci-problemleri
+Temel Matematik,29,Permütasyon - Kombinasyon,Permütasyon (Sıralama),tyt-matematik-denklem-ve-esitsizlikler,tyt-matematik-denklem-ve-esitsizlikler-rasyonel-sayilar
+Temel Matematik,30,Olasılık,Basit Olayların Olasılığı,tyt-matematik-veri-sayma-olasilik,tyt-matematik-veri-sayma-olasilik-binom-acilimi
+Geometri,31,Doğruda ve Üçgende Açılar,Doğruda Açılar,tyt-matematik-cemberler,tyt-matematik-cemberler-cemberde-acilar
+Geometri,32,Özel Üçgenler,Pisagor Bağıntısı ve Dik Üçgen,tyt-matematik-ucgenler,tyt-matematik-ucgenler-dik-ucgen-ve-trigonometri
+Geometri,33,Doğruda ve Üçgende Açılar,Doğruda Açılar,tyt-matematik-cemberler,tyt-matematik-cemberler-cemberde-acilar
+Geometri,34,Özel Dörtgenler,Dikdörtgen ve Çevre Hesabı,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-dikdortgen
+Geometri,35,Çokgenler,Düzgün Altıgen,tyt-matematik-ucgenler,tyt-matematik-ucgenler-duzlemde-aci
+Geometri,36,Üçgende Benzerlik,Benzerlik ve Temel Orantı,tyt-matematik-ucgenler,tyt-matematik-ucgenler-ucgende-benzerlik
+Geometri,37,Üçgende Alan,Üçgensel Bölgenin Alanı,tyt-matematik-ucgenler,tyt-matematik-ucgenler-duzlemde-aci
+Geometri,38,Özel Üçgenler,Öklid ve Pisagor Bağıntıları,tyt-matematik-ucgenler,tyt-matematik-ucgenler-dik-ucgen-ve-trigonometri
+Geometri,39,Katı Cisimler,Küp ve Hacim Hesabı,tyt-matematik-ucgenler,tyt-matematik-ucgenler-dik-ucgen-ve-trigonometri
+Geometri,40,Katı Cisimler,Dikdörtgenler Prizması Hacim Hesabı,tyt-matematik-dortgenler-ve-cokgenler,tyt-matematik-dortgenler-ve-cokgenler-dortgenler
+Fizik,1,Kuvvet ve Hareket,Doğrusal Hareket (Hız ve Sürat),tyt-fizik-hareket,tyt-fizik-hareket-temel-hareket-kavramlari
+Fizik,2,İş, Güç ve Enerji,İş ve Kinetik Enerji Teoremi,tyt-fizik-is-guc-enerji,tyt-fizik-is-guc-enerji-guc
+Fizik,3,Isı ve Sıcaklık,Isı İletimi ve Yalıtımı,tyt-fizik-basinc,tyt-fizik-basinc-sivi-basinci
+Fizik,4,Basınç ve Kaldırma Kuvveti,Katı Basıncı,tyt-fizik-basinc,tyt-fizik-basinc-kati-basinci
+Fizik,5,Elektrik ve Manyetizma,Elektrik Devreleri ve Direnç,tyt-fizik-elektrik-ve-manyetizma,tyt-fizik-elektrik-ve-manyetizma-elektrik-enerjisi-ve-guc
+Fizik,6,Dalgalar,Yay Dalgaları,tyt-fizik-dalgalar,tyt-fizik-dalgalar-yay-dalgalari
+Fizik,7,Optik,Küresel Aynalar (Çukur ve Tümsek Ayna),tyt-fizik-optik,tyt-fizik-optik-kuresel-aynalar
+Kimya,8,Kimya Bilimi,Kimyanın Sembolik Dili,tyt-kimya-kimya-bilimi,tyt-kimya-kimya-bilimi-kimyanin-sembolik-dili
+Kimya,9,Atom ve Periyodik Sistem,Periyodik Özelliklerin Değişimi,tyt-kimya-atomun-yapisi-ve-periyodik-sistem,tyt-kimya-atomun-yapisi-ve-periyodik-sistem-periyodik-ozelliklerin-degisimi
+Kimya,10,Kimyasal Türler Arası Etkileşimler,Kovalent ve İyonik Bağlı Kökler,tyt-kimya-karisimlar,tyt-kimya-karisimlar-koligatif-ozellikler
+Kimya,11,Maddenin Halleri,Katı Türleri,tyt-kimya-kimyasal-turler-arasi-etkilesimler,tyt-kimya-kimyasal-turler-arasi-etkilesimler-kimyasal-turler
+Kimya,12,Kimyasal Hesaplamalar,Sınırlayıcı Bileşen Hesaplamaları,tyt-kimya-maddenin-halleri,tyt-kimya-maddenin-halleri-sivilar-ve-ozellikleri
+Kimya,13,Karışımlar,Çözeltiler ve İletkenlik,tyt-kimya-kimya-her-yerde,tyt-kimya-kimya-her-yerde-kozmetikler-ve-ilaclar
+Kimya,14,Kimya Her Yerde,İlaç Formları ve Maddenin Halleri,tyt-kimya-atomun-yapisi-ve-periyodik-sistem,tyt-kimya-atomun-yapisi-ve-periyodik-sistem-atom-modelleri
+Biyoloji,15,Canlıların Temel Bileşenleri,Proteinler ve Peptit Bağı,tyt-biyoloji-canlilar-dunyasi,tyt-biyoloji-canlilar-dunyasi-hayvanlar-lemi
+Biyoloji,16,Hücre ve Organelleri,Prokaryot ve Ökaryot Hücre Yapısı,tyt-biyoloji-hucre,tyt-biyoloji-hucre-hucre-zari
+Biyoloji,17,Canlıların Çeşitliliği ve Sınıflandırılması,Bakteriler ve Mantarlar Âlemi,tyt-biyoloji-canlilar-dunyasi,tyt-biyoloji-canlilar-dunyasi-hayvanlar-lemi
+Biyoloji,18,Hücre Bölünmeleri,Mayoz Bölünme Evreleri,tyt-biyoloji-hucre-bolunmeleri-ve-ureme,tyt-biyoloji-hucre-bolunmeleri-ve-ureme-mayoz
+Biyoloji,19,Kalıtım,Kan Grupları ve Soyağacı,tyt-biyoloji-kalitimin-ve-biyolojik-cesitlilik,tyt-biyoloji-kalitimin-ve-biyolojik-cesitlilik-kan-gruplari
+Biyoloji,20,Ekosistem Ekolojisi,Besin Zinciri ve Biyolojik Birikim,tyt-biyoloji-yasam-bilimi-biyoloji,tyt-biyoloji-yasam-bilimi-biyoloji-inorganik-bilesikler

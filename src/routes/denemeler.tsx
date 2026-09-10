@@ -242,6 +242,7 @@ function Denemeler() {
               </TabsContent>
               <TabsContent value="detailed">
                 <DetailedMockExamForm
+                  solvedTemplateIds={mockExamList.filter(m => m.templateId).map(m => m.templateId as string)}
                   onSave={(e, logs) => {
                     addMockExam(e);
                     for (const log of logs) {

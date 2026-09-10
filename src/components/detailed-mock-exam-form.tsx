@@ -25,10 +25,13 @@ const DOMAIN_MAP: Record<string, "turkce" | "sosyal" | "matematik" | "fen"> = {
 export function DetailedMockExamForm({
   onSave,
   submitLabel = "Kaydet",
+  solvedTemplateIds = [],
 }: {
   onSave: (exam: Omit<MockExam, "id">, logs: { topicId: string, status: "correct" | "wrong" | "blank" }[]) => void;
   submitLabel?: string;
+  solvedTemplateIds?: string[];
 }) {
+  const [categoryId, setCategoryId] = useState<string>("");
   const [templateId, setTemplateId] = useState<string>("");
   const [date, setDate] = useState(() => new Date().toISOString().slice(0, 10));
   
@@ -115,22 +118,45 @@ export function DetailedMockExamForm({
   };
 
   const domains = template ? Array.from(new Set(template.questions.map(q => q.domain))) : [];
+  const uniqueCategories = Array.from(new Set(EXAM_TEMPLATES.map(t => t.category))).filter(Boolean).sort();
+  const filteredTemplates = EXAM_TEMPLATES.filter(t => t.category === categoryId);
 
   return (
     <div className="space-y-4">
       <div className="space-y-2">
-        <Label>Sınav Şablonu (Detaylı Analiz)</Label>
-        <Select value={templateId} onValueChange={setTemplateId}>
+        <Label>Deneme Kategorisi</Label>
+        <Select value={categoryId} onValueChange={(val) => { setCategoryId(val); setTemplateId(""); }}>
           <SelectTrigger>
-            <SelectValue placeholder="Bir sınav şablonu seçin" />
+            <SelectValue placeholder="Bir kategori seçin" />
           </SelectTrigger>
           <SelectContent>
-            {EXAM_TEMPLATES.map(t => (
-              <SelectItem key={t.id} value={t.id}>{t.name}</SelectItem>
+            {uniqueCategories.map(cat => (
+              <SelectItem key={cat} value={cat}>{cat}</SelectItem>
             ))}
           </SelectContent>
         </Select>
       </div>
+
+      {categoryId && (
+        <div className="space-y-2">
+          <Label>Sınav Şablonu (Detaylı Analiz)</Label>
+          <Select value={templateId} onValueChange={setTemplateId}>
+            <SelectTrigger>
+              <SelectValue placeholder="Bir sınav şablonu seçin" />
+            </SelectTrigger>
+            <SelectContent>
+              {filteredTemplates.map(t => {
+                const isSolved = solvedTemplateIds.includes(t.id);
+                return (
+                  <SelectItem key={t.id} value={t.id}>
+                    {isSolved ? "✅ " : ""}{t.name}
+                  </SelectItem>
+                );
+              })}
+            </SelectContent>
+          </Select>
+        </div>
+      )}
 
       <div className="space-y-2">
         <Label>Tarih</Label>
