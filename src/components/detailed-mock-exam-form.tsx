@@ -16,10 +16,22 @@ import { type MockExam } from "@/lib/demo-data";
 import { netOf } from "@/lib/exam-config";
 
 const DOMAIN_MAP: Record<string, "turkce" | "sosyal" | "matematik" | "fen"> = {
+  // TYT
   "Türkçe": "turkce",
   "Sosyal Bilimler": "sosyal",
   "Temel Matematik": "matematik",
   "Fen Bilimleri": "fen",
+  // AI & AYT
+  "Biyoloji": "fen",
+  "Coğrafya": "sosyal",
+  "Din Kültürü ve Ahlak Bilgisi": "sosyal",
+  "Felsefe": "sosyal",
+  "Fizik": "fen",
+  "Geometri": "matematik",
+  "Kimya": "fen",
+  "Matematik": "matematik",
+  "Tarih": "sosyal",
+  "Türk Dili ve Edebiyatı": "turkce",
 };
 
 export function DetailedMockExamForm({
@@ -52,10 +64,10 @@ export function DetailedMockExamForm({
     }
 
     const totals = {
-      turkce: { correct: 40, wrong: 0, blank: 0 },
-      sosyal: { correct: 20, wrong: 0, blank: 0 },
-      matematik: { correct: 40, wrong: 0, blank: 0 },
-      fen: { correct: 20, wrong: 0, blank: 0 },
+      turkce: { total: 0, wrong: 0, blank: 0 },
+      sosyal: { total: 0, wrong: 0, blank: 0 },
+      matematik: { total: 0, wrong: 0, blank: 0 },
+      fen: { total: 0, wrong: 0, blank: 0 },
     };
 
     const logs: { topicId: string, status: "correct" | "wrong" | "blank" }[] = [];
@@ -83,17 +95,20 @@ export function DetailedMockExamForm({
       }
       
       const internalDomain = DOMAIN_MAP[domain];
-      if (!internalDomain) continue;
+      if (!internalDomain) {
+        toast.error(`Bilinmeyen ders kategorisi: ${domain}`);
+        continue;
+      }
 
       for (const qData of domainQuestions) {
         if (!qData.topicId) continue;
+        
+        totals[internalDomain].total++;
 
         if (wrongList.includes(qData.qNum)) {
-          totals[internalDomain].correct--;
           totals[internalDomain].wrong++;
           logs.push({ topicId: qData.topicId, status: "wrong" });
         } else if (blankList.includes(qData.qNum)) {
-          totals[internalDomain].correct--;
           totals[internalDomain].blank++;
           logs.push({ topicId: qData.topicId, status: "blank" });
         } else {
@@ -106,10 +121,10 @@ export function DetailedMockExamForm({
       date: new Date(date).toLocaleDateString("tr-TR"),
       publisher: template.name,
       type: template.examScope as "TYT" | "AYT",
-      turkce: netOf(40, totals.turkce.wrong, totals.turkce.blank),
-      matematik: netOf(40, totals.matematik.wrong, totals.matematik.blank),
-      sosyal: netOf(20, totals.sosyal.wrong, totals.sosyal.blank),
-      fen: netOf(20, totals.fen.wrong, totals.fen.blank),
+      turkce: netOf(totals.turkce.total, totals.turkce.wrong, totals.turkce.blank),
+      matematik: netOf(totals.matematik.total, totals.matematik.wrong, totals.matematik.blank),
+      sosyal: netOf(totals.sosyal.total, totals.sosyal.wrong, totals.sosyal.blank),
+      fen: netOf(totals.fen.total, totals.fen.wrong, totals.fen.blank),
       templateId: template.id,
       detailedLogs: logs,
     };
