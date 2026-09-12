@@ -245,14 +245,22 @@ function Denemeler() {
                   solvedTemplateIds={mockExamList.filter(m => m.templateId).map(m => m.templateId as string)}
                   onSave={(e, logs) => {
                     addMockExam(e);
-                    for (const log of logs) {
-                      addLog(log.topicId, {
+                    const groupedLogs = logs.reduce((acc, log) => {
+                      if (!acc[log.topicId]) acc[log.topicId] = { solved: 0, wrong: 0, blank: 0 };
+                      acc[log.topicId].solved++;
+                      if (log.status === "wrong") acc[log.topicId].wrong++;
+                      if (log.status === "blank") acc[log.topicId].blank++;
+                      return acc;
+                    }, {} as Record<string, { solved: number; wrong: number; blank: number }>);
+
+                    for (const [topicId, counts] of Object.entries(groupedLogs)) {
+                      addLog(topicId, {
                         date: e.date,
                         source: e.publisher + " Deneme",
                         kind: "soru",
-                        solved: 1,
-                        wrong: log.status === "wrong" ? 1 : 0,
-                        blank: log.status === "blank" ? 1 : 0,
+                        solved: counts.solved,
+                        wrong: counts.wrong,
+                        blank: counts.blank,
                       });
                     }
                     setOpen(false);

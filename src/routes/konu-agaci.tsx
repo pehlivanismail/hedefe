@@ -183,7 +183,7 @@ function KonuAgaci() {
                               <div className="flex w-full items-center justify-between gap-3 pr-2">
                                 <div className="flex items-center gap-2">
                                   <span>{area.name}</span>
-                                  {ar.logs?.some((l) => l.kind === "konu") && (
+                                  {(ar.logs?.some((l) => l.kind === "konu") || (area.topics.length > 0 && area.topics.every(t => t.logs?.some(l => l.kind === "konu")))) && (
                                     <span
                                       className="flex items-center gap-1 text-[11px] font-medium text-emerald-600"
                                       title="Konu Çalışması yapıldı"
