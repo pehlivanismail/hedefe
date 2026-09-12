@@ -79,7 +79,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
+  head: ({ location }) => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -95,9 +95,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content: "Konu hakimiyeti, haftalık ödev planı ve deneme takibi bir arada.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://hedefe.net/og-image.png" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      {
+        rel: "canonical",
+        href: `https://hedefe.net${location.pathname === "/" ? "" : location.pathname}`,
+      },
       {
         rel: "stylesheet",
         href: appCss,

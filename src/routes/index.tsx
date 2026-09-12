@@ -45,6 +45,20 @@ export const Route = createFileRoute("/")({
         content: "YKS hazırlığını ücretsiz takip et: konu hakimiyeti, ödev planı, deneme analizi ve koç paneli.",
       },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "EducationalOrganization",
+          name: "Hedefe.net",
+          url: "https://hedefe.net",
+          logo: "https://hedefe.net/og-image.png",
+          description: "YKS hazırlığını ücretsiz takip et: konu hakimiyeti, ödev planı, deneme analizi ve koç paneli.",
+          sameAs: []
+        }),
+      },
+    ],
   }),
   component: Index,
 });
