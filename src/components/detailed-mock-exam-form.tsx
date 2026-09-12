@@ -14,6 +14,7 @@ import { toast } from "sonner";
 import { EXAM_TEMPLATES } from "@/lib/exam-templates";
 import { type MockExam } from "@/lib/demo-data";
 import { netOf } from "@/lib/exam-config";
+import { cn } from "@/lib/utils";
 
 const DOMAIN_MAP: Record<string, "turkce" | "sosyal" | "matematik" | "fen"> = {
   // TYT
@@ -41,6 +42,8 @@ const BUCKET_LABELS: Record<string, string> = {
   fen: "Fen Bilimleri",
 };
 
+type Mark = "wrong" | "blank" | null;
+
 export function DetailedMockExamForm({
   onSave,
   submitLabel = "Kaydet",
@@ -53,15 +56,23 @@ export function DetailedMockExamForm({
   const [categoryId, setCategoryId] = useState<string>("");
   const [templateId, setTemplateId] = useState<string>("");
   const [date, setDate] = useState(() => new Date().toISOString().slice(0, 10));
-  
-  const [wrongQ, setWrongQ] = useState<Record<string, string>>({});
-  const [blankQ, setBlankQ] = useState<Record<string, string>>({});
+
+  // bucket -> qNum -> mark
+  const [marks, setMarks] = useState<Record<string, Record<number, Mark>>>({});
 
   const template = EXAM_TEMPLATES.find(t => t.id === templateId);
 
-  const parseQuestions = (input: string) => {
-    if (!input) return [];
-    return input.split(',').map(s => parseInt(s.trim(), 10)).filter(n => !isNaN(n));
+  const markOf = (bucket: string, qNum: number): Mark => marks[bucket]?.[qNum] ?? null;
+
+  const cycleMark = (bucket: string, qNum: number) => {
+    setMarks(prev => {
+      const bucketMarks = { ...(prev[bucket] ?? {}) };
+      const current = bucketMarks[qNum] ?? null;
+      const next: Mark = current === null ? "wrong" : current === "wrong" ? "blank" : null;
+      if (next === null) delete bucketMarks[qNum];
+      else bucketMarks[qNum] = next;
+      return { ...prev, [bucket]: bucketMarks };
+    });
   };
 
   const handleSave = () => {
@@ -79,42 +90,22 @@ export function DetailedMockExamForm({
 
     const logs: { topicId: string, status: "correct" | "wrong" | "blank" }[] = [];
 
-    // Her bucket (bölüm) için kontrolleri ve hesaplamaları yap
     const buckets = Array.from(new Set(template.questions.map(q => DOMAIN_MAP[q.domain]).filter(Boolean))) as ("turkce" | "sosyal" | "matematik" | "fen")[];
 
     for (const bucket of buckets) {
-      const wrongList = parseQuestions(wrongQ[bucket] || "");
-      const blankList = parseQuestions(blankQ[bucket] || "");
-
-      const intersection = wrongList.filter(x => blankList.includes(x));
-      if (intersection.length > 0) {
-        toast.error(`${BUCKET_LABELS[bucket]} testinde soru hem yanlış hem boş olamaz: ${intersection.join(', ')}`);
-        return;
-      }
-
       const bucketQuestions = template.questions.filter(q => DOMAIN_MAP[q.domain] === bucket);
-      
-      const maxQ = Math.max(...bucketQuestions.map(q => q.qNum));
-      const minQ = Math.min(...bucketQuestions.map(q => q.qNum));
-
-      const outOfBounds = [...wrongList, ...blankList].filter(q => q < minQ || q > maxQ);
-      if (outOfBounds.length > 0) {
-        toast.error(`${BUCKET_LABELS[bucket]} testi için geçersiz soru numaraları (${minQ}-${maxQ} arası olmalı): ${outOfBounds.join(', ')}`);
-        return;
-      }
-      
-      const internalDomain = bucket;
 
       for (const qData of bucketQuestions) {
         if (!qData.topicId) continue;
-        
-        totals[internalDomain].total++;
 
-        if (wrongList.includes(qData.qNum)) {
-          totals[internalDomain].wrong++;
+        totals[bucket].total++;
+        const mark = markOf(bucket, qData.qNum);
+
+        if (mark === "wrong") {
+          totals[bucket].wrong++;
           logs.push({ topicId: qData.topicId, status: "wrong" });
-        } else if (blankList.includes(qData.qNum)) {
-          totals[internalDomain].blank++;
+        } else if (mark === "blank") {
+          totals[bucket].blank++;
           logs.push({ topicId: qData.topicId, status: "blank" });
         } else {
           logs.push({ topicId: qData.topicId, status: "correct" });
@@ -137,7 +128,6 @@ export function DetailedMockExamForm({
     onSave(examData, logs);
   };
 
-  const domains = template ? Array.from(new Set(template.questions.map(q => q.domain))) : [];
   const uniqueCategories = Array.from(new Set(EXAM_TEMPLATES.map(t => t.category))).filter(Boolean).sort();
   const filteredTemplates = EXAM_TEMPLATES.filter(t => t.category === categoryId);
 
@@ -145,7 +135,7 @@ export function DetailedMockExamForm({
     <div className="space-y-4">
       <div className="space-y-2">
         <Label>Deneme Kategorisi</Label>
-        <Select value={categoryId} onValueChange={(val) => { setCategoryId(val); setTemplateId(""); }}>
+        <Select value={categoryId} onValueChange={(val) => { setCategoryId(val); setTemplateId(""); setMarks({}); }}>
           <SelectTrigger>
             <SelectValue placeholder="Bir kategori seçin" />
           </SelectTrigger>
@@ -160,7 +150,7 @@ export function DetailedMockExamForm({
       {categoryId && (
         <div className="space-y-2">
           <Label>Sınav Şablonu (Detaylı Analiz)</Label>
-          <Select value={templateId} onValueChange={setTemplateId}>
+          <Select value={templateId} onValueChange={(val) => { setTemplateId(val); setMarks({}); }}>
             <SelectTrigger>
               <SelectValue placeholder="Bir sınav şablonu seçin" />
             </SelectTrigger>
@@ -188,34 +178,58 @@ export function DetailedMockExamForm({
       </div>
 
       {template && (
-        <div className="space-y-6 pt-4 border-t border-border">
+        <div className="flex items-center gap-4 rounded-xl bg-secondary/60 px-3 py-2 text-xs text-muted-foreground">
+          <span className="flex items-center gap-1.5">
+            <span className="size-3 rounded-sm bg-destructive/80" /> Yanlış
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="size-3 rounded-sm bg-amber-400/80" /> Boş
+          </span>
+          <span className="ml-auto">İşareti kaldırmak için tekrar tıkla</span>
+        </div>
+      )}
+
+      {template && (
+        <div className="space-y-6 pt-2">
           {(Array.from(new Set(template.questions.map(q => DOMAIN_MAP[q.domain]).filter(Boolean))) as ("turkce" | "sosyal" | "matematik" | "fen")[]).map((bucket) => {
             const bucketQuestions = template.questions.filter(q => DOMAIN_MAP[q.domain] === bucket);
             const bucketCount = bucketQuestions.length;
             const minQ = Math.min(...bucketQuestions.map(q => q.qNum));
             const maxQ = Math.max(...bucketQuestions.map(q => q.qNum));
+            const wrongCount = Object.values(marks[bucket] ?? {}).filter(m => m === "wrong").length;
+            const blankCount = Object.values(marks[bucket] ?? {}).filter(m => m === "blank").length;
             return (
               <div key={bucket} className="space-y-3">
-                <h4 className="font-semibold text-brand-deep text-sm">{BUCKET_LABELS[bucket]} <span className="font-normal text-muted-foreground">({bucketCount} Soru, No: {minQ}-{maxQ})</span></h4>
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="space-y-1.5">
-                    <Label className="text-xs">Yanlış Sorular</Label>
-                    <Input
-                      value={wrongQ[bucket] || ""}
-                      placeholder="Ör: 5, 12, 17"
-                      onChange={(e) => setWrongQ(prev => ({ ...prev, [bucket]: e.target.value }))}
-                      className="text-sm"
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <Label className="text-xs">Boş Sorular</Label>
-                    <Input
-                      value={blankQ[bucket] || ""}
-                      placeholder="Ör: 20"
-                      onChange={(e) => setBlankQ(prev => ({ ...prev, [bucket]: e.target.value }))}
-                      className="text-sm"
-                    />
-                  </div>
+                <h4 className="font-semibold text-brand-deep text-sm">
+                  {BUCKET_LABELS[bucket]}{" "}
+                  <span className="font-normal text-muted-foreground">
+                    ({bucketCount} Soru, No: {minQ}-{maxQ})
+                  </span>
+                  {(wrongCount > 0 || blankCount > 0) && (
+                    <span className="ml-2 text-xs font-normal text-muted-foreground">
+                      · {wrongCount} yanlış, {blankCount} boş
+                    </span>
+                  )}
+                </h4>
+                <div className="grid grid-cols-8 gap-1.5 sm:grid-cols-10">
+                  {Array.from({ length: maxQ - minQ + 1 }, (_, i) => minQ + i).map(qNum => {
+                    const mark = markOf(bucket, qNum);
+                    return (
+                      <button
+                        key={qNum}
+                        type="button"
+                        onClick={() => cycleMark(bucket, qNum)}
+                        className={cn(
+                          "h-8 rounded-md border text-xs font-medium transition-colors",
+                          mark === "wrong" && "border-destructive bg-destructive text-destructive-foreground",
+                          mark === "blank" && "border-amber-400 bg-amber-400 text-amber-950",
+                          mark === null && "border-border bg-background text-muted-foreground hover:border-brand hover:text-foreground",
+                        )}
+                      >
+                        {qNum}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             );
