@@ -182,14 +182,19 @@ function Landing() {
             Hedefine giden yolu <span className="text-primary">birlikte planla</span>
           </h1>
           <p className="mt-5 max-w-2xl text-base opacity-85 sm:text-lg">
-            Hedefe.net, YKS öğrencileri ile eğitim koçlarını aynı çalışma masasına oturtur. Konu hakimiyeti, haftalık ödev planı, deneme analizleri ve öğrenme borcu — hepsi tek ekranda, iki taraf için de görünür ve <span className="font-semibold text-primary">tamamen ücretsiz</span>.
+            Hedefe.net, YKS öğrencileri ile eğitim koçlarını aynı çalışma masasına oturtur. <span className="font-semibold text-primary">MEBİ ve 3 Adım denemeleriyle</span> tam uyumlu detaylı konu analizi sayesinde eksiklerinizi anında tespit eder. Konu hakimiyeti, haftalık ödev planı ve öğrenme borcu tek ekranda; <span className="font-semibold text-primary">tamamen ücretsiz</span>.
           </p>
-          <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary ring-1 ring-primary/20 backdrop-blur-sm">
-            <span className="relative flex size-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
-              <span className="relative inline-flex size-2 rounded-full bg-primary" />
-            </span>
-            Şimdi ve her zaman bedava — kredi kartı yok, gizli ücret yok
+          <div className="mt-4 flex flex-wrap gap-3">
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary ring-1 ring-primary/20 backdrop-blur-sm">
+              <span className="relative flex size-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+                <span className="relative inline-flex size-2 rounded-full bg-primary" />
+              </span>
+              Şimdi ve her zaman bedava
+            </div>
+            <div className="inline-flex items-center gap-2 rounded-full bg-amber-400/10 px-3 py-1.5 text-xs font-semibold text-amber-400 ring-1 ring-amber-400/20 backdrop-blur-sm">
+              ✨ MEBİ & 3 Adım Denemeleri İle Uyumlu
+            </div>
           </div>
           <div className="mt-6 flex flex-wrap gap-3">
             {user ? (
