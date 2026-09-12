@@ -500,8 +500,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       if (!task) return;
       
       const dayTasks = (tasksData || [])
-        .filter(t => t.day === task.day && t.weekOffset === task.weekOffset)
-        .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+        .filter(t => t.day === task.day && t.weekOffset === task.weekOffset);
         
       const idx = dayTasks.findIndex(t => t.id === id);
       if (idx === -1) return;
@@ -509,13 +508,14 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       const targetIdx = direction === "up" ? idx - 1 : idx + 1;
       if (targetIdx < 0 || targetIdx >= dayTasks.length) return;
       
-      const targetTask = dayTasks[targetIdx];
+      const newArray = [...dayTasks];
+      newArray[idx] = newArray[targetIdx];
+      newArray[targetIdx] = task;
       
-      const currentOrder = task.order ?? idx;
-      const targetOrder = targetTask.order ?? targetIdx;
-      
-      await supabase.from("tasks").update({ sort_order: targetOrder }).eq("id", task.id);
-      await supabase.from("tasks").update({ sort_order: currentOrder }).eq("id", targetTask.id);
+      const promises = newArray.map((t, i) => 
+        supabase.from("tasks").update({ sort_order: i }).eq("id", t.id)
+      );
+      await Promise.all(promises);
     },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["tasks"] }),
   });
