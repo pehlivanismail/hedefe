@@ -4,6 +4,8 @@ import {
   BookOpen,
   ChevronLeft,
   ChevronRight,
+  ChevronUp,
+  ChevronDown,
   ClipboardList,
   GraduationCap,
   GripVertical,
@@ -83,6 +85,7 @@ function Odevler() {
     addAreaLog,
     addMockExam,
     studyLogs,
+    reorderTask,
   } = useDemoData();
 
   const [weekOffset, setWeekOffset] = useState(0);
@@ -132,7 +135,7 @@ function Odevler() {
   const base = addWeeks(new Date(), weekOffset);
   const start = startOfWeek(base, { weekStartsOn: 1 });
   const end = endOfWeek(base, { weekStartsOn: 1 });
-  const weekTasks = tasks.filter((t) => t.studentId === currentStudent?.id && (t.weekOffset || 0) === weekOffset);
+  const weekTasks = tasks.filter((t) => t.studentId === currentStudent?.id && (t.weekOffset || 0) === weekOffset).sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 
   const openAdd = (kind: TaskKind) => {
     const jsDay = new Date().getDay();
@@ -374,7 +377,24 @@ function Odevler() {
                           </span>
                         )}
                       </span>
-                      <GripVertical className="size-3.5 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
+                      <div className="flex flex-col items-center gap-0.5 opacity-0 transition-opacity group-hover:opacity-100" onClick={(e) => e.stopPropagation()}>
+                        <button
+                          type="button"
+                          className="text-muted-foreground hover:text-primary disabled:opacity-30 disabled:hover:text-muted-foreground"
+                          onClick={() => reorderTask(t.id, "up")}
+                          aria-label="Yukarı taşı"
+                        >
+                          <ChevronUp className="size-3.5" />
+                        </button>
+                        <button
+                          type="button"
+                          className="text-muted-foreground hover:text-primary disabled:opacity-30 disabled:hover:text-muted-foreground"
+                          onClick={() => reorderTask(t.id, "down")}
+                          aria-label="Aşağı taşı"
+                        >
+                          <ChevronDown className="size-3.5" />
+                        </button>
+                      </div>
                     </div>
                     <p
                       className={cn(

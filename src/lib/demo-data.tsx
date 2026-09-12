@@ -107,6 +107,7 @@ export type Task = {
   completedAt?: string | undefined;
 
   result?: TaskResult | undefined;
+  order?: number;
 };
 
 
@@ -231,6 +232,7 @@ type Store = {
   removeTopicDenemeLogs: (topicId: string) => void;
   toggleTask: (id: string) => void;
   moveTask: (id: string, day: number) => void;
+  reorderTask: (id: string, direction: "up" | "down") => void;
   examData: Exam[];
   addLog: (topicId: string, log: Omit<StudyLog, "id">) => void;
   addAreaLog: (areaId: string, log: Omit<StudyLog, "id">) => void;
@@ -271,7 +273,9 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       const { data, error } = await supabase
         .from("tasks")
         .select("*")
-        .eq("student_id", targetStudentId);
+        .eq("student_id", targetStudentId)
+        .order("sort_order", { ascending: true })
+        .order("created_at", { ascending: true });
       if (error) throw error;
       // Map DB snake_case fields to Task camelCase fields
       return (data || []).map((row: any): Task => ({
@@ -292,6 +296,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
           ? String(row.completed_at).slice(0, 10)
           : undefined,
         result: row.result as TaskResult | undefined,
+        order: row.sort_order ?? 0,
       }));
 
     },
@@ -369,6 +374,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
           area_id: t.areaId || null,
           area_name: t.areaName || null,
           assigned_by: assignedBy,
+          sort_order: (tasksData || []).filter(x => x.day === t.day && x.weekOffset === (t.weekOffset ?? 0)).length,
         })
         .select()
         .single();
@@ -484,6 +490,32 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       
       if (error) throw error;
       return data;
+    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["tasks"] }),
+  });
+
+  const reorderTaskMutation = useMutation({
+    mutationFn: async ({ id, direction }: { id: string, direction: "up" | "down" }) => {
+      const task = (tasksData || []).find(t => t.id === id);
+      if (!task) return;
+      
+      const dayTasks = (tasksData || [])
+        .filter(t => t.day === task.day && t.weekOffset === task.weekOffset)
+        .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+        
+      const idx = dayTasks.findIndex(t => t.id === id);
+      if (idx === -1) return;
+      
+      const targetIdx = direction === "up" ? idx - 1 : idx + 1;
+      if (targetIdx < 0 || targetIdx >= dayTasks.length) return;
+      
+      const targetTask = dayTasks[targetIdx];
+      
+      const currentOrder = task.order ?? idx;
+      const targetOrder = targetTask.order ?? targetIdx;
+      
+      await supabase.from("tasks").update({ sort_order: targetOrder }).eq("id", task.id);
+      await supabase.from("tasks").update({ sort_order: currentOrder }).eq("id", targetTask.id);
     },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["tasks"] }),
   });
@@ -632,6 +664,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       },
       toggleTask: (id) => toggleTaskMutation.mutate(id),
       moveTask: (id, day) => moveTaskMutation.mutate({ id, day }),
+      reorderTask: (id, direction) => reorderTaskMutation.mutate({ id, direction }),
       addLog: (topicId, log) => addLogMutation.mutate({ topicId, log }),
       addAreaLog: (areaId, log) => addLogMutation.mutate({ topicId: areaId, log, isArea: true }),
       removeTopicDenemeLogs: (topicId: string) => removeTopicDenemeLogsMutation.mutate(topicId),
@@ -658,6 +691,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       completeTaskMutation,
       toggleTaskMutation,
       moveTaskMutation,
+      reorderTaskMutation,
       addMockExamMutation,
       removeMockExamMutation,
       removeTopicDenemeLogsMutation
