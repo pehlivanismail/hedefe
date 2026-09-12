@@ -4,9 +4,15 @@ import { realExams } from "@/lib/topics-data";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Plus, Trash2, AlertTriangle } from "lucide-react";
+import { Plus, Trash2, AlertTriangle, BookOpen } from "lucide-react";
 import { toast } from "sonner";
 import { addDays } from "date-fns";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export function ExamAnalysis() {
   const { studyLogs, addTask, removeTopicDenemeLogs, currentStudent } = useDemoData();
@@ -119,6 +125,21 @@ export function ExamAnalysis() {
     toast.success(`${item.topicName} çalışma planına eklendi`);
   };
 
+  const groupedData = useMemo(() => {
+    const subjects = new Map<string, Map<string, typeof filteredData>>();
+    for (const item of filteredData) {
+      if (!subjects.has(item.subjectName)) {
+        subjects.set(item.subjectName, new Map());
+      }
+      const subjectMap = subjects.get(item.subjectName)!;
+      if (!subjectMap.has(item.areaName)) {
+        subjectMap.set(item.areaName, []);
+      }
+      subjectMap.get(item.areaName)!.push(item);
+    }
+    return subjects;
+  }, [filteredData]);
+
   if (analysisData.length === 0) {
     return (
       <Card className="p-8 text-center text-muted-foreground rounded-3xl shadow-soft">
@@ -146,48 +167,97 @@ export function ExamAnalysis() {
       </div>
 
       <div className="grid gap-3">
-        {filteredData.map((item) => (
-          <Card 
-            key={item.topicId} 
-            className={`flex items-center justify-between p-4 rounded-2xl shadow-soft border ${item.consecutiveFails >= 2 ? 'border-destructive/50 bg-destructive/5' : 'border-border'}`}
-          >
-            <div>
-              <p className="text-xs font-semibold text-muted-foreground tracking-wide uppercase">
-                {item.subjectName} &gt; {item.areaName}
-              </p>
-              <div className="flex items-center gap-2 mt-0.5">
-                <h3 className="font-display font-bold text-brand-deep text-base">
-                  {item.topicName}
-                </h3>
-                {item.consecutiveFails >= 2 && (
-                  <span className="flex items-center gap-1 text-[10px] font-bold bg-destructive/10 text-destructive px-2 py-0.5 rounded-full uppercase tracking-wider">
-                    <AlertTriangle className="size-3" />
-                    Son {item.consecutiveFails} Denemede Yanlış
-                  </span>
-                )}
-              </div>
-              <div className="flex gap-3 mt-2 text-sm">
-                <span className="text-destructive font-medium">{item.wrong} Yanlış</span>
-                <span className="text-muted-foreground">{item.blank} Boş</span>
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-destructive shrink-0" onClick={() => {
-                if (window.confirm("Bu konuya ait deneme analiz verilerini temizlemek istiyor musunuz?")) {
-                  removeTopicDenemeLogs(item.topicId);
-                  toast.success("Konu analizi temizlendi");
-                }
-              }}>
-                <Trash2 className="size-4" />
-              </Button>
-              <Button variant="outline" size="sm" className="shrink-0 rounded-xl" onClick={() => handleAddTask(item)}>
-                <Plus className="size-4 mr-1" /> Görev Ekle
-              </Button>
-            </div>
-          </Card>
-        ))}
-        {filteredData.length === 0 && (
+        {filteredData.length === 0 ? (
           <p className="text-center text-muted-foreground py-8">Bu derste eksik konu bulunmuyor.</p>
+        ) : (
+          <Accordion type="multiple" className="space-y-3">
+            {Array.from(groupedData.entries()).map(([subjectName, areasMap]) => {
+              const subjectMissed = Array.from(areasMap.values()).flat().reduce((acc, item) => acc + item.totalMissed, 0);
+              return (
+                <AccordionItem
+                  key={subjectName}
+                  value={subjectName}
+                  className="overflow-hidden rounded-2xl border border-border bg-card shadow-soft"
+                >
+                  <AccordionTrigger className="px-5 py-4 hover:no-underline">
+                    <div className="flex w-full items-center justify-between pr-3">
+                      <span className="flex items-center gap-2 font-display text-base font-semibold text-brand-deep">
+                        <BookOpen className="size-4 text-primary" />
+                        {subjectName}
+                      </span>
+                      <span className="text-xs font-medium text-destructive">
+                        {subjectMissed} Hata/Boş
+                      </span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-4 pb-4 pt-3">
+                    <Accordion type="multiple" className="space-y-2">
+                      {Array.from(areasMap.entries()).map(([areaName, topics]) => {
+                        const areaMissed = topics.reduce((acc, item) => acc + item.totalMissed, 0);
+                        return (
+                          <AccordionItem
+                            key={areaName}
+                            value={areaName}
+                            className="rounded-xl border border-border bg-secondary/40"
+                          >
+                            <AccordionTrigger className="px-4 py-2.5 text-sm font-semibold hover:no-underline">
+                              <div className="flex w-full items-center justify-between gap-3 pr-2">
+                                <span>{areaName}</span>
+                                <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-[11px] font-semibold text-destructive">
+                                  {areaMissed} Hata/Boş
+                                </span>
+                              </div>
+                            </AccordionTrigger>
+                            <AccordionContent className="px-2 pb-2">
+                              <div className="space-y-2 pt-2 px-2">
+                                {topics.map((item) => (
+                                  <Card 
+                                    key={item.topicId} 
+                                    className={`flex items-center justify-between p-3 rounded-xl shadow-none border ${item.consecutiveFails >= 2 ? 'border-destructive/50 bg-destructive/5' : 'border-border bg-background'}`}
+                                  >
+                                    <div>
+                                      <div className="flex items-center gap-2">
+                                        <h3 className="font-medium text-brand-deep text-sm">
+                                          {item.topicName}
+                                        </h3>
+                                        {item.consecutiveFails >= 2 && (
+                                          <span className="flex items-center gap-1 text-[10px] font-bold bg-destructive/10 text-destructive px-2 py-0.5 rounded-full uppercase tracking-wider">
+                                            <AlertTriangle className="size-3" />
+                                            Son {item.consecutiveFails} Deneme
+                                          </span>
+                                        )}
+                                      </div>
+                                      <div className="flex gap-3 mt-1.5 text-xs">
+                                        <span className="text-destructive font-medium">{item.wrong} Yanlış</span>
+                                        <span className="text-muted-foreground">{item.blank} Boş</span>
+                                      </div>
+                                    </div>
+                                    <div className="flex items-center gap-1">
+                                      <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-destructive shrink-0" onClick={() => {
+                                        if (window.confirm("Bu konuya ait deneme analiz verilerini temizlemek istiyor musunuz?")) {
+                                          removeTopicDenemeLogs(item.topicId);
+                                          toast.success("Konu analizi temizlendi");
+                                        }
+                                      }}>
+                                        <Trash2 className="size-3.5" />
+                                      </Button>
+                                      <Button variant="outline" size="sm" className="h-8 shrink-0 rounded-lg text-xs" onClick={() => handleAddTask(item)}>
+                                        <Plus className="size-3.5 mr-1" /> Görev Ekle
+                                      </Button>
+                                    </div>
+                                  </Card>
+                                ))}
+                              </div>
+                            </AccordionContent>
+                          </AccordionItem>
+                        );
+                      })}
+                    </Accordion>
+                  </AccordionContent>
+                </AccordionItem>
+              );
+            })}
+          </Accordion>
         )}
       </div>
     </div>

@@ -246,10 +246,11 @@ function Denemeler() {
                   onSave={(e, logs) => {
                     addMockExam(e);
                     const groupedLogs = logs.reduce((acc, log) => {
-                      if (!acc[log.topicId]) acc[log.topicId] = { solved: 0, wrong: 0, blank: 0 };
-                      acc[log.topicId].solved++;
-                      if (log.status === "wrong") acc[log.topicId].wrong++;
-                      if (log.status === "blank") acc[log.topicId].blank++;
+                      const item = acc[log.topicId] || { solved: 0, wrong: 0, blank: 0 };
+                      item.solved++;
+                      if (log.status === "wrong") item.wrong++;
+                      if (log.status === "blank") item.blank++;
+                      acc[log.topicId] = item;
                       return acc;
                     }, {} as Record<string, { solved: number; wrong: number; blank: number }>);
 
