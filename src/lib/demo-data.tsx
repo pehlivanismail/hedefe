@@ -375,7 +375,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
           area_name: t.areaName || null,
           assigned_by: assignedBy,
           sort_order: (tasksData || []).filter(x => x.day === t.day && x.weekOffset === (t.weekOffset ?? 0)).length,
-        })
+        } as any)
         .select()
         .single();
       
@@ -509,11 +509,11 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       if (targetIdx < 0 || targetIdx >= dayTasks.length) return;
       
       const newArray = [...dayTasks];
-      newArray[idx] = newArray[targetIdx];
+      newArray[idx] = newArray[targetIdx]!;
       newArray[targetIdx] = task;
       
       const promises = newArray.map((t, i) => 
-        supabase.from("tasks").update({ sort_order: i }).eq("id", t.id)
+        supabase.from("tasks").update({ sort_order: i } as any).eq("id", t.id)
       );
       await Promise.all(promises);
     },

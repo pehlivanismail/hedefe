@@ -396,14 +396,29 @@ function Odevler() {
                         </button>
                       </div>
                     </div>
-                    <p
+                    <div
                       className={cn(
-                        "mt-2 text-sm leading-snug font-medium",
+                        "mt-2 text-sm leading-snug font-medium whitespace-pre-wrap break-words",
                         t.done && "text-muted-foreground line-through",
                       )}
                     >
-                      {t.title}
-                    </p>
+                      {t.title.split(/(https?:\/\/[^\s]+)/g).map((part, i) =>
+                        /(https?:\/\/[^\s]+)/g.test(part) ? (
+                          <a
+                            key={i}
+                            href={part}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className={cn("text-primary hover:underline", t.done && "text-muted-foreground")}
+                          >
+                            {part}
+                          </a>
+                        ) : (
+                          part
+                        )
+                      )}
+                    </div>
                     <p className="mt-1 text-[11px] text-muted-foreground">
                       {t.subject}
                       {t.areaName && ` · ${t.areaName}`}
@@ -566,7 +581,24 @@ function Odevler() {
         <DialogContent>
           <DialogHeader>
             <DialogTitle className="font-display text-brand-deep flex justify-between items-center pr-6">
-              <span>{active ? TASK_KIND_LABELS[active.kind] : ""} — {active?.title}</span>
+              <span className="whitespace-pre-wrap break-words">
+                {active ? TASK_KIND_LABELS[active.kind] + " — " : ""}
+                {active?.title?.split(/(https?:\/\/[^\s]+)/g).map((part, i) =>
+                  /(https?:\/\/[^\s]+)/g.test(part) ? (
+                    <a
+                      key={i}
+                      href={part}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline"
+                    >
+                      {part}
+                    </a>
+                  ) : (
+                    part
+                  )
+                )}
+              </span>
               {active && (
                 <div className="flex items-center gap-1">
                   {!active.done && (

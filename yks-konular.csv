@@ -1,0 +1,170 @@
+Sinav,Ders,Alan,Konu,Test1_Soru_Sayisi,Test2_Soru_Sayisi,Test3_Soru_Sayisi,Test4_Soru_Sayisi
+TYT,Fizik,FİZİK BİLİMİNE GİRİŞ,Fizik Bilimine Giriş,9,8,8,6
+TYT,Fizik,MADDE VE ÖZELLİKLERİ,Madde ve Özellikleri,19,18,11,8
+TYT,Fizik,HAREKET VE KUVVET,Hareket,16,16,8,7
+TYT,Fizik,HAREKET VE KUVVET,Kuvvet,12,20,8,8
+TYT,Fizik,ENERJİ,"İş, Güç ve Enerji",29,28,16,8
+TYT,Fizik,ISI VE SICAKLIK,Isı ve Sıcaklık,19,18,10,9
+TYT,Fizik,ELEKTROSTATİK,Elektrostatik,17,24,9,8
+TYT,Fizik,ELEKTRİK VE MANYETİZMA,Elektrik ve Manyetizma,35,33,25,8
+TYT,Fizik,BASINÇ VE KALDIRMA KUVVETİ,Basınç,19,19,8,8
+TYT,Fizik,BASINÇ VE KALDIRMA KUVVETİ,Kaldırma Kuvveti,16,16,16,8
+TYT,Fizik,DALGALAR,Dalgalar,44,42,32,7
+TYT,Fizik,OPTİK,Optik,46,47,31,8
+TYT,Matematik,MANTIK,Önermeler ve bileşik önermeler,12,12,12,9
+TYT,Matematik,KÜMELER,Kümelerde Temel Kavramlar,8,8,8,8
+TYT,Matematik,KÜMELER,Kümelerde işlemler,12,12,12,8
+TYT,Matematik,DENKLEMLER VE EŞİTSİZLİKLER,Sayı Kümeleri,8,10,9,10
+TYT,Matematik,DENKLEMLER VE EŞİTSİZLİKLER,Bölünebilme Kuralları,12,12,8,8
+TYT,Matematik,DENKLEMLER VE EŞİTSİZLİKLER,Birinci dereceden denklemler ve eşitsizlikler,22,22,11,10
+TYT,Matematik,DENKLEMLER VE EŞİTSİZLİKLER,Üslü İfadeler ve Denklemler,15,16,12,11
+TYT,Matematik,DENKLEMLER VE EŞİTSİZLİKLER,Denklemler ve Eşitsizliklerle İlgili Uygulamalar,34,33,32,11
+TYT,Matematik,ÜÇGENLER,Üçgenlerde temel kavramlar,8,8,8,8
+TYT,Matematik,ÜÇGENLER,Üçgenlerde eşlik ve benzerlik,17,18,9,9
+TYT,Matematik,ÜÇGENLER,Üçgenlerin yardımcı elemanları,8,16,8,8
+TYT,Matematik,ÜÇGENLER,Dik üçgen ve trigonometri,8,16,8,8
+TYT,Matematik,ÜÇGENLER,Üçgenin alanı,9,15,8,8
+TYT,Matematik,VERİ,Merkezi eğilim ve yayılım ölçüleri,9,9,9,8
+TYT,Matematik,VERİ,Verilerin grafik ile gösterilmesi,7,9,6,5
+TYT,Matematik,SAYMA VE OLASILIK,Sıralama ve seçme,24,24,24,8
+TYT,Matematik,SAYMA VE OLASILIK,Basit Olayların Olasılıkları,12,12,12,8
+TYT,Matematik,FONKSİYONLAR,Fonksiyon kavramı ve gösterimi,12,12,20,11
+TYT,Matematik,FONKSİYONLAR,İki fonksiyonun bileşkesi ve ters fonksiyon,22,21,21,8
+TYT,Matematik,POLİNOMLAR,Polinom kavramı ve polinomlarda işlemler,12,12,11,8
+TYT,Matematik,POLİNOMLAR,Polinomların çarpanlara ayrılması,12,12,21,8
+TYT,Matematik,İKİNCİ DERECEDEN DENKLEMLER,İkinci dereceden bir bilinmeyenli denklemler,36,24,36,11
+TYT,Matematik,DÖRTGENLER VE ÇOKGENLER,Çokgenler,12,12,12,9
+TYT,Matematik,DÖRTGENLER VE ÇOKGENLER,Özel dörtgenler,24,36,24,10
+TYT,Matematik,UZAY GEOMETRİ,Katı cisimler,24,19,8,8
+TYT,Kimya,KİMYA BİLİMİ,Simyadan Kimyaya - Kimya Disiplinleri ve Kimyacıların Çalışma Alanları,9,12,11,8
+TYT,Kimya,KİMYA BİLİMİ,Kimyanın Sembolik Dili - Kimya Uygulamalarında İş Sağlığı ve Güvenliği,20,12,21,10
+TYT,Kimya,ATOM VE PERİYODİK SİSTEM,Atom Modelleri ve Atomun Yapısı,12,11,12,11
+TYT,Kimya,ATOM VE PERİYODİK SİSTEM,Periyodik Sistem,12,24,21,9
+TYT,Kimya,KİMYASAL TÜRLER ARASI ETKİLEŞİMLER,Kimyasal Türler ve Kimyasal Türler Arasındaki Etkileşimlerin Sınıflandırılması,24,22,22,19
+TYT,Kimya,MADDENİN HÂLLERİ,"Maddenin Hâlleri (Katılar, Sıvılar, Gazlar, Plazma)",23,21,20,10
+TYT,Kimya,DOĞA VE KİMYA,"Su, Hayat ve Çevre Kimyası",24,12,12,12
+TYT,Kimya,KİMYANIN TEMEL KANUNLARI VE KİMYASAL HESAPLAMALAR,Kimyanın Temel Kanunları ve Mol Kavramı,12,12,12,12
+TYT,Kimya,KİMYANIN TEMEL KANUNLARI VE KİMYASAL HESAPLAMALAR,Kimyasal Tepkimeler -Kimyasal Tepkimelerde Hesaplamalar,11,12,10,11
+TYT,Kimya,KARIŞIMLAR,Karışımlar - Karışımları Ayırma Teknikleri,21,21,23,20
+TYT,Kimya,"ASİTLER, BAZLAR VE TUZLAR","Asitler, Bazlar ve Tuzlar",24,23,24,22
+TYT,Kimya,KİMYA HER YERDE,Yaygın Günlük Hayat Kimyasalları ve Gıdalar,24,22,22,22
+TYT,Biyoloji,YAŞAM BİLİMİ BİYOLOJİ,Biyoloji ve Canlıların Ortak Özellikleri,10,8,8,8
+TYT,Biyoloji,YAŞAM BİLİMİ BİYOLOJİ,İnorganik Bileşikler,8,8,8,8
+TYT,Biyoloji,YAŞAM BİLİMİ BİYOLOJİ,Karbonhidratlar - Lipitler - Proteinler,12,11,10,8
+TYT,Biyoloji,YAŞAM BİLİMİ BİYOLOJİ,Enzimler - Vitaminler - Hormonlar,11,9,9,8
+TYT,Biyoloji,YAŞAM BİLİMİ BİYOLOJİ,Nükleik Asitler - ATP,8,8,8,9
+TYT,Biyoloji,HÜCRE,Hücrenin Yapısı ve Kısımları,24,19,24,9
+TYT,Biyoloji,HÜCRE,Hücre Zarından Madde Geçişleri,10,11,8,8
+TYT,Biyoloji,CANLILAR DÜNYASI,Canlıların Çeşitliliği ve Sınıflandırılması,11,10,8,8
+TYT,Biyoloji,CANLILAR DÜNYASI,Canlı Âlemleri ve Özellikleri - Virüsler,25,24,12,9
+TYT,Biyoloji,HÜCRE BÖLÜNMELERİ,Mitoz ve Eşeysiz Üreme,12,11,8,8
+TYT,Biyoloji,HÜCRE BÖLÜNMELERİ,Mayoz ve Eşeyli Üreme,13,11,12,10
+TYT,Biyoloji,KALITIMIN GENEL İLKELERİ,Kalıtımın Genel Esasları - Mendel İlkeleri ve Çaprazlamalar,12,12,12,8
+TYT,Biyoloji,KALITIMIN GENEL İLKELERİ,Eş Baskınlık - Çok Alellilik - Kan Grupları,12,10,10,10
+TYT,Biyoloji,KALITIMIN GENEL İLKELERİ,Eşeye Bağlı Kalıtım - Genetik Varyasyonlar,10,10,11,7
+TYT,Biyoloji,KALITIMIN GENEL İLKELERİ,Soyağaçları,16,16,8,8
+TYT,Biyoloji,EKOSİSTEM EKOLOJİSİ VE GÜNCEL ÇEVRE SORUNLARI,Ekosistem Ekolojisi,13,9,10,8
+TYT,Biyoloji,EKOSİSTEM EKOLOJİSİ VE GÜNCEL ÇEVRE SORUNLARI,Güncel Çevre Sorunları ve İnsan,12,9,9,7
+TYT,Biyoloji,EKOSİSTEM EKOLOJİSİ VE GÜNCEL ÇEVRE SORUNLARI,Doğal Kaynaklar ve Biyolojik Çeşitliliğin Korunması,8,8,7,8
+TYT,Tde,tde,Sözcükte Anlam,11,10,8,10
+TYT,Tde,tde,Cümlede Anlam,8,10,8,8
+TYT,Tde,tde,Paragrafta Anlam,8,9,8,8
+TYT,Tde,tde,Ses Bilgisi,12,9,11,11
+TYT,Tde,tde,Sözcükte Yapı,11,16,9,9
+TYT,Tde,tde,Yazım Kuralları,22,22,23,25
+TYT,Tde,tde,Noktalama İşaretleri,22,23,23,23
+TYT,Tde,tde,İsim Soylu Sözcükler,15,12,13,11
+TYT,Tde,tde,Fiiller,13,14,12,11
+TYT,Tde,tde,Tamlamalar,13,11,11,12
+TYT,Tde,tde,Cümlenin Ögeleri,13,12,12,11
+TYT,Tde,tde,Cümle Türleri,16,12,13,12
+TYT,Tde,tde,Anlatım Bozuklukları,10,12,12,12
+AYT,Fizik,KUVVET VE HAREKET,Vektörler,8,8,8,8
+AYT,Fizik,KUVVET VE HAREKET,Bağıl Hareket,8,8,8,8
+AYT,Fizik,KUVVET VE HAREKET,Newton’ın Hareket Yasaları,8,8,15,7
+AYT,Fizik,KUVVET VE HAREKET,Bir Boyutta Sabit İvmeli Hareket,9,9,9,10
+AYT,Fizik,KUVVET VE HAREKET,İki Boyutta Sabit İvmeli Hareket,10,10,8,8
+AYT,Fizik,KUVVET VE HAREKET,Enerji ve Hareket,8,9,10,8
+AYT,Fizik,KUVVET VE HAREKET,İtme ve Çizgisel Momentum,10,10,9,7
+AYT,Fizik,KUVVET VE HAREKET,Tork ve Denge,7,8,8,9
+AYT,Fizik,KUVVET VE HAREKET,Basit Makineler,8,8,8,7
+AYT,Fizik,ELEKTRİK VE MANYETİZMA,Elektriksel Kuvvet Elektrik Alan,9,9,9,8
+AYT,Fizik,ELEKTRİK VE MANYETİZMA,Elektriksel Potansiyel,11,10,8,8
+AYT,Fizik,ELEKTRİK VE MANYETİZMA,Düzgün Elektrik Alan ve Sığa,8,8,7,8
+AYT,Fizik,ELEKTRİK VE MANYETİZMA,Manyetizma ve Elektromanyetik İndüklenme,11,10,8,8
+AYT,Fizik,ELEKTRİK VE MANYETİZMA,Alternatif Akım ve Transformatörler,9,7,8,7
+AYT,Fizik,ÇEMBERSEL HAREKET,Çembersel Hareket,8,18,8,8
+AYT,Fizik,ÇEMBERSEL HAREKET,Açısal Momentum-Kütle Çekim Kuvveti ve Kepler Kanunları,8,8,8,8
+AYT,Fizik,BASİT HARMONİK HAREKET,Basit Harmonik Hareket,10,16,8,8
+AYT,Fizik,DALGA MEKANİĞİ,"Dalgalarda Kırınım, Girişim, Doppler Olayı",8,8,7,7
+AYT,Fizik,DALGA MEKANİĞİ,Elektromanyetik Dalgalar,8,8,8,8
+AYT,Fizik,ATOM FİZİĞİNE GİRİŞ VE RADYOAKTİVİTE,Atom Kavramının Tarihsel Gelişimi,8,8,8,8
+AYT,Fizik,ATOM FİZİĞİNE GİRİŞ VE RADYOAKTİVİTE,Büyük Patlama ve Evrenin Oluşumu,12,11,11,8
+AYT,Fizik,ATOM FİZİĞİNE GİRİŞ VE RADYOAKTİVİTE,Radyoaktivite,11,10,8,8
+AYT,Fizik,MODERN FİZİK,Özel Görelilik ve Kuantum Fiziğine Giriş,8,9,8,9
+AYT,Fizik,MODERN FİZİK,Fotoelektrik Olayı,10,16,10,8
+AYT,Fizik,MODERN FİZİK,Compton Saçılması ve de Broglie Dalga Boyu,10,11,9,8
+AYT,Fizik,MODERN FİZİĞİN TEKNO- LOJİDEKİ UYGULAMALARI,Modern Fiziğin Teknolojideki Uygulamaları,12,13,11,12
+AYT,Matematik,TRİGONOMETRİ,Yönlü açılar,10,12,9,8
+AYT,Matematik,TRİGONOMETRİ,Trigonometrik fonksiyonlar,41,40,35,10
+AYT,Matematik,ANALİTİK GEOMETRİ,Doğrunun analitik incelenmesi,22,22,18,8
+AYT,Matematik,FONKSİYONLARDA UYGULAMALAR,Fonksiyonlar ile ilgili uygulamalar,12,12,9,7
+AYT,Matematik,FONKSİYONLARDA UYGULAMALAR,İkinci dereceden fonksiyonlar ve grafikleri,12,11,11,10
+AYT,Matematik,FONKSİYONLARDA UYGULAMALAR,Fonksiyonların dönüşümleri,10,10,8,8
+AYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,İkinci dereceden iki bilinmeyenli denklem sistemleri,14,14,12,8
+AYT,Matematik,DENKLEM VE EŞİTSİZLİKLER,İkinci dereceden bir bilinmeyenli eşitsizlik sistemleri,22,23,23,8
+AYT,Matematik,ÇEMBER VE DAİRE,Çemberin temel elemanları ve Çemberde açılar,10,10,8,8
+AYT,Matematik,ÇEMBER VE DAİRE,Çemberde teğet ve Dairenin çevresi ve alanı,16,15,16,8
+AYT,Matematik,UZAY GEOMETRİ,Katı cisimler,11,12,8,9
+AYT,Matematik,OLASILIK,Koşullu olasılık ve Deneysel ve teorik olasılık,16,16,16,8
+AYT,Matematik,ÜSTEL VE LOGARİTMİK FONKSİYONLAR,Üstel fonksiyon,11,9,10,8
+AYT,Matematik,ÜSTEL VE LOGARİTMİK FONKSİYONLAR,Logaritma fonksiyonu,15,14,13,11
+AYT,Matematik,ÜSTEL VE LOGARİTMİK FONKSİYONLAR,"Üstel, logaritmik denklemler ve eşitsizlikler",10,10,9,8
+AYT,Matematik,DİZİLER,Gerçek sayı dizileri,16,16,12,10
+AYT,Matematik,TRİGONOMETRİ,Toplam - fark ve iki kat açı formülleri,14,13,12,14
+AYT,Matematik,TRİGONOMETRİ,Trigonometrik denklemler,14,16,16,12
+AYT,Matematik,DÖNÜŞÜMLER,Analitik düzlemde temel dönüşümler,24,10,9,8
+AYT,Matematik,TÜREV,Limit ve Süreklilik,12,12,10,10
+AYT,Matematik,TÜREV,Anlık Değişim Oranı ve Türev,24,24,10,8
+AYT,Matematik,TÜREV,Türevin Uygulamaları,13,12,12,16
+AYT,Matematik,İNTEGRAL,Belirsiz İntegral,16,16,12,8
+AYT,Matematik,İNTEGRAL,Belirli İntegral ve Uygulamaları,24,24,24,10
+AYT,Matematik,ANALİTİK GEOMETRİ,Çemberin Analitik İncelenmesi,24,12,15,8
+AYT,Kimya,MODERN ATOM TEORİSİ,Atomun Kuantum Modeli - Periyodik Sistem ve Elektron Dizilimleri,11,10,12,12
+AYT,Kimya,MODERN ATOM TEORİSİ,Periyodik Özellikler - Elementleri Tanıyalım - Yükseltgenme Basamakları,12,12,21,11
+AYT,Kimya,GAZLAR,Gazların Özellikleri ve Gaz Yasaları - İdeal Gaz Yasası,12,11,10,11
+AYT,Kimya,GAZLAR,Gazlarda Kinetik Teori - Gaz Karışımları - Gerçek Gazlar,12,10,12,16
+AYT,Kimya,SIVI ÇÖZELTİLER VE ÇÖZÜNÜRLÜK,Çözücü ve Çözünen Etkileşimleri - Derişim Birimleri,23,22,12,10
+AYT,Kimya,SIVI ÇÖZELTİLER VE ÇÖZÜNÜRLÜK,Koligatif Özellikler - Çözünürlük - Çözünürlüğe Etki Eden Faktörler,12,11,21,10
+AYT,Kimya,KİMYASAL TEPKİMELERDE ENERJİ,Tepkimelerde Isı Değişimi - Oluşum Entalpisi - Tepkime Isılarının Toplanabilirliği,24,24,31,10
+AYT,Kimya,KİMYASAL TEPKİMELERDE HIZ,Tepkime Hızı - Tepkime Hızını Etkileyen Faktörler,22,31,21,8
+AYT,Kimya,KİMYASAL TEPKİMELERDE DENGE,Kimyasal Denge - Dengeyi Etkileyen Faktörler,12,12,11,8
+AYT,Kimya,KİMYASAL TEPKİMELERDE DENGE,Sulu Çözelti Dengeleri,24,23,23,28
+AYT,Kimya,KİMYA VE ELEKTRİK,İndirgenme - Yükseltgenme Tepkimelerinde Elektrik Akımı,11,24,12,12
+AYT,Kimya,KİMYA VE ELEKTRİK,Elektrokimyasal Hücreler - Elektrot Potansiyelleri - Elektroliz - Korozyon,21,23,22,19
+AYT,Kimya,KARBON KİMYASINA GİRİŞ,Anorganik ve Organik Bileşikler - Basit Formül - Molekül Formülü - Doğada Karbon,12,12,12,12
+AYT,Kimya,KARBON KİMYASINA GİRİŞ,Lewis Formülleri - Hibritleşme - Molekül Geometrisi,24,24,24,24
+AYT,Kimya,ORGANİK BİLEŞİKLER,Hidrokarbonlar,22,23,23,20
+AYT,Kimya,ORGANİK BİLEŞİKLER,"Organik Bileşik Sınıfları (Alkoller, Eterler, Karbonil Bileşikleri, Karboksilik Asitler, Esterler)",24,23,23,32
+AYT,Kimya,ENERJİ KAYNAKLARI VE BİLİMSEL GELİŞMELER,Fosil Yakıtlar - Enerji Kaynakları - Sürdürülebilirlik – Nanoteknoloji,12,22,24,11
+AYT,Biyoloji,İNSAN FİZYOLOJİSİ,Sinir Sistemi,11,11,12,10
+AYT,Biyoloji,İNSAN FİZYOLOJİSİ,Endokrin Sistem,12,10,9,10
+AYT,Biyoloji,İNSAN FİZYOLOJİSİ,Duyu Organları,11,12,10,9
+AYT,Biyoloji,İNSAN FİZYOLOJİSİ,Destek ve Hareket Sistemi,12,12,11,11
+AYT,Biyoloji,İNSAN FİZYOLOJİSİ,Sindirim Sistemi,11,16,10,8
+AYT,Biyoloji,İNSAN FİZYOLOJİSİ,Dolaşım Sistemleri,22,10,10,8
+AYT,Biyoloji,İNSAN FİZYOLOJİSİ,Bağışıklık Çeşitleri ve Savunma Mekanizmaları,12,11,12,9
+AYT,Biyoloji,İNSAN FİZYOLOJİSİ,Solunum Sistemi,10,10,10,6
+AYT,Biyoloji,İNSAN FİZYOLOJİSİ,Üriner Sistem,16,12,9,8
+AYT,Biyoloji,İNSAN FİZYOLOJİSİ,Üreme Sistemi ve Embriyonik Gelişim,13,16,11,6
+AYT,Biyoloji,KOMÜNİTE VE POPÜLASYON EKOLOJİSİ,Komünite Ekolojisi,11,11,10,8
+AYT,Biyoloji,KOMÜNİTE VE POPÜLASYON EKOLOJİSİ,Popülasyon Ekolojisi,11,11,12,8
+AYT,Biyoloji,GENDEN PROTEİNE,Nükleik Asitlerin Keşfi ve Önemi,12,11,12,8
+AYT,Biyoloji,GENDEN PROTEİNE,Genetik Şifre ve Protein Sentezi,12,11,11,10
+AYT,Biyoloji,GENDEN PROTEİNE,Genetik Mühendisliği ve Biyoteknoloji,12,10,10,8
+AYT,Biyoloji,CANLILARDA ENERJİ DÖNÜŞÜMLERİ,Canlılık ve Enerji - Fotosentez - Kemosentez,13,12,14,8
+AYT,Biyoloji,CANLILARDA ENERJİ DÖNÜŞÜMLERİ,Hücresel Solunum - Fermantasyon Fotosentez ve Solunum İlişkisi,11,21,12,8
+AYT,Biyoloji,BİTKİ BİYOLOJİSİ,Bitkilerin Yapısı,12,12,11,12
+AYT,Biyoloji,BİTKİ BİYOLOJİSİ,Bitkilerde Madde Taşınması,12,12,10,9
+AYT,Biyoloji,BİTKİ BİYOLOJİSİ,Bitkilerde Eşeyli Üreme,12,12,12,12
+AYT,Biyoloji,CANLILAR VE ÇEVRE,Canlılar ve Çevre,11,8,7,8
