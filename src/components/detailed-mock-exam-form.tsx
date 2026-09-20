@@ -93,7 +93,12 @@ export function DetailedMockExamForm({
     const buckets = Array.from(new Set(template.questions.map(q => DOMAIN_MAP[q.domain]).filter(Boolean))) as ("turkce" | "sosyal" | "matematik" | "fen")[];
 
     for (const bucket of buckets) {
-      const bucketQuestions = template.questions.filter(q => DOMAIN_MAP[q.domain] === bucket);
+      let bucketQuestions = template.questions.filter(q => DOMAIN_MAP[q.domain] === bucket);
+
+      // TYT Sosyal testinde 21-25 arası alternatif din/felsefe soruları muaf sayılır.
+      if (template.examScope === "TYT" && bucket === "sosyal") {
+        bucketQuestions = bucketQuestions.filter(q => q.qNum <= 20);
+      }
 
       for (const qData of bucketQuestions) {
         if (!qData.topicId) continue;

@@ -9,6 +9,11 @@ import {
   Tooltip,
   XAxis,
   YAxis,
+  Radar,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
 } from "recharts";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -124,6 +129,28 @@ function Denemeler() {
 
   const tyt = tytRows.map((e) => ({ date: e.date.slice(0, 5), net: total(e) }));
   const ayt = aytRows.map((e) => ({ date: e.date.slice(0, 5), net: total(e) }));
+
+  // Radar Chart Data Calculation (Average Percentages for TYT)
+  const radarData = useMemo(() => {
+    if (tytRows.length === 0) return [];
+    
+    const sum = tytRows.reduce(
+      (acc, e) => ({
+        turkce: acc.turkce + e.turkce,
+        matematik: acc.matematik + e.matematik,
+        sosyal: acc.sosyal + e.sosyal,
+        fen: acc.fen + e.fen,
+      }),
+      { turkce: 0, matematik: 0, sosyal: 0, fen: 0 }
+    );
+    
+    return [
+      { subject: "Türkçe", pct: Math.round((sum.turkce / (tytRows.length * 40)) * 100), fullMark: 100 },
+      { subject: "Matematik", pct: Math.round((sum.matematik / (tytRows.length * 40)) * 100), fullMark: 100 },
+      { subject: "Sosyal", pct: Math.round((sum.sosyal / (tytRows.length * 20)) * 100), fullMark: 100 },
+      { subject: "Fen", pct: Math.round((sum.fen / (tytRows.length * 20)) * 100), fullMark: 100 },
+    ];
+  }, [tytRows]);
 
   const handleDelete = (e: React.MouseEvent, exam: MockExam) => {
     e.stopPropagation();
@@ -280,22 +307,58 @@ function Denemeler() {
           <TabsTrigger value="analiz">Eksik Konu Analizi</TabsTrigger>
         </TabsList>
         <TabsContent value="gecmis" className="space-y-6">
-          <div className="grid gap-6 lg:grid-cols-2">
-            <NetChart
-              id="tytGrad"
-              title="TYT Net İlerlemesi"
-              data={tyt}
-              color="oklch(0.7 0.157 159.5)"
-              maxQuestions={EXAM_QUESTION_COUNTS.TYT}
-            />
-
-            <NetChart
-              id="aytGrad"
-              title="AYT Net İlerlemesi"
-              data={ayt}
-              color="oklch(0.45 0.09 220)"
-              maxQuestions={EXAM_QUESTION_COUNTS.AYT}
-            />
+          <div className="grid gap-6 lg:grid-cols-3">
+            <div className="lg:col-span-2 space-y-6">
+              <NetChart
+                id="tytGrad"
+                title="TYT Net İlerlemesi"
+                data={tyt}
+                color="oklch(0.7 0.157 159.5)"
+                maxQuestions={EXAM_QUESTION_COUNTS.TYT}
+              />
+              <NetChart
+                id="aytGrad"
+                title="AYT Net İlerlemesi"
+                data={ayt}
+                color="oklch(0.45 0.09 220)"
+                maxQuestions={EXAM_QUESTION_COUNTS.AYT}
+              />
+            </div>
+            
+            <Card className="rounded-3xl border-border p-6 shadow-soft flex flex-col">
+              <h3 className="font-display text-lg font-bold text-brand-deep">
+                TYT Ortalama Başarı Grafiği
+              </h3>
+              <p className="text-sm text-muted-foreground mt-1 mb-4">
+                Tüm TYT denemelerindeki branş bazlı ortalama başarın (%)
+              </p>
+              <div className="flex-1 min-h-[300px]">
+                {radarData.length > 0 ? (
+                  <ResponsiveContainer width="100%" height="100%">
+                    <RadarChart cx="50%" cy="50%" outerRadius="70%" data={radarData}>
+                      <PolarGrid stroke="var(--border)" />
+                      <PolarAngleAxis dataKey="subject" tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 13 }} />
+                      <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
+                      <Radar
+                        name="Başarı %"
+                        dataKey="pct"
+                        stroke="oklch(0.7 0.157 159.5)"
+                        fill="oklch(0.7 0.157 159.5)"
+                        fillOpacity={0.4}
+                      />
+                      <Tooltip 
+                        formatter={(value: number) => [`%${value}`, "Ortalama Başarı"]}
+                        contentStyle={{ borderRadius: "12px", border: "1px solid var(--border)", boxShadow: "0 4px 12px rgba(0,0,0,0.05)" }}
+                      />
+                    </RadarChart>
+                  </ResponsiveContainer>
+                ) : (
+                  <div className="flex h-full items-center justify-center text-sm text-muted-foreground">
+                    Henüz TYT denemesi bulunmuyor.
+                  </div>
+                )}
+              </div>
+            </Card>
           </div>
 
           <Tabs defaultValue="tyt" className="w-full mt-8">
