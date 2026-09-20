@@ -212,7 +212,7 @@ export function MockExamForm({
             return;
           }
           onSave({
-            date: new Date(date).toLocaleDateString("tr-TR"),
+            date: date,
             publisher: publisher.trim(),
             type: kind,
             turkce: round(totals.turkce),

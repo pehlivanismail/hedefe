@@ -72,6 +72,14 @@ export const TRACK_LABELS: Record<Track, string> = {
   esit: "AYT Eşit Ağırlık",
 };
 
+const toIsoDate = (d: string) => {
+  if (!d) return "";
+  if (/^\d{4}-\d{2}-\d{2}$/.test(d)) return d;
+  const m = /^(\d{1,2})[-./](\d{1,2})[-./](\d{4})$/.exec(d);
+  if (m) return `${m[3]}-${m[2].padStart(2, '0')}-${m[1].padStart(2, '0')}`;
+  return new Date(d).toISOString().slice(0, 10);
+};
+
 export type TaskKind = "konu" | "soru" | "deneme";
 
 export const TASK_KIND_LABELS: Record<TaskKind, string> = {
@@ -562,11 +570,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
 
       // 2. Delete the associated study_logs
       if (targetStudentId) {
-        const isoDate = (() => {
-          const m = /^(\d{1,2})[-./](\d{1,2})[-./](\d{4})$/.exec(date);
-          if (m) return `${m[3]}-${m[2].padStart(2, '0')}-${m[1].padStart(2, '0')}`;
-          return date; // fallback
-        })();
+        const isoDate = toIsoDate(date);
         
         await supabase
           .from("study_logs")
@@ -611,15 +615,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
   const addLogMutation = useMutation({
     mutationFn: async ({ topicId, log, isArea }: { topicId: string, log: Omit<StudyLog, "id">, isArea?: boolean }) => {
       if (!targetStudentId) throw new Error("No user");
-      // "07.09.2026" gibi yerel tarihi ISO (YYYY-MM-DD) biçimine çevir
-      const isoDate = (() => {
-        const m = /^(\d{1,2})[-./](\d{1,2})[-./](\d{4})$/.exec(String(log.date ?? ""));
-        if (m) return `${m[3]}-${m[2].padStart(2, '0')}-${m[1].padStart(2, '0')}`;
-        const d = new Date(log.date ?? Date.now());
-        return isNaN(d.getTime())
-          ? new Date().toISOString().slice(0, 10)
-          : d.toISOString().slice(0, 10);
-      })();
+      const isoDate = toIsoDate(String(log.date ?? ""));
       const { data, error } = await supabase
         .from("study_logs")
         .insert({

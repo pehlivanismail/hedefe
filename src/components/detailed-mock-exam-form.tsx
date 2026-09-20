@@ -114,7 +114,7 @@ export function DetailedMockExamForm({
     }
 
     const examData: Omit<MockExam, "id"> = {
-      date: new Date(date).toLocaleDateString("tr-TR"),
+      date: date,
       publisher: template.name,
       type: template.examScope as "TYT" | "AYT",
       turkce: netOf(totals.turkce.total, totals.turkce.wrong, totals.turkce.blank),
