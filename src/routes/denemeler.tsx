@@ -40,7 +40,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import { useDemoData, type MockExam } from "@/lib/demo-data";
 import { cn } from "@/lib/utils";
-import { EXAM_QUESTION_COUNTS, AYT_SECTIONS } from "@/lib/exam-config";
+import { EXAM_QUESTION_COUNTS, TYT_SECTIONS, AYT_SECTIONS } from "@/lib/exam-config";
 
 export const Route = createFileRoute("/denemeler")({
   component: Denemeler,
@@ -130,57 +130,93 @@ function Denemeler() {
   const tyt = tytRows.map((e) => ({ date: e.date.slice(0, 5), net: total(e) }));
   const ayt = aytRows.map((e) => ({ date: e.date.slice(0, 5), net: total(e) }));
 
-  // Radar Chart Data Calculation (Average Percentages for TYT)
+  // Radar Chart Data Calculation (Detailed Percentages for TYT)
   const radarData = useMemo(() => {
     if (tytRows.length === 0) return [];
     
-    const sum = tytRows.reduce(
-      (acc, e) => ({
-        turkce: acc.turkce + (e.turkce || 0),
-        matematik: acc.matematik + (e.matematik || 0),
-        sosyal: acc.sosyal + (e.sosyal || 0),
-        fen: acc.fen + (e.fen || 0),
-      }),
-      { turkce: 0, matematik: 0, sosyal: 0, fen: 0 }
-    );
-    
-    return [
-      { subject: "Türkçe", pct: Math.round((sum.turkce / (tytRows.length * 40)) * 100) || 0, fullMark: 100 },
-      { subject: "Matematik", pct: Math.round((sum.matematik / (tytRows.length * 40)) * 100) || 0, fullMark: 100 },
-      { subject: "Sosyal", pct: Math.round((sum.sosyal / (tytRows.length * 20)) * 100) || 0, fullMark: 100 },
-      { subject: "Fen", pct: Math.round((sum.fen / (tytRows.length * 20)) * 100) || 0, fullMark: 100 },
-    ];
+    const bucketMax = { turkce: 40, matematik: 40, sosyal: 20, fen: 20 };
+    const domainTotals: Record<string, number> = {};
+    const domainCounts: Record<string, number> = {};
+
+    tytRows.forEach(e => {
+      TYT_SECTIONS.forEach(sec => {
+        if (!domainTotals[sec.label]) {
+          domainTotals[sec.label] = 0;
+          domainCounts[sec.label] = 0;
+        }
+        domainCounts[sec.label]++;
+        
+        if (e.domainScores && e.domainScores[sec.label] !== undefined) {
+          domainTotals[sec.label] += e.domainScores[sec.label];
+        } else {
+          const bucketScore = e[sec.bucket] || 0;
+          const estimated = bucketScore * (sec.questions / bucketMax[sec.bucket]);
+          domainTotals[sec.label] += estimated;
+        }
+      });
+    });
+
+    return TYT_SECTIONS.map(sec => {
+      const avg = domainTotals[sec.label] / domainCounts[sec.label];
+      let name = sec.label;
+      if (name === "Din Kültürü ve Ahlak Bilgisi" || name === "Din Kültürü") name = "Din";
+      return {
+        subject: name,
+        pct: Math.round((avg / sec.questions) * 100) || 0,
+        fullMark: 100
+      };
+    });
   }, [tytRows]);
 
-  // Radar Chart Data Calculation (Average Percentages for AYT)
+  // Radar Chart Data Calculation (Detailed Percentages for AYT)
   const aytRadarData = useMemo(() => {
     if (aytRows.length === 0) return [];
-    
-    const sum = aytRows.reduce(
-      (acc, e) => ({
-        turkce: acc.turkce + (e.turkce || 0),
-        matematik: acc.matematik + (e.matematik || 0),
-        sosyal: acc.sosyal + (e.sosyal || 0),
-        fen: acc.fen + (e.fen || 0),
-      }),
-      { turkce: 0, matematik: 0, sosyal: 0, fen: 0 }
-    );
     
     const track = currentStudent?.track ?? "sayisal";
     const sections = AYT_SECTIONS[track];
     
-    const maxTurkce = sections.filter(s => s.bucket === "turkce").reduce((acc, s) => acc + s.questions, 0);
-    const maxMatematik = sections.filter(s => s.bucket === "matematik").reduce((acc, s) => acc + s.questions, 0);
-    const maxSosyal = sections.filter(s => s.bucket === "sosyal").reduce((acc, s) => acc + s.questions, 0);
-    const maxFen = sections.filter(s => s.bucket === "fen").reduce((acc, s) => acc + s.questions, 0);
+    const bucketMax = {
+      turkce: sections.filter(s => s.bucket === "turkce").reduce((acc, s) => acc + s.questions, 0),
+      matematik: sections.filter(s => s.bucket === "matematik").reduce((acc, s) => acc + s.questions, 0),
+      sosyal: sections.filter(s => s.bucket === "sosyal").reduce((acc, s) => acc + s.questions, 0),
+      fen: sections.filter(s => s.bucket === "fen").reduce((acc, s) => acc + s.questions, 0),
+    };
 
-    const data = [];
-    if (maxTurkce > 0) data.push({ subject: "Edebiyat", pct: Math.round((sum.turkce / (aytRows.length * maxTurkce)) * 100) || 0, fullMark: 100 });
-    if (maxMatematik > 0) data.push({ subject: "Matematik", pct: Math.round((sum.matematik / (aytRows.length * maxMatematik)) * 100) || 0, fullMark: 100 });
-    if (maxSosyal > 0) data.push({ subject: "Sosyal", pct: Math.round((sum.sosyal / (aytRows.length * maxSosyal)) * 100) || 0, fullMark: 100 });
-    if (maxFen > 0) data.push({ subject: "Fen", pct: Math.round((sum.fen / (aytRows.length * maxFen)) * 100) || 0, fullMark: 100 });
+    const domainTotals: Record<string, number> = {};
+    const domainCounts: Record<string, number> = {};
 
-    return data;
+    aytRows.forEach(e => {
+      sections.forEach(sec => {
+        if (!domainTotals[sec.label]) {
+          domainTotals[sec.label] = 0;
+          domainCounts[sec.label] = 0;
+        }
+        domainCounts[sec.label]++;
+        
+        if (e.domainScores && e.domainScores[sec.label] !== undefined) {
+          domainTotals[sec.label] += e.domainScores[sec.label];
+        } else {
+          const bucketScore = e[sec.bucket] || 0;
+          const maxInBucket = bucketMax[sec.bucket];
+          const estimated = maxInBucket > 0 ? bucketScore * (sec.questions / maxInBucket) : 0;
+          domainTotals[sec.label] += estimated;
+        }
+      });
+    });
+
+    return sections.map(sec => {
+      const avg = domainTotals[sec.label] / domainCounts[sec.label];
+      let name = sec.label;
+      if (name === "Türk Dili ve Edebiyatı") name = "Edebiyat";
+      if (name === "Din Kültürü ve Ahlak Bilgisi") name = "Din";
+      if (name === "Felsefe Grubu") name = "Felsefe";
+      
+      return {
+        subject: name,
+        pct: Math.round((avg / sec.questions) * 100) || 0,
+        fullMark: 100
+      };
+    });
   }, [aytRows, currentStudent?.track]);
 
   const handleDelete = (e: React.MouseEvent, exam: MockExam) => {

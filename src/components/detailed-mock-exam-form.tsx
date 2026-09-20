@@ -89,6 +89,7 @@ export function DetailedMockExamForm({
     };
 
     const logs: { topicId: string, status: "correct" | "wrong" | "blank" }[] = [];
+    const domainTotals: Record<string, { total: number; wrong: number; blank: number }> = {};
 
     const buckets = Array.from(new Set(template.questions.map(q => DOMAIN_MAP[q.domain]).filter(Boolean))) as ("turkce" | "sosyal" | "matematik" | "fen")[];
 
@@ -103,19 +104,32 @@ export function DetailedMockExamForm({
       for (const qData of bucketQuestions) {
         if (!qData.topicId) continue;
 
+        if (!domainTotals[qData.domain]) {
+          domainTotals[qData.domain] = { total: 0, wrong: 0, blank: 0 };
+        }
+        
         totals[bucket].total++;
+        domainTotals[qData.domain].total++;
+        
         const mark = markOf(bucket, qData.qNum);
 
         if (mark === "wrong") {
           totals[bucket].wrong++;
+          domainTotals[qData.domain].wrong++;
           logs.push({ topicId: qData.topicId, status: "wrong" });
         } else if (mark === "blank") {
           totals[bucket].blank++;
+          domainTotals[qData.domain].blank++;
           logs.push({ topicId: qData.topicId, status: "blank" });
         } else {
           logs.push({ topicId: qData.topicId, status: "correct" });
         }
       }
+    }
+
+    const domainScores: Record<string, number> = {};
+    for (const [dom, dt] of Object.entries(domainTotals)) {
+      domainScores[dom] = netOf(dt.total, dt.wrong, dt.blank);
     }
 
     const examData: Omit<MockExam, "id"> = {
@@ -128,6 +142,7 @@ export function DetailedMockExamForm({
       fen: netOf(totals.fen.total, totals.fen.wrong, totals.fen.blank),
       templateId: template.id,
       detailedLogs: logs,
+      domainScores,
     };
 
     onSave(examData, logs);

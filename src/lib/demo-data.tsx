@@ -136,6 +136,7 @@ export type MockExam = {
   studentId?: string | undefined;
   templateId?: string | undefined;
   detailedLogs?: { topicId: string; status: "correct" | "wrong" | "blank" }[] | undefined;
+  domainScores?: Record<string, number> | undefined;
 };
 
 export type Student = {
@@ -339,6 +340,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
           fen: Number(r["fen"] ?? 0),
           templateId: r["templateId"] as string | undefined,
           detailedLogs: r["detailedLogs"] as { topicId: string; status: "correct" | "wrong" | "blank" }[] | undefined,
+          domainScores: r["domainScores"] as Record<string, number> | undefined,
           studentId: row.user_id,
         };
       });
@@ -548,7 +550,8 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
             sosyal: e.sosyal, 
             fen: e.fen,
             templateId: e.templateId,
-            detailedLogs: e.detailedLogs
+            detailedLogs: e.detailedLogs,
+            domainScores: e.domainScores
           },
           net_score: e.turkce + e.matematik + e.sosyal + e.fen,
           total_questions: e.type === "TYT" ? 120 : 160
