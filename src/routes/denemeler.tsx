@@ -136,19 +136,19 @@ function Denemeler() {
     
     const sum = tytRows.reduce(
       (acc, e) => ({
-        turkce: acc.turkce + e.turkce,
-        matematik: acc.matematik + e.matematik,
-        sosyal: acc.sosyal + e.sosyal,
-        fen: acc.fen + e.fen,
+        turkce: acc.turkce + (e.turkce || 0),
+        matematik: acc.matematik + (e.matematik || 0),
+        sosyal: acc.sosyal + (e.sosyal || 0),
+        fen: acc.fen + (e.fen || 0),
       }),
       { turkce: 0, matematik: 0, sosyal: 0, fen: 0 }
     );
     
     return [
-      { subject: "Türkçe", pct: Math.round((sum.turkce / (tytRows.length * 40)) * 100), fullMark: 100 },
-      { subject: "Matematik", pct: Math.round((sum.matematik / (tytRows.length * 40)) * 100), fullMark: 100 },
-      { subject: "Sosyal", pct: Math.round((sum.sosyal / (tytRows.length * 20)) * 100), fullMark: 100 },
-      { subject: "Fen", pct: Math.round((sum.fen / (tytRows.length * 20)) * 100), fullMark: 100 },
+      { subject: "Türkçe", pct: Math.round((sum.turkce / (tytRows.length * 40)) * 100) || 0, fullMark: 100 },
+      { subject: "Matematik", pct: Math.round((sum.matematik / (tytRows.length * 40)) * 100) || 0, fullMark: 100 },
+      { subject: "Sosyal", pct: Math.round((sum.sosyal / (tytRows.length * 20)) * 100) || 0, fullMark: 100 },
+      { subject: "Fen", pct: Math.round((sum.fen / (tytRows.length * 20)) * 100) || 0, fullMark: 100 },
     ];
   }, [tytRows]);
 
