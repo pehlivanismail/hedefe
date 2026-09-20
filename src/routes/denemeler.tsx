@@ -40,7 +40,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import { useDemoData, type MockExam } from "@/lib/demo-data";
 import { cn } from "@/lib/utils";
-import { EXAM_QUESTION_COUNTS } from "@/lib/exam-config";
+import { EXAM_QUESTION_COUNTS, AYT_SECTIONS } from "@/lib/exam-config";
 
 export const Route = createFileRoute("/denemeler")({
   component: Denemeler,
@@ -151,6 +151,37 @@ function Denemeler() {
       { subject: "Fen", pct: Math.round((sum.fen / (tytRows.length * 20)) * 100) || 0, fullMark: 100 },
     ];
   }, [tytRows]);
+
+  // Radar Chart Data Calculation (Average Percentages for AYT)
+  const aytRadarData = useMemo(() => {
+    if (aytRows.length === 0) return [];
+    
+    const sum = aytRows.reduce(
+      (acc, e) => ({
+        turkce: acc.turkce + (e.turkce || 0),
+        matematik: acc.matematik + (e.matematik || 0),
+        sosyal: acc.sosyal + (e.sosyal || 0),
+        fen: acc.fen + (e.fen || 0),
+      }),
+      { turkce: 0, matematik: 0, sosyal: 0, fen: 0 }
+    );
+    
+    const track = currentStudent?.track ?? "sayisal";
+    const sections = AYT_SECTIONS[track];
+    
+    const maxTurkce = sections.filter(s => s.bucket === "turkce").reduce((acc, s) => acc + s.questions, 0);
+    const maxMatematik = sections.filter(s => s.bucket === "matematik").reduce((acc, s) => acc + s.questions, 0);
+    const maxSosyal = sections.filter(s => s.bucket === "sosyal").reduce((acc, s) => acc + s.questions, 0);
+    const maxFen = sections.filter(s => s.bucket === "fen").reduce((acc, s) => acc + s.questions, 0);
+
+    const data = [];
+    if (maxTurkce > 0) data.push({ subject: "Edebiyat", pct: Math.round((sum.turkce / (aytRows.length * maxTurkce)) * 100) || 0, fullMark: 100 });
+    if (maxMatematik > 0) data.push({ subject: "Matematik", pct: Math.round((sum.matematik / (aytRows.length * maxMatematik)) * 100) || 0, fullMark: 100 });
+    if (maxSosyal > 0) data.push({ subject: "Sosyal", pct: Math.round((sum.sosyal / (aytRows.length * maxSosyal)) * 100) || 0, fullMark: 100 });
+    if (maxFen > 0) data.push({ subject: "Fen", pct: Math.round((sum.fen / (aytRows.length * maxFen)) * 100) || 0, fullMark: 100 });
+
+    return data;
+  }, [aytRows, currentStudent?.track]);
 
   const handleDelete = (e: React.MouseEvent, exam: MockExam) => {
     e.stopPropagation();
@@ -325,40 +356,77 @@ function Denemeler() {
               />
             </div>
             
-            <Card className="rounded-3xl border-border p-6 shadow-soft flex flex-col">
-              <h3 className="font-display text-lg font-bold text-brand-deep">
-                TYT Ortalama Başarı Grafiği
-              </h3>
-              <p className="text-sm text-muted-foreground mt-1 mb-4">
-                Tüm TYT denemelerindeki branş bazlı ortalama başarın (%)
-              </p>
-              <div className="flex-1 min-h-[300px]">
-                {radarData.length > 0 ? (
-                  <ResponsiveContainer width="100%" height="100%">
-                    <RadarChart cx="50%" cy="50%" outerRadius="70%" data={radarData}>
-                      <PolarGrid stroke="var(--border)" />
-                      <PolarAngleAxis dataKey="subject" tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 13 }} />
-                      <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
-                      <Radar
-                        name="Başarı %"
-                        dataKey="pct"
-                        stroke="oklch(0.7 0.157 159.5)"
-                        fill="oklch(0.7 0.157 159.5)"
-                        fillOpacity={0.4}
-                      />
-                      <Tooltip 
-                        formatter={(value: number) => [`%${value}`, "Ortalama Başarı"]}
-                        contentStyle={{ borderRadius: "12px", border: "1px solid var(--border)", boxShadow: "0 4px 12px rgba(0,0,0,0.05)" }}
-                      />
-                    </RadarChart>
-                  </ResponsiveContainer>
-                ) : (
-                  <div className="flex h-full items-center justify-center text-sm text-muted-foreground">
-                    Henüz TYT denemesi bulunmuyor.
-                  </div>
-                )}
-              </div>
-            </Card>
+            <div className="lg:col-span-1 space-y-6 flex flex-col">
+              <Card className="rounded-3xl border-border p-6 shadow-soft flex flex-col">
+                <h3 className="font-display text-lg font-bold text-brand-deep">
+                  TYT Ortalama Başarı Grafiği
+                </h3>
+                <p className="text-sm text-muted-foreground mt-1 mb-4">
+                  Tüm TYT denemelerindeki branş bazlı ortalama başarın (%)
+                </p>
+                <div className="flex-1 min-h-[300px]">
+                  {radarData.length > 0 ? (
+                    <ResponsiveContainer width="100%" height="100%">
+                      <RadarChart cx="50%" cy="50%" outerRadius="70%" data={radarData}>
+                        <PolarGrid stroke="var(--border)" />
+                        <PolarAngleAxis dataKey="subject" tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 13 }} />
+                        <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
+                        <Radar
+                          name="Başarı %"
+                          dataKey="pct"
+                          stroke="oklch(0.7 0.157 159.5)"
+                          fill="oklch(0.7 0.157 159.5)"
+                          fillOpacity={0.4}
+                        />
+                        <Tooltip 
+                          formatter={(value: number) => [`%${value}`, "Ortalama Başarı"]}
+                          contentStyle={{ borderRadius: "12px", border: "1px solid var(--border)", boxShadow: "0 4px 12px rgba(0,0,0,0.05)" }}
+                        />
+                      </RadarChart>
+                    </ResponsiveContainer>
+                  ) : (
+                    <div className="flex h-full items-center justify-center text-sm text-muted-foreground">
+                      Henüz TYT denemesi bulunmuyor.
+                    </div>
+                  )}
+                </div>
+              </Card>
+
+              <Card className="rounded-3xl border-border p-6 shadow-soft flex flex-col">
+                <h3 className="font-display text-lg font-bold text-brand-deep">
+                  AYT Ortalama Başarı Grafiği
+                </h3>
+                <p className="text-sm text-muted-foreground mt-1 mb-4">
+                  Tüm AYT denemelerindeki branş bazlı ortalama başarın (%)
+                </p>
+                <div className="flex-1 min-h-[300px]">
+                  {aytRadarData.length > 0 ? (
+                    <ResponsiveContainer width="100%" height="100%">
+                      <RadarChart cx="50%" cy="50%" outerRadius="70%" data={aytRadarData}>
+                        <PolarGrid stroke="var(--border)" />
+                        <PolarAngleAxis dataKey="subject" tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 13 }} />
+                        <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
+                        <Radar
+                          name="Başarı %"
+                          dataKey="pct"
+                          stroke="oklch(0.45 0.09 220)"
+                          fill="oklch(0.45 0.09 220)"
+                          fillOpacity={0.4}
+                        />
+                        <Tooltip 
+                          formatter={(value: number) => [`%${value}`, "Ortalama Başarı"]}
+                          contentStyle={{ borderRadius: "12px", border: "1px solid var(--border)", boxShadow: "0 4px 12px rgba(0,0,0,0.05)" }}
+                        />
+                      </RadarChart>
+                    </ResponsiveContainer>
+                  ) : (
+                    <div className="flex h-full items-center justify-center text-sm text-muted-foreground">
+                      Henüz AYT denemesi bulunmuyor.
+                    </div>
+                  )}
+                </div>
+              </Card>
+            </div>
           </div>
 
           <Tabs defaultValue="tyt" className="w-full mt-8">
