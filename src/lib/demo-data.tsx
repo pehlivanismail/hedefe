@@ -11,6 +11,11 @@ import { supabase } from "@/integrations/supabase/client";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { realExams } from "@/lib/topics-data";
 
+const toTrDate = (iso?: string) => {
+  if (!iso) return "";
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso);
+  return m ? `${m[3]}-${m[2]}-${m[1]}` : iso;
+};
 
 export const YKS_DATE = new Date("2027-06-19T10:00:00Z");
 
@@ -227,7 +232,7 @@ type Store = {
   removeTask: (id: string) => void;
   completeTask: (id: string, result?: TaskResult) => void;
   mockExamList: MockExam[];
-  addMockExam: (e: Omit<MockExam, "id">) => string;
+  addMockExam: (e: Omit<MockExam, "id">) => Promise<string>;
   removeMockExam: (args: { id: string, date: string, publisher: string }) => void;
   removeTopicDenemeLogs: (topicId: string) => void;
   toggleTask: (id: string) => void;
@@ -317,7 +322,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
         const r = (row.results_data ?? {}) as Record<string, any>;
         return {
           id: row.id,
-          date: row.date,
+          date: toTrDate(row.date),
           publisher: row.title,
           type: row.exam_type === "AYT" ? "AYT" : "TYT",
           turkce: Number(r["turkce"] ?? 0),
@@ -345,7 +350,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       if (error) throw error;
       return (data || []).map((row: any): StudyLog => ({
         id: row.id,
-        date: row.date,
+        date: toTrDate(row.date),
         source: row.source,
         kind: row.kind,
         subTopic: row.sub_topic,
@@ -558,7 +563,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       // 2. Delete the associated study_logs
       if (targetStudentId) {
         const isoDate = (() => {
-          const m = /^(\d{2})[./](\d{2})[./](\d{4})$/.exec(date);
+          const m = /^(\d{2})[-./](\d{2})[-./](\d{4})$/.exec(date);
           if (m) return `${m[3]}-${m[2]}-${m[1]}`;
           return date; // fallback
         })();
@@ -608,7 +613,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       if (!targetStudentId) throw new Error("No user");
       // "07.09.2026" gibi yerel tarihi ISO (YYYY-MM-DD) biçimine çevir
       const isoDate = (() => {
-        const m = /^(\d{2})[./](\d{2})[./](\d{4})$/.exec(String(log.date ?? ""));
+        const m = /^(\d{2})[-./](\d{2})[-./](\d{4})$/.exec(String(log.date ?? ""));
         if (m) return `${m[3]}-${m[2]}-${m[1]}`;
         const d = new Date(log.date ?? Date.now());
         return isNaN(d.getTime())
@@ -658,9 +663,8 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       completeTask: (id, result) => completeTaskMutation.mutate({ id, result }),
       mockExamList: mockExamsData || [],
       removeMockExam: (args) => removeMockExamMutation.mutate(args),
-      addMockExam: (e) => {
-        addMockExamMutation.mutate(e);
-        return "temp-id";
+      addMockExam: async (e) => {
+        return await addMockExamMutation.mutateAsync(e);
       },
       toggleTask: (id) => toggleTaskMutation.mutate(id),
       moveTask: (id, day) => moveTaskMutation.mutate({ id, day }),

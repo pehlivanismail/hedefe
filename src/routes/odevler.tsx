@@ -750,8 +750,8 @@ function Odevler() {
                   submitLabel="Denemeyi kaydet"
                   {...scopeProps}
 
-                  onSave={(e) => {
-                    const id = addMockExam(e);
+                  onSave={async (e) => {
+                    const id = await addMockExam(e);
                     completeTask(active.id, { mockExamId: id });
                     setActive(null);
                     toast.success("Deneme sonucu kaydedildi");
