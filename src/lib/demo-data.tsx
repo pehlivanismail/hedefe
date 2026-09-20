@@ -563,8 +563,8 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       // 2. Delete the associated study_logs
       if (targetStudentId) {
         const isoDate = (() => {
-          const m = /^(\d{2})[-./](\d{2})[-./](\d{4})$/.exec(date);
-          if (m) return `${m[3]}-${m[2]}-${m[1]}`;
+          const m = /^(\d{1,2})[-./](\d{1,2})[-./](\d{4})$/.exec(date);
+          if (m) return `${m[3]}-${m[2].padStart(2, '0')}-${m[1].padStart(2, '0')}`;
           return date; // fallback
         })();
         
@@ -613,8 +613,8 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
       if (!targetStudentId) throw new Error("No user");
       // "07.09.2026" gibi yerel tarihi ISO (YYYY-MM-DD) biçimine çevir
       const isoDate = (() => {
-        const m = /^(\d{2})[-./](\d{2})[-./](\d{4})$/.exec(String(log.date ?? ""));
-        if (m) return `${m[3]}-${m[2]}-${m[1]}`;
+        const m = /^(\d{1,2})[-./](\d{1,2})[-./](\d{4})$/.exec(String(log.date ?? ""));
+        if (m) return `${m[3]}-${m[2].padStart(2, '0')}-${m[1].padStart(2, '0')}`;
         const d = new Date(log.date ?? Date.now());
         return isNaN(d.getTime())
           ? new Date().toISOString().slice(0, 10)
