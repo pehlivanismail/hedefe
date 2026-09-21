@@ -69,7 +69,7 @@ function NetChart({
           ({maxQuestions} soru)
         </span>
       </h3>
-      <div className="mt-4 h-64">
+      <div className="mt-4 h-[300px]">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data} margin={{ left: -20, right: 8, top: 8 }}>
             <defs>
