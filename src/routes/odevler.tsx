@@ -14,7 +14,7 @@ import {
   Trash2,
   Pencil,
 } from "lucide-react";
-import { addDays, addWeeks, endOfWeek, format, startOfWeek } from "date-fns";
+import { addDays, addWeeks, endOfWeek, format, startOfWeek, differenceInCalendarWeeks } from "date-fns";
 import { tr } from "date-fns/locale";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -71,6 +71,12 @@ const KIND_STYLE: Record<TaskKind, string> = {
   deneme: "bg-warning/15 text-warning",
 };
 
+const EPOCH = new Date(2026, 7, 31); // 31 Ağustos 2026 Pazartesi
+
+export function getCurrentAbsoluteWeek() {
+  return Math.max(0, differenceInCalendarWeeks(new Date(), EPOCH, { weekStartsOn: 1 }));
+}
+
 function Odevler() {
   const {
     tasks,
@@ -88,7 +94,7 @@ function Odevler() {
     reorderTask,
   } = useDemoData();
 
-  const [weekOffset, setWeekOffset] = useState(0);
+  const [weekOffset, setWeekOffset] = useState(getCurrentAbsoluteWeek());
   const [dragId, setDragId] = useState<string | null>(null);
   const [addKind, setAddKind] = useState<TaskKind | null>(null);
   const [editingTaskId, setEditingTaskId] = useState<string | null>(null);
@@ -132,7 +138,7 @@ function Odevler() {
   });
 
 
-  const base = addWeeks(new Date(), weekOffset);
+  const base = addWeeks(EPOCH, weekOffset);
   const start = startOfWeek(base, { weekStartsOn: 1 });
   const end = endOfWeek(base, { weekStartsOn: 1 });
   const weekTasks = tasks.filter((t) => t.studentId === currentStudent?.id && (t.weekOffset || 0) === weekOffset).sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
@@ -303,10 +309,22 @@ function Odevler() {
         >
           <ChevronLeft className="size-4" />
         </Button>
-        <span className="font-display text-sm font-semibold text-brand-deep">
-          {format(start, "d MMM", { locale: tr })} —{" "}
-          {format(end, "d MMM", { locale: tr })}
-        </span>
+        <div className="flex flex-col items-center">
+          <span className="font-display text-sm font-semibold text-brand-deep">
+            {format(start, "d MMM", { locale: tr })} —{" "}
+            {format(end, "d MMM", { locale: tr })}
+          </span>
+          {weekOffset !== getCurrentAbsoluteWeek() && (
+            <Button
+              variant="link"
+              size="sm"
+              onClick={() => setWeekOffset(getCurrentAbsoluteWeek())}
+              className="h-auto p-0 text-[10px] uppercase text-muted-foreground hover:text-brand"
+            >
+              Bugüne Dön
+            </Button>
+          )}
+        </div>
         <Button
           variant="ghost"
           size="icon"
