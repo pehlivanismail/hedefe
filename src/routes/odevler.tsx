@@ -13,6 +13,7 @@ import {
   Plus,
   Trash2,
   Pencil,
+  StickyNote,
 } from "lucide-react";
 import { addDays, addWeeks, endOfWeek, format, startOfWeek, differenceInCalendarWeeks } from "date-fns";
 import { tr } from "date-fns/locale";
@@ -69,6 +70,7 @@ const KIND_STYLE: Record<TaskKind, string> = {
   konu: "bg-brand-soft text-brand-deep",
   soru: "bg-secondary text-foreground",
   deneme: "bg-warning/15 text-warning",
+  not: "bg-indigo-100 text-indigo-800",
 };
 
 const EPOCH = new Date(2026, 7, 31); // 31 Ağustos 2026 Pazartesi
@@ -159,16 +161,23 @@ function Odevler() {
 
   const openEdit = (task: Task) => {
     setEditingTaskId(task.id);
-    const s = subjects.find(
-      (sub) => `${sub.examName.startsWith("AYT") ? "AYT" : "TYT"} ${sub.name}` === task.subject
-    );
-    setSubjectId(s?.id || "");
-    setAreaId(task.areaId || "");
-    setTopicId(task.topicId || "");
-    if (task.kind === "deneme") {
-      setExamScope(task.subject);
+    if (task.kind !== "not") {
+      const s = subjects.find(
+        (sub) => `${sub.examName.startsWith("AYT") ? "AYT" : "TYT"} ${sub.name}` === task.subject
+      );
+      setSubjectId(s?.id || "");
+      setAreaId(task.areaId || "");
+      setTopicId(task.topicId || "");
+      if (task.kind === "deneme") {
+        setExamScope(task.subject);
+      }
+      setNote(task.title === task.topicName || task.title === task.areaName ? "" : task.title);
+    } else {
+      setSubjectId("");
+      setAreaId("");
+      setTopicId("");
+      setNote(task.title);
     }
-    setNote(task.title === task.topicName || task.title === task.areaName ? "" : task.title);
     setDay(task.day.toString());
     setActive(null);
     setAddKind(task.kind);
@@ -184,6 +193,41 @@ function Odevler() {
   const saveTask = () => {
     if (!currentStudent?.id) {
       toast.error("Öğrenci bilgisi bulunamadı");
+      return;
+    }
+
+    if (addKind === "not") {
+      if (!note.trim()) {
+        toast.error("Not içeriği boş olamaz");
+        return;
+      }
+      if (editingTaskId) {
+        updateTask({
+          id: editingTaskId,
+          kind: "not",
+          subject: "Not",
+          title: note.trim(),
+          topicId: null,
+          areaId: null,
+          day: Number(day),
+          weekOffset,
+        });
+        toast.success("Not güncellendi");
+      } else {
+        addTask({
+          kind: "not",
+          subject: "Not",
+          title: note.trim(),
+          topicId: null,
+          areaId: null,
+          day: Number(day),
+          weekOffset,
+          studentId: currentStudent.id,
+        });
+        toast.success("Not eklendi");
+      }
+      setAddKind(null);
+      setEditingTaskId(null);
       return;
     }
 
@@ -295,6 +339,13 @@ function Odevler() {
             onClick={() => openAdd("deneme")}
           >
             <ClipboardList className="size-4" /> Deneme Ekle
+          </Button>
+          <Button
+            variant="outline"
+            className="rounded-xl"
+            onClick={() => openAdd("not")}
+          >
+            <StickyNote className="size-4" /> Not Ekle
           </Button>
         </div>
       </div>
@@ -438,9 +489,13 @@ function Odevler() {
                       )}
                     </div>
                     <p className="mt-1 text-[11px] text-muted-foreground">
-                      {t.subject}
-                      {t.areaName && ` · ${t.areaName}`}
-                      {t.topicName && ` · ${t.topicName}`}
+                      {t.kind !== "not" && (
+                        <>
+                          {t.subject}
+                          {t.areaName && ` · ${t.areaName}`}
+                          {t.topicName && ` · ${t.topicName}`}
+                        </>
+                      )}
                     </p>
                     {t.done && t.result?.solved != null && (
                       <p className="mt-0.5 text-[11px] font-medium text-emerald-600">
@@ -487,7 +542,7 @@ function Odevler() {
                   </SelectContent>
                 </Select>
               </div>
-            ) : (
+            ) : addKind === "not" ? null : (
               <>
                 <div className="space-y-2">
                   <Label>Ders</Label>
@@ -562,10 +617,10 @@ function Odevler() {
             )}
 
             <div className="space-y-2">
-              <Label>Açıklama (opsiyonel)</Label>
+              <Label>{addKind === "not" ? "Not İçeriği" : "Açıklama (opsiyonel)"}</Label>
               <Input
                 value={note}
-                placeholder="Ör: 40 soruluk test"
+                placeholder={addKind === "not" ? "Bugün kitap okudun mu?" : "Ör: 40 soruluk test"}
                 onChange={(e) => setNote(e.target.value)}
               />
             </div>
@@ -748,6 +803,24 @@ function Odevler() {
             </div>
           )}
 
+          {active?.kind === "not" && (
+            <div className="space-y-4">
+              <p className="text-sm text-muted-foreground">
+                Bu notu tamamlandı olarak işaretleyebilirsin.
+              </p>
+              <Button
+                className="w-full rounded-xl"
+                disabled={active.done}
+                onClick={() => {
+                  completeTask(active.id);
+                  setActive(null);
+                  toast.success("Not tamamlandı");
+                }}
+              >
+                {active.done ? "Zaten tamamlandı" : "Tamamlandı olarak işaretle"}
+              </Button>
+            </div>
+          )}
 
           {active?.kind === "deneme" &&
             (() => {

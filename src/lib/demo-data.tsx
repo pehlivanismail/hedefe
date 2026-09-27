@@ -80,12 +80,13 @@ const toIsoDate = (d: string) => {
   return new Date(d).toISOString().slice(0, 10);
 };
 
-export type TaskKind = "konu" | "soru" | "deneme";
+export type TaskKind = "konu" | "soru" | "deneme" | "not";
 
 export const TASK_KIND_LABELS: Record<TaskKind, string> = {
   konu: "Konu Çalışması",
   soru: "Soru Çözümü",
   deneme: "Deneme",
+  not: "Not",
 };
 
 export type TaskResult = {
