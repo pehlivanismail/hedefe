@@ -293,11 +293,13 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
         .order("created_at", { ascending: true });
       if (error) throw error;
       // Map DB snake_case fields to Task camelCase fields
-      return (data || []).map((row: any): Task => ({
-        id: row.id,
-        kind: row.kind as TaskKind,
-        subject: row.subject,
-        title: row.title,
+      return (data || []).map((row: any): Task => {
+        const isNot = row.subject === "Not";
+        return {
+          id: row.id,
+          kind: isNot ? "not" : (row.kind as TaskKind),
+          subject: row.subject,
+          title: row.title,
         day: row.day,
         weekOffset: row.week_offset ?? 0,
         done: row.done,
@@ -312,7 +314,8 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
           : undefined,
         result: row.result as TaskResult | undefined,
         order: row.sort_order ?? 0,
-      }));
+      };
+    });
 
     },
     enabled: !!targetStudentId,
@@ -380,7 +383,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
         .from("tasks")
         .insert({
           student_id: t.studentId,
-          kind: t.kind ?? "konu",
+          kind: t.kind === "not" ? "konu" : (t.kind ?? "konu"),
           subject: t.subject,
           title: t.title,
           day: t.day,
@@ -405,7 +408,7 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
     mutationFn: async (t: Partial<Omit<Task, "id">> & { id: string }) => {
       const { id, ...updates } = t;
       const payload: any = {};
-      if (updates.kind !== undefined) payload.kind = updates.kind;
+      if (updates.kind !== undefined) payload.kind = updates.kind === "not" ? "konu" : updates.kind;
       if (updates.subject !== undefined) payload.subject = updates.subject;
       if (updates.title !== undefined) payload.title = updates.title;
       if (updates.day !== undefined) payload.day = updates.day;
