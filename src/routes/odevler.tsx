@@ -113,7 +113,7 @@ function Odevler() {
   const [areaId, setAreaId] = useState("");
   const [topicId, setTopicId] = useState("");
   const [examScope, setExamScope] = useState("TYT");
-  const [day, setDay] = useState("0");
+  const [days, setDays] = useState<number[]>([0]);
   const [note, setNote] = useState("");
 
   const subject = subjects.find((s) => s.id === subjectId) ?? null;
@@ -155,7 +155,7 @@ function Odevler() {
     setTopicId("");
     setExamScope("TYT");
     setNote("");
-    setDay(currentAppDay.toString());
+    setDays([currentAppDay]);
     setAddKind(kind);
   };
 
@@ -178,7 +178,7 @@ function Odevler() {
       setTopicId("");
       setNote(task.title);
     }
-    setDay(task.day.toString());
+    setDays([task.day]);
     setActive(null);
     setAddKind(task.kind);
   };
@@ -195,43 +195,29 @@ function Odevler() {
       toast.error("Öğrenci bilgisi bulunamadı");
       return;
     }
+    if (days.length === 0) {
+      toast.error("Lütfen en az bir gün seç");
+      return;
+    }
+
+    let payload: Omit<Task, "id" | "done" | "studentId" | "day">;
+    let addedMsg: string;
 
     if (addKind === "not") {
       if (!note.trim()) {
         toast.error("Not içeriği boş olamaz");
         return;
       }
-      if (editingTaskId) {
-        updateTask({
-          id: editingTaskId,
-          kind: "not",
-          subject: "Not",
-          title: note.trim(),
-          topicId: null,
-          areaId: null,
-          day: Number(day),
-          weekOffset,
-        });
-        toast.success("Not güncellendi");
-      } else {
-        addTask({
-          kind: "not",
-          subject: "Not",
-          title: note.trim(),
-          topicId: null,
-          areaId: null,
-          day: Number(day),
-          weekOffset,
-          studentId: currentStudent.id,
-        });
-        toast.success("Not eklendi");
-      }
-      setAddKind(null);
-      setEditingTaskId(null);
-      return;
-    }
-
-    if (addKind === "deneme") {
+      payload = {
+        kind: "not",
+        subject: "Not",
+        title: note.trim(),
+        topicId: null,
+        areaId: null,
+        weekOffset,
+      };
+      addedMsg = "Not eklendi";
+    } else if (addKind === "deneme") {
       const label =
         examScope === "TYT"
           ? "TYT Denemesi"
@@ -239,59 +225,25 @@ function Odevler() {
             ? "AYT Denemesi"
             : (denemeSubjects.find((d) => d.value === examScope)?.label ??
               `${examScope} Branş Denemesi`);
-      if (editingTaskId) {
-        updateTask({
-          id: editingTaskId,
-          kind: "deneme",
-          subject: examScope,
-          title: note.trim() || label,
-          topicId: null,
-          areaId: null,
-          day: Number(day),
-          weekOffset,
-        });
-        toast.success("Görev güncellendi");
-      } else {
-        addTask({
-          kind: "deneme",
-          subject: examScope,
-          title: note.trim() || label,
-          topicId: null,
-          areaId: null,
-          day: Number(day),
-          weekOffset,
-          studentId: currentStudent.id,
-        });
-        toast.success("Deneme eklendi");
-      }
-      setAddKind(null);
-      setEditingTaskId(null);
-      return;
-    }
-    if (!subject) {
-      toast.error("Lütfen bir ders seç");
-      return;
-    }
-    if (!area) {
-      toast.error("Lütfen bir alan seç");
-      return;
-    }
-    if (editingTaskId) {
-      updateTask({
-        id: editingTaskId,
-        kind: addKind ?? "konu",
-        subject: `${subject.examName.startsWith("AYT") ? "AYT" : "TYT"} ${subject.name}`,
-        areaName: area.name,
-        topicName: topic?.name,
-        title: note.trim() || topic?.name || area.name,
-        topicId: topic ? topic.id : null,
-        areaId: topic ? null : area.id,
-        day: Number(day),
+      payload = {
+        kind: "deneme",
+        subject: examScope,
+        title: note.trim() || label,
+        topicId: null,
+        areaId: null,
         weekOffset,
-      });
-      toast.success("Görev güncellendi");
+      };
+      addedMsg = "Deneme eklendi";
     } else {
-      addTask({
+      if (!subject) {
+        toast.error("Lütfen bir ders seç");
+        return;
+      }
+      if (!area) {
+        toast.error("Lütfen bir alan seç");
+        return;
+      }
+      payload = {
         kind: addKind ?? "konu",
         subject: `${subject.examName.startsWith("AYT") ? "AYT" : "TYT"} ${subject.name}`,
         areaName: area.name,
@@ -299,15 +251,31 @@ function Odevler() {
         title: note.trim() || topic?.name || area.name,
         topicId: topic ? topic.id : null,
         areaId: topic ? null : area.id,
-        day: Number(day),
         weekOffset,
-        studentId: currentStudent.id,
-      });
-      toast.success(`${TASK_KIND_LABELS[addKind ?? "konu"]} eklendi`);
+      };
+      addedMsg = `${TASK_KIND_LABELS[addKind ?? "konu"]} eklendi`;
+    }
+
+    if (editingTaskId) {
+      updateTask({ ...payload, id: editingTaskId, day: days[0]! });
+      toast.success(addKind === "not" ? "Not güncellendi" : "Görev güncellendi");
+    } else {
+      for (const d of [...days].sort((a, b) => a - b)) {
+        addTask({ ...payload, day: d, studentId: currentStudent.id });
+      }
+      toast.success(days.length > 1 ? `${addedMsg} (${days.length} gün)` : addedMsg);
     }
 
     setAddKind(null);
     setEditingTaskId(null);
+  };
+
+  const toggleDay = (i: number) => {
+    if (editingTaskId) {
+      setDays([i]);
+      return;
+    }
+    setDays((prev) => (prev.includes(i) ? prev.filter((x) => x !== i) : [...prev, i]));
   };
 
 
@@ -625,22 +593,43 @@ function Odevler() {
               />
             </div>
             <div className="space-y-2">
-              <Label>Gün</Label>
-              <Select value={day} onValueChange={setDay}>
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {DAYS.map((d, i) => {
-                    const targetDate = addDays(start, i);
-                    return (
-                      <SelectItem key={d} value={String(i)}>
-                        {d} ({format(targetDate, "d MMM", { locale: tr })})
-                      </SelectItem>
-                    );
-                  })}
-                </SelectContent>
-              </Select>
+              <Label>
+                Gün{" "}
+                {!editingTaskId && (
+                  <span className="text-xs font-normal text-muted-foreground">
+                    (birden fazla seçebilirsin)
+                  </span>
+                )}
+              </Label>
+              <div className="grid grid-cols-4 gap-2 sm:grid-cols-7">
+                {DAYS.map((d, i) => {
+                  const selected = days.includes(i);
+                  return (
+                    <button
+                      key={d}
+                      type="button"
+                      aria-pressed={selected}
+                      onClick={() => toggleDay(i)}
+                      className={cn(
+                        "flex flex-col items-center rounded-xl border px-1 py-2 text-xs font-semibold transition-colors",
+                        selected
+                          ? "border-primary bg-primary text-primary-foreground"
+                          : "border-border bg-card text-foreground hover:bg-secondary",
+                      )}
+                    >
+                      {d.slice(0, 3)}
+                      <span
+                        className={cn(
+                          "text-[10px] font-normal",
+                          selected ? "text-primary-foreground/80" : "text-muted-foreground",
+                        )}
+                      >
+                        {format(addDays(start, i), "d MMM", { locale: tr })}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
             <Button className="w-full rounded-xl" onClick={saveTask}>
               <Plus className="size-4" /> Kaydet
