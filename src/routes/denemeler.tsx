@@ -40,7 +40,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import { useDemoData, type MockExam } from "@/lib/demo-data";
 import { cn } from "@/lib/utils";
-import { EXAM_QUESTION_COUNTS, TYT_SECTIONS, AYT_SECTIONS } from "@/lib/exam-config";
+import { EXAM_QUESTION_COUNTS, TYT_SECTIONS, AYT_SECTIONS, branchOf, sectionsFor } from "@/lib/exam-config";
 
 export const Route = createFileRoute("/denemeler")({
   component: Denemeler,
@@ -119,13 +119,57 @@ function NetChart({
 }
 
 function Denemeler() {
-  const { mockExamList, addMockExam, removeMockExam, addLog, currentStudent } = useDemoData();
-  const rows = mockExamList;
+  const { mockExamList, addMockExam, removeMockExam, addLog, currentStudent, tasks } = useDemoData();
   const [open, setOpen] = useState(false);
   const [selectedExam, setSelectedExam] = useState<MockExam | null>(null);
 
-  const tytRows = rows.filter((e) => e.type === "TYT");
-  const aytRows = rows.filter((e) => e.type === "AYT");
+  // Branş bilgisi olmadan kaydedilmiş eski denemelerde branşı ödevden ya da sıfır olmayan netlerden çıkar
+  const rows = useMemo(() => {
+    const track = currentStudent?.track ?? "sayisal";
+    const taskBranch = new Map<string, string>();
+    for (const t of tasks) {
+      const m = t.kind === "deneme" ? /^(TYT|AYT) (.+)$/.exec(t.subject) : null;
+      if (m && t.result?.mockExamId) taskBranch.set(t.result.mockExamId, m[2]!);
+    }
+    return mockExamList.map((e): MockExam => {
+      if (e.branch && e.branchQuestions) return e;
+      const all = sectionsFor(e.type, track);
+      const name = e.branch ?? taskBranch.get(e.id);
+      if (name) {
+        const sec = all.find((s) => s.label === name);
+        return { ...e, branch: name, branchQuestions: e.branchQuestions ?? sec?.questions };
+      }
+      if (e.domainScores) return e;
+      const info = branchOf(all, all.filter((s) => e[s.bucket] !== 0));
+      return info ? { ...e, branch: info.name, branchQuestions: info.questions } : e;
+    });
+  }, [mockExamList, tasks, currentStudent?.track]);
+
+  const fullRows = rows.filter((e) => !e.branch);
+  const branchRows = rows.filter((e) => e.branch);
+  const tytRows = fullRows.filter((e) => e.type === "TYT");
+  const aytRows = fullRows.filter((e) => e.type === "AYT");
+
+  // Her branş (ör. "TYT Matematik") kendi grafiğinde, kendi soru sayısıyla
+  const branchCharts = useMemo(() => {
+    const groups = new Map<string, MockExam[]>();
+    for (const e of branchRows) {
+      const key = `${e.type} ${e.branch}`;
+      groups.set(key, [...(groups.get(key) ?? []), e]);
+    }
+    return Array.from(groups, ([key, exams]) => {
+      const first = exams[0]!;
+      const maxQuestions = first.branchQuestions ?? Math.max(...exams.map(total));
+      return {
+        key,
+        type: first.type,
+        maxQuestions,
+        data: exams.map((e) => ({ date: e.date.slice(0, 5), net: total(e) })),
+      };
+    }).sort((a, b) => a.key.localeCompare(b.key, "tr"));
+  }, [branchRows]);
+
+  const branchMax = (e: MockExam) => e.branchQuestions ?? 0;
 
   const tyt = tytRows.map((e) => ({ date: e.date.slice(0, 5), net: total(e) }));
   const ayt = aytRows.map((e) => ({ date: e.date.slice(0, 5), net: total(e) }));
@@ -465,16 +509,99 @@ function Denemeler() {
             </div>
           </div>
 
+          <div className="space-y-4">
+            <h2 className="font-display text-xl font-bold text-brand-deep">Branş Denemeleri</h2>
+            {branchCharts.length > 0 ? (
+              <div className="grid gap-6 lg:grid-cols-2">
+                {branchCharts.map((c, i) => (
+                  <NetChart
+                    key={c.key}
+                    id={`bransGrad${i}`}
+                    title={`${c.key} Branş Denemesi`}
+                    data={c.data}
+                    color={c.type === "TYT" ? "oklch(0.7 0.157 159.5)" : "oklch(0.45 0.09 220)"}
+                    maxQuestions={c.maxQuestions}
+                  />
+                ))}
+              </div>
+            ) : (
+              <Card className="rounded-3xl border-dashed p-6 text-center text-sm text-muted-foreground">
+                Henüz branş denemesi bulunmuyor. Deneme eklerken sadece çözdüğün dersleri
+                işaretlersen burada ayrı olarak görünür.
+              </Card>
+            )}
+          </div>
+
           <Tabs defaultValue="tyt" className="w-full mt-8">
-            <TabsList className="w-full max-w-sm grid grid-cols-2">
+            <TabsList className="w-full max-w-md grid grid-cols-3">
               <TabsTrigger value="tyt">TYT Denemeleri</TabsTrigger>
               <TabsTrigger value="ayt">AYT Denemeleri</TabsTrigger>
+              <TabsTrigger value="brans">Branş Denemeleri</TabsTrigger>
             </TabsList>
             <TabsContent value="tyt">
               {renderTable(tytRows, "TYT")}
             </TabsContent>
             <TabsContent value="ayt">
               {renderTable(aytRows, "AYT")}
+            </TabsContent>
+            <TabsContent value="brans">
+              <Card className="overflow-hidden rounded-3xl border-border p-0 shadow-soft mt-4">
+                <Table>
+                  <TableHeader>
+                    <TableRow className="bg-secondary/60">
+                      <TableHead>Tarih</TableHead>
+                      <TableHead>Kurum</TableHead>
+                      <TableHead>Branş</TableHead>
+                      <TableHead className="text-right">Net</TableHead>
+                      <TableHead className="text-right">Başarı %</TableHead>
+                      <TableHead className="w-12 text-center"></TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {branchRows.length === 0 ? (
+                      <TableRow>
+                        <TableCell colSpan={6} className="text-center py-8 text-muted-foreground">
+                          Henüz branş denemesi bulunmuyor.
+                        </TableCell>
+                      </TableRow>
+                    ) : (
+                      branchRows.map((e, i) => (
+                        <TableRow
+                          key={e.id}
+                          className={cn(i % 2 === 1 && "bg-secondary/30", "cursor-pointer hover:bg-muted/50")}
+                          onClick={() => setSelectedExam(e)}
+                        >
+                          <TableCell>{e.date}</TableCell>
+                          <TableCell className="font-medium">{e.publisher}</TableCell>
+                          <TableCell className="text-muted-foreground">
+                            {e.type} {e.branch}
+                          </TableCell>
+                          <TableCell className="text-right">
+                            <span className="rounded-full bg-brand-soft px-3 py-1 font-display text-sm font-bold text-brand-deep">
+                              {total(e).toFixed(1)}
+                            </span>
+                          </TableCell>
+                          <TableCell className="text-right">
+                            <span className="text-sm font-medium text-muted-foreground">
+                              {branchMax(e) ? ((total(e) / branchMax(e)) * 100).toFixed(1) : "—"}%
+                            </span>
+                          </TableCell>
+                          <TableCell className="text-center">
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-8 w-8 text-muted-foreground hover:text-destructive"
+                              onClick={(ev) => handleDelete(ev, e)}
+                            >
+                              <Trash2 className="h-4 w-4" />
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))
+                    )}
+                  </TableBody>
+                </Table>
+              </Card>
             </TabsContent>
           </Tabs>
 

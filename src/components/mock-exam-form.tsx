@@ -14,6 +14,7 @@ import {
 import { toast } from "sonner";
 import {
   EXAM_DURATION,
+  branchOf,
   formatDuration,
   netOf,
   sectionsFor,
@@ -211,6 +212,7 @@ export function MockExamForm({
             );
             return;
           }
+          const branch = branchOf(sectionsFor(kind, track), activeSections);
           onSave({
             date: date,
             publisher: publisher.trim(),
@@ -219,6 +221,11 @@ export function MockExamForm({
             matematik: round(totals.matematik),
             sosyal: round(totals.sosyal),
             fen: round(totals.fen),
+            branch: branch?.name,
+            branchQuestions: branch?.questions,
+            domainScores: Object.fromEntries(
+              activeSections.map((s) => [s.label, round(netFor(s.key, s.questions))]),
+            ),
           });
           setCells({});
           setPublisher("");

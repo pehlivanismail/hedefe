@@ -138,6 +138,10 @@ export type MockExam = {
   templateId?: string | undefined;
   detailedLogs?: { topicId: string; status: "correct" | "wrong" | "blank" }[] | undefined;
   domainScores?: Record<string, number> | undefined;
+  /** Branş denemesi ise dersin adı (ör. "Matematik") */
+  branch?: string | undefined;
+  /** Branş denemesinin soru sayısı */
+  branchQuestions?: number | undefined;
 };
 
 export type Student = {
@@ -345,6 +349,8 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
           templateId: r["templateId"] as string | undefined,
           detailedLogs: r["detailedLogs"] as { topicId: string; status: "correct" | "wrong" | "blank" }[] | undefined,
           domainScores: r["domainScores"] as Record<string, number> | undefined,
+          branch: r["branch"] as string | undefined,
+          branchQuestions: r["branchQuestions"] as number | undefined,
           studentId: row.user_id,
         };
       });
@@ -555,7 +561,9 @@ export function DemoDataProvider({ children }: { children: ReactNode }) {
             fen: e.fen,
             templateId: e.templateId,
             detailedLogs: e.detailedLogs,
-            domainScores: e.domainScores
+            domainScores: e.domainScores,
+            branch: e.branch,
+            branchQuestions: e.branchQuestions
           },
           net_score: e.turkce + e.matematik + e.sosyal + e.fen,
           total_questions: e.type === "TYT" ? 120 : 160

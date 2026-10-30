@@ -83,6 +83,33 @@ export function sectionsFor(kind: ExamKind, track: Track): SectionDef[] {
   return kind === "TYT" ? TYT_SECTIONS : AYT_SECTIONS[track];
 }
 
+const BUCKET_LABELS: Record<NetBucket, string> = {
+  turkce: "Türkçe",
+  matematik: "Matematik",
+  sosyal: "Sosyal Bilimler",
+  fen: "Fen Bilimleri",
+};
+
+/**
+ * Sadece bazı bölümler çözüldüyse branş denemesidir: adını ve soru sayısını döner
+ * (ör. Fizik + Kimya + Biyoloji → "Fen Bilimleri", 20 soru). Tüm bölümler çözüldüyse null.
+ */
+export function branchOf(
+  all: SectionDef[],
+  solved: SectionDef[],
+): { name: string; questions: number } | null {
+  if (solved.length === 0 || solved.length >= all.length) return null;
+  const parts: string[] = [];
+  for (const bucket of Object.keys(BUCKET_LABELS) as NetBucket[]) {
+    const inBucket = all.filter((s) => s.bucket === bucket);
+    const picked = solved.filter((s) => s.bucket === bucket);
+    if (picked.length === 0) continue;
+    if (picked.length === inBucket.length && inBucket.length > 1) parts.push(BUCKET_LABELS[bucket]);
+    else parts.push(...picked.map((s) => s.label));
+  }
+  return { name: parts.join(" + "), questions: solved.reduce((n, s) => n + s.questions, 0) };
+}
+
 /** 4 yanlış 1 doğruyu götürür */
 export function netOf(questions: number, wrong: number, blank: number) {
   const correct = Math.max(0, questions - wrong - blank);
